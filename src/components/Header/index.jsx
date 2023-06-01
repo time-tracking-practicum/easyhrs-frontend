@@ -5,6 +5,7 @@ export default function Header() {
 		<>
 			<h1>Hello React!</h1>
 			<h2>Easyhrs</h2>
+			<h3>Easyhrfdvdfgdfgfs</h3>
 		</>
 	);
 }
