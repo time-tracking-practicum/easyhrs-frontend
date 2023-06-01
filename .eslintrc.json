@@ -1,6 +1,38 @@
 {
-	"extends": ["airbnb-base", "prettier"],
+	"extends": [
+    "react-app",
+    "react-app/jest",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier"
+  ],
 	"rules": {
-		"no-underscore-dangle": ["error", { "allow": ["_id"] }]
-	}
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unescaped-entities": "off",
+    "react/button-has-type": "off"
+	},
+  "overrides": [
+    {
+      "files": [
+        "**/*.stories.*",
+        "src/stories/**/*"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": "off",
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }
