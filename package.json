@@ -8,7 +8,8 @@
 		"start": "webpack serve --mode development",
 		"lint": "eslint . --ext .js,.jsx .",
 		"lint:fix": "npm run lint -- --fix",
-		"format": "prettier . --write"
+		"format": "prettier . --write",
+		"prepare": "husky install"
 	},
 	"author": "",
 	"license": "ISC",
@@ -21,6 +22,7 @@
 		"eslint": "^8.41.0",
 		"eslint-plugin-react": "^7.32.2",
 		"html-webpack-plugin": "^5.5.1",
+		"husky": "^8.0.3",
 		"mini-css-extract-plugin": "^2.7.6",
 		"prettier": "2.8.8",
 		"style-loader": "^3.3.3",
@@ -29,10 +31,15 @@
 		"webpack-cli": "^5.1.1",
 		"webpack-dev-server": "^4.15.0"
 	},
+	"lint-staged": {
+		"*.{js,jsx}": "npm run lint",
+		"*.{js,jsx,css,md,html,json}": "npm run format"
+	},
 	"dependencies": {
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-import": "^2.27.5",
+		"lint-staged": "^13.2.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	}
