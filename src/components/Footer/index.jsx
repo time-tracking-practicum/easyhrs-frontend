@@ -2,10 +2,10 @@ import React from 'react';
 
 import './index.css';
 
-export default function Header() {
+export default function Footer() {
 	return (
 		<>
-			<h1>This is header</h1>
+			<h1>This is footer</h1>
 		</>
 	);
 }
