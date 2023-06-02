@@ -4,8 +4,7 @@
 		"react-app/jest",
 		"airbnb",
 		"airbnb/hooks",
-		"prettier",
-		"plugin:storybook/recommended"
+		"prettier"
 	],
 	"rules": {
 		"react/jsx-filename-extension": [
