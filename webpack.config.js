@@ -44,9 +44,14 @@ module.exports = {
 		// CleanWebpackPlugin
 	},
 	devServer: {
+		static: {
+			directory: path.join(__dirname, '/'),
+		},
+		compress: true,
 		port: 3000,
 		hot: true, // Включает автоматическую перезагрузку страницы при изменениях
 		open: true, // Открывает при запуске
+		historyApiFallback: true,
 	},
 	module: {
 		rules: [
