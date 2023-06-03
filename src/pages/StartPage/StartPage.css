@@ -1,0 +1,87 @@
+/* Появление start */
+@keyframes emergence {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/* Исчезновение start__title & start_image */
+@keyframes disappearance {
+	0% {
+		opacity: 1;
+		visibility: visible;
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+/* Сдвиг влево start */
+@keyframes left-shift {
+	0% {
+		width: 100%;
+	}
+	100% {
+		width: 542px;
+	}
+}
+
+/* Появление start__title */
+@keyframes emergence-title {
+	0% {
+		opacity: 0;
+		color: #ffffff;
+	}
+	100% {
+		visibility: visible;
+		opacity: 1;
+		color: #ffffff;
+	}
+}
+
+/* Сдвиг вправо start__container */
+@keyframes right-shift {
+	100% {
+		position: absolute;
+		left: 46%;
+	}
+}
+
+.start {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: calc(100vh - 40px);
+	background-color: #ffffff;
+	border-radius: 40px;
+	animation: emergence 2s ease-in-out, left-shift 2s ease-in-out forwards 3s;
+}
+
+.start__container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	animation: right-shift 1s ease-in-out forwards 2.5s;
+}
+
+.start__title {
+	font-style: normal;
+	font-weight: 700;
+	font-size: 96px;
+	line-height: 113px;
+	color: #6750a4;
+	margin: 0;
+	animation: disappearance 1.5s ease-in-out forwards 1.5s,
+		emergence-title 1.5s ease-in-out forwards 3s;
+}
+
+.start__image {
+	width: 167px;
+	height: 167px;
+	animation: disappearance 1.5s ease-in-out forwards 1.5s;
+}
