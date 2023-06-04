@@ -1,0 +1,94 @@
+.task {
+	width: calc(100% - 40px - 40px);
+	margin: 0 auto;
+	display: block;
+	border-radius: 16px;
+	text-decoration: none;
+	color: #000000;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 1.43;
+}
+
+.task__container {
+	height: 96px;
+	display: flex;
+	align-items: center;
+	margin: auto 28px auto 24px;
+	justify-content: space-between;
+}
+
+.task__emodji {
+	background-image: url(../../images/matrix-emoji.png);
+	width: 24px;
+	height: 24px;
+	background-repeat: no-repeat;
+}
+
+.task__name {
+	margin: 0;
+	width: 18%;
+}
+
+.task__project {
+	width: 15%;
+	margin: 0;
+}
+
+.task__matrix-wrapper {
+	width: 15%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 0;
+}
+
+.task__matrix-item {
+	height: fit-content;
+	padding: 2px 12px;
+	list-style: none;
+	background: #fef7ff;
+	border: 1px solid #49454f;
+	border-radius: 8px;
+	width: fit-content;
+	margin: 0;
+}
+
+.task__deadline {
+	width: 15%;
+	margin: 0;
+}
+
+.task__timer-wrapper {
+	width: 15%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 0;
+}
+
+.task__timer-status {
+	height: fit-content;
+	padding: 2px 12px;
+	list-style: none;
+	background: #fef7ff;
+	border: 1px solid #49454f;
+	border-radius: 8px;
+	width: fit-content;
+	margin: 0;
+}
+
+.task__timer-time {
+	list-style: none;
+}
+
+.task__btn {
+	background: #6750a4;
+	border-radius: 100px;
+	width: 40px;
+	height: 40px;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
