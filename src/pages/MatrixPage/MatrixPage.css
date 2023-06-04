@@ -1,0 +1,24 @@
+.matrixpage {
+	min-height: 984px;
+	width: 80%;
+	margin: 0 0 0 auto;
+	background-color: #ffffff;
+	border-radius: 38px;
+}
+
+.matrixpage__title {
+	font-weight: 700;
+	font-size: 54px;
+	line-height: 1.26;
+	margin: 0 auto;
+	padding-top: 32px;
+	width: calc(100% - 40px - 40px);
+}
+
+.matrixpage__container {
+	width: calc(100% - 40px - 40px);
+	margin: 28px auto 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}

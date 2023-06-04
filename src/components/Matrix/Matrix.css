@@ -1,0 +1,69 @@
+.matrix {
+	width: 49.2%;
+	height: 410px;
+	border-radius: 24px;
+}
+
+.matrix__container {
+	width: 88%;
+	margin: 20px 30px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.matrix__title {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.11;
+	letter-spacing: 0.1px;
+	margin: 0;
+}
+
+.matrix__subtitle {
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 1.33;
+	margin: 8px 0 0;
+}
+
+.matrix__add-btn {
+	position: absolute;
+	top: 7px;
+	right: 0;
+	width: 36px;
+	height: 34px;
+	background: #ffffff;
+	border-radius: 100px;
+	border: none;
+	color: #6750a4;
+	cursor: pointer;
+}
+
+.matrix__task-list {
+	margin: 40px 0 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.matrix__task {
+	list-style: none;
+	display: flex;
+	gap: 12px;
+}
+
+.matrix__task-emoji {
+	background-image: url(../../images/matrix-emoji.png);
+	width: 24px;
+	height: 24px;
+	background-repeat: no-repeat;
+}
+
+.matrix__task-text {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.5;
+	margin: 0;
+}
