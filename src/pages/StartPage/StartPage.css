@@ -31,7 +31,7 @@
 }
 
 /* Появление start__title */
-@keyframes emergence-title {
+/* @keyframes emergence-title {
 	0% {
 		opacity: 0;
 		color: #ffffff;
@@ -41,7 +41,7 @@
 		opacity: 1;
 		color: #ffffff;
 	}
-}
+} */
 
 /* Сдвиг вправо start__container */
 @keyframes right-shift {
@@ -51,7 +51,20 @@
 	}
 }
 
-.start {
+@keyframes gradient {
+	0% {
+		visibility: hidden;
+		opacity: 0;
+	}
+	100% {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+.start__block {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -84,4 +97,40 @@
 	width: 167px;
 	height: 167px;
 	animation: disappearance 1.5s ease-in-out forwards 1.5s;
+}
+
+.start__container-gradient {
+	visibility: hidden;
+	opacity: 0;
+	animation: gradient 1s ease-in-out forwards 3s;
+}
+
+.start__gradien-top {
+	position: absolute;
+	left: -131px;
+	top: -247px;
+	width: 78.33%;
+	height: 66.89%;
+	background: radial-gradient(#3f2eaa 80%, #5fc1ec 100%);
+	filter: blur(150px);
+}
+
+.start__gradient-right {
+	position: absolute;
+	width: 67.85%;
+	height: 94.14%;
+	top: -318px;
+	right: -440px;
+	background: radial-gradient(#da54b7 0%, #9e75df 45.24%, #9243dd 60.42%);
+	filter: blur(150px);
+}
+
+.start__gradient-bottom {
+	position: absolute;
+	width: 36.04%;
+	height: 45.8%;
+	left: 384px;
+	bottom: -190px;
+	background: radial-gradient(#4e2bad 20.83%, #7720c8 30.37%, #d352b8 100%);
+	filter: blur(150px);
 }

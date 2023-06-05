@@ -1,4 +1,6 @@
 .page {
+	position: relative;
+	overflow: hidden;
 	max-width: 100%;
 	padding: 20px;
 	background-color: #6750a2;
