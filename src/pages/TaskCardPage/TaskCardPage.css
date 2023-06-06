@@ -4,4 +4,35 @@
 	margin: 0 0 0 auto;
 	background-color: #ffffff;
 	border-radius: 38px;
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.taskcardpage__title-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 45px;
+	margin: 32px auto 0;
+	width: 93%;
+}
+
+.taskcardpage__crumb {
+	background-image: url(../../images/icon-crumb.svg);
+	text-decoration: none;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	width: 8px;
+	height: 14px;
+}
+
+.taskcardpage__title {
+	margin: 0;
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 1.19;
+}
+
+.taskcardpage__form {
+	display: flex;
 }
