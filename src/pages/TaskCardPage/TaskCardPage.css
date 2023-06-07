@@ -156,3 +156,35 @@
 	height: 24px;
 	width: 24px;
 }
+
+.taskcardpage__btns {
+	display: flex;
+	justify-content: center;
+	gap: 13px;
+}
+
+.taskcardpage__submit {
+	width: 238px;
+	height: 52px;
+	background: #6750a4;
+	border-radius: 100px;
+	border: none;
+	cursor: pointer;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.11;
+	color: #ffffff;
+}
+
+.taskcardpage__delete {
+	width: 184px;
+	height: 52px;
+	border: 1px solid #79747e;
+	border-radius: 100px;
+	background-color: transparent;
+	cursor: pointer;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.11;
+	color: #6750a4;
+}

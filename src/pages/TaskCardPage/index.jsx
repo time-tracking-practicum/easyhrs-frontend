@@ -8,6 +8,7 @@ import { addLocale } from 'primereact/api';
 import EmojiForm from '../../components/EmojiForm';
 
 export default function TaskCardPage() {
+	// TODO: подтянуть и заранее выбранный эмодзи, и из формы emoji-mart. доделать статус (скорее всего будут менять дизайн), привести все элементы в соответствие макету после согласования ментора, локализовать русский язык в форму emoji
 	const [task, setTask] = useState('Дизайн главной страницы'); // стейт значения названия задачи
 	const [project, setProject] = useState('Дачи за городом'); // стейт значения проекта
 	const [date, setDate] = useState(null); // стейт значения даты задачи
@@ -151,6 +152,12 @@ export default function TaskCardPage() {
 							{isOpenEmoji && <EmojiForm />}
 						</div>
 					</div>
+				</div>
+				<div className="taskcardpage__btns">
+					<button type="submit" className="taskcardpage__submit">
+						Сохранить изменения
+					</button>
+					<button className="taskcardpage__delete">Удалить задачу</button>
 				</div>
 			</form>
 		</section>
