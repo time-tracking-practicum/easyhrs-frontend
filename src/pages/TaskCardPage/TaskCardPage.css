@@ -35,4 +35,54 @@
 
 .taskcardpage__form {
 	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	width: 93%;
+	gap: 24px;
+}
+
+.taskcardpage__label {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 50%;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 1.4;
+}
+
+.taskcardpage__input-text {
+	height: calc(56px - 16px - 16px);
+	border: 1px solid #79747e;
+	border-radius: 100px;
+	padding: 16px 46px 16px 16px;
+	margin: 16px 0 0;
+}
+
+.taskcardpage__input-icon {
+	position: absolute;
+	background-image: url(../../images/icon-pencil.svg);
+	height: 40px;
+	width: 40px;
+	top: 54px;
+	right: 8px;
+	cursor: pointer;
+}
+
+.taskcardpage__input-icon:hover {
+	border-radius: 100px;
+	border: none;
+	background-color: rgb(219, 219, 219);
+}
+
+.taskcardpage__input-icon:active {
+	border-radius: 100px;
+	border: none;
+	background-color: rgb(185, 185, 185);
+}
+
+.taskcardpage__calendar-container {
+	width: 50%;
+	display: flex;
+	gap: 133px;
 }
