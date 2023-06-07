@@ -47,8 +47,11 @@
 		"webpack-dev-server": "^4.15.0"
 	},
 	"dependencies": {
+		"@emoji-mart/data": "^1.1.2",
+		"@emoji-mart/react": "^1.1.1",
 		"commitizen": "^4.3.0",
 		"cz-conventional-changelog": "^3.3.0",
+		"emoji-mart": "^5.5.2",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-config-prettier": "^8.8.0",
