@@ -139,3 +139,13 @@
 	width: 24px;
 	height: 24px;
 }
+
+.taskcardpage__emoji-container {
+	display: flex;
+	gap: 24px;
+}
+
+.taskcardpage__emoji {
+	height: 24px;
+	width: 24px;
+}

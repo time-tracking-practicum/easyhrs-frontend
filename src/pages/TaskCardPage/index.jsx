@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './TaskCardPage.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar } from 'primereact/calendar';
 import { InputSwitch } from 'primereact/inputswitch';
 import { addLocale } from 'primereact/api';
+import emojiApi from '../../utils/EmojiApi';
 
 export default function TaskCardPage() {
 	const [task, setTask] = useState('Дизайн главной страницы'); // стейт значения названия задачи
@@ -13,6 +14,7 @@ export default function TaskCardPage() {
 	const [deadline, setDeadline] = useState(null); // стейт значения дедлайна
 	const [important, setImportant] = useState(false); // стейт значения "важно"
 	const [urgent, setUrgent] = useState(false); // стейт значения "срочно"
+	const [emoji, setEmoji] = useState(); // стейт отображаемого эмодзи
 
 	// локализация календаря на русский язык
 	addLocale('ru', {
@@ -59,6 +61,21 @@ export default function TaskCardPage() {
 		today: 'Сегодня',
 		clear: 'Очистить',
 	});
+
+	// todo: узнать, что здесь можно делать с эмодзи? нужен ли поиск по эмодзи?
+	// function handleEmojis() {
+	// 	emojiApi
+	// 		.getEmojis()
+	// 		.then((emojis) => setEmoji(emojis.slug))
+	// 		.catch((err) => console.log(err))
+	// }
+
+	useEffect(() => {
+		emojiApi
+			.getEmojis()
+			.then((emojis) => setEmoji(emojis[0].character))
+			.catch((err) => console.log(err));
+	}, []);
 
 	return (
 		<section className="taskcardpage">
@@ -132,6 +149,10 @@ export default function TaskCardPage() {
 								onChange={(e) => setUrgent(e.value)}
 							/>
 						</label>
+						<div className="taskcardpage__emoji-container">
+							<h3 className="taskcardpage__emoji-title">Emoj</h3>
+							<div className="taskcardpage__emoji">{emoji}</div>
+						</div>
 					</div>
 				</div>
 			</form>
