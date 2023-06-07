@@ -1,12 +1,10 @@
 import './MatrixPage.css';
 import React from 'react';
-import Header from '../../components/Header';
 import Matrix from '../../components/Matrix';
 
 export default function MatrixPage() {
 	return (
 		<section className="matrixpage">
-			<Header />
 			<h2 className="matrixpage__title">Матрица задач</h2>
 			<div className="matrixpage__container">
 				<Matrix

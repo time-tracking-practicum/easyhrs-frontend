@@ -1,6 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './Router.css';
+import 'primereact/resources/themes/lara-light-indigo/theme.css'; // theme
+import 'primereact/resources/primereact.css';
 
 import StartPage from '../pages/StartPage';
 import MainPage from '../pages/MainPage';
