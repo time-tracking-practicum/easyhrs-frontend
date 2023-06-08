@@ -54,12 +54,21 @@
 	}
 }
 
+/* Появление градиента */
 @keyframes gradient {
 	0% {
 		visibility: hidden;
 		opacity: 0;
 	}
 
+	100% {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+/* Появление формы  */
+@keyframes visible-form {
 	100% {
 		visibility: visible;
 		opacity: 1;
@@ -138,4 +147,34 @@
 	bottom: -190px;
 	background: radial-gradient(#4e2bad 20.83%, #7720c8 30.37%, #d352b8 100%);
 	filter: blur(150px);
+}
+
+.start__block > .authForm {
+	opacity: 0;
+	visibility: hidden;
+	animation: visible-form 1s ease-in-out forwards 2s;
+}
+
+.start__logo-top {
+	position: absolute;
+	right: 15px;
+	top: -265px;
+	width: 645px;
+	height: 657px;
+}
+
+.start__logo-left {
+	position: absolute;
+	left: 130px;
+	top: 200px;
+	width: 568px;
+	height: 577px;
+}
+
+.start__logo-bottom {
+	position: absolute;
+	right: -115px;
+	bottom: -10px;
+	width: 500px;
+	height: 500px;
 }

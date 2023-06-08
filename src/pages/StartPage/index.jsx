@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
 
-import './StartPage.css';
-import startLogo from '../../images/startLogo.png';
 import Login from '../../components/Login';
 import Registration from '../../components/Registration';
 import RemindPassForm from '../../components/RemindPassForm';
+
+import startLogo from '../../images/startLogo.png';
+import logoTop from '../../images/logo-top.svg';
+import logoLeft from '../../images/logo-left.svg';
+import logoBottom from '../../images/logo-bottom.svg';
+
+import './StartPage.css';
 
 export default function StartPage() {
 	const [isRegistration, setIsRegistration] = useState(true);
@@ -39,6 +44,17 @@ export default function StartPage() {
 				<div className="start__gradien-top" />
 				<div className="start__gradient-right" />
 				<div className="start__gradient-bottom" />
+				<img className="start__logo-top" src={logoTop} alt="Логотип EasyHrs" />
+				<img
+					className="start__logo-left"
+					src={logoLeft}
+					alt="Логотип EasyHrs"
+				/>
+				<img
+					className="start__logo-bottom"
+					src={logoBottom}
+					alt="Логотип EasyHrs"
+				/>
 			</div>
 			<div className="start__block">
 				{isLogin && (
