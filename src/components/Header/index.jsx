@@ -8,7 +8,7 @@ import './Header.css';
 // sectionName='name': Название секции,
 // newtask: булевое значение на добавление кнопки,
 // branch='name': Название ветки с возвратом назад
-function Header({ sectionName, newtask, branch }) {
+function Header({ sectionName, newtask, branch, timer }) {
 	const navigate = useNavigate();
 
 	return (
@@ -31,6 +31,11 @@ function Header({ sectionName, newtask, branch }) {
 							{branch}
 						</NavLink>
 					</div>
+				)}
+				{timer && (
+					<NavLink className="header__navlink-timer" to={navigate(-1)}>
+						Свернуть
+					</NavLink>
 				)}
 			</div>
 			<div className="header__icons-container">

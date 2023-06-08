@@ -60,3 +60,12 @@
 .header__icon {
 	cursor: pointer;
 }
+
+.header__navlink-timer {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 20px;
+	color: #000000;
+	text-decoration: none;
+}

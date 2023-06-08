@@ -1,0 +1,48 @@
+.timer__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 198px;
+}
+
+.timer__span {
+	font-weight: 500;
+	font-size: 96px;
+	line-height: 68px;
+}
+
+.timer__name {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 28px;
+	margin: 24px 0 0;
+}
+
+.timer__buttons-container {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+	margin-top: 32px;
+}
+
+.timer__button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #6750a4;
+	color: #ffffff;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 20px;
+	border: none;
+	border-radius: 100px;
+	width: 160px;
+	height: 52px;
+	cursor: pointer;
+}
+
+.timer__icon {
+	width: 14px;
+	height: 14px;
+	margin-right: 9.5px;
+}
