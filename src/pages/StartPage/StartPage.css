@@ -3,6 +3,7 @@
 	0% {
 		opacity: 0;
 	}
+
 	100% {
 		opacity: 1;
 	}
@@ -14,6 +15,7 @@
 		opacity: 1;
 		visibility: visible;
 	}
+
 	100% {
 		opacity: 0;
 		visibility: hidden;
@@ -25,6 +27,7 @@
 	0% {
 		width: 100%;
 	}
+
 	100% {
 		width: 542px;
 	}
@@ -56,6 +59,7 @@
 		visibility: hidden;
 		opacity: 0;
 	}
+
 	100% {
 		visibility: visible;
 		opacity: 1;
@@ -69,7 +73,7 @@
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: calc(100vh - 40px);
+	min-height: 984px;
 	background-color: #ffffff;
 	border-radius: 40px;
 	animation: emergence 2s ease-in-out, left-shift 2s ease-in-out forwards 3s;
@@ -79,7 +83,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	animation: right-shift 1s ease-in-out forwards 2.5s;
+	animation: right-shift 1s ease-in-out forwards 2.5s,
+		disappearance 1.5s ease-in-out forwards 1.5s;
 }
 
 .start__title {

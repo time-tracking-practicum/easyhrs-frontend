@@ -1,0 +1,35 @@
+.authForm__checkbox-container {
+	margin-top: 24px;
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 0.1px;
+}
+
+input[type='checkbox'] {
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+.authForm__checkbox-label {
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	background: #fff;
+	border: 1px #ddd solid;
+	border-radius: 50%;
+	margin-right: 16px;
+}
+
+.authForm__checkbox-label_checked {
+	background-color: #6750a4;
+	background-image: url('../../images/icon-checked.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px #6750a4 solid;
+}
