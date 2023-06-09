@@ -51,3 +51,7 @@
 .profile__input-icon-key {
 	margin-right: 14px;
 }
+
+.profile__input-icon:hover {
+	cursor: pointer;
+}

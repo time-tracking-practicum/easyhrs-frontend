@@ -18,3 +18,25 @@ export const passFormTitle = 'Забыли пароль?';
 export const passFormInputHint =
 	'Укажите свой Email под которым вы зарегистрированы на сайте и на него будет отправлена информация для восстановления пароля';
 export const passFormSubmitBtnText = 'Отправить';
+
+// Текст кнопок на странице профиля
+export const radioButtons = [
+	{
+		title: 'Пароль + СМС',
+		text: 'Вход с паролем и коротким кодом из смс или почты',
+		value: 'option1',
+		name: 'sms',
+	},
+	{
+		title: 'Одноразовый пароль',
+		text: 'Вход с одноразовым паролем из смс или почты',
+		value: 'option2',
+		name: 'oneTimePass',
+	},
+	{
+		title: 'Обычный пароль',
+		text: 'Пароль должен быть сложным и уникальным',
+		value: 'option3',
+		name: 'usualPass',
+	},
+];

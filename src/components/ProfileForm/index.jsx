@@ -46,7 +46,7 @@ export default function ProfileForm() {
 					<img
 						src={inputKey}
 						alt="Иконка Ключ"
-						className="profile__input-icon profile__input-icon-key"
+						className="profile__input-icon-key"
 					/>
 					<input
 						type="text"
