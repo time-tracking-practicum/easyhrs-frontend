@@ -1,0 +1,53 @@
+.profile__form {
+	width: 520px;
+}
+
+.profile__form-fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.profile__input-container {
+	display: flex;
+	justify-content: space-evenly;
+	position: relative;
+	min-height: 56px;
+	border: 1px solid #79747e;
+	border-radius: 100px;
+	padding: 0 16px;
+}
+
+.profile__subtitle {
+	margin: 0;
+	margin-bottom: 24px;
+}
+
+.profile__input-container:not(:last-child) {
+	margin-bottom: 16px;
+}
+
+.profile__input-label {
+	position: absolute;
+	padding: 0 8px;
+	background-color: #fff;
+	top: -8px;
+	left: 12px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	color: #49454f;
+}
+
+.profile__input {
+	padding: 0;
+	max-height: 100%;
+	max-width: 100%;
+	width: 100%;
+	border: none;
+	background-color: transparent;
+}
+
+.profile__input-icon-key {
+	margin-right: 14px;
+}

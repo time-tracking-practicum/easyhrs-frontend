@@ -1,0 +1,12 @@
+.profile {
+	min-height: calc(100vh - 40px);
+	margin-left: auto;
+	background-color: #fff;
+	border-radius: 38px;
+	max-width: 1120px;
+	padding-top: 1px;
+}
+
+.profile__container {
+	margin: 40px;
+}
