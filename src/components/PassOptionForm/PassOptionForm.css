@@ -1,0 +1,11 @@
+.profile__passOptions {
+	width: 520px;
+	margin-top: 32px;
+}
+
+.profile__passOptions-title {
+	margin: 0 0 32px 0;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 28px;
+}

@@ -7,7 +7,7 @@
 	letter-spacing: 0.1px;
 }
 
-input[type='checkbox'] {
+.authForm__checkbox-container input[type='checkbox'] {
 	clip-path: inset(50%);
 	height: 1px;
 	overflow: hidden;
