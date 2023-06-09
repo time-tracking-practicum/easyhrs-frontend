@@ -8,6 +8,7 @@ import StartPage from '../pages/StartPage';
 import MainPage from '../pages/MainPage';
 import MatrixPage from '../pages/MatrixPage';
 import TaskCardPage from '../pages/TaskCardPage';
+import ProfilePage from '../pages/ProfilePage';
 
 export default function Router() {
 	return (
@@ -19,6 +20,7 @@ export default function Router() {
 				<Route path="/main" element={<MainPage />} />
 				<Route path="/matrix" element={<MatrixPage />} />
 				<Route path="/task-card" element={<TaskCardPage />} />
+				<Route path="/profile" element={<ProfilePage />} />
 			</Routes>
 		</div>
 	);
