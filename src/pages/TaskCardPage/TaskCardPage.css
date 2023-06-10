@@ -89,7 +89,20 @@
 
 .taskcardpage__input-date {
 	margin: 16px 0 0;
-	border-bottom: 1px solid #ececee !important;
+	border: none;
+	border-bottom: 1px solid #ececee;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 1.87;
+	color: #2b2d33;
+	padding: 12px 14px 12px 12px;
+}
+
+.taskcardpage__input-date::-webkit-calendar-picker-indicator {
+	background-image: url(../../images/icon-arrow.png);
+	height: 24px;
+	width: 24px;
+	cursor: pointer;
 }
 
 .taskcardpage__priority-container {
@@ -135,7 +148,7 @@
 }
 
 .p-inputswitch .p-inputswitch-slider:before {
-	margin-top: -0.72rem;
+	margin-top: -12px;
 	width: 24px;
 	height: 24px;
 }
