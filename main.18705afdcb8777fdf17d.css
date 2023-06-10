@@ -13045,7 +13045,7 @@ input.p-dropdown-label  {
 	letter-spacing: 0.1px;
 }
 
-input[type='checkbox'] {
+.authForm__checkbox-container input[type='checkbox'] {
 	clip-path: inset(50%);
 	height: 1px;
 	overflow: hidden;
@@ -13725,6 +13725,105 @@ input[type='checkbox'] {
 	color: #6750a4;
 }
 
+/*!************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/PassOptionRadioBtn/PassOptionRadioBtn.css ***!
+  \************************************************************************************************************/
+.profile__radiobtn-container {
+	display: flex;
+	max-height: 45px;
+	align-items: center;
+	white-space: nowrap;
+}
+
+.profile__radiobtn-container:not(:last-child) {
+	margin-bottom: 24px;
+}
+
+.profile__radiobtn-container input[type='radio'],
+.profile__radiobtn-container input[type='radio']:checked {
+	display: none;
+}
+
+.profile__radiobtn-container input[type='radio']:checked + label,
+.profile__radiobtn-container input[type='radio']:not(:checked) + label {
+	display: inline-block;
+	position: relative;
+	padding-left: 28px;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.profile__radiobtn-container input[type='radio']:checked + label:before,
+.profile__radiobtn-container input[type='radio']:not(:checked) + label:before {
+	content: '';
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	width: 17px;
+	height: 17px;
+	border: 1px solid #6750a4;
+	background-color: transparent;
+	border-radius: 50%;
+}
+
+.profile__radiobtn-container input[type='radio']:checked + label:after,
+.profile__radiobtn-container input[type='radio']:not(:checked) + label:after {
+	content: '';
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	width: 19px;
+	height: 19px;
+	border-radius: 50%;
+	background-color: #6750a4;
+	background-image: url(assets/e6042e5e890148ca83bd.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.profile__radiobtn-container input[type='radio']:not(:checked) + label:after {
+	opacity: 0;
+}
+
+.profile__radiobtn-container input[type='radio']:checked + label:after {
+	opacity: 1;
+}
+
+.profile__radiobtn-label {
+	display: inline-block;
+	min-height: 45px;
+}
+
+.profile__radiobtn__title,
+.profile__radiobtn__text {
+	margin: 0;
+}
+
+.profile__radiobtn__title {
+	font-size: 15px;
+	letter-spacing: 0.25px;
+	color: #1a1a1a;
+}
+
+.profile__radiobtn__text {
+	font-size: 12px;
+}
+
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/PassOptionForm/PassOptionForm.css ***!
+  \****************************************************************************************************/
+.profile__passOptions {
+	width: 520px;
+	margin-top: 32px;
+}
+
+.profile__passOptions-title {
+	margin: 0 0 32px 0;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 28px;
+}
+
 /*!**********************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/ProfileForm/ProfileForm.css ***!
   \**********************************************************************************************/
@@ -13782,6 +13881,10 @@ input[type='checkbox'] {
 	margin-right: 14px;
 }
 
+.profile__input-icon:hover {
+	cursor: pointer;
+}
+
 /*!*****************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/ProfilePage/ProfilePage.css ***!
   \*****************************************************************************************/
@@ -13799,4 +13902,4 @@ input[type='checkbox'] {
 }
 
 
-/*# sourceMappingURL=main.ef2890bebe6e06e97985.css.map*/
+/*# sourceMappingURL=main.18705afdcb8777fdf17d.css.map*/
