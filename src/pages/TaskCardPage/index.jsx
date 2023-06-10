@@ -2,7 +2,6 @@
 import './TaskCardPage.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar } from 'primereact/calendar';
 import { InputSwitch } from 'primereact/inputswitch';
 import { addLocale } from 'primereact/api';
 import EmojiForm from '../../components/EmojiForm';
@@ -80,6 +79,7 @@ export default function TaskCardPage() {
 					Название
 					<input
 						id="task"
+						name="task"
 						className="taskcardpage__input-text"
 						value={task}
 						onChange={(e) => setTask(e.target.value)}
@@ -90,6 +90,7 @@ export default function TaskCardPage() {
 					Проект
 					<input
 						id="project"
+						name="project"
 						className="taskcardpage__input-text"
 						value={project}
 						onChange={(e) => setProject(e.target.value)}
@@ -99,26 +100,24 @@ export default function TaskCardPage() {
 				<div className="taskcardpage__calendar-container">
 					<label className="taskcardpage__label" htmlFor="date">
 						Дата задачи
-						<Calendar
-							id="date"
+						<input
+							type="date"
 							value={date}
 							onChange={(e) => setDate(e.value)}
-							dateFormat="dd.mm.yy"
-							locale="ru"
-							showButtonBar
 							className="taskcardpage__input-date"
+							id="date"
+							name="date"
 						/>
 					</label>
 					<label className="taskcardpage__label" htmlFor="deadline">
 						Дедлайн
-						<Calendar
-							id="date"
+						<input
+							type="date"
 							value={deadline}
 							onChange={(e) => setDeadline(e.value)}
-							dateFormat="dd.mm.yy"
-							locale="ru"
-							showButtonBar
 							className="taskcardpage__input-date"
+							id="deadline"
+							name="deadline"
 						/>
 					</label>
 				</div>
