@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"description": "Frontend часть приложения EasyHrs.\r EasyHrs - тайм-трекер, который помогает сотрудникам отслеживать свою эффективность в выполнении различных задач.",
 	"main": "index.js",
+	"homepage": "./",
 	"scripts": {
 		"start": "cross-env SERVE=true webpack serve",
 		"build": "webpack",
@@ -14,7 +15,9 @@
 		"prepare": "husky install",
 		"commit": "cz",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
 	},
 	"author": "",
 	"license": "ISC",
@@ -36,6 +39,7 @@
 		"eslint": "^8.41.0",
 		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-storybook": "^0.6.12",
+		"gh-pages": "^5.0.0",
 		"html-webpack-plugin": "^5.5.1",
 		"husky": "^8.0.3",
 		"mini-css-extract-plugin": "^2.7.6",
