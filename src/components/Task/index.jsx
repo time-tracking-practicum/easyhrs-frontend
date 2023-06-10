@@ -1,21 +1,19 @@
-/* eslint-disable react/self-closing-comp */
-import { Link } from 'react-router-dom';
-import './Task.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import './Task.css';
 
 export default function Task() {
-	// TODO привязать backgroundColor к элементам матрицы задач
 	return (
-		<Link
-			to="/task-card"
-			className="task"
-			style={{ backgroundColor: '#FFE1E1' }}
-		>
+		<Link to="/task-card" className="task">
 			<div className="task__container">
-				<div className="task__emodji"></div>
-				<p className="task__name">Дизайн главной страницы</p>
+				<div className="task__name-container">
+					<div className="task__emoji" />
+					<p className="task__name">Дизайн главной страницы</p>
+				</div>
 				<p className="task__project">Дачи за городом</p>
 				<ul className="task__matrix-wrapper">
+					<li className="task__matrix-colorblock" />
 					<li className="task__matrix-item">Срочно</li>
 					<li className="task__matrix-item">Важно</li>
 				</ul>
@@ -24,20 +22,36 @@ export default function Task() {
 					<li className="task__timer-status">В работе</li>
 					<li className="task__timer-time">02:13:57</li>
 				</ul>
-				<Link to="/taskcard" className="task__btn">
+				<Link to="/timer" className="task__btn">
 					<svg
-						width="14"
-						height="20"
-						viewBox="0 0 14 20"
+						width="40"
+						height="40"
+						viewBox="0 0 40 40"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
 					>
-						<path
-							fillRule="evenodd"
-							clipRule="evenodd"
-							d="M0.45571 0.117193C0.73665 -0.0507933 1.07892 -0.037366 1.34816 0.152205L13.5982 8.7772C13.8486 8.95354 14 9.25725 14 9.58333C14 9.90942 13.8486 10.2131 13.5982 10.3895L1.34816 19.0145C1.07892 19.204 0.73665 19.2175 0.45571 19.0495C0.174771 18.8815 0 18.5589 0 18.2083V0.958334C0 0.607769 0.174771 0.28518 0.45571 0.117193ZM1.75 2.71368V16.453L11.5069 9.58333L1.75 2.71368Z"
-							fill="white"
-						/>
+						<g clipPath="url(#clip0_1138_1005)">
+							<rect width="40" height="40" rx="20" fill="#6750A4" />
+							<path
+								d="M20 30C25.5228 30 30 25.5228 30 20C30 14.4772 25.5228 10 20 10C14.4772 10 10 14.4772 10 20C10 25.5228 14.4772 30 20 30Z"
+								stroke="white"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							/>
+							<path
+								d="M18 16L24 20L18 24V16Z"
+								stroke="white"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							/>
+						</g>
+						<defs>
+							<clipPath id="clip0_1138_1005">
+								<rect width="40" height="40" rx="20" fill="white" />
+							</clipPath>
+						</defs>
 					</svg>
 				</Link>
 			</div>

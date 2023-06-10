@@ -5,52 +5,71 @@
 	border-radius: 16px;
 	text-decoration: none;
 	color: #000000;
-	font-weight: 500;
+	font-weight: 400;
 	font-size: 14px;
 	line-height: 1.43;
+	background: #f4f4f4;
 }
 
 .task__container {
-	height: 96px;
+	height: 74px;
 	display: flex;
 	align-items: center;
-	margin: auto 28px auto 24px;
+	justify-content: space-between;
+	width: calc(100% - 16px - 16px);
+	margin: 0 auto;
+}
+
+.task__name-container {
+	display: flex;
+	width: 22.5%;
+	gap: 8px;
+	align-items: center;
+	overflow: hidden;
 	justify-content: space-between;
 }
 
-.task__emodji {
+.task__emoji {
 	background-image: url(../../images/matrix-emoji.png);
 	width: 24px;
 	height: 24px;
 	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 .task__name {
 	margin: 0;
-	width: 18%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 85%;
 }
 
 .task__project {
 	width: 15%;
 	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .task__matrix-wrapper {
 	width: 15%;
 	display: flex;
-	flex-direction: column;
 	gap: 8px;
 	padding: 0;
 }
 
-.task__matrix-item {
-	height: fit-content;
-	padding: 2px 12px;
+.task__matrix-colorblock {
+	background-color: #ffa3a3;
+	border-radius: 4px;
+	width: 18px;
+	height: 19px;
 	list-style: none;
-	background: #fef7ff;
-	border: 1px solid #49454f;
-	border-radius: 8px;
-	width: fit-content;
+}
+
+.task__matrix-item {
+	list-style: none;
 	margin: 0;
 }
 
@@ -62,19 +81,12 @@
 .task__timer-wrapper {
 	width: 15%;
 	display: flex;
-	flex-direction: column;
-	gap: 8px;
+	gap: 9px;
 	padding: 0;
 }
 
 .task__timer-status {
-	height: fit-content;
-	padding: 2px 12px;
 	list-style: none;
-	background: #fef7ff;
-	border: 1px solid #49454f;
-	border-radius: 8px;
-	width: fit-content;
 	margin: 0;
 }
 
