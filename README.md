@@ -6,7 +6,7 @@ EasyHrs - тайм-трекер, который помогает сотрудн�
 ## Ссылки:
 
 - [Макет](https://www.figma.com/file/fYn92Oib2vwafrCazpfOQH/%D1%83%D1%87%D0%B5%D1%82-%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE-%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8?type=design&node-id=380-118914&t=mPtEG2ODmS8rih0Y-0)
-- [Сайт на pages]()
+- [Сайт на pages](test)
 - [Cайт на домене]()
 - [Репозиторий с бэкендом](https://github.com/time-tracking-practicum/EasyHrs_backend)
 
