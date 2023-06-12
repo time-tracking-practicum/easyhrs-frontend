@@ -4136,10 +4136,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function EmojiForm() {
+function EmojiForm(_ref) {
+  var onEmojiSelect = _ref.onEmojiSelect;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_emoji_mart_react__WEBPACK_IMPORTED_MODULE_0__["default"], {
     data: _emoji_mart_data__WEBPACK_IMPORTED_MODULE_2__,
-    onEmojiSelect: console.log
+    locale: "ru",
+    onEmojiSelect: onEmojiSelect
   });
 }
 
@@ -4942,6 +4944,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+// import data from '@emoji-mart/data';
+// import Picker from '@emoji-mart/react';
 
 
 function TaskCardPage() {
@@ -4954,11 +4958,11 @@ function TaskCardPage() {
     _useState4 = _slicedToArray(_useState3, 2),
     project = _useState4[0],
     setProject = _useState4[1]; // стейт значения проекта
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
     _useState6 = _slicedToArray(_useState5, 2),
     date = _useState6[0],
     setDate = _useState6[1]; // стейт значения даты задачи
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
     _useState8 = _slicedToArray(_useState7, 2),
     deadline = _useState8[0],
     setDeadline = _useState8[1]; // стейт значения дедлайна
@@ -4974,6 +4978,10 @@ function TaskCardPage() {
     _useState14 = _slicedToArray(_useState13, 2),
     isOpenEmoji = _useState14[0],
     setIsOpenEmoji = _useState14[1]; // стейт открытия модального окна с emoji
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('😛'),
+    _useState16 = _slicedToArray(_useState15, 2),
+    emoji = _useState16[0],
+    setEmoji = _useState16[1];
 
   // локализация календаря на русский язык
   (0,primereact_api__WEBPACK_IMPORTED_MODULE_4__.addLocale)('ru', {
@@ -4992,6 +5000,15 @@ function TaskCardPage() {
     e.preventDefault();
     setIsOpenEmoji(!isOpenEmoji);
   }
+
+  // функция выбора эмодзи
+  function handleEmojiSelect(em) {
+    setEmoji(em["native"]);
+    setIsOpenEmoji(false);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
     className: "taskcardpage",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -5005,6 +5022,9 @@ function TaskCardPage() {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
       className: "taskcardpage__form",
+      onSubmit: function onSubmit(e) {
+        handleSubmit(e);
+      },
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
         className: "taskcardpage__label",
         htmlFor: "task",
@@ -5095,8 +5115,12 @@ function TaskCardPage() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               className: "taskcardpage__emoji",
               onClick: handleClickEmoji,
-              children: "E"
-            }), isOpenEmoji && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_EmojiForm__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
+              children: emoji
+            }), isOpenEmoji && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_EmojiForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              onEmojiSelect: function onEmojiSelect(em) {
+                return handleEmojiSelect(em);
+              }
+            })]
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -50791,7 +50815,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var container = document.getElementById('root');
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
-root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.BrowserRouter, {
+root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.HashRouter, {
   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_router_Router__WEBPACK_IMPORTED_MODULE_3__["default"], {})
 }));
 })();
