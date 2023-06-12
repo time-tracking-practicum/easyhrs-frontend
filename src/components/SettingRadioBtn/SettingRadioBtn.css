@@ -1,0 +1,16 @@
+.setting-radio-btn {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 142px;
+	cursor: pointer;
+}
+
+.setting-radio-btn__input {
+	display: none;
+}
+
+.setting-radio-btn__image {
+	width: 24px;
+	height: 24px;
+}

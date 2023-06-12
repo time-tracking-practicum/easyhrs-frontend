@@ -1,0 +1,46 @@
+.time-format-setting {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 80px;
+	width: 339px;
+	margin: 28px auto 67px 40px;
+	color: black;
+}
+
+.time-format-setting__title {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 28px;
+}
+
+.time-format-setting__container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 28px;
+	width: 100%;
+	margin: 0;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 28px;
+}
+
+.time-format-setting__label {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 28px;
+	width: 142px;
+	margin: 0;
+	padding: 0;
+}
+
+.time-format-setting__radio-icon {
+	width: 24px;
+	height: 24px;
+	margin-right: 12px;
+}
