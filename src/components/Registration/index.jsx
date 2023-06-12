@@ -6,13 +6,14 @@ import * as text from '../../utils/constants';
 export default function Registration({ onFormChange, isVisible }) {
 	const nav = useNavigate();
 
-	function onSubmit() {
+	function onSubmit(e) {
+		e.preventDefault();
 		nav('/main');
 	}
 
 	return (
 		<AuthForm
-			onSubmit={() => onSubmit()}
+			onSubmit={(e) => onSubmit(e)}
 			isVisible={isVisible}
 			onFormChange={onFormChange}
 			title={text.regFormTitle}
