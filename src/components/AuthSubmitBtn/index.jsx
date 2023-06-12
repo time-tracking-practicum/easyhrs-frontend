@@ -1,8 +1,8 @@
 import './AuthSubmitBtn.css';
 
-export default function AuthSubmitBtn({ buttonText, onSubmit }) {
+export default function AuthSubmitBtn({ buttonText }) {
 	return (
-		<button className="authForm__submit-button" onClick={onSubmit}>
+		<button className="authForm__submit-button" type="submit">
 			{buttonText}
 		</button>
 	);

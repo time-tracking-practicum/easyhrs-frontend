@@ -33,7 +33,12 @@ export default function AuthForm({
 					</button>
 				)}
 			</p>
-			<form className="authForm__form" action="#" name={formName}>
+			<form
+				className="authForm__form"
+				action="#"
+				name={formName}
+				onSubmit={onSubmit}
+			>
 				<fieldset className="authForm__fieldset">{children}</fieldset>
 				{showForgetPassBtn && (
 					<button className="authForm__forgotPassButton" onClick={remindPass}>
@@ -46,10 +51,7 @@ export default function AuthForm({
 						toggleCheckBox={toggleCheckBox}
 					/>
 				)}
-				<AuthSubmitBtn
-					buttonText={submitBtnText}
-					onSubmit={(e) => onSubmit(e)}
-				/>
+				<AuthSubmitBtn buttonText={submitBtnText} />
 			</form>
 		</div>
 	);
