@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { InputSwitch } from 'primereact/inputswitch';
 import { addLocale } from 'primereact/api';
-// import EmojiForm from '../../components/EmojiForm';
-import data from '@emoji-mart/data';
-import Picker from '@emoji-mart/react';
+import EmojiForm from '../../components/EmojiForm';
+// import data from '@emoji-mart/data';
+// import Picker from '@emoji-mart/react';
 
 export default function TaskCardPage() {
 	// TODO: подтянуть и заранее выбранный эмодзи, и из формы emoji-mart. доделать статус (скорее всего будут менять дизайн), привести все элементы в соответствие макету после согласования ментора, локализовать русский язык в форму emoji
@@ -158,11 +158,7 @@ export default function TaskCardPage() {
 								{emoji}
 							</button>
 							{isOpenEmoji && (
-								<Picker
-									data={data}
-									locale="ru"
-									onEmojiSelect={(em) => handleEmojiSelect(em)}
-								/>
+								<EmojiForm onEmojiSelect={(em) => handleEmojiSelect(em)} />
 							)}
 						</div>
 					</div>
