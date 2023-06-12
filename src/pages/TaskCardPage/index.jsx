@@ -77,13 +77,22 @@ export default function TaskCardPage() {
 		setIsOpenEmoji(false);
 	}
 
+	function handleSubmit(e) {
+		e.preventDefault();
+	}
+
 	return (
 		<section className="taskcardpage">
 			<div className="taskcardpage__title-wrapper">
 				<Link to="/" className="taskcardpage__crumb" />
 				<h2 className="taskcardpage__title">Задача</h2>
 			</div>
-			<form className="taskcardpage__form">
+			<form
+				className="taskcardpage__form"
+				onSubmit={(e) => {
+					handleSubmit(e);
+				}}
+			>
 				<label className="taskcardpage__label" htmlFor="task">
 					Название
 					<input
