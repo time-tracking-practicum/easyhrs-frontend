@@ -18,6 +18,8 @@ export default function AuthForm({
 	showCheckBox,
 	submitBtnText,
 	forgetPassBtnText,
+	isCheckboxChecked,
+	toggleCheckBox,
 }) {
 	return (
 		<div className={`authForm ${isVisible ? 'authForm_visible' : ''}`}>
@@ -38,8 +40,16 @@ export default function AuthForm({
 						{forgetPassBtnText}
 					</button>
 				)}
-				{showCheckBox && <AuthCheckBox />}
-				<AuthSubmitBtn buttonText={submitBtnText} onSubmit={onSubmit} />
+				{showCheckBox && (
+					<AuthCheckBox
+						isCheckboxChecked={isCheckboxChecked}
+						toggleCheckBox={toggleCheckBox}
+					/>
+				)}
+				<AuthSubmitBtn
+					buttonText={submitBtnText}
+					onSubmit={(e) => onSubmit(e)}
+				/>
 			</form>
 		</div>
 	);
