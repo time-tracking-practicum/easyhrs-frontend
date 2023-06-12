@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './Router.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css'; // theme
@@ -9,19 +9,56 @@ import MainPage from '../pages/MainPage';
 import MatrixPage from '../pages/MatrixPage';
 import TaskCardPage from '../pages/TaskCardPage';
 import ProfilePage from '../pages/ProfilePage';
+import { UserContext } from '../contexts/UserContext';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 export default function Router() {
+	const [currentUser, setCurrentuser] = useState({ name: '', email: '' });
+
 	return (
 		// TODO: Добавить protectedRoute и вынести в отдельный компонент
 		// компонент необходим для защиты страниц с авторизацией
-		<div className="page">
-			<Routes>
-				<Route path="/" element={<StartPage />} />
-				<Route path="/main" element={<MainPage />} />
-				<Route path="/matrix" element={<MatrixPage />} />
-				<Route path="/task-card" element={<TaskCardPage />} />
-				<Route path="/profile" element={<ProfilePage />} />
-			</Routes>
-		</div>
+		<UserContext.Provider value={currentUser}>
+			<div className="page">
+				<Routes>
+					<Route
+						path="/"
+						element={<StartPage onSetCurrentUser={setCurrentuser} />}
+					/>
+					<Route
+						path="/main"
+						element={
+							<ProtectedRoute>
+								<MainPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/matrix"
+						element={
+							<ProtectedRoute>
+								<MatrixPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/task-card"
+						element={
+							<ProtectedRoute>
+								<TaskCardPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/profile"
+						element={
+							<ProtectedRoute>
+								<ProfilePage />
+							</ProtectedRoute>
+						}
+					/>
+				</Routes>
+			</div>
+		</UserContext.Provider>
 	);
 }
