@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import Login from '../../components/Login';
 import Registration from '../../components/Registration';
 import RemindPassForm from '../../components/RemindPassForm';
@@ -11,17 +13,27 @@ import logoBottom from '../../images/logo-bottom.svg';
 
 import './StartPage.css';
 
-export default function StartPage() {
+export default function StartPage({ onSetCurrentUser }) {
 	const [isRegistration, setIsRegistration] = useState(true);
 	const [isLogin, setIslogin] = useState(false);
 	const [isRemindPassForm, setIsRemindPassForm] = useState(false);
 	const [isVisible, setIsVisible] = useState(false);
+
+	const nav = useNavigate();
 
 	useEffect(() => {
 		setTimeout(() => {
 			setIsVisible(true);
 		}, 3000);
 	}, []);
+
+	useEffect(() => {
+		const localToken = localStorage.getItem('token');
+		const sessionToken = sessionStorage.getItem('token');
+		if (localToken || sessionToken) {
+			nav('/main');
+		}
+	});
 
 	function goToLoginForm() {
 		setIsRegistration(false);
@@ -68,6 +80,7 @@ export default function StartPage() {
 					<Registration
 						onFormChange={() => goToLoginForm()}
 						isVisible={isVisible}
+						onSetCurrentUser={onSetCurrentUser}
 					/>
 				)}
 				{isRemindPassForm && <RemindPassForm isVisible={isVisible} />}

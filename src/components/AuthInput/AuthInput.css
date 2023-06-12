@@ -57,3 +57,7 @@
 	color: #49454f;
 	margin-left: 16px;
 }
+
+.authForm__input-container-error {
+	border: 1px solid red;
+}

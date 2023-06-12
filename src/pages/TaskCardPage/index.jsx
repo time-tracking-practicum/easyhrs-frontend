@@ -5,16 +5,19 @@ import { Link } from 'react-router-dom';
 import { InputSwitch } from 'primereact/inputswitch';
 import { addLocale } from 'primereact/api';
 import EmojiForm from '../../components/EmojiForm';
+// import data from '@emoji-mart/data';
+// import Picker from '@emoji-mart/react';
 
 export default function TaskCardPage() {
 	// TODO: подтянуть и заранее выбранный эмодзи, и из формы emoji-mart. доделать статус (скорее всего будут менять дизайн), привести все элементы в соответствие макету после согласования ментора, локализовать русский язык в форму emoji
 	const [task, setTask] = useState('Дизайн главной страницы'); // стейт значения названия задачи
 	const [project, setProject] = useState('Дачи за городом'); // стейт значения проекта
-	const [date, setDate] = useState(null); // стейт значения даты задачи
-	const [deadline, setDeadline] = useState(null); // стейт значения дедлайна
+	const [date, setDate] = useState(''); // стейт значения даты задачи
+	const [deadline, setDeadline] = useState(''); // стейт значения дедлайна
 	const [important, setImportant] = useState(false); // стейт значения "важно"
 	const [urgent, setUrgent] = useState(false); // стейт значения "срочно"
 	const [isOpenEmoji, setIsOpenEmoji] = useState(false); // стейт открытия модального окна с emoji
+	const [emoji, setEmoji] = useState('😛');
 
 	// локализация календаря на русский язык
 	addLocale('ru', {
@@ -68,13 +71,28 @@ export default function TaskCardPage() {
 		setIsOpenEmoji(!isOpenEmoji);
 	}
 
+	// функция выбора эмодзи
+	function handleEmojiSelect(em) {
+		setEmoji(em.native);
+		setIsOpenEmoji(false);
+	}
+
+	function handleSubmit(e) {
+		e.preventDefault();
+	}
+
 	return (
 		<section className="taskcardpage">
 			<div className="taskcardpage__title-wrapper">
 				<Link to="/" className="taskcardpage__crumb" />
 				<h2 className="taskcardpage__title">Задача</h2>
 			</div>
-			<form className="taskcardpage__form">
+			<form
+				className="taskcardpage__form"
+				onSubmit={(e) => {
+					handleSubmit(e);
+				}}
+			>
 				<label className="taskcardpage__label" htmlFor="task">
 					Название
 					<input
@@ -146,9 +164,11 @@ export default function TaskCardPage() {
 								className="taskcardpage__emoji"
 								onClick={handleClickEmoji}
 							>
-								E
+								{emoji}
 							</button>
-							{isOpenEmoji && <EmojiForm />}
+							{isOpenEmoji && (
+								<EmojiForm onEmojiSelect={(em) => handleEmojiSelect(em)} />
+							)}
 						</div>
 					</div>
 				</div>

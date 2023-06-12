@@ -12,6 +12,11 @@ export const loginFormHitnButtonText = 'Зарегистрироваться';
 export const loginFormSubmitBtnText = 'Войти';
 export const loginFormForgetPassText = 'Забыли пароль?';
 
+// Плейсхолдеры инпутов
+export const emailPlaceholder = 'Введите ваш Email';
+export const passPlaceholder = 'Введите пароль';
+export const repeatPassPlaceholder = 'Повторите пароль';
+
 // Текст формы восстановления пароля
 
 export const passFormTitle = 'Забыли пароль?';
