@@ -13135,6 +13135,10 @@ input.p-dropdown-label  {
 	margin-left: 16px;
 }
 
+.authForm__input-container-error {
+	border: 1px solid red;
+}
+
 /*!*************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/StartPage/StartPage.css ***!
   \*************************************************************************************/
@@ -13918,5 +13922,353 @@ input.p-dropdown-label  {
 	margin: 40px;
 }
 
+/*!*******************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/SettingsPage/SettingsPage.css ***!
+  \*******************************************************************************************/
+.settings {
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - 40px);
+	margin: auto auto auto 280px;
+	background-color: white;
+	border-radius: 38px;
+	caret-color: transparent;
+}
 
-/*# sourceMappingURL=main.248709744292c7df7a7a.css.map*/
+/*!**********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/TimeFormatSetting/TimeFormatSetting.css ***!
+  \**********************************************************************************************************/
+.time-format-setting {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 80px;
+	width: 339px;
+	margin: 28px auto 67px 40px;
+	color: black;
+}
+
+.time-format-setting__title {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 28px;
+}
+
+.time-format-setting__container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 28px;
+	width: 100%;
+	margin: 0;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 28px;
+}
+
+.time-format-setting__label {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 28px;
+	width: 142px;
+	margin: 0;
+	padding: 0;
+}
+
+.time-format-setting__radio-icon {
+	width: 24px;
+	height: 24px;
+	margin-right: 12px;
+}
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SettingRadioBtn/SettingRadioBtn.css ***!
+  \******************************************************************************************************/
+.setting-radio-btn {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 142px;
+	cursor: pointer;
+}
+
+.setting-radio-btn__input {
+	display: none;
+}
+
+.setting-radio-btn__image {
+	width: 24px;
+	height: 24px;
+}
+
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/RemindersSetting/RemindersSetting.css ***!
+  \********************************************************************************************************/
+.reminders-setting {
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 80px);
+	margin: 0 auto;
+}
+
+.reminders-setting__title {
+	width: 100%;
+	height: 28px;
+	margin: 0;
+	padding: 0;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 28px;
+}
+
+.reminders-setting__container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 56px;
+	background-color: #d8effe;
+	margin: 24px auto 8px;
+	padding: 0 8px 0;
+	border-radius: 40px;
+}
+
+.reminders-setting__label-text {
+	margin: 0;
+	padding: 0;
+	font-weight: 800;
+	font-size: 15px;
+	line-height: 24px;
+}
+
+.reminders-setting__checkbox {
+	margin: 0;
+	height: 32px;
+	width: 55px;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+	background: #6750a4;
+}
+
+.p-inputswitch:hover.p-inputswitch-checked .p-inputswitch-slider {
+	background: #6750a4;
+}
+
+.p-inputswitch .p-inputswitch-slider:before {
+	margin-top: -12px;
+	width: 24px;
+	height: 24px;
+}
+
+.reminders-setting__work-days {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	min-height: 48px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+.reminders-setting__subtitle {
+	margin: 0;
+	padding: 0;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 20px;
+}
+
+.reminders-setting__toggle-button {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 124px;
+	height: 53px;
+	background: none;
+	border: none;
+	color: inherit;
+	font: inherit;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	outline: none;
+}
+
+.reminders-setting__text-button {
+	display: flex;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 20px;
+	margin: auto 13px auto 40px;
+}
+
+.reminders-setting__image-arrow {
+	display: flex;
+	width: 14px;
+	height: 7px;
+	margin: 0;
+	padding: 0;
+}
+
+.reminders-setting__day-list-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	max-height: 198px; /* Задайте желаемую максимальную высоту блока */
+	overflow-y: auto; /* Включает вертикальную прокрутку, когда контент превышает максимальную высоту */
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.reminders-setting__day-list-container::-webkit-scrollbar {
+	width: 6px; /* Ширина ползунка */
+}
+
+.reminders-setting__day-list-container::-webkit-scrollbar-thumb {
+	background-color: #c0c6d1; /* Цвет ползунка */
+	border-radius: 4px; /* Радиус скругления ползунка */
+}
+
+.reminders-setting__day-list {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 164px;
+	margin: 0;
+	padding: 0;
+}
+
+.reminders-setting__day-item {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.reminders-setting__day-label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 158px;
+	height: 48px;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}
+
+.reminders-setting__day-checkbox {
+	display: none;
+}
+
+.reminders-setting__day-text {
+	margin: auto 0 auto 12px;
+	padding: 0;
+}
+
+/*!************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/TimerSetting/TimerSetting.css ***!
+  \************************************************************************************************/
+.timer-setting {
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 80px);
+	margin: 0 auto;
+}
+
+.timer-setting__option-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 48px;
+	margin: 0 auto;
+	padding: 0 8px 0;
+}
+
+.timer-setting__option-switch {
+	margin: 0;
+	height: 32px;
+	width: 55px;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+	background: #6750a4;
+}
+
+.p-inputswitch:hover.p-inputswitch-checked .p-inputswitch-slider {
+	background: #6750a4;
+}
+
+.p-inputswitch .p-inputswitch-slider:before {
+	margin-top: -12px;
+	width: 24px;
+	height: 24px;
+}
+
+.timer-setting__option-text {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin: 0;
+	padding-right: 24px;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 20px;
+}
+
+.timer-setting__time-picker {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 216px;
+}
+
+.timer-setting__time-picker-options {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: auto;
+	padding: 0;
+}
+
+.timer-setting__time-picker-select {
+	border: none; /* Удалить границу */
+	outline: none; /* Удалить обводку при фокусе */
+}
+
+.timer-setting__time-picker-save {
+	display: block;
+	width: 100%;
+	height: 44px;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: pointer;
+	background-color: #6750a4;
+	margin: 14px auto 0;
+	padding: 0;
+	border-radius: 40px;
+	color: white;
+	font-weight: 800;
+	font-size: 15px;
+	line-height: 24px;
+}
+
+/*!************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/TimerSettingOption/TimerSettingOption.css ***!
+  \************************************************************************************************************/
+
+
+/*# sourceMappingURL=main.719dec3a773f756de9f1.css.map*/
