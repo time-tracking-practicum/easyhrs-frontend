@@ -11,6 +11,7 @@ import TaskCardPage from '../pages/TaskCardPage';
 import ProfilePage from '../pages/ProfilePage';
 import { UserContext } from '../contexts/UserContext';
 import ProtectedRoute from '../components/ProtectedRoute';
+import SettingsPage from '../pages/SettingsPage';
 
 export default function Router() {
 	const [currentUser, setCurrentuser] = useState({ name: '', email: '' });
@@ -54,6 +55,14 @@ export default function Router() {
 						element={
 							<ProtectedRoute>
 								<ProfilePage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/settings"
+						element={
+							<ProtectedRoute>
+								<SettingsPage />
 							</ProtectedRoute>
 						}
 					/>
