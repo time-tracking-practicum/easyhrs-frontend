@@ -32,3 +32,10 @@
 	border-radius: 40px;
 	overflow: auto;
 }
+
+.main__tasks {
+	display: flex;
+	gap: 12px;
+	flex-direction: column;
+	padding: 0;
+}

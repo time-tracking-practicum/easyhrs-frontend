@@ -3,26 +3,34 @@ import { Link } from 'react-router-dom';
 
 import './Task.css';
 
-export default function Task() {
+export default function Task({ name, project, deadline, status, task }) {
+	// функция форматирования входящей строки в дату формата dd.mm.yyyy
+	function formateDate(data) {
+		const date = new Date(data);
+		return date.toLocaleDateString();
+	}
+
 	return (
-		<Link to="/task-card" className="task">
+		<Link to="/task-card" className="task" task={task}>
 			<div className="task__container">
 				<div className="task__name-container">
 					<div className="task__emoji" />
-					<p className="task__name">Дизайн главной страницы</p>
+					<p className="task__name">{name}</p>
 				</div>
-				<p className="task__project">Дачи за городом</p>
+				<p className="task__project">{project}</p>
 				<ul className="task__matrix-wrapper">
 					<li className="task__matrix-colorblock" />
 					<li className="task__matrix-item">Срочно</li>
 					<li className="task__matrix-item">Важно</li>
 				</ul>
-				<p className="task__deadline">31.05.2023</p>
+				<p className="task__deadline">{formateDate(deadline)}</p>
 				<ul className="task__timer-wrapper">
-					<li className="task__timer-status">В работе</li>
+					<li className="task__timer-status">
+						{status === 'in_progress' ? 'В работе' : 'Пауза'}
+					</li>
 					<li className="task__timer-time">02:13:57</li>
 				</ul>
-				<Link to="/timer" className="task__btn">
+				<button className="task__btn">
 					<svg
 						width="40"
 						height="40"
@@ -53,7 +61,7 @@ export default function Task() {
 							</clipPath>
 						</defs>
 					</svg>
-				</Link>
+				</button>
 			</div>
 		</Link>
 	);
