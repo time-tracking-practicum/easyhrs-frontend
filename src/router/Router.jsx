@@ -17,8 +17,6 @@ export default function Router() {
 	const [currentUser, setCurrentuser] = useState({ name: '', email: '' });
 
 	return (
-		// TODO: Добавить protectedRoute и вынести в отдельный компонент
-		// компонент необходим для защиты страниц с авторизацией
 		<UserContext.Provider value={currentUser}>
 			<div className="page">
 				<Routes>
