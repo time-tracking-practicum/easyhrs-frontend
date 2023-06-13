@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './Router.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css'; // theme
@@ -12,9 +12,19 @@ import ProfilePage from '../pages/ProfilePage';
 import { UserContext } from '../contexts/UserContext';
 import ProtectedRoute from '../components/ProtectedRoute';
 import SettingsPage from '../pages/SettingsPage';
+import taskApi from '../utils/TaskApi';
 
 export default function Router() {
 	const [currentUser, setCurrentuser] = useState({ name: '', email: '' });
+	const [tasks, setTasks] = useState([]); // стейт задач
+
+	// функция загрузки задач с сервера
+	useEffect(() => {
+		taskApi
+			.getTasks()
+			.then((data) => setTasks(data.results))
+			.catch((error) => console.log(error));
+	}, []);
 
 	return (
 		<UserContext.Provider value={currentUser}>
@@ -28,7 +38,7 @@ export default function Router() {
 						path="/main"
 						element={
 							<ProtectedRoute>
-								<MainPage />
+								<MainPage tasks={tasks} />
 							</ProtectedRoute>
 						}
 					/>

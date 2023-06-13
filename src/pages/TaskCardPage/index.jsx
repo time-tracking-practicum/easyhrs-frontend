@@ -5,12 +5,10 @@ import { Link } from 'react-router-dom';
 import { InputSwitch } from 'primereact/inputswitch';
 import { addLocale } from 'primereact/api';
 import EmojiForm from '../../components/EmojiForm';
-// import data from '@emoji-mart/data';
-// import Picker from '@emoji-mart/react';
 
 export default function TaskCardPage() {
-	// TODO: подтянуть и заранее выбранный эмодзи, и из формы emoji-mart. доделать статус (скорее всего будут менять дизайн), привести все элементы в соответствие макету после согласования ментора, локализовать русский язык в форму emoji
-	const [task, setTask] = useState('Дизайн главной страницы'); // стейт значения названия задачи
+	// TODO: доделать статус (скорее всего будут менять дизайн), привести все элементы в соответствие макету после согласования ментора, прикрутить апи
+	const [name, setName] = useState('Дизайн главной страницы'); // стейт значения названия задачи
 	const [project, setProject] = useState('Дачи за городом'); // стейт значения проекта
 	const [date, setDate] = useState(''); // стейт значения даты задачи
 	const [deadline, setDeadline] = useState(''); // стейт значения дедлайна
@@ -96,11 +94,11 @@ export default function TaskCardPage() {
 				<label className="taskcardpage__label" htmlFor="task">
 					Название
 					<input
-						id="task"
-						name="task"
+						id="name"
+						name="name"
 						className="taskcardpage__input-text"
-						value={task}
-						onChange={(e) => setTask(e.target.value)}
+						value={name}
+						onChange={(e) => setName(e.target.value)}
 					/>
 					<div className="taskcardpage__input-icon" />
 				</label>
