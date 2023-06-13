@@ -4215,12 +4215,15 @@ function Header(_ref) {
         width: 20,
         height: 22,
         alt: "\u0418\u043A\u043E\u043D\u043A\u0430 \u0443\u0432\u0435\u0434\u043E\u043C\u043B\u0435\u043D\u0438\u0439"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        className: "header__icon",
-        src: _images_icon_profile_svg__WEBPACK_IMPORTED_MODULE_1__,
-        width: 40,
-        height: 40,
-        alt: "\u0418\u043A\u043E\u043D\u043A\u0430 \u043F\u0440\u043E\u0444\u0438\u043B\u044F"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.NavLink, {
+        to: "/profile",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+          className: "header__icon",
+          src: _images_icon_profile_svg__WEBPACK_IMPORTED_MODULE_1__,
+          width: 40,
+          height: 40,
+          alt: "\u0418\u043A\u043E\u043D\u043A\u0430 \u043F\u0440\u043E\u0444\u0438\u043B\u044F"
+        })
       })]
     })]
   });
@@ -5094,6 +5097,114 @@ function SettingRadioBtn(_ref) {
 
 /***/ }),
 
+/***/ "./src/components/Task/index.jsx":
+/*!***************************************!*\
+  !*** ./src/components/Task/index.jsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Task)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _Task_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Task.css */ "./src/components/Task/Task.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function Task() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    to: "/task-card",
+    className: "task",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "task__container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "task__name-container",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "task__emoji"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          className: "task__name",
+          children: "\u0414\u0438\u0437\u0430\u0439\u043D \u0433\u043B\u0430\u0432\u043D\u043E\u0439 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        className: "task__project",
+        children: "\u0414\u0430\u0447\u0438 \u0437\u0430 \u0433\u043E\u0440\u043E\u0434\u043E\u043C"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
+        className: "task__matrix-wrapper",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+          className: "task__matrix-colorblock"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+          className: "task__matrix-item",
+          children: "\u0421\u0440\u043E\u0447\u043D\u043E"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+          className: "task__matrix-item",
+          children: "\u0412\u0430\u0436\u043D\u043E"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        className: "task__deadline",
+        children: "31.05.2023"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
+        className: "task__timer-wrapper",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+          className: "task__timer-status",
+          children: "\u0412 \u0440\u0430\u0431\u043E\u0442\u0435"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+          className: "task__timer-time",
+          children: "02:13:57"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        to: "/timer",
+        className: "task__btn",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("svg", {
+          width: "40",
+          height: "40",
+          viewBox: "0 0 40 40",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("g", {
+            clipPath: "url(#clip0_1138_1005)",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+              width: "40",
+              height: "40",
+              rx: "20",
+              fill: "#6750A4"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "M20 30C25.5228 30 30 25.5228 30 20C30 14.4772 25.5228 10 20 10C14.4772 10 10 14.4772 10 20C10 25.5228 14.4772 30 20 30Z",
+              stroke: "white",
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+              d: "M18 16L24 20L18 24V16Z",
+              stroke: "white",
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("defs", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("clipPath", {
+              id: "clip0_1138_1005",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("rect", {
+                width: "40",
+                height: "40",
+                rx: "20",
+                fill: "white"
+              })
+            })
+          })]
+        })
+      })]
+    })
+  });
+}
+
+/***/ }),
+
 /***/ "./src/components/TimeFormatSetting/index.jsx":
 /*!****************************************************!*\
   !*** ./src/components/TimeFormatSetting/index.jsx ***!
@@ -5452,27 +5563,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ MainPage)
 /* harmony export */ });
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/Header */ "./src/components/Header/index.jsx");
-/* harmony import */ var _MainPage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MainPage.css */ "./src/pages/MainPage/MainPage.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_Task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Task */ "./src/components/Task/index.jsx");
+/* harmony import */ var _MainPage_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MainPage.css */ "./src/pages/MainPage/MainPage.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
 
 function MainPage() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "main page__main",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "main__menu",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
         className: "main__menu-title",
         children: "EasyHrs"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "main__container",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_0__["default"], {
         sectionName: "\u041C\u043E\u0438 \u0437\u0430\u0434\u0430\u0447\u0438",
         newtask: true
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_Task__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
     })]
   });
 }
@@ -6030,50 +6143,45 @@ function Router() {
     _useState2 = _slicedToArray(_useState, 2),
     currentUser = _useState2[0],
     setCurrentuser = _useState2[1];
-  return (
-    /*#__PURE__*/
-    // TODO: Добавить protectedRoute и вынести в отдельный компонент
-    // компонент необходим для защиты страниц с авторизацией
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_contexts_UserContext__WEBPACK_IMPORTED_MODULE_9__.UserContext.Provider, {
-      value: currentUser,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-        className: "page",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Routes, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            path: "/",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_StartPage__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              onSetCurrentUser: setCurrentuser
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            path: "/main",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_MainPage__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            path: "/matrix",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_MatrixPage__WEBPACK_IMPORTED_MODULE_6__["default"], {})
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            path: "/task-card",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_TaskCardPage__WEBPACK_IMPORTED_MODULE_7__["default"], {})
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            path: "/profile",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_ProfilePage__WEBPACK_IMPORTED_MODULE_8__["default"], {})
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            path: "/settings",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_SettingsPage__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-            })
-          })]
-        })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_contexts_UserContext__WEBPACK_IMPORTED_MODULE_9__.UserContext.Provider, {
+    value: currentUser,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+      className: "page",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Routes, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+          path: "/",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_StartPage__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            onSetCurrentUser: setCurrentuser
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+          path: "/main",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_MainPage__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+          path: "/matrix",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_MatrixPage__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+          path: "/task-card",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_TaskCardPage__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+          path: "/profile",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_ProfilePage__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+          path: "/settings",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_pages_SettingsPage__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+          })
+        })]
       })
     })
-  );
+  });
 }
 
 /***/ }),
@@ -9369,6 +9477,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************************!*\
   !*** ./src/components/SettingRadioBtn/SettingRadioBtn.css ***!
   \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/components/Task/Task.css":
+/*!**************************************!*\
+  !*** ./src/components/Task/Task.css ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);

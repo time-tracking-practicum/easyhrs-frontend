@@ -13398,6 +13398,118 @@ input.p-dropdown-label  {
 	text-decoration: none;
 }
 
+/*!********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Task/Task.css ***!
+  \********************************************************************************/
+.task {
+	width: calc(100% - 40px - 40px);
+	margin: 0 auto;
+	display: block;
+	border-radius: 16px;
+	text-decoration: none;
+	color: #000000;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.43;
+	background: #f4f4f4;
+}
+
+.task__container {
+	height: 74px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: calc(100% - 16px - 16px);
+	margin: 0 auto;
+}
+
+.task__name-container {
+	display: flex;
+	width: 22.5%;
+	gap: 8px;
+	align-items: center;
+	overflow: hidden;
+	justify-content: space-between;
+}
+
+.task__emoji {
+	background-image: url(assets/c183b97251059e0cc197.png);
+	width: 24px;
+	height: 24px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.task__name {
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 85%;
+}
+
+.task__project {
+	width: 15%;
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.task__matrix-wrapper {
+	width: 15%;
+	display: flex;
+	gap: 8px;
+	padding: 0;
+}
+
+.task__matrix-colorblock {
+	background-color: #ffa3a3;
+	border-radius: 4px;
+	width: 18px;
+	height: 19px;
+	list-style: none;
+}
+
+.task__matrix-item {
+	list-style: none;
+	margin: 0;
+}
+
+.task__deadline {
+	width: 15%;
+	margin: 0;
+}
+
+.task__timer-wrapper {
+	width: 15%;
+	display: flex;
+	gap: 9px;
+	padding: 0;
+}
+
+.task__timer-status {
+	list-style: none;
+	margin: 0;
+}
+
+.task__timer-time {
+	list-style: none;
+}
+
+.task__btn {
+	background: #6750a4;
+	border-radius: 100px;
+	width: 40px;
+	height: 40px;
+	border: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 /*!***********************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/MainPage/MainPage.css ***!
   \***********************************************************************************/
@@ -13427,7 +13539,9 @@ input.p-dropdown-label  {
 .main__container {
 	position: fixed;
 	right: 20px;
-	width: 79.16%;
+	margin-left: auto;
+	width: 80%;
+	max-width: 1120px;
 	height: calc(100vh - 40px);
 	background-color: #ffffff;
 	border-radius: 40px;
@@ -13522,7 +13636,7 @@ input.p-dropdown-label  {
 }
 
 .matrix__task-emoji {
-	background-image: url(assets/cbec4dc81f79d3493036.png);
+	background-image: url(assets/c183b97251059e0cc197.png);
 	width: 24px;
 	height: 24px;
 	background-repeat: no-repeat;
@@ -13539,9 +13653,10 @@ input.p-dropdown-label  {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/TaskCardPage/TaskCardPage.css ***!
   \*******************************************************************************************/
 .taskcardpage {
-	min-height: 984px;
+	min-height: calc(100vh - 40px);
+	margin-left: auto;
 	width: 80%;
-	margin: 0 0 0 auto;
+	max-width: 1120px;
 	background-color: #ffffff;
 	border-radius: 38px;
 	display: flex;
@@ -13912,9 +14027,10 @@ input.p-dropdown-label  {
 .profile {
 	min-height: calc(100vh - 40px);
 	margin-left: auto;
+	width: 80%;
+	max-width: 1120px;
 	background-color: #fff;
 	border-radius: 38px;
-	max-width: 1120px;
 	padding-top: 1px;
 }
 
@@ -13929,10 +14045,12 @@ input.p-dropdown-label  {
 	display: flex;
 	flex-direction: column;
 	height: calc(100vh - 40px);
-	margin: auto auto auto 280px;
 	background-color: white;
 	border-radius: 38px;
 	caret-color: transparent;
+	margin-left: auto;
+	width: 80%;
+	max-width: 1120px;
 }
 
 /*!**********************************************************************************************************!*\
@@ -14271,4 +14389,4 @@ input.p-dropdown-label  {
   \************************************************************************************************************/
 
 
-/*# sourceMappingURL=main.719dec3a773f756de9f1.css.map*/
+/*# sourceMappingURL=main.848e4eb30dcba03fc4ca.css.map*/
