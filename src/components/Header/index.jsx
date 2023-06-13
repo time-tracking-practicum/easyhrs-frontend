@@ -46,13 +46,15 @@ function Header({ sectionName, newtask, branch, timer }) {
 					height={22}
 					alt="Иконка уведомлений"
 				/>
-				<img
-					className="header__icon"
-					src={iconProfile}
-					width={40}
-					height={40}
-					alt="Иконка профиля"
-				/>
+				<NavLink to="/profile">
+					<img
+						className="header__icon"
+						src={iconProfile}
+						width={40}
+						height={40}
+						alt="Иконка профиля"
+					/>
+				</NavLink>
 			</div>
 		</div>
 	);

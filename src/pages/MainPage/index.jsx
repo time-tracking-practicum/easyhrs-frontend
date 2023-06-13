@@ -1,4 +1,5 @@
 import Header from '../../components/Header';
+import Task from '../../components/Task';
 import './MainPage.css';
 
 export default function MainPage() {
@@ -9,6 +10,7 @@ export default function MainPage() {
 			</div>
 			<div className="main__container">
 				<Header sectionName="Мои задачи" newtask />
+				<Task />
 			</div>
 		</div>
 	);
