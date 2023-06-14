@@ -33,7 +33,7 @@ class TaskApi {
 }
 
 const taskApi = new TaskApi({
-	url: 'http://80.87.107.54/api/v1',
+	url: 'https://easyhrs.hopto.org/api/v',
 });
 
 export default taskApi;
