@@ -1,9 +1,19 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './Task.css';
 
-export default function Task({ name, project, deadline, status, task }) {
+export default function Task({
+	name,
+	project,
+	deadline,
+	status,
+	emoji,
+	urgent,
+	important,
+	task,
+}) {
 	// функция форматирования входящей строки в дату формата dd.mm.yyyy
 	function formateDate(data) {
 		const date = new Date(data);
@@ -14,14 +24,22 @@ export default function Task({ name, project, deadline, status, task }) {
 		<Link to="/task-card" className="task" task={task}>
 			<div className="task__container">
 				<div className="task__name-container">
-					<div className="task__emoji" />
+					<div className="task__emoji">{emoji}</div>
 					<p className="task__name">{name}</p>
 				</div>
 				<p className="task__project">{project}</p>
 				<ul className="task__matrix-wrapper">
-					<li className="task__matrix-colorblock" />
-					<li className="task__matrix-item">Срочно</li>
-					<li className="task__matrix-item">Важно</li>
+					<li
+						className={
+							urgent
+								? 'task__matrix-colorblock_urgent'
+								: important
+								? 'task__matrix-colorblock'
+								: 'task__matrix-colorblock_nor-urgent-important'
+						}
+					/>
+					<li className="task__matrix-item">{urgent ? 'Срочно' : ''}</li>
+					<li className="task__matrix-item">{important ? 'Важно' : ''}</li>
 				</ul>
 				<p className="task__deadline">{formateDate(deadline)}</p>
 				<ul className="task__timer-wrapper">
