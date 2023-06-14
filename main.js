@@ -6430,7 +6430,7 @@ _defineProperty(TaskApi, "_checkResult", function (res) {
   return Promise.reject(new Error("\u041E\u0448\u0438\u0431\u043A\u0430: ".concat(res.status)));
 });
 var taskApi = new TaskApi({
-  url: 'https://easyhrs.hopto.org/api/v'
+  url: 'https://easyhrs.hopto.org/api/v1'
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (taskApi);
 
