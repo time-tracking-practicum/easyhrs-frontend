@@ -31,7 +31,7 @@ class AuthApi {
 }
 
 const authApi = new AuthApi({
-	url: 'https://easyhrs.hopto.org//api/v1',
+	url: 'https://easyhrs.hopto.org/api/v1',
 });
 
 export default authApi;
