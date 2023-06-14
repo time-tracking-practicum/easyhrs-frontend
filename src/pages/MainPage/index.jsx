@@ -19,6 +19,9 @@ export default function MainPage({ tasks }) {
 							project={task.project}
 							deadline={task.deadline}
 							status={task.status}
+							emoji={task.emoji}
+							urgent={task.is_urgent}
+							important={task.is_important}
 							task={task}
 						/>
 					))}

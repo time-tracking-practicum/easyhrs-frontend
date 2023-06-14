@@ -30,11 +30,10 @@
 }
 
 .task__emoji {
-	background-image: url(../../images/matrix-emoji.png);
 	width: 24px;
 	height: 24px;
-	background-repeat: no-repeat;
-	background-size: contain;
+	display: flex;
+	align-items: center;
 }
 
 .task__name {
@@ -61,11 +60,24 @@
 }
 
 .task__matrix-colorblock {
+	background-color: #d5ffb0;
+	border-radius: 4px;
+	width: 18px;
+	height: 19px;
+	list-style: none;
+}
+
+.task__matrix-colorblock_urgent {
 	background-color: #ffa3a3;
 	border-radius: 4px;
 	width: 18px;
 	height: 19px;
 	list-style: none;
+}
+
+.task__matrix-colorblock_nor-urgent-important {
+	visibility: hidden;
+	opacity: 0;
 }
 
 .task__matrix-item {
