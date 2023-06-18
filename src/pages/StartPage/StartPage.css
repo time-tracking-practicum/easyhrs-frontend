@@ -46,14 +46,6 @@
 	}
 } */
 
-/* Сдвиг вправо start__container */
-@keyframes right-shift {
-	100% {
-		position: absolute;
-		left: 46%;
-	}
-}
-
 /* Появление градиента */
 @keyframes gradient {
 	0% {
@@ -92,8 +84,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	animation: right-shift 1s ease-in-out forwards 2.5s,
-		disappearance 1.5s ease-in-out forwards 1.5s;
+	animation: disappearance 1.5s ease-in-out forwards 1.5s;
 }
 
 .start__title {
