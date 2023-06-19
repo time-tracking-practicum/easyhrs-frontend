@@ -1,0 +1,17 @@
+.navtab {
+	position: fixed;
+	top: 50px;
+	left: 54px;
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+}
+
+.navtab__logo {
+	font-style: normal;
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 38px;
+	color: #ffffff;
+	margin: 0;
+}

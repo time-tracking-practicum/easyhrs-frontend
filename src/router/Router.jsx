@@ -35,12 +35,12 @@ export default function Router() {
 		if (localToken || sessionToken) {
 			nav('/main');
 		}
-	});
+	}, []);
 
 	return (
 		<UserContext.Provider value={currentUser}>
 			<div className="page">
-				{localToken && <NavTab />}
+				{(localToken || sessionToken) && <NavTab />}
 				<Routes>
 					<Route
 						path="/"

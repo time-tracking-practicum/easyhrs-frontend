@@ -21,7 +21,8 @@
 		"react/no-unescaped-entities": "off",
 		"react/button-has-type": "off",
 		"react/prop-types": "off",
-		"react/jsx-no-bind": "off"
+		"react/jsx-no-bind": "off",
+		"react-hooks/exhaustive-deps": "off"
 	},
 	"overrides": [
 		{
