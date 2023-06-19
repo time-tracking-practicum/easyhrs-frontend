@@ -1,4 +1,4 @@
-import logo from '../../images/logo.svg';
+import logo from '../../images/authform-logo.svg';
 import './AuthForm.css';
 
 import AuthSubmitBtn from '../AuthSubmitBtn';
