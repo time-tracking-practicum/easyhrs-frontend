@@ -1,6 +1,7 @@
 .matrixpage {
 	min-height: 984px;
 	width: 80%;
+	max-width: 1120px;
 	margin: 0 0 0 auto;
 	background-color: #ffffff;
 	border-radius: 38px;
