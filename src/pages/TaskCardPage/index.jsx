@@ -82,7 +82,7 @@ export default function TaskCardPage() {
 	return (
 		<section className="taskcardpage">
 			<div className="taskcardpage__title-wrapper">
-				<Link to="/" className="taskcardpage__crumb" />
+				<Link to="/main" className="taskcardpage__crumb" />
 				<h2 className="taskcardpage__title">Задача</h2>
 			</div>
 			<form
