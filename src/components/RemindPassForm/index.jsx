@@ -3,8 +3,12 @@ import AuthInput from '../AuthInput';
 import * as text from '../../utils/constants';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 
-export default function RemindPassForm({ onFormChange, isVisible }) {
-	const { handleChange, errors } = useFormAndValidation({ Email: '' });
+export default function RemindPassForm({
+	onFormChange,
+	isVisible,
+	onCancelButton,
+}) {
+	const { handleChange, errors } = useFormAndValidation({ email: '' });
 
 	return (
 		<AuthForm
@@ -13,15 +17,18 @@ export default function RemindPassForm({ onFormChange, isVisible }) {
 			title={text.passFormTitle}
 			formHintText={text.passFormInputHint}
 			submitBtnText={text.passFormSubmitBtnText}
+			showCancelButton
+			cancelBtnText={text.passFormCancelBtnText}
+			onCancelButton={onCancelButton}
 		>
 			<AuthInput
 				email
-				name="Email"
+				name="email"
 				placeholder={text.emailPlaceholder}
 				showLable
 				autoComplete="email"
 				onChange={handleChange}
-				onError={errors.Email}
+				onError={errors.email}
 				min={1}
 				required
 			/>

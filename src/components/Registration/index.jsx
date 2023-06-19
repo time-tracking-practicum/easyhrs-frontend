@@ -9,9 +9,9 @@ import authApi from '../../utils/AuthApi';
 export default function Registration({ onFormChange, isVisible }) {
 	const nav = useNavigate();
 	const { values, handleChange, isValid, errors } = useFormAndValidation({
-		Email: '',
-		Password: '',
-		ConfimPassword: '',
+		email: '',
+		password: '',
+		confimPassword: '',
 	});
 	const [isCheckboxChecked, setisCheckboxChecked] = useState(true);
 
@@ -23,13 +23,13 @@ export default function Registration({ onFormChange, isVisible }) {
 		if (isValid) {
 			try {
 				await authApi.register({
-					email: values.Email,
-					password: values.Password,
+					email: values.email,
+					password: values.password,
 					full_name: 'ФИО',
 				});
 				const loginData = await authApi.login({
-					email: values.Email,
-					password: values.Password,
+					email: values.email,
+					password: values.password,
 				});
 				if (loginData && isCheckboxChecked) {
 					localStorage.setItem('token', loginData.auth_token);
@@ -46,7 +46,7 @@ export default function Registration({ onFormChange, isVisible }) {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		if (values.Password !== values.ConfimPassword) {
+		if (values.password !== values.confimPassword) {
 			console.log('Пароли не совпадают!');
 			return;
 		}
@@ -68,35 +68,34 @@ export default function Registration({ onFormChange, isVisible }) {
 		>
 			<AuthInput
 				email
-				name="Email"
-				showLable
+				name="email"
 				placeholder={text.emailPlaceholder}
 				autoComplete="email"
 				onChange={handleChange}
-				onError={errors.Email}
+				onError={errors.email}
 				min={1}
 				required
 			/>
 			<AuthInput
 				password
-				name="Password"
+				name="password"
 				placeholder={text.passPlaceholder}
 				hidden
 				autoComplete="current-password"
 				text={text.passInputHint}
 				onChange={handleChange}
-				onError={errors.Password}
+				onError={errors.password}
 				min={8}
 				required
 			/>
 			<AuthInput
 				password
-				name="ConfimPassword"
+				name="confimPassword"
 				placeholder={text.repeatPassPlaceholder}
 				hidden
 				autoComplete="off"
 				onChange={handleChange}
-				onError={errors.ConfimPassword}
+				onError={errors.confimPassword}
 				min={8}
 				required
 			/>

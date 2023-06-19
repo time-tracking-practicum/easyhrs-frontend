@@ -31,6 +31,7 @@
 	letter-spacing: 0.25px;
 	color: #404040;
 	opacity: 0.99;
+	max-width: 435px;
 }
 
 .authForm__text-button {
@@ -67,4 +68,9 @@
 	line-height: 18px;
 	letter-spacing: 0.25px;
 	margin-top: 24px;
+}
+
+.authForm__sbmtBtnContainer {
+	display: flex;
+	justify-content: space-between;
 }

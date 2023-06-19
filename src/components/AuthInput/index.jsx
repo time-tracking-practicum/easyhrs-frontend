@@ -5,7 +5,6 @@ export default function AuthInput({
 	email,
 	password,
 	name,
-	showLable,
 	placeholder,
 	hidden,
 	text,
@@ -29,11 +28,6 @@ export default function AuthInput({
 					onError ? 'authForm__input-container-error' : ''
 				}`}
 			>
-				{showLable && (
-					<label htmlFor={name} className="authForm__lable">
-						{name}
-					</label>
-				)}
 				<input
 					type={
 						(email && 'email') ||

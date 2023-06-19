@@ -28,14 +28,6 @@
 	letter-spacing: 0.5px;
 }
 
-.authForm__lable {
-	position: absolute;
-	padding: 0 8px;
-	background-color: #fff;
-	top: -8px;
-	left: 12px;
-}
-
 .authForm__showPassBtn {
 	width: 22px;
 	height: 22px;
@@ -50,12 +42,14 @@
 }
 
 .authForm__inputHint {
+	display: block;
 	margin-top: 4px;
 	font-weight: 400;
 	font-size: 12px;
 	line-height: 16px;
 	color: #49454f;
 	margin-left: 16px;
+	max-width: 298px;
 }
 
 .authForm__input-container-error {

@@ -17,3 +17,7 @@
 .authForm__submit-button:hover {
 	cursor: pointer;
 }
+
+.authForm__submit-button_small {
+	max-width: 221px;
+}
