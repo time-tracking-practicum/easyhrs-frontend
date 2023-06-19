@@ -1,5 +1,6 @@
 // Текст формы Регистрации
-export const passInputHint = 'Пароль должен содержать не менее 8 символов';
+export const passInputHint =
+	'Пароль может содержать цифры и латинские буквы Минимальная длина — 6 символов';
 export const regFormInputHint = 'Уже есть аккаунт?';
 export const regFormTitle = 'Регистрация';
 export const regFormHitnButtonText = 'Войти';
@@ -13,16 +14,17 @@ export const loginFormSubmitBtnText = 'Войти';
 export const loginFormForgetPassText = 'Забыли пароль?';
 
 // Плейсхолдеры инпутов
-export const emailPlaceholder = 'Введите ваш Email';
-export const passPlaceholder = 'Введите пароль';
-export const repeatPassPlaceholder = 'Повторите пароль';
+export const emailPlaceholder = 'E-mail';
+export const passPlaceholder = 'Пароль';
+export const repeatPassPlaceholder = 'Подтверждение пароля';
 
 // Текст формы восстановления пароля
 
 export const passFormTitle = 'Забыли пароль?';
 export const passFormInputHint =
-	'Укажите свой Email под которым вы зарегистрированы на сайте и на него будет отправлена информация для восстановления пароля';
+	'Введите электронный адрес, указанный при регистрации. На него будет отправлена информаия для восстановления пароля.';
 export const passFormSubmitBtnText = 'Отправить';
+export const passFormCancelBtnText = 'Отмена';
 
 // Текст кнопок на странице профиля
 export const radioButtons = [

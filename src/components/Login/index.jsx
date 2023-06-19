@@ -10,8 +10,8 @@ export default function Login({ onFormChange, remindPass, isVisible }) {
 	const nav = useNavigate();
 
 	const { values, handleChange, isValid, errors } = useFormAndValidation({
-		Email: '',
-		Password: '',
+		email: '',
+		password: '',
 	});
 	const [isCheckboxChecked, setisCheckboxChecked] = useState(true);
 
@@ -23,8 +23,8 @@ export default function Login({ onFormChange, remindPass, isVisible }) {
 		if (isValid) {
 			try {
 				const loginData = await authApi.login({
-					email: values.Email,
-					password: values.Password,
+					email: values.email,
+					password: values.password,
 				});
 				if (isCheckboxChecked) {
 					localStorage.setItem('token', loginData.auth_token);
@@ -62,23 +62,22 @@ export default function Login({ onFormChange, remindPass, isVisible }) {
 		>
 			<AuthInput
 				email
-				name="Email"
+				name="email"
 				placeholder={text.emailPlaceholder}
-				showLable
 				autoComplete="email"
 				onChange={handleChange}
-				onError={errors.Email}
+				onError={errors.email}
 				min={1}
 				required
 			/>
 			<AuthInput
 				password
-				name="Password"
+				name="password"
 				placeholder={text.passPlaceholder}
 				hidden
 				autoComplete="current-password"
 				onChange={handleChange}
-				onError={errors.Password}
+				onError={errors.password}
 				min={8}
 				required
 			/>

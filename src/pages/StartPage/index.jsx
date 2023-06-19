@@ -12,10 +12,8 @@ import logoBottom from '../../images/logo-bottom.svg';
 import './StartPage.css';
 
 export default function StartPage({ onSetCurrentUser }) {
-	const [isRegistration, setIsRegistration] = useState(true);
-	const [isLogin, setIslogin] = useState(false);
-	const [isRemindPassForm, setIsRemindPassForm] = useState(false);
 	const [isVisible, setIsVisible] = useState(false);
+	const [form, setForm] = useState('Register');
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -23,19 +21,8 @@ export default function StartPage({ onSetCurrentUser }) {
 		}, 3000);
 	}, []);
 
-	function goToLoginForm() {
-		setIsRegistration(false);
-		setIslogin(true);
-	}
-
-	function goToRegForm() {
-		setIslogin(false);
-		setIsRegistration(true);
-	}
-
-	function goToRemindPass() {
-		setIslogin(false);
-		setIsRemindPassForm(true);
+	function showForm(formName) {
+		setForm(formName);
 	}
 
 	return (
@@ -57,21 +44,26 @@ export default function StartPage({ onSetCurrentUser }) {
 				/>
 			</div>
 			<div className="start__block">
-				{isLogin && (
+				{form === 'Login' && (
 					<Login
-						onFormChange={() => goToRegForm()}
-						remindPass={() => goToRemindPass()}
+						onFormChange={() => showForm('Register')}
+						remindPass={() => showForm('RemindPassForm')}
 						isVisible={isVisible}
 					/>
 				)}
-				{isRegistration && (
+				{form === 'Register' && (
 					<Registration
-						onFormChange={() => goToLoginForm()}
+						onFormChange={() => showForm('Login')}
 						isVisible={isVisible}
 						onSetCurrentUser={onSetCurrentUser}
 					/>
 				)}
-				{isRemindPassForm && <RemindPassForm isVisible={isVisible} />}
+				{form === 'RemindPassForm' && (
+					<RemindPassForm
+						isVisible={isVisible}
+						onCancelButton={() => showForm('Login')}
+					/>
+				)}
 				<div className="start page__start">
 					<div className="start__container">
 						<img

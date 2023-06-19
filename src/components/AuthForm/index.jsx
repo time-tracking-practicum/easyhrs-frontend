@@ -3,6 +3,7 @@ import './AuthForm.css';
 
 import AuthSubmitBtn from '../AuthSubmitBtn';
 import AuthCheckBox from '../AuthCheckBox';
+import AuthCancelBtn from '../AuthCancelBtn';
 
 export default function AuthForm({
 	onSubmit,
@@ -20,6 +21,9 @@ export default function AuthForm({
 	forgetPassBtnText,
 	isCheckboxChecked,
 	toggleCheckBox,
+	showCancelButton,
+	cancelBtnText,
+	onCancelButton,
 }) {
 	return (
 		<div className={`authForm ${isVisible ? 'authForm_visible' : ''}`}>
@@ -28,7 +32,11 @@ export default function AuthForm({
 			<p className="authForm__text">
 				{formHintText}
 				{formHintButtonText && (
-					<button className="authForm__text-button" onClick={onFormChange}>
+					<button
+						className="authForm__text-button"
+						type="button"
+						onClick={onFormChange}
+					>
 						{formHintButtonText}
 					</button>
 				)}
@@ -41,7 +49,11 @@ export default function AuthForm({
 			>
 				<fieldset className="authForm__fieldset">{children}</fieldset>
 				{showForgetPassBtn && (
-					<button className="authForm__forgotPassButton" onClick={remindPass}>
+					<button
+						className="authForm__forgotPassButton"
+						type="button"
+						onClick={remindPass}
+					>
 						{forgetPassBtnText}
 					</button>
 				)}
@@ -51,7 +63,17 @@ export default function AuthForm({
 						toggleCheckBox={toggleCheckBox}
 					/>
 				)}
-				<AuthSubmitBtn buttonText={submitBtnText} />
+				{showCancelButton ? (
+					<div className="authForm__sbmtBtnContainer">
+						<AuthSubmitBtn buttonText={submitBtnText} showCancelButton />
+						<AuthCancelBtn
+							buttonText={cancelBtnText}
+							onCancelButton={onCancelButton}
+						/>
+					</div>
+				) : (
+					<AuthSubmitBtn buttonText={submitBtnText} />
+				)}
 			</form>
 		</div>
 	);
