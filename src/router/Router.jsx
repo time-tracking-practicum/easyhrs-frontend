@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './Router.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css'; // theme
 import 'primereact/resources/primereact.css';
 
 import StartPage from '../pages/StartPage';
+import NavTab from '../components/NavTab';
 import MainPage from '../pages/MainPage';
 import MatrixPage from '../pages/MatrixPage';
 import TaskCardPage from '../pages/TaskCardPage';
@@ -17,6 +18,9 @@ import taskApi from '../utils/TaskApi';
 export default function Router() {
 	const [currentUser, setCurrentuser] = useState({ name: '', email: '' });
 	const [tasks, setTasks] = useState([]); // стейт задач
+	const localToken = localStorage.getItem('token');
+	const sessionToken = sessionStorage.getItem('token');
+	const nav = useNavigate();
 
 	// функция загрузки задач с сервера
 	useEffect(() => {
@@ -26,9 +30,17 @@ export default function Router() {
 			.catch((error) => console.log(error));
 	}, []);
 
+	// функция проверки токена в памяти браузера
+	useEffect(() => {
+		if (localToken || sessionToken) {
+			nav('/main');
+		}
+	});
+
 	return (
 		<UserContext.Provider value={currentUser}>
 			<div className="page">
+				{localToken && <NavTab />}
 				<Routes>
 					<Route
 						path="/"
