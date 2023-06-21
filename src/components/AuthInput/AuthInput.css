@@ -10,8 +10,11 @@
 	height: 56px;
 }
 
-.authForm__input-container:not(:first-child) {
+.authForm__input-container {
 	margin-top: 24px;
+}
+.authForm__input-container:first-child {
+	margin-top: 44px;
 }
 
 .authForm__input {
@@ -27,11 +30,26 @@
 	color: #1d1b20;
 	letter-spacing: 0.5px;
 }
+.authForm__input_error {
+	color: #B3261E;
+}
+
+.authForm__input-errText {
+	margin: 0 16px 0 16px;
+	display: block;
+	margin-top: 4px;
+	padding: 0;
+    max-width: 430px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #B3261E;
+}
 
 .authForm__showPassBtn {
 	width: 22px;
 	height: 22px;
-	margin-right: 13px;
 	background-image: url(../../images/hideIcon.svg);
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -39,6 +57,14 @@
 
 .authForm__showPassBtn:hover {
 	cursor: pointer;
+}
+
+.authForm__errorIcon {
+	width: 22px;
+	height: 22px;
+	background-image: url(../../images/errorIcon.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .authForm__inputHint {
@@ -53,5 +79,5 @@
 }
 
 .authForm__input-container-error {
-	border: 1px solid red;
+	border: 1px solid #B3261E;
 }
