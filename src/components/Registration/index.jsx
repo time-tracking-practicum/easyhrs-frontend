@@ -55,6 +55,7 @@ export default function Registration({ onFormChange, isVisible }) {
 
 	return (
 		<AuthForm
+			isValid={isValid}
 			onSubmit={onSubmit}
 			isVisible={isVisible}
 			onFormChange={onFormChange}
@@ -65,12 +66,14 @@ export default function Registration({ onFormChange, isVisible }) {
 			showCheckBox
 			isCheckboxChecked={isCheckboxChecked}
 			toggleCheckBox={toggleCheckBox}
+			onError={errors.email || errors.password || errors.confimPassword}
 		>
 			<AuthInput
 				email
 				name="email"
 				placeholder={text.emailPlaceholder}
 				autoComplete="email"
+				errText={errors.email}
 				onChange={handleChange}
 				onError={errors.email}
 				min={1}
@@ -83,10 +86,12 @@ export default function Registration({ onFormChange, isVisible }) {
 				hidden
 				autoComplete="current-password"
 				text={text.passInputHint}
+				errText={errors.password}
 				onChange={handleChange}
 				onError={errors.password}
-				min={8}
+				min={6}
 				required
+				isValid={isValid}
 			/>
 			<AuthInput
 				password
@@ -94,11 +99,14 @@ export default function Registration({ onFormChange, isVisible }) {
 				placeholder={text.repeatPassPlaceholder}
 				hidden
 				autoComplete="off"
+				errText={errors.confimPassword}
 				onChange={handleChange}
 				onError={errors.confimPassword}
-				min={8}
+				min={6}
 				required
+				isValid={isValid}
 			/>
+
 		</AuthForm>
 	);
 }

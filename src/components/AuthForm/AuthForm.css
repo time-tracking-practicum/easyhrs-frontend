@@ -6,6 +6,19 @@
 	width: 462px;
 }
 
+.authForm-error {
+	margin-top: 24px;
+	padding: 0;
+	display: block;
+    max-width: 386px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+	letter-spacing: 0.25px;
+    color: #B3261E;
+}
+
 .authForm_visible {
 	display: block;
 }
@@ -16,7 +29,7 @@
 
 .authForm__title {
 	margin: 0;
-	margin-bottom: 8px;
+	margin-bottom: 4px;
 	font-weight: 700;
 	font-size: 54px;
 	line-height: 68px;
@@ -24,7 +37,6 @@
 
 .authForm__text {
 	margin: 0;
-	margin-bottom: 44px;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 20px;
@@ -32,6 +44,7 @@
 	color: #404040;
 	opacity: 0.99;
 	max-width: 435px;
+	letter-spacing: 0.25px;
 }
 
 .authForm__text-button {
@@ -39,11 +52,12 @@
 	background-color: transparent;
 	border: none;
 	padding: 0;
-	margin-left: 7px;
+	margin-left: 18px;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 20px;
 	opacity: 0.99;
+	letter-spacing: 0.25px;
 }
 
 .authForm__text-button:hover,

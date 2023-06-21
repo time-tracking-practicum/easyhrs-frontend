@@ -46,6 +46,7 @@ export default function Login({ onFormChange, remindPass, isVisible }) {
 
 	return (
 		<AuthForm
+			isValid={isValid}
 			onSubmit={onSubmit}
 			isVisible={isVisible}
 			remindPass={remindPass}
@@ -59,6 +60,8 @@ export default function Login({ onFormChange, remindPass, isVisible }) {
 			showCheckBox
 			isCheckboxChecked={isCheckboxChecked}
 			toggleCheckBox={toggleCheckBox}
+			onError={errors.email || errors.password}
+			login
 		>
 			<AuthInput
 				email
@@ -66,7 +69,6 @@ export default function Login({ onFormChange, remindPass, isVisible }) {
 				placeholder={text.emailPlaceholder}
 				autoComplete="email"
 				onChange={handleChange}
-				onError={errors.email}
 				min={1}
 				required
 			/>
@@ -77,8 +79,7 @@ export default function Login({ onFormChange, remindPass, isVisible }) {
 				hidden
 				autoComplete="current-password"
 				onChange={handleChange}
-				onError={errors.password}
-				min={8}
+				min={6}
 				required
 			/>
 		</AuthForm>
