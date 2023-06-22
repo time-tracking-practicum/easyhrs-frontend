@@ -2,6 +2,7 @@
 	width: 49.2%;
 	height: 410px;
 	border-radius: 24px;
+	background: #f4f4f4;
 }
 
 .matrix__container {
@@ -12,6 +13,11 @@
 	position: relative;
 }
 
+.matrix__title-container {
+	display: flex;
+	gap: 8px;
+}
+
 .matrix__title {
 	font-weight: 500;
 	font-size: 18px;
@@ -20,11 +26,18 @@
 	margin: 0;
 }
 
+.matrix__colorblock {
+	width: 20px;
+	height: 20px;
+	border-radius: 8px;
+}
+
 .matrix__subtitle {
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 1.33;
 	margin: 8px 0 0;
+	letter-spacing: 0.25px;
 }
 
 .matrix__add-btn {
