@@ -8,26 +8,26 @@ export default function MatrixPage() {
 			<h2 className="matrixpage__title">Матрица задач</h2>
 			<div className="matrixpage__container">
 				<Matrix
-					color="#FFE1E1"
-					title="Важно и срочно"
+					title="Важное, срочное"
+					blockColor="#FFDEDE"
 					subtitle="Сделай это сейчас"
 					subtitleColor="#D10000"
 				/>
 				<Matrix
-					color="#D5FFB0"
-					title="Важно, но не срочно"
+					title="Важное, несрочное"
+					blockColor="#C1F199"
 					subtitle="Решите , когда это сделать"
 					subtitleColor="#337300"
 				/>
 				<Matrix
-					color="#FFEA9F"
-					title="Не важно, но срочно"
+					title="Срочное, неважное"
+					blockColor="#FFEA9F"
 					subtitle="Делегируй"
 					subtitleColor="#EE7200"
 				/>
 				<Matrix
-					color="#BDEBFF"
-					title="Не важно и не срочно"
+					title="Несрочное, неважное"
+					blockColor="#BDEBFF"
 					subtitle="Сделай это, когда будет не чего делать"
 					subtitleColor="#0050C7"
 				/>

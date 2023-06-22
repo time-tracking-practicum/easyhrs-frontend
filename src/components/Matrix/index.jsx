@@ -3,11 +3,17 @@
 import React from 'react';
 import './Matrix.css';
 
-export default function Matrix({ color, title, subtitle, subtitleColor }) {
+export default function Matrix({ title, blockColor, subtitle, subtitleColor }) {
 	return (
-		<div className="matrix" style={{ backgroundColor: color }}>
+		<div className="matrix">
 			<div className="matrix__container">
-				<h3 className="matrix__title">{title}</h3>
+				<div className="matrix__title-container">
+					<h3 className="matrix__title">{title}</h3>
+					<div
+						className="matrix__colorblock"
+						style={{ backgroundColor: blockColor }}
+					></div>
+				</div>
 				<h4 className="matrix__subtitle" style={{ color: subtitleColor }}>
 					{subtitle}
 				</h4>
