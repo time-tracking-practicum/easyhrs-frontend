@@ -1,68 +1,61 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import './ProfileForm.css';
+import { useEffect, useState } from 'react';
+import buttonImg from '../../images/icon-profileAddButton.svg';
 
-import inputKey from '../../images/icon-inputKey.svg';
-import inputArrow from '../../images/icon-inputArrow.svg';
+export default function ProfileForm({
+	showInputs,
+	children,
+	text,
+	onSubmit,
+	showSubmitButton,
+}) {
+	const [inputsShown, setinputsShown] = useState(false);
 
-export default function ProfileForm() {
+	useEffect(() => {
+		if (showInputs) {
+			setinputsShown(true);
+		}
+	}, []);
+
+	const toggleInputs = () => {
+		setinputsShown(!inputsShown);
+	};
+
 	return (
-		<form className="profile__form">
-			<h2 className="profile__subtitle">Персональные данные</h2>
-			<fieldset className="profile__form-fieldset">
-				<div className="profile__input-container">
-					<input
-						type="text"
-						name="name"
-						id="name"
-						disabled
-						className="profile__input"
-						value="ФИО"
-					/>
+		<>
+			{!inputsShown && (
+				<button
+					className="profile__form-button"
+					type="button"
+					onClick={toggleInputs}
+				>
 					<img
-						src={inputArrow}
-						alt="Иконка Стрелочка"
-						className="profile__input-icon"
+						className="profile__form-button-img"
+						alt="Картинка кнопки"
+						src={buttonImg}
 					/>
-				</div>
-				<div className="profile__input-container">
-					<input
-						type="text"
-						name="email"
-						id="email"
-						disabled
-						className="profile__input"
-						value="Email"
-					/>
-					<img
-						src={inputArrow}
-						alt="Иконка Стрелочка"
-						className="profile__input-icon"
-					/>
-				</div>
-				<div className="profile__input-container">
-					<label htmlFor="password" className="profile__input-label">
-						Пароль
-					</label>
-					<img
-						src={inputKey}
-						alt="Иконка Ключ"
-						className="profile__input-icon-key"
-					/>
-					<input
-						type="text"
-						name="password"
-						id="password"
-						disabled
-						className="profile__input"
-						value="Обновлен 1 месяц назад"
-					/>
-					<img
-						src={inputArrow}
-						alt="Иконка Стрелочка"
-						className="profile__input-icon "
-					/>
-				</div>
-			</fieldset>
-		</form>
+					{text}
+				</button>
+			)}
+			{inputsShown && (
+				<form
+					name="nameForm"
+					action="#"
+					className="profile__form"
+					onSubmit={onSubmit}
+				>
+					{children}
+					{showSubmitButton && (
+						<button
+							type="submit"
+							className="profile__submit-btn"
+							onClick={onSubmit}
+						>
+							OK
+						</button>
+					)}
+				</form>
+			)}
+		</>
 	);
 }

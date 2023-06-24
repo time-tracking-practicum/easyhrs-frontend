@@ -26,24 +26,28 @@ export const passFormInputHint =
 export const passFormSubmitBtnText = 'Отправить';
 export const passFormCancelBtnText = 'Отмена';
 
-// Текст кнопок на странице профиля
-export const radioButtons = [
+// Текст страницы профиль
+export const profileSectionName = 'Профиль';
+export const profileAvatarBtnText = 'Изменить фото';
+export const profileNameFormText = 'Добавить имя и фамилию';
+export const profileNicknameFormText = 'Добавить никнейм (псевдоним)';
+export const profileUserDataSubtitle = 'Персональные данные';
+
+// Текст инпутов на странице профиля
+export const nameInputs = [
 	{
-		title: 'Пароль + СМС',
-		text: 'Вход с паролем и коротким кодом из смс или почты',
-		value: 'option1',
-		name: 'sms',
+		name: 'firstName',
+		label: 'Имя',
 	},
 	{
-		title: 'Одноразовый пароль',
-		text: 'Вход с одноразовым паролем из смс или почты',
-		value: 'option2',
-		name: 'oneTimePass',
+		name: 'lastName',
+		label: 'Фамилия',
 	},
+];
+
+export const nickInput = [
 	{
-		title: 'Обычный пароль',
-		text: 'Пароль должен быть сложным и уникальным',
-		value: 'option3',
-		name: 'usualPass',
+		name: 'nickname',
+		label: 'Никнейм',
 	},
 ];
