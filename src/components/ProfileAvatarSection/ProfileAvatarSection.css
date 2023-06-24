@@ -1,11 +1,20 @@
-.profile__form {
+.profile__avatar-container {
 	display: flex;
-	margin-top: 20px;
+	flex-direction: column;
+	max-width: 150px;
 }
 
-.profile__form-button {
+.profile__avatar-image {
+	margin-right: auto;
+	display: block;
+	max-height: 72px;
+	max-width: 100%;
+}
+
+.profile__avatar-button {
+	width: 150px;
 	height: 36px;
-	margin-top: 20px;
+	margin-top: 8px;
 	padding: 0;
 	color: #6750a4;
 	display: flex;
@@ -20,21 +29,10 @@
 	cursor: pointer;
 }
 
-.profile__form-button-img {
+.profile__avatar-button-img {
 	width: 18px;
 	height: 18px;
-	margin: 0 8px;
+	margin-right: 8px;
 	background-position: center;
 	object-fit: cover;
-}
-
-.profile__submit-btn {
-	width: 71px;
-	height: 52px;
-	padding: 0;
-	background-color: #6750a4;
-	color: #fff;
-	border: none;
-	border-radius: 100px;
-	cursor: pointer;
 }

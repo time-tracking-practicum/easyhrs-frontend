@@ -16,7 +16,10 @@ import SettingsPage from '../pages/SettingsPage';
 import taskApi from '../utils/TaskApi';
 
 export default function Router() {
-	const [currentUser, setCurrentuser] = useState({ name: '', email: '' });
+	const [currentUser, setCurrentuser] = useState({
+		name: undefined,
+		email: undefined,
+	});
 	const [tasks, setTasks] = useState([]); // стейт задач
 	const localToken = localStorage.getItem('token');
 	const sessionToken = sessionStorage.getItem('token');
