@@ -15,7 +15,7 @@ export default function AuthInput({
 	max,
 	required,
 	onError,
-	isValid
+	isValid,
 }) {
 	const [passwordIsShown, setPasswordIsShown] = useState(false);
 
@@ -27,7 +27,7 @@ export default function AuthInput({
 		<>
 			<div
 				className={`authForm__input-container ${
-					(!isValid && onError) && 'authForm__input-container-error'
+					!isValid && onError && 'authForm__input-container-error'
 				}`}
 			>
 				<input
@@ -38,7 +38,7 @@ export default function AuthInput({
 					name={name}
 					id={name}
 					className={`authForm__input ${
-						(!isValid && onError) && 'authForm__input_error'
+						!isValid && onError && 'authForm__input_error'
 					}`}
 					autoComplete={autoComplete}
 					onChange={onChange}
@@ -47,11 +47,7 @@ export default function AuthInput({
 					required={required}
 					placeholder={placeholder}
 				/>
-				{(!isValid && onError) && (
-					<div
-						className="authForm__errorIcon"
-					/>
-				)}
+				{!isValid && onError && <div className="authForm__errorIcon" />}
 				{hidden && !onError && (
 					<div
 						className="authForm__showPassBtn"
@@ -61,7 +57,9 @@ export default function AuthInput({
 				)}
 			</div>
 			{text && !onError && <span className="authForm__inputHint">{text}</span>}
-			{onError && !isValid && <span className="authForm__input-errText">{errText}</span>}
+			{onError && !isValid && (
+				<span className="authForm__input-errText">{errText}</span>
+			)}
 		</>
 	);
 }

@@ -31,7 +31,7 @@
 	letter-spacing: 0.5px;
 }
 .authForm__input_error {
-	color: #B3261E;
+	color: #b3261e;
 }
 
 .authForm__input-errText {
@@ -39,12 +39,12 @@
 	display: block;
 	margin-top: 4px;
 	padding: 0;
-    max-width: 430px;
-    width: 100%;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    color: #B3261E;
+	max-width: 430px;
+	width: 100%;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	color: #b3261e;
 }
 
 .authForm__showPassBtn {
@@ -79,5 +79,5 @@
 }
 
 .authForm__input-container-error {
-	border: 1px solid #B3261E;
+	border: 1px solid #b3261e;
 }

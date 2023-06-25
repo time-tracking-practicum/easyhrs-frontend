@@ -44,7 +44,11 @@ export default function AuthForm({
 					</button>
 				)}
 			</p>
-			{onError && login && <span className="authForm-error">Не верный e-mail или пароль. Проверьте правильность введенных данных.</span>}
+			{onError && login && (
+				<span className="authForm-error">
+					Не верный e-mail или пароль. Проверьте правильность введенных данных.
+				</span>
+			)}
 			<form
 				className="authForm__form"
 				action="#"
@@ -76,7 +80,11 @@ export default function AuthForm({
 						/>
 					</div>
 				) : (
-					<AuthSubmitBtn buttonText={submitBtnText} onError={onError} isValid={isValid}/>
+					<AuthSubmitBtn
+						buttonText={submitBtnText}
+						onError={onError}
+						isValid={isValid}
+					/>
 				)}
 			</form>
 		</div>
