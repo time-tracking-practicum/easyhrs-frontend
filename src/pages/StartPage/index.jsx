@@ -49,6 +49,7 @@ export default function StartPage({ onSetCurrentUser }) {
 						onFormChange={() => showForm('Register')}
 						remindPass={() => showForm('RemindPassForm')}
 						isVisible={isVisible}
+						onSetCurrentUser={onSetCurrentUser}
 					/>
 				)}
 				{form === 'Register' && (

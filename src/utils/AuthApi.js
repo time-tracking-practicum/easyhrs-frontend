@@ -28,6 +28,19 @@ class AuthApi {
 		});
 		return AuthApi._checkResult(res);
 	}
+
+	async getUserData() {
+		const token =
+			localStorage.getItem('token') || sessionStorage.getItem('token');
+		const res = await fetch(`${this._url}/users/me/`, {
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json',
+				authorization: `Token ${token}`,
+			},
+		});
+		return AuthApi._checkResult(res);
+	}
 }
 
 const authApi = new AuthApi({
