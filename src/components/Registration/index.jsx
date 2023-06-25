@@ -6,7 +6,11 @@ import * as text from '../../utils/constants';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import authApi from '../../utils/AuthApi';
 
-export default function Registration({ onFormChange, isVisible }) {
+export default function Registration({
+	onFormChange,
+	isVisible,
+	onSetCurrentUser,
+}) {
 	const nav = useNavigate();
 	const { values, handleChange, isValid, errors } = useFormAndValidation({
 		email: '',
@@ -25,18 +29,21 @@ export default function Registration({ onFormChange, isVisible }) {
 				await authApi.register({
 					email: values.email,
 					password: values.password,
-					full_name: 'ФИО',
 				});
 				const loginData = await authApi.login({
 					email: values.email,
 					password: values.password,
 				});
-				if (loginData && isCheckboxChecked) {
+				if (isCheckboxChecked) {
 					localStorage.setItem('token', loginData.auth_token);
+					const userData = await authApi.getUserData();
+					onSetCurrentUser({ userEmail: userData.email });
 					nav('/main');
 					return;
 				}
 				sessionStorage.setItem('token', loginData.auth_token);
+				const userData = await authApi.getUserData();
+				onSetCurrentUser({ userEmail: userData.email });
 				nav('/main');
 			} catch (error) {
 				console.log(error);
@@ -106,7 +113,6 @@ export default function Registration({ onFormChange, isVisible }) {
 				required
 				isValid={isValid}
 			/>
-
 		</AuthForm>
 	);
 }

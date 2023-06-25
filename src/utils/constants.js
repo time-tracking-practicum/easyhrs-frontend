@@ -32,6 +32,9 @@ export const profileAvatarBtnText = 'Изменить фото';
 export const profileNameFormText = 'Добавить имя и фамилию';
 export const profileNicknameFormText = 'Добавить никнейм (псевдоним)';
 export const profileUserDataSubtitle = 'Персональные данные';
+export const profileLoginInfoSubtitle = 'Информация для входа';
+export const profileResetPassText = 'Сбросить пароль';
+export const profileExitBtnText = 'Выйти из учетной записи';
 
 // Текст инпутов на странице профиля
 export const nameInputs = [

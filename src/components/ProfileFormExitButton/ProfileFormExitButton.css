@@ -1,0 +1,10 @@
+.profile__exitBtn {
+	width: 266px;
+	height: 52px;
+	margin-top: 36px;
+	color: #fff;
+	background-color: #6750a4;
+	border: none;
+	border-radius: 100px;
+	cursor: pointer;
+}

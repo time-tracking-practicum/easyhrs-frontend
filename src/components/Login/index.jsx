@@ -6,7 +6,12 @@ import * as text from '../../utils/constants';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import authApi from '../../utils/AuthApi';
 
-export default function Login({ onFormChange, remindPass, isVisible }) {
+export default function Login({
+	onFormChange,
+	remindPass,
+	isVisible,
+	onSetCurrentUser,
+}) {
 	const nav = useNavigate();
 
 	const { values, handleChange, isValid, errors } = useFormAndValidation({
@@ -29,9 +34,13 @@ export default function Login({ onFormChange, remindPass, isVisible }) {
 				if (isCheckboxChecked) {
 					localStorage.setItem('token', loginData.auth_token);
 					nav('/main');
+					const userData = await authApi.getUserData();
+					onSetCurrentUser({ userEmail: userData.email });
 					return;
 				}
 				sessionStorage.setItem('token', loginData.auth_token);
+				const userData = await authApi.getUserData();
+				onSetCurrentUser({ userEmail: userData.email });
 				nav('/main');
 			} catch (error) {
 				console.log(error);

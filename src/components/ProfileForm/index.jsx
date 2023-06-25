@@ -1,6 +1,7 @@
 import './ProfileForm.css';
 import { useEffect, useState } from 'react';
 import buttonImg from '../../images/icon-profileAddButton.svg';
+import ProfileFormButton from '../ProfileFormButton';
 
 export default function ProfileForm({
 	showInputs,
@@ -8,6 +9,7 @@ export default function ProfileForm({
 	text,
 	onSubmit,
 	showSubmitButton,
+	formName,
 }) {
 	const [inputsShown, setinputsShown] = useState(false);
 
@@ -24,22 +26,15 @@ export default function ProfileForm({
 	return (
 		<>
 			{!inputsShown && (
-				<button
-					className="profile__form-button"
-					type="button"
-					onClick={toggleInputs}
-				>
-					<img
-						className="profile__form-button-img"
-						alt="Картинка кнопки"
-						src={buttonImg}
-					/>
-					{text}
-				</button>
+				<ProfileFormButton
+					buttonImg={buttonImg}
+					onclick={toggleInputs}
+					text={text}
+				/>
 			)}
 			{inputsShown && (
 				<form
-					name="nameForm"
+					name={formName}
 					action="#"
 					className="profile__form"
 					onSubmit={onSubmit}
