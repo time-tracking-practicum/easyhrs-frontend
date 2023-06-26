@@ -58,7 +58,7 @@ export default function Router() {
 						path="/matrix"
 						element={
 							<ProtectedRoute>
-								<MatrixPage />
+								<MatrixPage tasks={tasks} />
 							</ProtectedRoute>
 						}
 					/>

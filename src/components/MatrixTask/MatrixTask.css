@@ -1,0 +1,20 @@
+.matrix__task {
+	list-style: none;
+	display: flex;
+	gap: 12px;
+}
+
+.matrix__task-emoji {
+	width: 24px;
+	height: 24px;
+	background-repeat: no-repeat;
+	align-items: center;
+	display: flex;
+}
+
+.matrix__task-text {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.5;
+	margin: 0;
+}
