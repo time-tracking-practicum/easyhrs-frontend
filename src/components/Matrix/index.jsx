@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './Matrix.css';
+import MatrixTask from '../MatrixTask';
 
 export default function Matrix({
 	tasks,
@@ -10,7 +11,6 @@ export default function Matrix({
 	subtitle,
 	subtitleColor,
 }) {
-	console.log(tasks);
 	return (
 		<div className="matrix">
 			<div className="matrix__container">
@@ -27,16 +27,14 @@ export default function Matrix({
 				<button className="matrix__add-btn">+</button>
 				{tasks.length > 0 ? (
 					<ul className="matrix__task-list">
-						<li className="matrix__task">
-							<div className="matrix__task-emoji"></div>
-							<p className="matrix__task-text">{tasks[0].name}</p>
-						</li>
-						<li className="matrix__task">
-							<div className="matrix__task-emoji"></div>
-							<p className="matrix__task-text">
-								Закончить правки по проекту загородная дача{' '}
-							</p>
-						</li>
+						{tasks.map((task) => (
+							<MatrixTask
+								key={task.id}
+								task={task}
+								name={task.name}
+								emoji={task.emoji}
+							/>
+						))}
 					</ul>
 				) : null}
 			</div>
