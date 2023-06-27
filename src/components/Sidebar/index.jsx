@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import closeImage from '../../images/icon-close.svg';
 import './Sidebar.css';
 
 const Sidebar = ({ children, isOpen, handleClose, style = {} }) => {
@@ -18,11 +19,19 @@ const Sidebar = ({ children, isOpen, handleClose, style = {} }) => {
 	return (
 		isOpen &&
 		createPortal(
-			<div className="sidebar__overlay">
+			<>
+				<div onClickCapture={handleClose} className="sidebar__overlay" />
 				<div className="sidebar" style={style}>
 					{children}
+					<button className="sidebar__close-button" onClick={handleClose}>
+						<img
+							className="sidebar__close-button-img"
+							alt="Закрыть"
+							src={closeImage}
+						/>
+					</button>
 				</div>
-			</div>,
+			</>,
 			container
 		)
 	);

@@ -2,6 +2,7 @@ import './MainPage.css';
 import React from 'react';
 import Header from '../../components/Header';
 import Task from '../../components/Task';
+
 import Timer from '../../components/Timer';
 
 export default function MainPage({ tasks }) {
