@@ -21,33 +21,37 @@ export default function Task({
 	}
 
 	return (
-		<Link to="/task-card" className="task" task={task}>
-			<div className="task__container">
-				<div className="task__name-container">
-					<div className="task__emoji">{emoji}</div>
-					<p className="task__name">{name}</p>
+		<div className="task">
+			<Link to="/task-card" className="task__link" task={task}>
+				<div className="task__container">
+					<div className="task__name-container">
+						<div className="task__emoji">{emoji}</div>
+						<p className="task__name">{name}</p>
+					</div>
+					<p className="task__project">{project}</p>
+					<ul className="task__matrix-wrapper">
+						<li
+							className={
+								urgent
+									? 'task__matrix-colorblock_urgent'
+									: important
+									? 'task__matrix-colorblock'
+									: 'task__matrix-colorblock_nor-urgent-important'
+							}
+						/>
+						<li className="task__matrix-item">{urgent ? 'Срочно' : ''}</li>
+						<li className="task__matrix-item">{important ? 'Важно' : ''}</li>
+					</ul>
+					<p className="task__deadline">{formateDate(deadline)}</p>
+					<ul className="task__timer-wrapper">
+						<li className="task__timer-status">
+							{status === 'in_progress' ? 'В работе' : 'Пауза'}
+						</li>
+						<li className="task__timer-time">02:13:57</li>
+					</ul>
 				</div>
-				<p className="task__project">{project}</p>
-				<ul className="task__matrix-wrapper">
-					<li
-						className={
-							urgent
-								? 'task__matrix-colorblock_urgent'
-								: important
-								? 'task__matrix-colorblock'
-								: 'task__matrix-colorblock_nor-urgent-important'
-						}
-					/>
-					<li className="task__matrix-item">{urgent ? 'Срочно' : ''}</li>
-					<li className="task__matrix-item">{important ? 'Важно' : ''}</li>
-				</ul>
-				<p className="task__deadline">{formateDate(deadline)}</p>
-				<ul className="task__timer-wrapper">
-					<li className="task__timer-status">
-						{status === 'in_progress' ? 'В работе' : 'Пауза'}
-					</li>
-					<li className="task__timer-time">02:13:57</li>
-				</ul>
+			</Link>
+			<div className="task__btn-wrapper">
 				<button className="task__btn">
 					<svg
 						width="40"
@@ -81,6 +85,6 @@ export default function Task({
 					</svg>
 				</button>
 			</div>
-		</Link>
+		</div>
 	);
 }
