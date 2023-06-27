@@ -20,6 +20,10 @@ export default function Task({
 		return date.toLocaleDateString();
 	}
 
+	function handleStart() {
+		console.log('старт');
+	}
+
 	return (
 		<Link to="/task-card" className="task" task={task}>
 			<div className="task__container">
@@ -48,7 +52,7 @@ export default function Task({
 					</li>
 					<li className="task__timer-time">02:13:57</li>
 				</ul>
-				<button className="task__btn">
+				<button onClick={handleStart} type='button' className="task__btn">
 					<svg
 						width="40"
 						height="40"

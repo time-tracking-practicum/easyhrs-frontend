@@ -3,6 +3,26 @@
 	flex-direction: column;
 	align-items: center;
 	margin-top: 198px;
+	position: absolute;
+    width: 100%;
+}
+
+.timer__container_drop {
+	padding: 16px 40px;
+	justify-content: space-between;
+    flex-direction: row;
+	bottom: 0;
+    background: rgba(169, 156, 203, 1);
+}
+
+.timer__block {
+	margin-bottom: 32px;
+	text-align: center;
+}
+
+.timer__block_drop {
+	margin: 0;
+	text-align: start;
 }
 
 .timer__span {
@@ -11,18 +31,29 @@
 	line-height: 68px;
 }
 
+.timer__span-drop {
+	font-weight: 700;
+	font-size: 54px;
+	line-height: 68px;
+}
+
 .timer__name {
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 28px;
 	margin: 24px 0 0;
+	letter-spacing: 0.25px;
+}
+
+.timer__name_drop {
+	margin: 0;
 }
 
 .timer__buttons-container {
 	display: flex;
 	flex-direction: row;
 	gap: 16px;
-	margin-top: 32px;
+	/* margin-top: 32px; */
 }
 
 .timer__button {

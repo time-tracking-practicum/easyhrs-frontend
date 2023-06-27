@@ -8,8 +8,11 @@ import './Header.css';
 // sectionName='name': Название секции,
 // newtask: булевое значение на добавление кнопки,
 // branch='name': Название ветки с возвратом назад
-function Header({ sectionName, newtask, branch, timer }) {
+function Header({ sectionName, newtask, branch, timer, setDropTimer }) {
 	const navigate = useNavigate();
+	const handleDrop = () => {
+		setDropTimer(true);
+	}
 
 	return (
 		<div className="header">
@@ -33,9 +36,9 @@ function Header({ sectionName, newtask, branch, timer }) {
 					</div>
 				)}
 				{timer && (
-					<NavLink className="header__navlink-timer" to={navigate(-1)}>
+					<button type='button' className="header__navlink-timer" onClick={handleDrop}>
 						Свернуть
-					</NavLink>
+					</button>
 				)}
 			</div>
 			<div className="header__icons-container">

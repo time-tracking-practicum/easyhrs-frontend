@@ -6,6 +6,7 @@
 	background-color: #ffffff;
 	border-radius: 40px;
 	overflow: auto;
+	position: relative;
 }
 
 .main__tasks {
