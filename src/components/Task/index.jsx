@@ -13,11 +13,19 @@ export default function Task({
 	urgent,
 	important,
 	task,
+	setPlayTimer,
+	setPause,
 }) {
 	// функция форматирования входящей строки в дату формата dd.mm.yyyy
 	function formateDate(data) {
 		const date = new Date(data);
 		return date.toLocaleDateString();
+	}
+
+	function handleStart() {
+		console.log('пуск');
+		setPlayTimer(true);
+		setPause(false);
 	}
 
 	return (
@@ -52,7 +60,7 @@ export default function Task({
 				</div>
 			</Link>
 			<div className="task__btn-wrapper">
-				<button className="task__btn">
+				<button onClick={handleStart} className="task__btn">
 					<svg
 						width="40"
 						height="40"

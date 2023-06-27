@@ -1,15 +1,18 @@
 import './MainPage.css';
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Task from '../../components/Task';
 
 import Timer from '../../components/Timer';
 
 export default function MainPage({ tasks }) {
+	const [playTimer, setPlayTimer] = useState(false);
+	const [dropTimer, setDropTimer] = useState(false);
+	const [pause, setPause] = useState(false);
+
 	return (
 		<section className="main">
-			<Header sectionName="Мои задачи" newtask />
-			<ul className="main__tasks">
+			<Header sectionName="Мои задачи" newtask /><ul className="main__tasks">
 				{tasks.map((task) => (
 					<Task
 						key={task.id}
@@ -21,10 +24,18 @@ export default function MainPage({ tasks }) {
 						urgent={task.is_urgent}
 						important={task.is_important}
 						task={task}
-					/>
+						setPlayTimer={setPlayTimer}
+						setPause={setPause} />
 				))}
 			</ul>
-			<Timer/>
+			{playTimer && <Timer 
+				playTimer={playTimer}
+				setPlayTimer={setPlayTimer} 
+				dropTimer={dropTimer} 
+				setDropTimer={setDropTimer} 
+				pause={pause} 
+				setPause={setPause}
+			/>}
 		</section>
 	);
 }

@@ -1,16 +1,15 @@
 /* eslint-disable no-plusplus */
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../Header';
 import iconPause from '../../images/icon-pause.svg';
 import iconComplete from '../../images/icon-complete.svg';
 import './Timer.css';
 
-function Timer() {
+function Timer({ playTimer, setPlayTimer, dropTimer, setDropTimer, pause, setPause }) {
 	const [time, setTime] = useState({ s:0, m:0, h:0});
 	const [interv, setInterv] = useState();
 	const [startTimer, setStartTimer] = useState();
-	const [pause, setPause] = useState();
-	const [dropTimer, setDropTimer] = useState(false);
+	const [timeOfPause, setTimeOfPause] = useState();
 
 	let updatedS = time.s; let updatedM = time.m; let updatedH = time.h;
 	
@@ -32,22 +31,30 @@ function Timer() {
 		run();
 		setStartTimer(Date.now());
 		setInterv(setInterval(run, 1000));
-		if (pause) {
-			console.log((pause - startTimer)/1000);
+		if (timeOfPause) {
+			console.log((timeOfPause - startTimer)/1000);
 		}
 	};
 
+	useEffect(() => {
+		if (playTimer && !pause) {
+		start();
+		}
+	  }, [playTimer, pause]);
 
 	const stop = () => {
 		clearInterval(interv);
-		setPause(Date.now());
+		setTimeOfPause(Date.now());
+		setPause(true);
+		console.log(time);
 	};
 
 	const reset = () => {
 		clearInterval(interv);
 		setTime({s:0, m:0, h:0})
+		setPlayTimer(false);
+		setDropTimer(false);
 	};
-	// const resume = () => start();
 	const classSpan = dropTimer ? 'timer__span-drop' : 'timer__span';
 
 	return (
@@ -64,18 +71,14 @@ function Timer() {
 
 				</div>
 				<div className="timer__buttons-container">
-					<button onClick={start} type='button' className="timer__button">
-						<img className="timer__icon" src={iconPause} alt="Икона паузы" />
-						Старт
-					</button>
 					<button onClick={stop} type='button' className="timer__button">
 						<img className="timer__icon" src={iconPause} alt="Икона паузы" />
 						Пауза
 					</button>
-					{dropTimer && <button onClick={reset} type='button' className="timer__button">
+					<button onClick={reset} type='button' className="timer__button">
 						<img className="timer__icon" src={iconComplete} alt="Икона паузы" />
 						Завершить
-					</button>}
+					</button>
 					
 				</div>
 			</div>
