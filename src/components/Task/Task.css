@@ -1,14 +1,23 @@
 .task {
 	width: calc(100% - 40px - 40px);
 	margin: 0 auto;
-	display: block;
+	display: flex;
 	border-radius: 16px;
-	text-decoration: none;
 	color: #000000;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 1.43;
 	background: #f4f4f4;
+	align-items: center;
+	gap: 16px;
+	padding: 0 16px 0;
+}
+
+.task__link {
+	width: 95%;
+	display: block;
+	text-decoration: none;
+	color: #000000;
 }
 
 .task__container {
@@ -16,7 +25,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: calc(100% - 16px - 16px);
 	margin: 0 auto;
 }
 
@@ -104,6 +112,10 @@
 
 .task__timer-time {
 	list-style: none;
+}
+
+.task__btn-wrapper {
+	width: 5%;
 }
 
 .task__btn {
