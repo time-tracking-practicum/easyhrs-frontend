@@ -1,0 +1,37 @@
+.sidebar__button {
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.sidebar__button_primary {
+	width: 202px;
+	height: 52px;
+	padding: 16px 24px;
+	border-radius: 100px;
+	font-size: 18px;
+	line-height: 20px;
+	letter-spacing: 0.1px;
+}
+
+.sidebar__button_secondary {
+	color: var(--link-color);
+	background-color: transparent;
+	font-size: 14px;
+	padding: 0;
+	line-height: 18px;
+	letter-spacing: 0.25px;
+	border: none;
+}
+
+.sidebar__button_submit {
+	background-color: var(--primary-background-color);
+	color: var(--secondary-background-color);
+	border: none;
+}
+
+.sidebar__button_cancel {
+	background-color: var(--secondary-background-color);
+	color: var(--primary-background-color);
+	border: 1px solid;
+	border-color: var(--light-outline-color);
+}

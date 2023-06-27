@@ -10,12 +10,15 @@ import * as text from '../../utils/constants';
 import ProfileFormButton from '../../components/ProfileFormButton';
 import roundArrow from '../../images/icon-roundArrow.svg';
 import ProfileFormExitButton from '../../components/ProfileFormExitButton';
+import Sidebar from '../../components/Sidebar';
+import ResetPasswordForm from '../../components/ResetPasswordForm';
 
 export default function ProfilePage() {
 	const { name, email = 'Почта', nickname } = useContext(UserContext);
 	const [disabledNameInputs, setDisabledNameInputs] = useState(true);
 	const [disabledNicknameInputs, setDisabledNicknameInputs] = useState(true);
 	const [disabledEmailInputs, setDisabledEmailInputs] = useState(true);
+	const [isPasswordFormOpen, setIsPasswordFormOpen] = useState(false);
 	const { userEmail } = useContext(UserContext);
 	const nav = useNavigate();
 
@@ -47,6 +50,14 @@ export default function ProfilePage() {
 		localStorage.clear();
 		sessionStorage.clear();
 		nav('/');
+	};
+
+	const handleOpenPasswordForm = () => {
+		setIsPasswordFormOpen(true);
+	};
+
+	const handleClosePasswordForm = () => {
+		setIsPasswordFormOpen(false);
 	};
 
 	return (
@@ -106,12 +117,19 @@ export default function ProfilePage() {
 				<ProfileFormButton
 					buttonImg={roundArrow}
 					text={text.profileResetPassText}
+					onclick={handleOpenPasswordForm}
 				/>
 				<ProfileFormExitButton
 					text={text.profileExitBtnText}
 					onclick={handleExit}
 				/>
 			</div>
+			<Sidebar
+				isOpen={isPasswordFormOpen}
+				handleClose={handleClosePasswordForm}
+			>
+				<ResetPasswordForm handleSidebarClose={handleClosePasswordForm} />
+			</Sidebar>
 		</section>
 	);
 }
