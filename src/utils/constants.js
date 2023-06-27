@@ -54,3 +54,55 @@ export const nickInput = [
 		label: 'Никнейм',
 	},
 ];
+
+// Текст формы сброса и восстановления пароля
+export const PASSWORD_FROMS_TEXT = {
+	RESET: {
+		HEADING: 'Сброс пароля',
+		FIRST: {
+			DESCRIPTION:
+				'Для продолжения необходимо подтвердить, что вы являетесь владельцем аккаунта',
+			CANCEL_BUTTON: 'Отменить',
+			FORGOT_PASS_BUTTON: 'Забыли пароль?',
+			CONTINUE_BUTTON: 'Продолжить',
+		},
+		SECOND: {
+			DESCRIPTION:
+				'Пароль может содержать цифры и латинские буквы. Минимальная длина - 6 символов',
+			CANCEL_BUTTON: 'Отменить',
+			CONTINUE_BUTTON: 'Продолжить',
+		},
+		THIRD: { DESCRIPTION: 'Пароль успешно изменен', CONTINUE_BUTTON: 'Ок' },
+	},
+	FORGOT: {
+		HEADING: 'Забыли пароль?',
+		FIRST: {
+			DESCRIPTION:
+				'Введите электронный адрес, указанный при регистрации. На него будет отправлена информаия для восстановления пароля.',
+			CONTINUE_BUTTON: 'Продолжить',
+			CANCEL_BUTTON: 'Отменить',
+		},
+		SECOND: {
+			DESCRIPTION: 'Данные для смены пароля успешно отправлены',
+			CONTINUE_BUTTON: 'Ок',
+		},
+	},
+};
+
+export const FORM_STEP = {
+	RESET: {
+		FIRST: 'STEP_RESET_FIRST',
+		SECOND: 'STEP_RESET_SECOND',
+		THIRD: 'STEP_RESET_THIRD',
+	},
+	FORGOT: {
+		FIRST: 'STEP_FORGOT_FIRST',
+		SECOND: 'STEP_FORGOT_SECOND',
+	},
+};
+
+export const INITIAL_FORM_STATE = {
+	email: '',
+	password: '',
+	confirmPassword: '',
+};

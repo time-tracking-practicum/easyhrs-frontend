@@ -1,0 +1,79 @@
+.sidebar__input-border {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	margin-top: 32px;
+	max-width: 100%;
+	border: 1px solid #79747e;
+	border-radius: 100px;
+	padding: 8px 16px;
+	height: 56px;
+}
+
+.sidebar__input-border_red {
+	border: 1px solid #b3261e;
+}
+
+.sidebar__input {
+	padding: 0;
+	max-width: 446px;
+	width: 100%;
+	position: relative;
+	height: 40px;
+	border: none;
+	outline: none;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	color: #1d1b20;
+	letter-spacing: 0.5px;
+}
+
+.sidebar__input_text-red {
+	color: #b3261e;
+}
+
+.sidebar__input-errText {
+	margin: 0 16px 0 16px;
+	position: absolute;
+	top: 52px;
+	left: 0;
+	display: block;
+	margin-top: 4px;
+	padding: 0;
+	max-width: 430px;
+	width: 100%;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	color: #b3261e;
+}
+
+.sidebar__togglePassVisibilityBtn {
+	width: 22px;
+	cursor: pointer;
+	height: 22px;
+	background-image: url(../../images/hideIcon.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.sidebar__errorIcon {
+	width: 22px;
+	height: 22px;
+	background-image: url(../../images/errorIcon.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.sidebar__inputHint {
+	display: block;
+	margin-top: 4px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	color: #49454f;
+	margin-left: 16px;
+	max-width: 298px;
+}
