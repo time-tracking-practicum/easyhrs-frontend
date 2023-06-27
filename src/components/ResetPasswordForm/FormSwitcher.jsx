@@ -53,6 +53,7 @@ const FormSwitcher = ({
 					values={values}
 					onSubmit={handleSubmitResetFirst}
 					onButtonsClick={[
+						// Передаётся массив коллбеков для каждой кнопки
 						() => {
 							setCurrentForm(STEP.FORGOT.FIRST);
 						},
