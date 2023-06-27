@@ -18,7 +18,7 @@ const ResetSecondStep = ({
 			<form
 				className="resetForm__form"
 				action="#"
-				name="reset-password-first-ste"
+				name="reset-password"
 				onSubmit={onSubmit}
 			>
 				<fieldset className="resetForm__fieldset">

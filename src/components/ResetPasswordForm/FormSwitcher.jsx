@@ -93,6 +93,7 @@ const FormSwitcher = ({
 					isValid={isValid}
 					values={values}
 					onSubmit={handleSubmitForgotFirst}
+					onButtonsClick={[handleSidebarClose]}
 				/>
 			);
 			break;

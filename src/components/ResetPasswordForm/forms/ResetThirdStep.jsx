@@ -9,7 +9,7 @@ const ResetThirdStep = ({ onSubmit }) => (
 		<form
 			className="resetForm__form"
 			action="#"
-			name="reset-password-first-ste"
+			name="reset-password"
 			onSubmit={onSubmit}
 		>
 			<div className="resetForm__btnContainer resetForm__btnContainer_justify-center">

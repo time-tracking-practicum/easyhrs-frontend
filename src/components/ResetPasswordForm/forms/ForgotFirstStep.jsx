@@ -8,6 +8,7 @@ const ForgotFirstStep = ({
 	handleChange,
 	isValid,
 	onSubmit,
+	onButtonsClick,
 }) => (
 	<>
 		<p className="resetForm__text">{TEXT.FORGOT.FIRST.DESCRIPTION}</p>
@@ -42,6 +43,7 @@ const ForgotFirstStep = ({
 					size="primary"
 					type="cancel"
 					text={TEXT.FORGOT.FIRST.CANCEL_BUTTON}
+					onClick={onButtonsClick[0]}
 				/>
 			</div>
 		</form>
