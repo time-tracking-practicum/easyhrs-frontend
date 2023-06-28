@@ -13,6 +13,10 @@
 	animation: emergence 2s ease-in-out;
 }
 
+.main__animation_active {
+	animation: emergence 2s ease-in-out;
+}
+
 .main__tasks {
 	display: flex;
 	gap: 12px;
