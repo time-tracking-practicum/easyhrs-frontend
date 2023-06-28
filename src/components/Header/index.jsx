@@ -12,7 +12,7 @@ function Header({ sectionName, newtask, branch, timer, setDropTimer }) {
 	const navigate = useNavigate();
 	const handleDrop = () => {
 		setDropTimer(true);
-	}
+	};
 
 	return (
 		<div className="header">
@@ -36,7 +36,11 @@ function Header({ sectionName, newtask, branch, timer, setDropTimer }) {
 					</div>
 				)}
 				{timer && (
-					<button type='button' className="header__navlink-timer" onClick={handleDrop}>
+					<button
+						type="button"
+						className="header__navlink-timer"
+						onClick={handleDrop}
+					>
 						Свернуть
 					</button>
 				)}

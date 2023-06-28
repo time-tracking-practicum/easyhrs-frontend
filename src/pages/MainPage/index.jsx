@@ -1,5 +1,5 @@
 import './MainPage.css';
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import Task from '../../components/Task';
 import TasksHeader from '../../components/TasksHeader';

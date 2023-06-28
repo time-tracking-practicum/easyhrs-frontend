@@ -4,15 +4,15 @@
 	align-items: center;
 	margin-top: 198px;
 	position: absolute;
-    width: 100%;
+	width: 100%;
 }
 
 .timer__container_drop {
 	padding: 16px 40px;
 	justify-content: space-between;
-    flex-direction: row;
+	flex-direction: row;
 	bottom: 0;
-    background: rgba(169, 156, 203, 1);
+	background: rgba(169, 156, 203, 1);
 }
 
 .timer__block {
