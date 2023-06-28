@@ -21,4 +21,11 @@
 	margin: 0;
 	align-items: end;
 	gap: 12px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.tasksHeader__name-container:hover {
+	opacity: 0.6;
 }

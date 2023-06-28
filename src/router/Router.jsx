@@ -26,7 +26,7 @@ export default function Router() {
 	useEffect(() => {
 		taskApi
 			.getTasks()
-			.then((data) => setTasks(data.results))
+			.then((data) => setTasks([...data.results]))
 			.catch((error) => console.log(error));
 	}, []);
 
