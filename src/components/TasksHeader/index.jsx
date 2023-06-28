@@ -2,15 +2,17 @@ import './TasksHeader.css';
 import { useEffect, useState } from 'react';
 
 const TasksHeader = ({ sortTasksByName }) => {
-	const [state, setState] = useState(null);
+	const [isSort, setIsSort] = useState(false);
+	const [state, setState] = useState(true);
 	const handleClick = () => {
+		if (!isSort) setIsSort(true);
 		setState(!state);
 	};
 
 	useEffect(() => {
-		if (state === null) return;
+		if (!isSort) return;
 		sortTasksByName(state);
-	}, [state]);
+	}, [state, isSort]);
 
 	return (
 		<div className="task tasksHeader">
