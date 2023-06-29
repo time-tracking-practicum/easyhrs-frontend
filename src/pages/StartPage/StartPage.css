@@ -77,14 +77,14 @@
 	min-height: 984px;
 	background-color: #ffffff;
 	border-radius: 40px;
-	animation: emergence 2s ease-in-out, left-shift 2s ease-in-out forwards 3s;
+	animation: emergence 1s ease-in-out, left-shift 1s ease-in-out forwards 1s;
 }
 
 .start__container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	animation: disappearance 1.5s ease-in-out forwards 1.5s;
+	animation: disappearance 1s ease-in-out forwards 1s;
 }
 
 .start__title {
@@ -94,20 +94,20 @@
 	line-height: 113px;
 	color: #6750a4;
 	margin: 0;
-	animation: disappearance 1.5s ease-in-out forwards 1.5s,
-		emergence-title 1.5s ease-in-out forwards 3s;
+	animation: disappearance 1s ease-in-out forwards 1s,
+		emergence-title 1s ease-in-out forwards 1s;
 }
 
 .start__image {
 	width: 167px;
 	height: 167px;
-	animation: disappearance 1.5s ease-in-out forwards 1.5s;
+	animation: disappearance 1s ease-in-out forwards 1s;
 }
 
 .start__container-gradient {
 	visibility: hidden;
 	opacity: 0;
-	animation: gradient 1s ease-in-out forwards 3s;
+	animation: gradient 1s ease-in-out forwards 2s;
 }
 
 .start__gradien-top {
@@ -143,29 +143,5 @@
 .start__block > .authForm {
 	opacity: 0;
 	visibility: hidden;
-	animation: visible-form 1s ease-in-out forwards 2s;
-}
-
-.start__logo-top {
-	position: absolute;
-	right: 15px;
-	top: -265px;
-	width: 645px;
-	height: 657px;
-}
-
-.start__logo-left {
-	position: absolute;
-	left: 130px;
-	top: 200px;
-	width: 568px;
-	height: 577px;
-}
-
-.start__logo-bottom {
-	position: absolute;
-	right: -115px;
-	bottom: -10px;
-	width: 500px;
-	height: 500px;
+	animation: visible-form 1s ease-in-out forwards;
 }
