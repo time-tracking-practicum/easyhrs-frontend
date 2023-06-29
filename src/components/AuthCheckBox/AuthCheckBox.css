@@ -24,6 +24,7 @@
 	border: 1px #ddd solid;
 	border-radius: 50%;
 	margin-right: 16px;
+	cursor: pointer;
 }
 
 .authForm__checkbox-label_checked {
