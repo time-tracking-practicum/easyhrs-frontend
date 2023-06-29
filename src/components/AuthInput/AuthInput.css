@@ -59,6 +59,18 @@
 	cursor: pointer;
 }
 
+.authForm__showPassBtn_active {
+	width: 22px;
+	height: 22px;
+	background-image: url(../../images/showIcon.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.authForm__showPassBtn_active:hover {
+	cursor: pointer;
+}
+
 .authForm__errorIcon {
 	width: 22px;
 	height: 22px;

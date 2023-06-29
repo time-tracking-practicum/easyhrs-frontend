@@ -50,7 +50,11 @@ export default function AuthInput({
 				{!isValid && onError && <div className="authForm__errorIcon" />}
 				{hidden && !onError && (
 					<div
-						className="authForm__showPassBtn"
+						className={
+							passwordIsShown
+								? 'authForm__showPassBtn_active'
+								: 'authForm__showPassBtn'
+						}
 						onClick={showPassword}
 						aria-hidden="true"
 					/>
