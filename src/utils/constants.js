@@ -41,17 +41,20 @@ export const nameInputs = [
 	{
 		name: 'firstName',
 		label: 'Имя',
+		type: 'text',
 	},
 	{
 		name: 'lastName',
 		label: 'Фамилия',
+		type: 'text',
 	},
 ];
 
 export const nickInput = [
 	{
-		name: 'nickname',
+		name: 'username',
 		label: 'Никнейм',
+		type: 'text',
 	},
 ];
 
@@ -104,5 +107,6 @@ export const FORM_STEP = {
 export const INITIAL_FORM_STATE = {
 	email: '',
 	password: '',
+	newPassword: '',
 	confirmPassword: '',
 };

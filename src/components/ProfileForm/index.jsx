@@ -1,6 +1,6 @@
 import './ProfileForm.css';
 import { useEffect, useState } from 'react';
-import buttonImg from '../../images/icon-profileAddButton.svg';
+
 import ProfileFormButton from '../ProfileFormButton';
 
 export default function ProfileForm({
@@ -10,6 +10,7 @@ export default function ProfileForm({
 	onSubmit,
 	showSubmitButton,
 	formName,
+	buttonIcon,
 }) {
 	const [inputsShown, setinputsShown] = useState(false);
 
@@ -27,7 +28,7 @@ export default function ProfileForm({
 		<>
 			{!inputsShown && (
 				<ProfileFormButton
-					buttonImg={buttonImg}
+					buttonImg={buttonIcon}
 					onclick={toggleInputs}
 					text={text}
 				/>
