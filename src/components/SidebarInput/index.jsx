@@ -9,6 +9,7 @@ const SidebarInput = ({
 	value,
 	errText,
 	onChange,
+	inputRef,
 	min,
 	max,
 	required,
@@ -32,6 +33,7 @@ const SidebarInput = ({
 				type={isPassShown ? 'text' : type}
 				name={name}
 				id={name}
+				ref={inputRef}
 				className={`sidebar__input ${isError && 'sidebar__input_text-red'}`}
 				value={value}
 				autoComplete={autoComplete}

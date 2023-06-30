@@ -110,3 +110,20 @@ export const INITIAL_FORM_STATE = {
 	newPassword: '',
 	confirmPassword: '',
 };
+
+export const CREATE_TASK_FORM_TEXT = {
+	HEADING: 'Новая задача',
+	NEW_TASK_NAME_PLACEHOLDER: 'Название задачи',
+	PROJECT_PLACEHOLDER: 'Проект',
+	START_TIME_PLACEHOLDER: 'Старт задачи',
+	DEADLINE_PLACEHOLDER: 'Дедлайн',
+	IS_URGENT_RADIO: 'Срочно',
+	IS_IMPORTANT_RADIO: 'Важно',
+	CONTINUE_BUTTON: 'Создать задачу',
+};
+
+export const INITIAL_CREATE_TASK_INPUTS_STATE = {
+	taskName: '',
+	startTime: '',
+	deadline: '',
+};
