@@ -22,25 +22,24 @@ export default function Router() {
 	const sessionToken = sessionStorage.getItem('token');
 	const nav = useNavigate();
 
-	// функция загрузки задач с сервера
+	// функция загрузки задач текущего пользователя с сервера
+	async function setCurrentUserTasks() {
+		try {
+			const currentUserTasks = await taskApi.getUserTasks();
+			setTasks(currentUserTasks);
+		} catch (e) {
+			console.log(`Ошибка при загрузке задач текущего пользователя: ${e}`);
+		}
+	}
+
 	const createTaskAndUpdate = (task) => {
 		taskApi
 			.createTask(task)
-			.then(() => getTasks())
+			.then(() => setCurrentUserTasks())
 			.catch((err) => console.error(err));
 	};
 
-
 	useEffect(() => {
-		async function setCurrentUserTasks() {
-			try {
-				const currentUserTasks = await taskApi.getUserTasks();
-				setTasks(currentUserTasks);
-			} catch (e) {
-				console.log(`Ошибка при загрузке задач текущего пользователя: ${e}`);
-			}
-		}
-
 		setCurrentUserTasks();
 	}, []);
 
