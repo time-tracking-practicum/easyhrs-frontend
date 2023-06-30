@@ -10,6 +10,7 @@ export default function Matrix({
 	blockColor,
 	subtitle,
 	subtitleColor,
+	handleButtonClick,
 }) {
 	return (
 		<div className="matrix">
@@ -24,7 +25,9 @@ export default function Matrix({
 				<h4 className="matrix__subtitle" style={{ color: subtitleColor }}>
 					{subtitle}
 				</h4>
-				<button className="matrix__add-btn">+</button>
+				<button onClick={handleButtonClick} className="matrix__add-btn">
+					+
+				</button>
 				{tasks.length > 0 ? (
 					<ul className="matrix__task-list">
 						{tasks.map((task) => (
