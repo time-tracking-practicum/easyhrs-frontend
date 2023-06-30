@@ -72,7 +72,10 @@ export default function Router() {
 						path="/matrix"
 						element={
 							<ProtectedRoute>
-								<MatrixPage tasks={tasks} />
+								<MatrixPage
+									handleCreateTask={createTaskAndUpdate}
+									tasks={tasks}
+								/>
 							</ProtectedRoute>
 						}
 					/>

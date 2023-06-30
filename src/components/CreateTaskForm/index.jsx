@@ -112,6 +112,7 @@ const CreateTaskForm = ({
 					<SidebarSelect
 						items={projectList}
 						setItems={setProjectList}
+						required
 						placeholder={TEXT.PROJECT_PLACEHOLDER}
 					/>
 					<SidebarDatePicker
@@ -163,7 +164,9 @@ const CreateTaskForm = ({
 
 				<div className="createTaskForm__btnContainer createTaskForm__btnContainer_justify-center">
 					<SidebarButton
-						disabled={!isDateCorrect}
+						disabled={
+							!isDateCorrect || !projectList.selected || !inputValues.taskName
+						}
 						size="primary"
 						type="submit"
 						text={TEXT.CONTINUE_BUTTON}
