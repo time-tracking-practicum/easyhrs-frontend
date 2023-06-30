@@ -6,6 +6,15 @@
 	background-color: #ffffff;
 	border-radius: 40px;
 	overflow: auto;
+	position: relative;
+}
+
+.main__animation_active {
+	animation: emergence 2s ease-in-out;
+}
+
+.main__animation_active {
+	animation: emergence 2s ease-in-out;
 }
 
 .main__tasks {

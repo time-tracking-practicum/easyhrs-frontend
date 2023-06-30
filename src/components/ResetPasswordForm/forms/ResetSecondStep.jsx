@@ -10,7 +10,7 @@ const ResetSecondStep = ({
 	onSubmit,
 	onButtonsClick,
 }) => {
-	const arePasswordsEqual = values.password === values.confirmPassword;
+	const arePasswordsEqual = values.newPassword === values.confirmPassword;
 
 	return (
 		<>
@@ -23,19 +23,19 @@ const ResetSecondStep = ({
 			>
 				<fieldset className="resetForm__fieldset">
 					{!arePasswordsEqual &&
-						!!values.password &&
+						!!values.newPassword &&
 						!!values.confirmPassword && (
 							<span className="resetForm-error">Пароли не совпадают</span>
 						)}
 					<SidebarInput
-						value={values.password}
+						value={values.newPassword}
 						type="password"
-						name="password"
+						name="newPassword"
 						hidden
 						autoComplete="new-password"
-						errText={errors.password}
+						errText={errors.newPassword}
 						onChange={handleChange}
-						error={errors.password}
+						error={errors.newPassword}
 						min={6}
 						required
 						isValid={isValid}

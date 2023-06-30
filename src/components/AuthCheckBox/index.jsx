@@ -2,21 +2,23 @@ import './AuthCheckBox.css';
 
 export default function AuthCheckBox({ isCheckboxChecked, toggleCheckBox }) {
 	return (
-		<label className="authForm__checkbox-container" htmlFor="hello">
-			<input
-				type="checkbox"
-				id="hello"
-				className="authForm__checkbox"
-				checked={isCheckboxChecked}
-				onChange={toggleCheckBox}
-			/>
-			<span
+		<div className="authForm__checkbox-container">
+			<label
 				className={`authForm__checkbox-label ${
 					isCheckboxChecked ? 'authForm__checkbox-label_checked' : ''
 				}`}
 				aria-hidden
-			/>
-			Запомнить меня
-		</label>
+				htmlFor="hello"
+			>
+				<input
+					type="checkbox"
+					id="hello"
+					className="authForm__checkbox"
+					checked={isCheckboxChecked}
+					onChange={toggleCheckBox}
+				/>
+			</label>
+			<p className="authForm__checkbox-text">Запомнить меня</p>
+		</div>
 	);
 }

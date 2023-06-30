@@ -88,7 +88,7 @@ export default function Router() {
 						path="/profile"
 						element={
 							<ProtectedRoute>
-								<ProfilePage />
+								<ProfilePage onSetCurrentUser={setCurrentuser} />
 							</ProtectedRoute>
 						}
 					/>

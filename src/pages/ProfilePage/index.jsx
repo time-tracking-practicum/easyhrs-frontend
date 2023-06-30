@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
@@ -12,26 +13,36 @@ import roundArrow from '../../images/icon-roundArrow.svg';
 import ProfileFormExitButton from '../../components/ProfileFormExitButton';
 import Sidebar from '../../components/Sidebar';
 import ResetPasswordForm from '../../components/ResetPasswordForm';
+import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import userApi from '../../utils/UserApi';
+import plusIcon from '../../images/icon-profileAddButton.svg';
 
-export default function ProfilePage() {
-	const { name, email = 'Почта', nickname } = useContext(UserContext);
+export default function ProfilePage({ onSetCurrentUser }) {
+	const { email, username, firstName, lastName, id, photo } =
+		useContext(UserContext);
 	const [disabledNameInputs, setDisabledNameInputs] = useState(true);
 	const [disabledNicknameInputs, setDisabledNicknameInputs] = useState(true);
 	const [disabledEmailInputs, setDisabledEmailInputs] = useState(true);
 	const [isPasswordFormOpen, setIsPasswordFormOpen] = useState(false);
-	const { userEmail } = useContext(UserContext);
 	const nav = useNavigate();
+	const { values, handleChange, errors } = useFormAndValidation({
+		firstName: `${firstName}`,
+		lastName: `${lastName}`,
+		username: `${username}`,
+		email: `${email}`,
+		photo: `${photo}`,
+	});
 
 	const handleEnableInputs = (input) => {
 		switch (input) {
 			case 'name':
-				setDisabledNameInputs(false);
+				setDisabledNameInputs(!disabledNameInputs);
 				break;
 			case 'email':
-				setDisabledEmailInputs(false);
+				setDisabledEmailInputs(!disabledEmailInputs);
 				break;
 			case 'nickname':
-				setDisabledNicknameInputs(false);
+				setDisabledNicknameInputs(!disabledNicknameInputs);
 				break;
 			default:
 				setDisabledNameInputs(true);
@@ -39,11 +50,6 @@ export default function ProfilePage() {
 				setDisabledEmailInputs(true);
 				break;
 		}
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		handleEnableInputs(e.target.closest('form').name);
 	};
 
 	const handleExit = () => {
@@ -60,58 +66,149 @@ export default function ProfilePage() {
 		setIsPasswordFormOpen(false);
 	};
 
+	const setCurrentUserData = (newData) => {
+		onSetCurrentUser({
+			email: newData.email,
+			username: newData.username,
+			firstName: newData.first_name,
+			lastName: newData.last_name,
+			id: newData.id,
+			photo: newData.photo,
+		});
+	};
+	const handlePatchUserName = async (e) => {
+		try {
+			e.preventDefault();
+			if (values.firstName !== firstName || values.lastName !== lastName) {
+				const newData = await userApi.changeUserData(
+					{
+						email: values.email,
+						first_name: values.firstName,
+						last_name: values.lastName,
+					},
+					id
+				);
+				setCurrentUserData(newData);
+				handleEnableInputs('name');
+				return;
+			}
+			handleEnableInputs('name');
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const handlePatchUserNickname = async (e) => {
+		try {
+			e.preventDefault();
+			if (values.username !== username) {
+				const newData = await userApi.changeUserData(
+					{
+						email: values.email,
+						username: values.username,
+					},
+					id
+				);
+				setCurrentUserData(newData);
+				handleEnableInputs('nickname');
+				return;
+			}
+			handleEnableInputs('nickname');
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const handlePatchUserEmail = async (e) => {
+		try {
+			e.preventDefault();
+			if (!errors.email && values.email !== email) {
+				console.log(errors);
+				console.log(e.target);
+				const newData = await userApi.changeUserData(
+					{
+						email: values.email,
+					},
+					id
+				);
+				setCurrentUserData(newData);
+				handleEnableInputs('email');
+				return;
+			}
+			if (values.email === email) handleEnableInputs('email');
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<section className="profile">
 			<Header sectionName={text.profileSectionName} />
 			<div className="profile__container">
 				<h2 className="profile__subtitle">{text.profileUserDataSubtitle}</h2>
-				<ProfileAvatarSection text={text.profileAvatarBtnText} />
+				<ProfileAvatarSection
+					image={values.photo}
+					onchange={handleChange}
+					onSetCurrentUser={setCurrentUserData}
+				/>
 				<ProfileForm
 					formName="nameForm"
 					text={text.profileNameFormText}
-					showInputs={name && email}
+					showInputs={firstName || lastName}
 					showSubmitButton={!disabledNameInputs}
-					onSubmit={handleSubmit}
+					onSubmit={handlePatchUserName}
+					buttonIcon={plusIcon}
 				>
 					{text.nameInputs.map((input) => (
 						<ProfileInput
+							type={input.type}
 							name={input.name}
 							label={input.label}
 							key={input.name}
+							value={values[input.name]}
 							disabled={disabledNameInputs}
 							onEnable={() => handleEnableInputs('name')}
+							onChange={handleChange}
 						/>
 					))}
 				</ProfileForm>
 				<ProfileForm
 					formName="nicknameForm"
 					text={text.profileNicknameFormText}
-					showInputs={nickname}
+					showInputs={username}
 					showSubmitButton={!disabledNicknameInputs}
-					onSubmit={handleSubmit}
+					onSubmit={handlePatchUserNickname}
+					buttonIcon={plusIcon}
 				>
 					{text.nickInput.map((input) => (
 						<ProfileInput
+							type={input.type}
 							name={input.name}
 							label={input.label}
 							key={input.name}
+							value={values[input.name]}
 							disabled={disabledNicknameInputs}
 							onEnable={() => handleEnableInputs('nickname')}
+							onChange={handleChange}
 						/>
 					))}
 				</ProfileForm>
 				<h2 className="profile__subtitle">{text.profileLoginInfoSubtitle}</h2>
 				<ProfileForm
-					showInputs={email}
+					showInputs
 					showSubmitButton={!disabledEmailInputs}
-					onSubmit={handleSubmit}
+					onSubmit={handlePatchUserEmail}
+					buttonIcon={plusIcon}
 				>
 					<ProfileInput
+						type="email"
 						name="email"
 						label="E-mail"
 						disabled={disabledEmailInputs}
 						onEnable={() => handleEnableInputs('email')}
-						value={userEmail}
+						value={values.email}
+						onChange={handleChange}
+						required
 					/>
 				</ProfileForm>
 				<ProfileFormButton

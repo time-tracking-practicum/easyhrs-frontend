@@ -4,6 +4,7 @@ import ForgotSecondStep from './forms/ForgotSecondStep';
 import ResetFirstStep from './forms/ResetFirstStep';
 import ResetSecondStep from './forms/ResetSecondStep';
 import ResetThirdStep from './forms/ResetThirdStep';
+import userApi from '../../utils/UserApi';
 
 const FormSwitcher = ({
 	currentForm,
@@ -18,12 +19,23 @@ const FormSwitcher = ({
 	// Ниже расположена логика сабмита всех форм по порядку
 	const handleSubmitResetFirst = () => {
 		setCurrentForm(STEP.RESET.SECOND);
-		resetValues();
 	};
 
-	const handleSubmitResetSecond = () => {
-		setCurrentForm(STEP.RESET.THIRD);
-		resetValues();
+	const handleSubmitResetSecond = async (e) => {
+		e.preventDefault();
+		try {
+			const response = await userApi.changeUserPassword({
+				new_password: values.newPassword,
+				current_password: values.password,
+			});
+			if (response.status === 204) {
+				setCurrentForm(STEP.RESET.THIRD);
+				resetValues();
+			}
+		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.log(error);
+		}
 	};
 
 	const handleSubmitResetThird = () => {

@@ -4,11 +4,14 @@ import './ProfileInput.css';
 import icon from '../../images/icon-inputPencil.svg';
 
 export default function ProfileInput({
+	type,
 	label,
 	name,
 	value,
 	disabled,
 	onEnable,
+	onChange,
+	required,
 }) {
 	return (
 		<div className="profile__input-container">
@@ -16,13 +19,15 @@ export default function ProfileInput({
 				{label}
 			</label>
 			<input
-				type="text"
+				type={type}
 				name={name}
 				id={name}
 				disabled={disabled}
 				className="profile__input"
 				value={value}
 				placeholder={label}
+				onChange={onChange}
+				required={required}
 			/>
 			{disabled && (
 				<img

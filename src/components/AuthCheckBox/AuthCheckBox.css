@@ -1,19 +1,7 @@
 .authForm__checkbox-container {
-	margin-top: 24px;
 	display: flex;
+	margin: 24px 0 0;
 	align-items: center;
-	font-size: 14px;
-	line-height: 20px;
-	letter-spacing: 0.1px;
-}
-
-.authForm__checkbox-container input[type='checkbox'] {
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
 }
 
 .authForm__checkbox-label {
@@ -21,9 +9,10 @@
 	height: 24px;
 	width: 24px;
 	background: #fff;
-	border: 1px #ddd solid;
+	border: 1px #6750a4 solid;
 	border-radius: 50%;
 	margin-right: 16px;
+	cursor: pointer;
 }
 
 .authForm__checkbox-label_checked {
@@ -32,4 +21,19 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	border: 1px #6750a4 solid;
+}
+
+.authForm__checkbox {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.authForm__checkbox-text {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.42;
+	letter-spacing: 0.1px;
 }

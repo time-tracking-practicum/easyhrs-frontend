@@ -1,51 +1,27 @@
 import './MatrixPage.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Matrix from '../../components/Matrix';
 
 export default function MatrixPage({ tasks }) {
-	// функция получения важных и срочных задач
-	const getUrgImpTasks = () => {
-		let urgImp = [];
-		for (let i = 0; i < tasks.length; i += 1) {
-			if (tasks[i].is_urgent && tasks[i].is_important) {
-				urgImp.push(tasks[i]);
-			}
-		}
-		return urgImp;
-	};
+	const [urgimp, setUrgimp] = useState([]); // стейт задач Важное, срочное
+	const [urg, setUrg] = useState([]); // стейт задач Срочное, неважное
+	const [imp, setImp] = useState([]); // стейт задач Важное, несрочное
+	const [notUrgimp, setNotUrgimp] = useState([]); // стейт задач Несрочное, неважное
 
-	// функция получения неважных и срочных задач
-	const getUrgTasks = () => {
-		let urg = [];
-		for (let i = 0; i < tasks.length; i += 1) {
+	useEffect(() => {
+		// eslint-disable-next-line no-plusplus
+		for (let i = 0; i < tasks.length; i++) {
 			if (tasks[i].is_urgent && tasks[i].is_important) {
-				urg.push(tasks[i]);
+				setUrgimp((prev) => [...prev, tasks[i]]);
+			} else if (tasks[i].is_urgent && !tasks[i].is_important) {
+				setUrg((prev) => [...prev, tasks[i]]);
+			} else if (!tasks[i].is_urgent && tasks[i].is_important) {
+				setImp((prev) => [...prev, tasks[i]]);
+			} else if (!tasks[i].is_urgent && !tasks[i].is_important) {
+				setNotUrgimp((prev) => [...prev, tasks[i]]);
 			}
 		}
-		return urg;
-	};
-
-	// функция получения важных и несрочных задач
-	const getImpTasks = () => {
-		let imp = [];
-		for (let i = 0; i < tasks.length; i += 1) {
-			if (tasks[i].is_urgent && tasks[i].is_important) {
-				imp.push(tasks[i]);
-			}
-		}
-		return imp;
-	};
-
-	// функция получения неважных и несрочных задач
-	const getNotUrgImpTasks = () => {
-		let notUrgImp = [];
-		for (let i = 0; i < tasks.length; i += 1) {
-			if (!tasks[i].is_urgent && !tasks[i].is_important) {
-				notUrgImp.push(tasks[i]);
-			}
-		}
-		return notUrgImp;
-	};
+	}, [MatrixPage]);
 
 	return (
 		<section className="matrixpage">
@@ -56,28 +32,28 @@ export default function MatrixPage({ tasks }) {
 					blockColor="#FFDEDE"
 					subtitle="Сделай это сейчас"
 					subtitleColor="#D10000"
-					tasks={getUrgImpTasks()}
+					tasks={urgimp}
 				/>
 				<Matrix
 					title="Важное, несрочное"
 					blockColor="#C1F199"
 					subtitle="Решите , когда это сделать"
 					subtitleColor="#337300"
-					tasks={getImpTasks()}
+					tasks={urg}
 				/>
 				<Matrix
 					title="Срочное, неважное"
 					blockColor="#FFEA9F"
 					subtitle="Делегируй"
 					subtitleColor="#EE7200"
-					tasks={getUrgTasks()}
+					tasks={imp}
 				/>
 				<Matrix
 					title="Несрочное, неважное"
 					blockColor="#BDEBFF"
 					subtitle="Сделай это, когда будет не чего делать"
 					subtitleColor="#0050C7"
-					tasks={getNotUrgImpTasks()}
+					tasks={notUrgimp}
 				/>
 			</div>
 		</section>

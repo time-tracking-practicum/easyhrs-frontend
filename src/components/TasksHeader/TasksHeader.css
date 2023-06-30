@@ -1,0 +1,31 @@
+.tasksHeader {
+	box-sizing: border-box;
+	background: transparent;
+	padding: 21px 24px 21px 0;
+	border-bottom: 1px solid #aeaeae;
+	border-radius: 0;
+	font-size: 12px;
+	line-height: 14px;
+	letter-spacing: 1px;
+	justify-content: space-between;
+}
+
+.tasksHeader__container {
+	width: 95%;
+	height: auto;
+	margin: 0;
+}
+
+.tasksHeader__name-container {
+	justify-content: flex-start;
+	margin: 0;
+	align-items: end;
+	gap: 12px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.tasksHeader__name-container:hover {
+	opacity: 0.6;
+}

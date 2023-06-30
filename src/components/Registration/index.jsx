@@ -5,6 +5,7 @@ import AuthInput from '../AuthInput';
 import * as text from '../../utils/constants';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import authApi from '../../utils/AuthApi';
+import userApi from '../../utils/UserApi';
 
 export default function Registration({
 	onFormChange,
@@ -36,14 +37,28 @@ export default function Registration({
 				});
 				if (isCheckboxChecked) {
 					localStorage.setItem('token', loginData.auth_token);
-					const userData = await authApi.getUserData();
-					onSetCurrentUser({ userEmail: userData.email });
+					const userData = await userApi.getCurrentUser();
+					onSetCurrentUser({
+						email: userData.email,
+						firstName: userData.first_name,
+						lastName: userData.last_name,
+						username: userData.username,
+						id: userData.id,
+						photo: userData.photo,
+					});
 					nav('/main');
 					return;
 				}
 				sessionStorage.setItem('token', loginData.auth_token);
-				const userData = await authApi.getUserData();
-				onSetCurrentUser({ userEmail: userData.email });
+				const userData = await userApi.getCurrentUser();
+				onSetCurrentUser({
+					email: userData.email,
+					firstName: userData.first_name,
+					lastName: userData.last_name,
+					username: userData.username,
+					id: userData.id,
+					photo: userData.photo,
+				});
 				nav('/main');
 			} catch (error) {
 				console.log(error);
