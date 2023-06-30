@@ -22,23 +22,25 @@ export default function Router() {
 	const sessionToken = sessionStorage.getItem('token');
 	const nav = useNavigate();
 
-	// функция загрузки задач с сервера
-	const getTasks = () => {
-		taskApi
-			.getTasks()
-			.then((data) => setTasks(data))
-			.catch((error) => console.log(error));
-	};
+	// функция загрузки задач текущего пользователя с сервера
+	async function setCurrentUserTasks() {
+		try {
+			const currentUserTasks = await taskApi.getUserTasks();
+			setTasks(currentUserTasks);
+		} catch (e) {
+			console.log(`Ошибка при загрузке задач текущего пользователя: ${e}`);
+		}
+	}
 
 	const createTaskAndUpdate = (task) => {
 		taskApi
 			.createTask(task)
-			.then(() => getTasks())
+			.then(() => setCurrentUserTasks())
 			.catch((err) => console.error(err));
 	};
 
 	useEffect(() => {
-		getTasks();
+		setCurrentUserTasks();
 	}, []);
 
 	// функция проверки токена в памяти браузера

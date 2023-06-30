@@ -11,9 +11,11 @@ class TaskApi {
 		return Promise.reject(new Error(`Ошибка: ${res.status}`));
 	};
 
-	async getTasks() {
-		const token =
-			localStorage.getItem('token') || sessionStorage.getItem('token');
+	static getToken = () =>
+		localStorage.getItem('token') || sessionStorage.getItem('token');
+
+	async getUserTasks() {
+		const token = TaskApi.getToken();
 		const res = await fetch(`${this._url}/tasks/list_tasks/`, {
 			method: 'GET',
 			headers: {
