@@ -23,13 +23,6 @@ export default function Router() {
 	const nav = useNavigate();
 
 	// функция загрузки задач с сервера
-	const getTasks = () => {
-		taskApi
-			.getTasks()
-			.then((data) => setTasks(data))
-			.catch((error) => console.log(error));
-	};
-
 	const createTaskAndUpdate = (task) => {
 		taskApi
 			.createTask(task)
@@ -37,8 +30,18 @@ export default function Router() {
 			.catch((err) => console.error(err));
 	};
 
+
 	useEffect(() => {
-		getTasks();
+		async function setCurrentUserTasks() {
+			try {
+				const currentUserTasks = await taskApi.getUserTasks();
+				setTasks(currentUserTasks);
+			} catch (e) {
+				console.log(`Ошибка при загрузке задач текущего пользователя: ${e}`);
+			}
+		}
+
+		setCurrentUserTasks();
 	}, []);
 
 	// функция проверки токена в памяти браузера
