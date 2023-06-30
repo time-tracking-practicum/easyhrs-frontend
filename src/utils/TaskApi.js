@@ -12,10 +12,13 @@ class TaskApi {
 	};
 
 	async getTasks() {
-		const res = await fetch(`${this._url}/tasks/`, {
+		const token =
+			localStorage.getItem('token') || sessionStorage.getItem('token');
+		const res = await fetch(`${this._url}/tasks/list_tasks/`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
+				authorization: `Token ${token}`,
 			},
 		});
 		return TaskApi._checkResult(res);
@@ -27,6 +30,20 @@ class TaskApi {
 			headers: {
 				'Content-Type': 'application/json',
 			},
+		});
+		return TaskApi._checkResult(res);
+	}
+
+	async createTask(task) {
+		const token =
+			localStorage.getItem('token') || sessionStorage.getItem('token');
+		const res = await fetch(`${this._url}/tasks/`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				authorization: `Token ${token}`,
+			},
+			body: JSON.stringify(task),
 		});
 		return TaskApi._checkResult(res);
 	}

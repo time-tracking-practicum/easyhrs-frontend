@@ -15,6 +15,9 @@
 	--primary-background-color: #6750a4;
 	--secondary-background-color: #fff;
 	--light-outline-color: #79747e;
+	--scrollbar-color: #938f99;
+	--scrollbar-background-color: transparent;
+	--light-text-color: #49454f;
 	--link-color: #4743e0;
 	--error-color: #bc0000;
 }

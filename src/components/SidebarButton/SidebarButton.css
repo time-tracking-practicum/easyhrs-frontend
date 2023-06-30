@@ -3,6 +3,12 @@
 	cursor: pointer;
 }
 
+.sidebar__button:disabled {
+	cursor: default;
+	background-color: rgba(29, 27, 32, 0.12);
+	color: var(--light-outline-color);
+}
+
 .sidebar__button_primary {
 	width: 202px;
 	height: 52px;

@@ -8,7 +8,7 @@ import './Header.css';
 // sectionName='name': Название секции,
 // newtask: булевое значение на добавление кнопки,
 // branch='name': Название ветки с возвратом назад
-function Header({ sectionName, newtask, branch, timer }) {
+function Header({ sectionName, newtask, branch, timer, onButtonClick }) {
 	const navigate = useNavigate();
 
 	return (
@@ -16,7 +16,9 @@ function Header({ sectionName, newtask, branch, timer }) {
 			<div className="header__container">
 				{sectionName && <h2 className="header__section">{sectionName}</h2>}
 				{newtask && (
-					<button className="header__button-task">Создать задачу</button>
+					<button className="header__button-task" onClick={onButtonClick}>
+						Создать задачу
+					</button>
 				)}
 				{branch && (
 					<div className="header__nav-container">

@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import './SidebarButton.css';
 
-const SidebarButton = ({ text, type, size, onClick }) => (
+const SidebarButton = ({ text, type, size, onClick, disabled }) => (
 	<button
 		className={`sidebar__button ${
 			type === 'submit'
@@ -18,6 +18,7 @@ const SidebarButton = ({ text, type, size, onClick }) => (
 		}`}
 		type={type === 'submit' ? 'submit' : 'button'}
 		onClick={onClick}
+		disabled={disabled}
 	>
 		{text}
 	</button>

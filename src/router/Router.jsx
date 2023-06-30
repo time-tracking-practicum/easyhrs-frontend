@@ -23,11 +23,22 @@ export default function Router() {
 	const nav = useNavigate();
 
 	// функция загрузки задач с сервера
-	useEffect(() => {
+	const getTasks = () => {
 		taskApi
 			.getTasks()
-			.then((data) => setTasks(data.results))
+			.then((data) => setTasks(data))
 			.catch((error) => console.log(error));
+	};
+
+	const createTaskAndUpdate = (task) => {
+		taskApi
+			.createTask(task)
+			.then(() => getTasks())
+			.catch((err) => console.error(err));
+	};
+
+	useEffect(() => {
+		getTasks();
 	}, []);
 
 	// функция проверки токена в памяти браузера
@@ -50,7 +61,10 @@ export default function Router() {
 						path="/main"
 						element={
 							<ProtectedRoute>
-								<MainPage tasks={tasks} />
+								<MainPage
+									handleCreateTask={createTaskAndUpdate}
+									tasks={tasks}
+								/>
 							</ProtectedRoute>
 						}
 					/>
