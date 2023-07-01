@@ -8,7 +8,7 @@ class TaskApi {
 		if (res.ok) {
 			return res.json();
 		}
-		return Promise.reject(new Error(`Ошибка: ${res.status}`));
+		return Promise.reject(new Error(`Ошибка: ${res}`));
 	};
 
 	static getToken = () =>
@@ -46,6 +46,33 @@ class TaskApi {
 				authorization: `Token ${token}`,
 			},
 			body: JSON.stringify(task),
+		});
+		return TaskApi._checkResult(res);
+	}
+
+	async editTask(task) {
+		const token =
+			localStorage.getItem('token') || sessionStorage.getItem('token');
+		const res = await fetch(`${this._url}/tasks/${task.id}/`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+				authorization: `Token ${token}`,
+			},
+			body: JSON.stringify(task),
+		});
+		return TaskApi._checkResult(res);
+	}
+
+	async deleteTask(id) {
+		const token =
+			localStorage.getItem('token') || sessionStorage.getItem('token');
+		const res = await fetch(`${this._url}/tasks/${id}/`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				authorization: `Token ${token}`,
+			},
 		});
 		return TaskApi._checkResult(res);
 	}

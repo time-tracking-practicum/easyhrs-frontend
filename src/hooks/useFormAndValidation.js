@@ -4,7 +4,7 @@ import { isEmail } from 'validator';
 
 export function useFormAndValidation(inputValues) {
 	const [values, setValues] = useState(inputValues);
-	const [errors, setErrors] = useState(inputValues);
+	const [errors, setErrors] = useState({});
 	const [isValid, setIsValid] = useState(true);
 	const [validEmail, setValidEmail] = useState(false);
 

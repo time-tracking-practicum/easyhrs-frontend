@@ -122,6 +122,17 @@ export const CREATE_TASK_FORM_TEXT = {
 	CONTINUE_BUTTON: 'Создать задачу',
 };
 
+export const EDIT_TASK_FORM_TEXT = {
+	NEW_TASK_NAME_PLACEHOLDER: 'Название задачи',
+	PROJECT_PLACEHOLDER: 'Проект',
+	START_TIME_PLACEHOLDER: 'Старт задачи',
+	DEADLINE_PLACEHOLDER: 'Дедлайн',
+	IS_URGENT_RADIO: 'Срочно',
+	IS_IMPORTANT_RADIO: 'Важно',
+	CONTINUE_BUTTON: 'Сохранить',
+	DELETE_BUTTON: 'Удалить задачу',
+};
+
 export const INITIAL_CREATE_TASK_INPUTS_STATE = {
 	taskName: '',
 	startTime: '',

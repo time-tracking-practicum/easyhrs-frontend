@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './SidebarInput.css';
+import SidebarLabel from '../SidebarLabel';
+import EditInputButton from '../EditInputButton';
 
 const SidebarInput = ({
 	type,
@@ -9,8 +11,11 @@ const SidebarInput = ({
 	value,
 	errText,
 	onChange,
+	label,
 	inputRef,
 	min,
+	disabled,
+	isEditable,
 	max,
 	required,
 	error,
@@ -18,6 +23,11 @@ const SidebarInput = ({
 }) => {
 	const [isPassShown, setIsPassShown] = useState(false);
 	const isError = !!(!isValid && error);
+	const [isDisabled, setIsDisabled] = useState(true);
+
+	const handleEditButtonClick = () => {
+		setIsDisabled(false);
+	};
 
 	const togglePassVisibility = () => {
 		setIsPassShown(!isPassShown);
@@ -32,8 +42,10 @@ const SidebarInput = ({
 			<input
 				type={isPassShown ? 'text' : type}
 				name={name}
+				placeholder={label ? '' : placeholder}
 				id={name}
 				ref={inputRef}
+				disabled={isEditable ? isDisabled : disabled}
 				className={`sidebar__input ${isError && 'sidebar__input_text-red'}`}
 				value={value}
 				autoComplete={autoComplete}
@@ -41,7 +53,6 @@ const SidebarInput = ({
 				minLength={min}
 				maxLength={max}
 				required={required}
-				placeholder={placeholder}
 			/>
 
 			{isError && <span className="sidebar__input-errText">{errText}</span>}
@@ -53,6 +64,10 @@ const SidebarInput = ({
 					onClick={togglePassVisibility}
 					aria-hidden="true"
 				/>
+			)}
+			{label && <SidebarLabel placeholder={placeholder} />}
+			{isEditable && isDisabled && (
+				<EditInputButton onClick={handleEditButtonClick} />
 			)}
 		</div>
 	);

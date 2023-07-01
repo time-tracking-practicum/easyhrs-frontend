@@ -1,11 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import SidebarInput from '../SidebarInput';
 import SidebarButton from '../SidebarButton';
-import {
-	CREATE_TASK_FORM_TEXT as TEXT,
-	INITIAL_CREATE_TASK_INPUTS_STATE as INIT_INPUT_STATE,
-} from '../../utils/constants';
-import './CreateTaskForm.css';
+import { EDIT_TASK_FORM_TEXT as TEXT } from '../../utils/constants';
+import './EditTaskForm.css';
 import SidebarSelect from '../SidebarSelect';
 import SidebarCheckbox from '../SidebarCheckbox';
 import SidebarDatePicker from '../SidebarDatePicker';
@@ -13,63 +10,58 @@ import EmojiForm from '../EmojiForm';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import useDatePicker from '../../hooks/useDatePicker';
 import useCheckboxes from '../../hooks/useCheckboxes';
-import projectApi from '../../utils/ProjectApi';
+import ProfileFormButton from '../ProfileFormButton';
+import deleteIcon from '../../images/icon-delete.svg';
 
-const CreateTaskForm = ({
+const EditTaskForm = ({
+	task,
 	projectList,
 	setProjectList,
-	handleCreateTask,
-	setIsCreateTaskFormOpen,
-	isImportant,
-	isUrgent,
+	handleEditTask,
+	handleDeleteTask,
+	setIsEditTaskFormOpen,
 }) => {
 	const [isOpenEmoji, setIsOpenEmoji] = useState(false);
-	const [emoji, setEmoji] = useState('😛');
-
-	const inputRef = useRef(null);
+	const [emoji, setEmoji] = useState(task.emoji);
 
 	const {
 		values: inputValues,
-		handleChange: handleChangeInput,
+		handleChange: handleInputChange,
 		isValid: isInputValid,
 		errors: inputErrors,
-		setValues: setInputValues,
-	} = useFormAndValidation(INIT_INPUT_STATE);
-	const { dateValues, handleDateChange } = useDatePicker({
-		startTime: '',
-		deadline: '',
+	} = useFormAndValidation({
+		taskName: task.name,
 	});
-	const { checkboxesValue, handleCheckboxChange, setCheckboxValue } =
-		useCheckboxes({ isImportant: !!isImportant, isUrgent: !!isUrgent });
-
-	useEffect(() => {
-		inputRef.current.focus();
-	}, []);
+	const { dateValues, handleDateChange } = useDatePicker({
+		startTime: new Date(task.start_time),
+		deadline: new Date(task.deadline),
+	});
+	const { checkboxesValue, handleCheckboxChange } = useCheckboxes({
+		isImportant: !!task.is_important,
+		isUrgent: !!task.is_urgent,
+	});
 
 	function handleClickEmoji(e) {
 		e.preventDefault();
 		setIsOpenEmoji(!isOpenEmoji);
 	}
 
-	const unsetCheckboxes = () => {
-		setCheckboxValue({ isImportant: false, isUrgent: false });
-	};
-
-	const clearInputs = () => {
-		setInputValues(INIT_INPUT_STATE);
-	};
-
 	function handleEmojiSelect(em) {
 		setEmoji(em.native);
 		setIsOpenEmoji(false);
 	}
 
+	function handleDeleteButton() {
+		handleDeleteTask(task.id);
+		setIsEditTaskFormOpen(false);
+	}
+
 	const handleSubmitForm = (e) => {
 		e.preventDefault();
 		const newTask = {
+			id: task.id,
 			name: inputValues?.taskName,
 			project: projectList?.selected?.id,
-			status: 'appointed',
 			is_urgent: checkboxesValue?.isUrgent,
 			is_important: checkboxesValue?.isImportant,
 			emoji,
@@ -77,10 +69,8 @@ const CreateTaskForm = ({
 			start_time: new Date(dateValues?.startTime).toISOString(),
 		};
 
-		handleCreateTask(newTask);
-		setIsCreateTaskFormOpen(false);
-		unsetCheckboxes();
-		clearInputs();
+		handleEditTask(newTask);
+		setIsEditTaskFormOpen(false);
 	};
 
 	const isDateCorrect =
@@ -88,24 +78,26 @@ const CreateTaskForm = ({
 		new Date(dateValues.startTime).getTime();
 
 	return (
-		<div className="createTaskForm">
-			<h1 className="createTaskForm__title">{TEXT.HEADING}</h1>
+		<div className="editTaskForm">
+			<h1 className="editTaskForm__title">{task.name}</h1>
+			<span className="editTaskForm__status">{`В работе ${'НЕ ЗАДАНО'}`}</span>
 			<form
-				className="createTaskForm__form"
+				className="editTaskForm__form"
 				action="#"
 				name="reset-password"
 				onSubmit={handleSubmitForm}
 			>
-				<fieldset className="createTaskForm__fieldset">
+				<fieldset className="editTaskForm__fieldset">
 					<SidebarInput
 						value={inputValues.taskName}
-						inputRef={inputRef}
 						type="text"
+						label
+						isEditable
 						name="taskName"
 						autoComplete="off"
-						errText={inputErrors.taskName}
-						onChange={handleChangeInput}
-						error={inputErrors.taskName}
+						errText={inputErrors?.taskName}
+						onChange={handleInputChange}
+						error={inputErrors?.taskName}
 						required
 						isValid={isInputValid}
 						placeholder={TEXT.NEW_TASK_NAME_PLACEHOLDER}
@@ -114,6 +106,8 @@ const CreateTaskForm = ({
 						items={projectList}
 						setItems={setProjectList}
 						required
+						isEditable
+						label
 						placeholder={TEXT.PROJECT_PLACEHOLDER}
 					/>
 					<SidebarDatePicker
@@ -121,20 +115,23 @@ const CreateTaskForm = ({
 						minDate={new Date()}
 						maxDate={dateValues.deadline || undefined}
 						name="startTime"
+						label
+						isEditable
 						onChange={handleDateChange}
 						required
 						placeholder={TEXT.START_TIME_PLACEHOLDER}
 					/>
 					<SidebarDatePicker
 						value={dateValues.deadline}
-						disabled={!dateValues.startTime}
 						minDate={dateValues.startTime || new Date()}
 						name="deadline"
+						label
+						isEditable
 						onChange={handleDateChange}
 						required
 						placeholder={TEXT.DEADLINE_PLACEHOLDER}
 					/>
-					<div className="createTaskForm__checkbox-container">
+					<div className="editTaskForm__checkbox-container">
 						<SidebarCheckbox
 							isChecked={checkboxesValue.isImportant}
 							onChange={handleCheckboxChange}
@@ -147,23 +144,30 @@ const CreateTaskForm = ({
 							name="isUrgent"
 							text={TEXT.IS_URGENT_RADIO}
 						/>
-						<div className="createTaskForm__emoji-container">
+						<div className="editTaskForm__emoji-container">
 							{isOpenEmoji && (
-								<div className="createTaskForm__emoji-picker">
+								<div className="editTaskForm__emoji-picker">
 									<EmojiForm onEmojiSelect={handleEmojiSelect} />
 								</div>
 							)}
 							<button
-								className="createTaskForm__emoji-button"
+								className="editTaskForm__emoji-button"
 								onClick={handleClickEmoji}
 							>
-								<span className="createTaskForm__emoji">{emoji}</span>Emoji
+								<span className="editTaskForm__emoji">{emoji}</span>Emoji
 							</button>
 						</div>
 					</div>
 				</fieldset>
 
-				<div className="createTaskForm__btnContainer createTaskForm__btnContainer_justify-center">
+				<ProfileFormButton
+					text={TEXT.DELETE_BUTTON}
+					type="button"
+					buttonImg={deleteIcon}
+					onclick={handleDeleteButton}
+				/>
+
+				<div className="editTaskForm__btnContainer editTaskForm__btnContainer_justify-center">
 					<SidebarButton
 						disabled={
 							!isDateCorrect || !projectList.selected || !inputValues.taskName
@@ -174,24 +178,8 @@ const CreateTaskForm = ({
 					/>
 				</div>
 			</form>
-
-			<div style={{ margin: '0 0 20px', position: 'absolute', bottom: 0 }}>
-				<SidebarButton
-					onClick={() => {
-						const projectName = `Проект №${Math.ceil(Math.random() * 1000)}`;
-						projectApi
-							.createProject({ title: projectName })
-							.then((data) =>
-								alert(`Создан ${data.title}. Открой сайдбар повторно :)`)
-							)
-							.catch((err) => console.error(err));
-					}}
-					size="secondary"
-					text="Создать проект"
-				/>
-			</div>
 		</div>
 	);
 };
 
-export default CreateTaskForm;
+export default EditTaskForm;
