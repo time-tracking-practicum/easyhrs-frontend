@@ -7,29 +7,45 @@ import Timer from '../../components/Timer';
 import Sidebar from '../../components/Sidebar';
 import CreateTaskForm from '../../components/CreateTaskForm';
 import projectApi from '../../utils/ProjectApi';
+import EditTaskForm from '../../components/EditTaskForm';
 
-export default function MainPage({ handleCreateTask, tasks }) {
+export default function MainPage({
+	handleCreateTask,
+	handleEditTask,
+	handleDeleteTask,
+	tasks,
+}) {
+	const [playTimer, setPlayTimer] = useState(false);
+	const [dropTimer, setDropTimer] = useState(false);
+	const [pause, setPause] = useState(false);
 	const [tasksList, setTasksList] = useState(tasks);
-
 	const [isCreateTaskFormOpen, setIsCreateTaskFormOpen] = useState(false);
-
+	const [isEditFormOpen, setIsEditTaskFormOpen] = useState(false);
 	const [projests, setProjects] = useState({
 		selected: null,
 		all: [],
 	});
+	const [currentTask, setCurrentTask] = useState(null);
 
 	const handleOpenCreateTaskForm = () => {
-		projectApi
-			.getMyProjects()
-			.then((data) => {
-				setProjects((prevState) => ({ ...prevState, all: data }));
-			})
-			.catch((error) => console.error(error));
 		setIsCreateTaskFormOpen(true);
+	};
+
+	const handleOpenEditTaskForm = (task) => {
+		setCurrentTask(task);
+		setProjects((prevState) => ({
+			...prevState,
+			selected: prevState.all.find((item) => item.id === task.project),
+		}));
+		setIsEditTaskFormOpen(true);
 	};
 
 	const handleCloseCreateTaskForm = () => {
 		setIsCreateTaskFormOpen(false);
+	};
+
+	const handleCloseEditTaskForm = () => {
+		setIsEditTaskFormOpen(false);
 	};
 
 	const sortTasksByName = (flag) => {
@@ -39,11 +55,15 @@ export default function MainPage({ handleCreateTask, tasks }) {
 		setTasksList([...newTasksList]);
 	};
 
-	useEffect(() => setTasksList(tasks), [tasks]);
-
-	const [playTimer, setPlayTimer] = useState(false);
-	const [dropTimer, setDropTimer] = useState(false);
-	const [pause, setPause] = useState(false);
+	useEffect(() => {
+		setTasksList(tasks);
+		projectApi
+			.getMyProjects()
+			.then((data) => {
+				setProjects((prevState) => ({ ...prevState, all: data }));
+			})
+			.catch((error) => console.error(error));
+	}, [tasks]);
 
 	return (
 		<>
@@ -60,8 +80,11 @@ export default function MainPage({ handleCreateTask, tasks }) {
 							<Task
 								key={task.id}
 								name={task.name}
-								project={task.project}
+								project={
+									projests.all.find((item) => item.id === task.project)?.title
+								}
 								deadline={task.deadline}
+								handleOpenEditTaskForm={handleOpenEditTaskForm}
 								status={task.status}
 								emoji={task.emoji}
 								urgent={task.is_urgent}
@@ -93,6 +116,16 @@ export default function MainPage({ handleCreateTask, tasks }) {
 					setProjectList={setProjects}
 					handleCreateTask={handleCreateTask}
 					setIsCreateTaskFormOpen={setIsCreateTaskFormOpen}
+				/>
+			</Sidebar>
+			<Sidebar isOpen={isEditFormOpen} handleClose={handleCloseEditTaskForm}>
+				<EditTaskForm
+					task={currentTask}
+					projectList={projests}
+					setProjectList={setProjects}
+					handleDeleteTask={handleDeleteTask}
+					handleEditTask={handleEditTask}
+					setIsEditTaskFormOpen={setIsEditTaskFormOpen}
 				/>
 			</Sidebar>
 		</>

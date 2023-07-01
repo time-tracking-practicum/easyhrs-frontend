@@ -1,7 +1,6 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-nested-ternary */
-import React from 'react';
-import { Link } from 'react-router-dom';
-
 import './Task.css';
 
 export default function Task({
@@ -15,6 +14,7 @@ export default function Task({
 	task,
 	setPlayTimer,
 	setPause,
+	handleOpenEditTaskForm,
 }) {
 	// функция форматирования входящей строки в дату формата dd.mm.yyyy
 	function formateDate(data) {
@@ -30,35 +30,36 @@ export default function Task({
 
 	return (
 		<div className="task">
-			<Link to="/task-card" className="task__link" task={task}>
-				<div className="task__container">
-					<div className="task__name-container">
-						<div className="task__emoji">{emoji}</div>
-						<p className="task__name">{name}</p>
-					</div>
-					<p className="task__project">{project}</p>
-					<ul className="task__matrix-wrapper">
-						<li
-							className={
-								urgent
-									? 'task__matrix-colorblock_urgent'
-									: important
-									? 'task__matrix-colorblock'
-									: 'task__matrix-colorblock_nor-urgent-important'
-							}
-						/>
-						<li className="task__matrix-item">{urgent ? 'Срочно' : ''}</li>
-						<li className="task__matrix-item">{important ? 'Важно' : ''}</li>
-					</ul>
-					<p className="task__deadline">{formateDate(deadline)}</p>
-					<ul className="task__timer-wrapper">
-						<li className="task__timer-status">
-							{status === 'in_progress' ? 'В работе' : 'Пауза'}
-						</li>
-						<li className="task__timer-time">02:13:57</li>
-					</ul>
+			<div
+				className="task__container"
+				onClick={() => handleOpenEditTaskForm(task)}
+			>
+				<div className="task__name-container">
+					<div className="task__emoji">{emoji}</div>
+					<p className="task__name">{name}</p>
 				</div>
-			</Link>
+				<p className="task__project">{project}</p>
+				<ul className="task__matrix-wrapper">
+					<li
+						className={
+							urgent
+								? 'task__matrix-colorblock_urgent'
+								: important
+								? 'task__matrix-colorblock'
+								: 'task__matrix-colorblock_nor-urgent-important'
+						}
+					/>
+					<li className="task__matrix-item">{urgent ? 'Срочно' : ''}</li>
+					<li className="task__matrix-item">{important ? 'Важно' : ''}</li>
+				</ul>
+				<p className="task__deadline">{formateDate(deadline)}</p>
+				<ul className="task__timer-wrapper">
+					<li className="task__timer-status">
+						{status === 'in_progress' ? 'В работе' : 'Пауза'}
+					</li>
+					<li className="task__timer-time">02:13:57</li>
+				</ul>
+			</div>
 			<div className="task__btn-wrapper">
 				<button onClick={handleStart} className="task__btn">
 					<svg

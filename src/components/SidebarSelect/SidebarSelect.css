@@ -1,9 +1,14 @@
+.sidebar-select__wrapper {
+	position: relative;
+}
+
 .sidebar-select {
 	align-items: center;
 	margin: 0;
 	padding: 4px 0 4px 16px;
 	justify-content: start;
 	width: 420px;
+	opacity: 100;
 	height: 56px;
 	border-radius: 100px;
 	background-color: var(--secondary-background-color);

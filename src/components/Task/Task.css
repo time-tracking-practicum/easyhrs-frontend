@@ -13,16 +13,11 @@
 	padding: 0 16px 0;
 }
 
-.task__link {
-	width: 95%;
-	display: block;
-	text-decoration: none;
-	color: #000000;
-}
-
 .task__container {
+	cursor: pointer;
 	height: 74px;
 	display: flex;
+	width: 95%;
 	align-items: center;
 	justify-content: space-between;
 	margin: 0 auto;

@@ -1,0 +1,85 @@
+.editTaskForm {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.editTaskForm__title {
+	font-size: 32px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	font-weight: 700;
+	letter-spacing: -0.96px;
+	padding: 10px 0;
+	margin: 0;
+	max-width: 390px;
+}
+
+.editTaskForm__status {
+	color: #000;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 800;
+	line-height: 24px;
+}
+
+.editTaskForm__fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	margin: 28px 0 12px 0;
+	position: relative;
+	min-height: 108px;
+	padding: 0;
+	border: none;
+}
+
+.editTaskForm__btnContainer {
+	display: flex;
+	justify-content: space-between;
+	margin: 36px 0 0;
+}
+
+.editTaskForm__checkbox-container {
+	display: flex;
+	padding: 12px;
+	gap: 48px;
+}
+
+.editTaskForm__btnContainer_justify-center {
+	justify-content: center;
+}
+
+.editTaskForm__emoji-container {
+	position: relative;
+}
+
+.editTaskForm__emoji-picker {
+	position: absolute;
+	bottom: 20px;
+	right: 70px;
+}
+
+.editTaskForm__emoji-button {
+	height: 24px;
+	width: 76px;
+	padding: 0;
+	display: flex;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 16px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	align-items: center;
+}
+
+.editTaskForm__emoji {
+	width: 24px;
+	height: 24px;
+	line-height: 26px;
+	font-size: 24px;
+	margin: 0 12px 0 0;
+	display: inline-block;
+}

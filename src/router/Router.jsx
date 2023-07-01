@@ -37,6 +37,22 @@ export default function Router() {
 			.catch((err) => console.error(err));
 	};
 
+	const editTaskAndUpdate = (task) => {
+		taskApi
+			.editTask(task)
+			.then(() => getTasks())
+			.catch((err) => console.error(err));
+	};
+
+	const deleteTaskAndUpdate = (id) => {
+		taskApi
+			.deleteTask(id)
+			.then(() => {
+				getTasks();
+			})
+			.catch((err) => console.error(err));
+	};
+
 	useEffect(() => {
 		getTasks();
 	}, []);
@@ -63,6 +79,8 @@ export default function Router() {
 							<ProtectedRoute>
 								<MainPage
 									handleCreateTask={createTaskAndUpdate}
+									handleEditTask={editTaskAndUpdate}
+									handleDeleteTask={deleteTaskAndUpdate}
 									tasks={tasks}
 								/>
 							</ProtectedRoute>

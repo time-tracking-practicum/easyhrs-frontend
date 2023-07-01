@@ -1,8 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+import { useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import './SidebarSelect.css';
 import SidebarCheckbox from '../SidebarCheckbox';
+import SidebarLabel from '../SidebarLabel';
+import EditInputButton from '../EditInputButton';
 
 /* Проп items имеет тип:
 {
@@ -10,8 +13,20 @@ import SidebarCheckbox from '../SidebarCheckbox';
   all: [{id: number, title: string}]
 } 
 */
-const SidebarSelect = ({ items, setItems, placeholder }) => {
+const SidebarSelect = ({
+	items,
+	setItems,
+	placeholder,
+	disabled,
+	label,
+	isEditable,
+}) => {
 	const { selected, all } = items;
+	const [isDisabled, setIsDisabled] = useState(true);
+
+	const handleEditButtonClick = () => {
+		setIsDisabled(false);
+	};
 
 	const handleSelect = (e) => {
 		const { id } = e.value.props;
@@ -22,48 +37,28 @@ const SidebarSelect = ({ items, setItems, placeholder }) => {
 	};
 
 	return (
-		<Dropdown
-			style={{}}
-			className="sidebar-select"
-			onChange={handleSelect}
-			placeholder={selected?.title || placeholder}
-			options={all.map((item) => (
-				<div className="sidebar-select__options-element" id={item.id}>
-					<SidebarCheckbox
-						name={item.title}
-						isChecked={item.id === selected?.id}
-						readOnly
-					/>
-					<span>{item.title}</span>
-				</div>
-			))}
-		/>
-		// <div className="sidebar-select__container">
-		// 	<div onClick={toggleOpen} className="sidebar-select">
-		// 		<p className="sidebar-select__selected-item">
-		// 			{selected?.title || placeholder}
-		// 		</p>
-		// 	</div>
-		// 	{isOpen && (
-		// 		<div className="sidebar-select__options-container">
-		// 			{all.map((item) => (
-		// <div
-		// 	onClick={handleSelect}
-		// 	key={item.id}
-		// 	id={item.id}
-		// 	className="sidebar-select__options-element"
-		// >
-		// 	<SidebarCheckbox
-		// 		name={item.title}
-		// 		isChecked={item.id === selected?.id}
-		// 		readOnly
-		// 	/>
-		// 	<span>{item.title}</span>
-		// </div>
-		// 			))}
-		// 		</div>
-		// 	)}
-		// </div>
+		<div className="sidebar-select__wrapper">
+			<Dropdown
+				className="sidebar-select"
+				onChange={handleSelect}
+				disabled={isEditable ? isDisabled : disabled}
+				placeholder={selected?.title || placeholder}
+				options={all?.map((item) => (
+					<div className="sidebar-select__options-element" id={item.id}>
+						<SidebarCheckbox
+							name={item.title}
+							isChecked={item.id === selected?.id}
+							readOnly
+						/>
+						<span>{item.title}</span>
+					</div>
+				))}
+			/>
+			{label && <SidebarLabel placeholder={placeholder} />}
+			{isEditable && isDisabled && (
+				<EditInputButton onClick={handleEditButtonClick} />
+			)}
+		</div>
 	);
 };
 

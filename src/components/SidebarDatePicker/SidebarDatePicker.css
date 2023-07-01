@@ -1,6 +1,12 @@
+.sidebar-date-picker__wrapper {
+	position: relative;
+	width: 100%;
+}
+
 .sidebar-date-picker {
 	border: 1px solid #79747e;
 	border-radius: 100px;
+	width: 100%;
 	padding: 8px 16px;
 	height: 56px;
 }
@@ -10,6 +16,10 @@
 	padding: 0;
 	cursor: pointer;
 	box-shadow: none !important;
+}
+
+.p-calendar .p-inputtext:disabled {
+	opacity: 100;
 }
 
 .p-inputtext::placeholder {
