@@ -42,7 +42,7 @@ export default function Router() {
 	const editTaskAndUpdate = (task) => {
 		taskApi
 			.editTask(task)
-			.then(() => getTasks())
+			.then(() => setCurrentUserTasks())
 			.catch((err) => console.error(err));
 	};
 
@@ -50,7 +50,7 @@ export default function Router() {
 		taskApi
 			.deleteTask(id)
 			.then(() => {
-				getTasks();
+				setCurrentUserTasks();
 			})
 			.catch((err) => console.error(err));
 	};

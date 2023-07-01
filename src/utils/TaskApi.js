@@ -5,9 +5,13 @@ class TaskApi {
 	}
 
 	static _checkResult = (res) => {
+		if (res.status === 204) {
+			return res;
+		}
 		if (res.ok) {
 			return res.json();
 		}
+
 		return Promise.reject(new Error(`Ошибка: ${res}`));
 	};
 
