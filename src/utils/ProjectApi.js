@@ -13,6 +13,20 @@ class ProjectApi {
 		return Promise.reject(new Error(`Ошибка: ${res}`));
 	};
 
+	async createProject(project) {
+		const token =
+			localStorage.getItem('token') || sessionStorage.getItem('token');
+		const res = await fetch(`${this._url}/projects/`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				authorization: `Token ${token}`,
+			},
+			body: JSON.stringify(project),
+		});
+		return ProjectApi._checkResult(res);
+	}
+
 	async getMyProjects() {
 		const token =
 			localStorage.getItem('token') || sessionStorage.getItem('token');

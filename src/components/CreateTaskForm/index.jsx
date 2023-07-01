@@ -13,6 +13,7 @@ import EmojiForm from '../EmojiForm';
 import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import useDatePicker from '../../hooks/useDatePicker';
 import useCheckboxes from '../../hooks/useCheckboxes';
+import projectApi from '../../utils/ProjectApi';
 
 const CreateTaskForm = ({
 	projectList,
@@ -173,6 +174,22 @@ const CreateTaskForm = ({
 					/>
 				</div>
 			</form>
+
+			<div style={{ margin: '0 0 20px', position: 'absolute', bottom: 0 }}>
+				<SidebarButton
+					onClick={() => {
+						const projectName = `Проект №${Math.ceil(Math.random() * 1000)}`;
+						projectApi
+							.createProject({ title: projectName })
+							.then((data) =>
+								alert(`Создан ${data.title}. Открой сайдбар повторно :)`)
+							)
+							.catch((err) => console.error(err));
+					}}
+					size="secondary"
+					text="Создать проект"
+				/>
+			</div>
 		</div>
 	);
 };
