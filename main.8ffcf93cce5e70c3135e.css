@@ -389,7 +389,26 @@ template {
 /*!*****************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/index.css ***!
   \*****************************************************************/
+:root {
+	/* Параметры шрифта для всего приложения */
+	font-family: 'Roboto', sans-serif, Arial;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	color: #000000;
 
+	/* Переменные стилей */
+	--primary-background-color: #6750a4;
+	--secondary-background-color: #fff;
+	--light-outline-color: #79747e;
+	--scrollbar-color: #938f99;
+	--scrollbar-background-color: transparent;
+	--light-text-color: #49454f;
+	--link-color: #4743e0;
+	--error-color: #bc0000;
+}
 
 /*!*************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/router/Router.css ***!
@@ -400,13 +419,6 @@ template {
 	max-width: 100%;
 	padding: 20px;
 	background-color: #6750a2;
-	font-family: 'Roboto', sans-serif, Arial;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	color: #000000;
 }
 
 /*!************************************************************************************************************************!*\
@@ -13067,21 +13079,9 @@ input.p-dropdown-label  {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/AuthCheckBox/AuthCheckBox.css ***!
   \************************************************************************************************/
 .authForm__checkbox-container {
-	margin-top: 24px;
 	display: flex;
+	margin: 24px 0 0;
 	align-items: center;
-	font-size: 14px;
-	line-height: 20px;
-	letter-spacing: 0.1px;
-}
-
-.authForm__checkbox-container input[type='checkbox'] {
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
 }
 
 .authForm__checkbox-label {
@@ -13089,9 +13089,10 @@ input.p-dropdown-label  {
 	height: 24px;
 	width: 24px;
 	background: #fff;
-	border: 1px #ddd solid;
+	border: 1px #6750a4 solid;
 	border-radius: 50%;
 	margin-right: 16px;
+	cursor: pointer;
 }
 
 .authForm__checkbox-label_checked {
@@ -13100,6 +13101,21 @@ input.p-dropdown-label  {
 	background-repeat: no-repeat;
 	background-position: center;
 	border: 1px #6750a4 solid;
+}
+
+.authForm__checkbox {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.authForm__checkbox-text {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.42;
+	letter-spacing: 0.1px;
 }
 
 /*!**************************************************************************************************!*\
@@ -13186,6 +13202,18 @@ input.p-dropdown-label  {
 }
 
 .authForm__showPassBtn:hover {
+	cursor: pointer;
+}
+
+.authForm__showPassBtn_active {
+	width: 22px;
+	height: 22px;
+	background-image: url(assets/da1fb3e1a313c5df4fb1.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.authForm__showPassBtn_active:hover {
 	cursor: pointer;
 }
 
@@ -13294,14 +13322,14 @@ input.p-dropdown-label  {
 	min-height: 984px;
 	background-color: #ffffff;
 	border-radius: 40px;
-	animation: emergence 2s ease-in-out, left-shift 2s ease-in-out forwards 3s;
+	animation: emergence 1s ease-in-out, left-shift 1s ease-in-out forwards 1s;
 }
 
 .start__container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	animation: disappearance 1.5s ease-in-out forwards 1.5s;
+	animation: disappearance 1s ease-in-out forwards 1s;
 }
 
 .start__title {
@@ -13311,20 +13339,20 @@ input.p-dropdown-label  {
 	line-height: 113px;
 	color: #6750a4;
 	margin: 0;
-	animation: disappearance 1.5s ease-in-out forwards 1.5s,
-		emergence-title 1.5s ease-in-out forwards 3s;
+	animation: disappearance 1s ease-in-out forwards 1s,
+		emergence-title 1s ease-in-out forwards 1s;
 }
 
 .start__image {
 	width: 167px;
 	height: 167px;
-	animation: disappearance 1.5s ease-in-out forwards 1.5s;
+	animation: disappearance 1s ease-in-out forwards 1s;
 }
 
 .start__container-gradient {
 	visibility: hidden;
 	opacity: 0;
-	animation: gradient 1s ease-in-out forwards 3s;
+	animation: gradient 1s ease-in-out forwards 2s;
 }
 
 .start__gradien-top {
@@ -13360,31 +13388,7 @@ input.p-dropdown-label  {
 .start__block > .authForm {
 	opacity: 0;
 	visibility: hidden;
-	animation: visible-form 1s ease-in-out forwards 2s;
-}
-
-.start__logo-top {
-	position: absolute;
-	right: 15px;
-	top: -265px;
-	width: 645px;
-	height: 657px;
-}
-
-.start__logo-left {
-	position: absolute;
-	left: 130px;
-	top: 200px;
-	width: 568px;
-	height: 577px;
-}
-
-.start__logo-bottom {
-	position: absolute;
-	right: -115px;
-	bottom: -10px;
-	width: 500px;
-	height: 500px;
+	animation: visible-form 1s ease-in-out forwards;
 }
 
 /*!************************************************************************************!*\
@@ -13398,6 +13402,7 @@ input.p-dropdown-label  {
 	display: flex;
 	flex-direction: column;
 	gap: 35px;
+	animation: emergence 2s ease-in-out;
 }
 
 .navtab__item {
@@ -13450,6 +13455,15 @@ input.p-dropdown-label  {
 	background-color: #ffffff;
 	border-radius: 40px;
 	overflow: auto;
+	position: relative;
+}
+
+.main__animation_active {
+	animation: emergence 2s ease-in-out;
+}
+
+.main__animation_active {
+	animation: emergence 2s ease-in-out;
 }
 
 .main__tasks {
@@ -13532,6 +13546,9 @@ input.p-dropdown-label  {
 	line-height: 20px;
 	color: #000000;
 	text-decoration: none;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
 /*!********************************************************************************!*\
@@ -13540,22 +13557,25 @@ input.p-dropdown-label  {
 .task {
 	width: calc(100% - 40px - 40px);
 	margin: 0 auto;
-	display: block;
+	display: flex;
 	border-radius: 16px;
-	text-decoration: none;
 	color: #000000;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 1.43;
 	background: #f4f4f4;
+	align-items: center;
+	gap: 16px;
+	padding: 0 16px 0;
 }
 
 .task__container {
+	cursor: pointer;
 	height: 74px;
 	display: flex;
+	width: 95%;
 	align-items: center;
 	justify-content: space-between;
-	width: calc(100% - 16px - 16px);
 	margin: 0 auto;
 }
 
@@ -13645,6 +13665,10 @@ input.p-dropdown-label  {
 	list-style: none;
 }
 
+.task__btn-wrapper {
+	width: 5%;
+}
+
 .task__btn {
 	background: #6750a4;
 	border-radius: 100px;
@@ -13657,6 +13681,726 @@ input.p-dropdown-label  {
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+}
+
+/*!**********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/TasksHeader/TasksHeader.css ***!
+  \**********************************************************************************************/
+.tasksHeader {
+	box-sizing: border-box;
+	background: transparent;
+	padding: 21px 24px 21px 0;
+	border-bottom: 1px solid #aeaeae;
+	border-radius: 0;
+	font-size: 12px;
+	line-height: 14px;
+	letter-spacing: 1px;
+	justify-content: space-between;
+}
+
+.tasksHeader__container {
+	width: 95%;
+	height: auto;
+	margin: 0;
+}
+
+.tasksHeader__name-container {
+	justify-content: flex-start;
+	margin: 0;
+	align-items: end;
+	gap: 12px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.tasksHeader__name-container:hover {
+	opacity: 0.6;
+}
+
+/*!**********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Timer/Timer.css ***!
+  \**********************************************************************************/
+.timer__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 198px;
+	position: absolute;
+	width: 100%;
+}
+
+.timer__container_drop {
+	padding: 16px 40px;
+	justify-content: space-between;
+	flex-direction: row;
+	bottom: 0;
+	background: rgba(169, 156, 203, 1);
+}
+
+.timer__block {
+	margin-bottom: 32px;
+	text-align: center;
+}
+
+.timer__block_drop {
+	margin: 0;
+	text-align: start;
+}
+
+.timer__span {
+	font-weight: 500;
+	font-size: 96px;
+	line-height: 68px;
+}
+
+.timer__span-drop {
+	font-weight: 700;
+	font-size: 54px;
+	line-height: 68px;
+}
+
+.timer__name {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 28px;
+	margin: 24px 0 0;
+	letter-spacing: 0.25px;
+}
+
+.timer__name_drop {
+	margin: 0;
+}
+
+.timer__buttons-container {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+	/* margin-top: 32px; */
+}
+
+.timer__button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #6750a4;
+	color: #ffffff;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 20px;
+	border: none;
+	border-radius: 100px;
+	width: 160px;
+	height: 52px;
+	cursor: pointer;
+}
+
+.timer__icon {
+	width: 14px;
+	height: 14px;
+	margin-right: 9.5px;
+}
+
+/*!**************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Sidebar/Sidebar.css ***!
+  \**************************************************************************************/
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 500px;
+	position: fixed;
+	padding: 40px;
+	top: 0;
+	right: 0;
+	background-color: var(--secondary-background-color);
+}
+
+.sidebar__overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.15);
+	width: 100%;
+	height: 100%;
+}
+
+.sidebar__close-button {
+	position: absolute;
+	top: 57px;
+	right: 40px;
+	background: none;
+	padding: 0;
+	border: none;
+	cursor: pointer;
+	width: 24px;
+	height: 24px;
+}
+
+.sidebar__close-button-img {
+	width: 100%;
+	z-index: 1000;
+	height: 100%;
+}
+
+/*!************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SidebarInput/SidebarInput.css ***!
+  \************************************************************************************************/
+.sidebar__input-border {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	max-width: 100%;
+	border: 1px solid #79747e;
+	border-radius: 100px;
+	padding: 8px 16px;
+	height: 56px;
+}
+
+.sidebar__input-border_red {
+	border: 1px solid #b3261e;
+}
+
+.sidebar__input {
+	padding: 0;
+	max-width: 446px;
+	width: 100%;
+	position: relative;
+	height: 40px;
+	border: none;
+	outline: none;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	color: var(--light-text-color);
+	letter-spacing: 0.5px;
+}
+
+.sidebar__input:disabled {
+	background-color: var(--secondary-background-color);
+}
+
+.sidebar__input::placeholder {
+	color: var(--light-text-color);
+}
+
+.sidebar__input_text-red {
+	color: #b3261e;
+}
+
+.sidebar__input-errText {
+	margin: 0 16px 0 16px;
+	position: absolute;
+	top: 52px;
+	left: 0;
+	display: block;
+	margin-top: 4px;
+	padding: 0;
+	max-width: 430px;
+	width: 100%;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	color: #b3261e;
+}
+
+.sidebar__togglePassVisibilityBtn {
+	width: 22px;
+	cursor: pointer;
+	height: 22px;
+	background-image: url(assets/f633e5170c799d5f31dc.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.sidebar__errorIcon {
+	width: 22px;
+	height: 22px;
+	background-image: url(assets/346418a98d7f1ce7dd90.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.sidebar__inputHint {
+	display: block;
+	margin-top: 4px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	color: #49454f;
+	margin-left: 16px;
+	max-width: 298px;
+}
+
+/*!************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SidebarLabel/SidebarLabel.css ***!
+  \************************************************************************************************/
+.sidebar-label {
+	position: absolute;
+	z-index: 100;
+	background-color: var(--secondary-background-color);
+	color: var(--light-text-color);
+	padding: 0 8px;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	top: -10px;
+	left: 10px;
+}
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/EditInputButton/EditInputButton.css ***!
+  \******************************************************************************************************/
+.edit-input-button {
+	position: absolute;
+	cursor: pointer;
+	top: 7px;
+	right: 8px;
+	background-color: var(--secondary-background-color);
+	background-image: url(assets/ebec6f7020f90650ea81.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 40px;
+	z-index: 100;
+	height: 40px;
+	padding: 0;
+	border: none;
+	border-radius: 100%;
+}
+
+/*!**************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SidebarButton/SidebarButton.css ***!
+  \**************************************************************************************************/
+.sidebar__button {
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.sidebar__button:disabled {
+	cursor: default;
+	background-color: rgba(29, 27, 32, 0.12);
+	color: var(--light-outline-color);
+}
+
+.sidebar__button_primary {
+	width: 202px;
+	height: 52px;
+	padding: 16px 24px;
+	border-radius: 100px;
+	font-size: 18px;
+	line-height: 20px;
+	letter-spacing: 0.1px;
+}
+
+.sidebar__button_secondary {
+	color: var(--link-color);
+	background-color: transparent;
+	font-size: 14px;
+	padding: 0;
+	line-height: 18px;
+	letter-spacing: 0.25px;
+	border: none;
+}
+
+.sidebar__button_submit {
+	background-color: var(--primary-background-color);
+	color: var(--secondary-background-color);
+	border: none;
+}
+
+.sidebar__button_cancel {
+	background-color: var(--secondary-background-color);
+	color: var(--primary-background-color);
+	border: 1px solid;
+	border-color: var(--light-outline-color);
+}
+
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/CreateTaskForm/CreateTaskForm.css ***!
+  \****************************************************************************************************/
+.createTaskForm {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.createTaskForm__title {
+	font-size: 32px;
+	font-weight: 700;
+	letter-spacing: -0.96px;
+	padding: 10px 0;
+	margin: 0;
+	max-width: 390px;
+}
+
+.createTaskForm__fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	margin: 36px 0;
+	position: relative;
+	min-height: 108px;
+	padding: 0;
+	border: none;
+}
+
+.createTaskForm__btnContainer {
+	display: flex;
+	justify-content: space-between;
+	margin: 24px 0 0;
+}
+
+.createTaskForm__checkbox-container {
+	display: flex;
+	padding: 12px;
+	gap: 48px;
+}
+
+.createTaskForm__btnContainer_justify-center {
+	justify-content: center;
+}
+
+.createTaskForm__emoji-container {
+	position: relative;
+}
+
+.createTaskForm__emoji-picker {
+	position: absolute;
+	bottom: 20px;
+	right: 70px;
+}
+
+.createTaskForm__emoji-button {
+	height: 24px;
+	width: 76px;
+	padding: 0;
+	display: flex;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 16px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	align-items: center;
+}
+
+.createTaskForm__emoji {
+	width: 24px;
+	height: 24px;
+	line-height: 26px;
+	font-size: 24px;
+	margin: 0 12px 0 0;
+	display: inline-block;
+}
+
+/*!**************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SidebarSelect/SidebarSelect.css ***!
+  \**************************************************************************************************/
+.sidebar-select__wrapper {
+	position: relative;
+}
+
+.sidebar-select {
+	align-items: center;
+	margin: 0;
+	padding: 4px 0 4px 16px;
+	justify-content: start;
+	width: 420px;
+	opacity: 100;
+	height: 56px;
+	border-radius: 100px;
+	background-color: var(--secondary-background-color);
+	border: 1px solid var(--light-outline-color) !important;
+	box-shadow: none !important;
+}
+
+.sidebar-select::after {
+	content: '';
+	position: absolute;
+	right: 15px;
+	background-image: url(assets/f91dd3ed939ddcd4c67e.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	width: 24px;
+	height: 24px;
+}
+
+.sidebar-select .p-icon {
+	visibility: hidden;
+}
+
+.p-dropdown-items {
+	padding: 0 !important;
+}
+
+.p-dropdown-item {
+	padding: 0 !important;
+}
+
+.sidebar-select .p-dropdown-label {
+	color: var(--light-text-color) !important;
+	padding: 0;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: 0.5px;
+}
+
+.p-dropdown-panel {
+	width: 420px;
+	background-color: var(--secondary-background-color);
+	border-radius: 20px;
+	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.14);
+}
+
+.p-dropdown-items-wrapper::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+}
+.p-dropdown-items-wrapper::-webkit-scrollbar-track {
+	background: var(--scrollbar-background-color);
+}
+.p-dropdown-items-wrapper::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-color);
+	border-radius: 100px;
+}
+
+.sidebar-select__options-element {
+	display: flex;
+	cursor: pointer;
+	justify-content: flex-start;
+	font-size: 15px;
+	gap: 12px;
+	line-height: 20px;
+	letter-spacing: 0.25px;
+	align-items: center;
+	padding: 12px;
+	width: 100%;
+	height: 48px;
+}
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SidebarCheckbox/SidebarCheckbox.css ***!
+  \******************************************************************************************************/
+.sidebar-checkbox {
+	cursor: pointer;
+	display: flex;
+	height: 24px;
+	gap: 12px;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+}
+
+.sidebar-checkbox__input {
+	display: none;
+}
+
+.sidebar-checkbox__mark {
+	position: relative;
+	height: 24px;
+	width: 24px;
+	border-radius: 100%;
+}
+
+.sidebar-checkbox__mark_unchecked {
+	background-color: var(--secondary-background-color);
+	border: 1px solid var(--primary-background-color);
+}
+
+.sidebar-checkbox__mark_checked {
+	background-color: var(--primary-background-color);
+	border: none;
+}
+
+.sidebar-checkbox__mark_checked::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(assets/efb067d143bc92923180.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 24px;
+	width: 24px;
+}
+
+/*!**********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SidebarDatePicker/SidebarDatePicker.css ***!
+  \**********************************************************************************************************/
+.sidebar-date-picker__wrapper {
+	position: relative;
+	width: 100%;
+}
+
+.sidebar-date-picker {
+	border: 1px solid #79747e;
+	border-radius: 100px;
+	width: 100%;
+	padding: 8px 16px;
+	height: 56px;
+}
+
+.p-inputtext {
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	box-shadow: none !important;
+}
+
+.p-calendar .p-inputtext:disabled {
+	opacity: 100;
+}
+
+.p-inputtext::placeholder {
+	color: var(--light-text-color);
+}
+
+.p-datepicker table td.p-datepicker-today > span {
+	background: var(--primary-background-color) !important;
+	color: var(--secondary-background-color);
+}
+
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+	color: var(--secondary-background-color);
+}
+
+.p-datepicker:not(.p-disabled)
+	table
+	td
+	span:not(.p-highlight):not(.p-disabled):focus {
+	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
+}
+
+.p-datepicker table td > span:focus {
+	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
+	background: inherit;
+}
+
+.p-datepicker table td > span.p-highlight {
+	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
+	background: inherit !important;
+}
+
+/*!************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/EditTaskForm/EditTaskForm.css ***!
+  \************************************************************************************************/
+.editTaskForm {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.editTaskForm__title {
+	font-size: 32px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	font-weight: 700;
+	letter-spacing: -0.96px;
+	padding: 10px 0;
+	margin: 0;
+	max-width: 390px;
+}
+
+.editTaskForm__status {
+	color: #000;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 800;
+	line-height: 24px;
+}
+
+.editTaskForm__fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	margin: 28px 0 12px 0;
+	position: relative;
+	min-height: 108px;
+	padding: 0;
+	border: none;
+}
+
+.editTaskForm__btnContainer {
+	display: flex;
+	justify-content: space-between;
+	margin: 36px 0 0;
+}
+
+.editTaskForm__checkbox-container {
+	display: flex;
+	padding: 12px;
+	gap: 48px;
+}
+
+.editTaskForm__btnContainer_justify-center {
+	justify-content: center;
+}
+
+.editTaskForm__emoji-container {
+	position: relative;
+}
+
+.editTaskForm__emoji-picker {
+	position: absolute;
+	bottom: 20px;
+	right: 70px;
+}
+
+.editTaskForm__emoji-button {
+	height: 24px;
+	width: 76px;
+	padding: 0;
+	display: flex;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 16px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	align-items: center;
+}
+
+.editTaskForm__emoji {
+	width: 24px;
+	height: 24px;
+	line-height: 26px;
+	font-size: 24px;
+	margin: 0 12px 0 0;
+	display: inline-block;
+}
+
+/*!**********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/ProfileFormButton/ProfileFormButton.css ***!
+  \**********************************************************************************************************/
+.profile__form-button {
+	height: 36px;
+	margin-top: 20px;
+	padding: 0;
+	color: #6750a4;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	background-color: transparent;
+	border: none;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: 0.1px;
+	cursor: pointer;
+}
+
+.profile__form-button-img {
+	width: 18px;
+	height: 18px;
+	margin: 0 8px;
+	background-position: center;
+	object-fit: cover;
 }
 
 /*!***************************************************************************************!*\
@@ -13755,6 +14499,9 @@ input.p-dropdown-label  {
 	gap: 20px;
 }
 
+/*!********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/MatrixTask/MatrixTask.css ***!
+  \********************************************************************************************/
 .matrix__task {
 	list-style: none;
 	display: flex;
@@ -13762,10 +14509,11 @@ input.p-dropdown-label  {
 }
 
 .matrix__task-emoji {
-	background-image: url(assets/c183b97251059e0cc197.png);
 	width: 24px;
 	height: 24px;
 	background-repeat: no-repeat;
+	align-items: center;
+	display: flex;
 }
 
 .matrix__task-text {
@@ -13987,135 +14735,132 @@ input.p-dropdown-label  {
 	color: #6750a4;
 }
 
-/*!************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/PassOptionRadioBtn/PassOptionRadioBtn.css ***!
-  \************************************************************************************************************/
-.profile__radiobtn-container {
+/*!****************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/ProfileAvatarSection/ProfileAvatarSection.css ***!
+  \****************************************************************************************************************/
+.profile__avatar-container {
 	display: flex;
-	max-height: 45px;
+	flex-direction: column;
+}
+
+.profile__avatar-image {
+	margin-right: auto;
+	display: block;
+	max-height: 72px;
+	max-width: 100%;
+	border-radius: 50%;
+}
+
+.profile__avatar-button {
+	width: 150px;
+	height: 36px;
+	margin-top: 8px;
+	padding: 0;
+	color: #6750a4;
+	display: flex;
 	align-items: center;
-	white-space: nowrap;
-}
-
-.profile__radiobtn-container:not(:last-child) {
-	margin-bottom: 24px;
-}
-
-.profile__radiobtn-container input[type='radio'],
-.profile__radiobtn-container input[type='radio']:checked {
-	display: none;
-}
-
-.profile__radiobtn-container input[type='radio']:checked + label,
-.profile__radiobtn-container input[type='radio']:not(:checked) + label {
-	display: inline-block;
-	position: relative;
-	padding-left: 28px;
+	justify-content: center;
+	background-color: transparent;
+	border: none;
+	font-size: 14px;
+	font-weight: 500;
 	line-height: 20px;
+	letter-spacing: 0.1px;
 	cursor: pointer;
 }
 
-.profile__radiobtn-container input[type='radio']:checked + label:before,
-.profile__radiobtn-container input[type='radio']:not(:checked) + label:before {
-	content: '';
-	position: absolute;
-	left: 0px;
-	top: 10px;
-	width: 17px;
-	height: 17px;
-	border: 1px solid #6750a4;
-	background-color: transparent;
-	border-radius: 50%;
-}
-
-.profile__radiobtn-container input[type='radio']:checked + label:after,
-.profile__radiobtn-container input[type='radio']:not(:checked) + label:after {
-	content: '';
-	position: absolute;
-	left: 0px;
-	top: 10px;
-	width: 19px;
-	height: 19px;
-	border-radius: 50%;
-	background-color: #6750a4;
-	background-image: url(assets/e6042e5e890148ca83bd.svg);
+.profile__avatar-button-img {
+	width: 18px;
+	height: 18px;
+	margin-right: 8px;
 	background-position: center;
-	background-repeat: no-repeat;
+	object-fit: cover;
 }
 
-.profile__radiobtn-container input[type='radio']:not(:checked) + label:after {
+.profile__avatar-input_hidden {
 	opacity: 0;
-}
-
-.profile__radiobtn-container input[type='radio']:checked + label:after {
-	opacity: 1;
-}
-
-.profile__radiobtn-label {
-	display: inline-block;
-	min-height: 45px;
-}
-
-.profile__radiobtn__title,
-.profile__radiobtn__text {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	line-height: 0;
+	padding: 0;
 	margin: 0;
-}
-
-.profile__radiobtn__title {
-	font-size: 15px;
-	letter-spacing: 0.25px;
-	color: #1a1a1a;
-}
-
-.profile__radiobtn__text {
-	font-size: 12px;
-}
-
-/*!****************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/PassOptionForm/PassOptionForm.css ***!
-  \****************************************************************************************************/
-.profile__passOptions {
-	width: 520px;
-	margin-top: 32px;
-}
-
-.profile__passOptions-title {
-	margin: 0 0 32px 0;
-	font-weight: 600;
-	font-size: 20px;
-	line-height: 28px;
 }
 
 /*!**********************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/ProfileForm/ProfileForm.css ***!
   \**********************************************************************************************/
 .profile__form {
-	width: 520px;
+	display: flex;
+	margin-top: 20px;
 }
 
-.profile__form-fieldset {
-	margin: 0;
+.profile__form-button-img {
+	width: 18px;
+	height: 18px;
+	margin: 0 8px;
+	background-position: center;
+	object-fit: cover;
+}
+
+.profile__submit-btn {
+	width: 71px;
+	height: 52px;
 	padding: 0;
+	background-color: #6750a4;
+	color: #fff;
 	border: none;
+	border-radius: 100px;
+	cursor: pointer;
 }
 
+/*!*****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/ProfilePage/ProfilePage.css ***!
+  \*****************************************************************************************/
+.profile {
+	min-height: 984px;
+	margin-left: auto;
+	width: 80%;
+	max-width: 1120px;
+	background-color: #fff;
+	border-radius: 38px;
+	padding-top: 1px;
+}
+
+.profile__container {
+	margin: 40px;
+}
+
+.profile__subtitle {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 28px;
+	margin: 0;
+	margin-bottom: 28px;
+}
+
+.profile__subtitle:not(:first-child) {
+	margin-top: 36px;
+	margin-bottom: 28px;
+}
+
+/*!************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/ProfileInput/ProfileInput.css ***!
+  \************************************************************************************************/
 .profile__input-container {
 	display: flex;
 	justify-content: space-evenly;
+	align-items: center;
 	position: relative;
-	min-height: 56px;
+	height: 56px;
+	width: 248px;
 	border: 1px solid #79747e;
 	border-radius: 100px;
 	padding: 0 16px;
 }
 
-.profile__subtitle {
-	margin: 0;
-	margin-bottom: 24px;
-}
-
 .profile__input-container:not(:last-child) {
-	margin-bottom: 16px;
+	margin: 0 16px 0 0;
 }
 
 .profile__input-label {
@@ -14137,31 +14882,96 @@ input.p-dropdown-label  {
 	width: 100%;
 	border: none;
 	background-color: transparent;
+	outline: none;
 }
 
-.profile__input-icon-key {
-	margin-right: 14px;
-}
-
-.profile__input-icon:hover {
+.profile__input-icon {
+	height: 24px;
+	width: 24px;
 	cursor: pointer;
 }
 
-/*!*****************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/ProfilePage/ProfilePage.css ***!
-  \*****************************************************************************************/
-.profile {
-	min-height: calc(100vh - 40px);
-	margin-left: auto;
-	width: 80%;
-	max-width: 1120px;
-	background-color: #fff;
-	border-radius: 38px;
-	padding-top: 1px;
+/*!******************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/ProfileFormExitButton/ProfileFormExitButton.css ***!
+  \******************************************************************************************************************/
+.profile__exitBtn {
+	width: 266px;
+	height: 52px;
+	margin-top: 36px;
+	color: #fff;
+	background-color: #6750a4;
+	border: none;
+	border-radius: 100px;
+	cursor: pointer;
 }
 
-.profile__container {
-	margin: 40px;
+/*!**********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/ResetPasswordForm/ResetPasswordForm.css ***!
+  \**********************************************************************************************************/
+.resetForm {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.resetForm__title {
+	font-size: 32px;
+	font-weight: 700;
+	letter-spacing: -0.96px;
+	padding: 10px 0;
+	margin: 0;
+	max-width: 390px;
+}
+
+.resetForm__text {
+	font-size: 15px;
+	line-height: 20px;
+	margin: 36px 0 0;
+	font-weight: 400;
+	letter-spacing: 0.25px;
+	opacity: 0.99;
+}
+
+.resetForm__text_bold {
+	text-align: center;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 28px;
+}
+
+.resetForm__fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	position: relative;
+	margin: 32px 0;
+	padding: 0;
+	border: none;
+}
+
+.resetForm__btnContainer {
+	display: flex;
+	justify-content: space-between;
+	margin: 24px 0 0;
+}
+
+.resetForm__btnContainer_justify-center {
+	justify-content: center;
+}
+
+.resetForm__linkContainer {
+	display: flex;
+	margin: 12px 0 0;
+}
+
+.resetForm-error {
+	position: absolute;
+	top: -24px;
+	left: 0;
+	font-size: 15px;
+	line-height: 20px;
+	letter-spacing: 0.25px;
+	color: var(--error-color);
 }
 
 /*!*******************************************************************************************!*\
@@ -14515,4 +15325,4 @@ input.p-dropdown-label  {
   \************************************************************************************************************/
 
 
-/*# sourceMappingURL=main.260b55e9cd5e032b0c8e.css.map*/
+/*# sourceMappingURL=main.8ffcf93cce5e70c3135e.css.map*/
