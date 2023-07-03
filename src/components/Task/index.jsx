@@ -12,9 +12,14 @@ export default function Task({
 	urgent,
 	important,
 	task,
+	playTimer,
 	setPlayTimer,
 	setPause,
 	handleOpenEditTaskForm,
+	timeInProgress,
+	setActualTask,
+	// actualTask,
+	// setTimerTime,
 }) {
 	// функция форматирования входящей строки в дату формата dd.mm.yyyy
 	function formateDate(data) {
@@ -24,8 +29,16 @@ export default function Task({
 
 	function handleStart() {
 		console.log('пуск');
+		if (playTimer) {
+			setPause(true);
+			console.log('второй параллельно');
+			
+		};
+		setActualTask(task);
+		// setTimerTime(actualTask);
 		setPlayTimer(true);
 		setPause(false);
+		console.log(timeInProgress);
 	}
 
 	return (
@@ -57,7 +70,7 @@ export default function Task({
 					<li className="task__timer-status">
 						{status === 'in_progress' ? 'В работе' : 'Пауза'}
 					</li>
-					<li className="task__timer-time">02:13:57</li>
+					<li className="task__timer-time">{timeInProgress.h}:{timeInProgress.m}:{timeInProgress.s}</li>
 				</ul>
 			</div>
 			<div className="task__btn-wrapper">

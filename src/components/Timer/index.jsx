@@ -12,58 +12,76 @@ function Timer({
 	setDropTimer,
 	pause,
 	setPause,
+	actualTask,
+	hadleUpdateTimeInProgress,
+
 }) {
-	const [time, setTime] = useState({ s: 0, m: 0, h: 0 });
+	const [timerTime, setTimerTime] = useState(actualTask.time_in_progress ||{h: 0, m: 0, s: 0 });
 	const [interv, setInterv] = useState();
 	const [startTimer, setStartTimer] = useState();
 	const [timeOfPause, setTimeOfPause] = useState();
 
-	let updatedS = time.s;
-	let updatedM = time.m;
-	let updatedH = time.h;
+	// let updatedS = timerTime.s; let updatedM = timerTime.m; let updatedH = timerTime.h;
 
 	const run = () => {
-		if (updatedM === 60) {
-			updatedH++;
-			updatedM = 0;
+		if (timerTime.m === 60) {
+			timerTime.h++;
+			timerTime.m = 0;
 		}
-		if (updatedS === 60) {
-			updatedM++;
-			updatedS = 0;
+		if (timerTime.s === 60) {
+			timerTime.m++;
+			timerTime.s = 0;
 		}
 
-		updatedS++;
-		return setTime({ s: updatedS, m: updatedM, h: updatedH });
+		timerTime.s++;
+		return setTimerTime({ h: timerTime.h, m: timerTime.m, s: timerTime.s});
+	};
+
+	const stop = () => {
+		clearInterval(interv);
+		setTimeOfPause(Date.now());
+		setPause(true);
+		const newTimeInProgress = {
+			time_in_progress: timerTime,
+		};
+		console.log(newTimeInProgress);
+		hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
+	};
+
+	const reset = () => {
+		clearInterval(interv);
+		setTimerTime({h: 0, m: 0, s: 0 });
+		setPlayTimer(false);
+		setDropTimer(false);
 	};
 
 	const start = () => {
-		run();
 		setStartTimer(Date.now());
 		setInterv(setInterval(run, 1000));
 		if (timeOfPause) {
 			console.log((timeOfPause - startTimer) / 1000);
 		}
 	};
+	useEffect(() => {
+		if (pause) {
+			console.log('остановка');
+		}
+	}, [pause]);
 
 	useEffect(() => {
 		if (playTimer && !pause) {
 			start();
-		}
+		}		
+
 	}, [playTimer, pause]);
 
-	const stop = () => {
-		clearInterval(interv);
-		setTimeOfPause(Date.now());
-		setPause(true);
-		console.log(time);
-	};
 
-	const reset = () => {
-		clearInterval(interv);
-		setTime({ s: 0, m: 0, h: 0 });
-		setPlayTimer(false);
-		setDropTimer(false);
-	};
+
+	useEffect(() => {
+		setTimerTime({ h: actualTask.time_in_progress.h, m: actualTask.time_in_progress.m,  s: actualTask.time_in_progress.s });
+
+	}, [playTimer, actualTask]);
+
 	const classSpan = dropTimer ? 'timer__span-drop' : 'timer__span';
 
 	return (
@@ -76,18 +94,18 @@ function Timer({
 			>
 				<div className={`timer__block ${dropTimer ? 'timer__block_drop' : ''}`}>
 					<span className={classSpan}>
-						{time.m >= 10 ? time.h : `0${time.h}`}
+						{timerTime.h >= 10 ? timerTime.h : `0${timerTime.h}`}
 					</span>
 					<span className={classSpan}>:</span>
 					<span className={classSpan}>
-						{time.m >= 10 ? time.m : `0${time.m}`}
+						{timerTime.m >= 10 ? timerTime.m : `0${timerTime.m}`}
 					</span>
 					<span className={classSpan}>:</span>
 					<span className={classSpan}>
-						{time.s >= 10 ? time.s : `0${time.s}`}
+						{timerTime.s >= 10 ? timerTime.s : `0${timerTime.s}`}
 					</span>
 					<p className={`timer__name ${dropTimer ? 'timer__name_drop' : ''}`}>
-						Дизайн главной страницы (Дачи за городом)
+						{actualTask.name}
 					</p>
 				</div>
 				<div className="timer__buttons-container">
