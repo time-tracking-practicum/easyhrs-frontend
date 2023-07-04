@@ -51,6 +51,19 @@ class UserApi {
 		});
 		return res;
 	}
+
+	async remindUserPassword(userEmail) {
+		const res = await fetch(`${this._url}/users/reset_password/`, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: userEmail,
+			}),
+		});
+		return res;
+	}
 }
 
 const userApi = new UserApi({

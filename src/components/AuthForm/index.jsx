@@ -73,18 +73,18 @@ export default function AuthForm({
 				)}
 				{showCancelButton ? (
 					<div className="authForm__sbmtBtnContainer">
-						<AuthSubmitBtn buttonText={submitBtnText} showCancelButton />
+						<AuthSubmitBtn
+							buttonText={submitBtnText}
+							showCancelButton
+							isValid={isValid}
+						/>
 						<AuthCancelBtn
 							buttonText={cancelBtnText}
 							onCancelButton={onCancelButton}
 						/>
 					</div>
 				) : (
-					<AuthSubmitBtn
-						buttonText={submitBtnText}
-						onError={onError}
-						isValid={isValid}
-					/>
+					<AuthSubmitBtn buttonText={submitBtnText} isValid={isValid} />
 				)}
 			</form>
 		</div>
