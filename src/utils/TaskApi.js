@@ -80,6 +80,21 @@ class TaskApi {
 		});
 		return TaskApi._checkResult(res);
 	}
+
+	async updateTimeInProgress(id, data) {
+		const token =
+			localStorage.getItem('token') || sessionStorage.getItem('token');
+		console.log(data);
+		const res = await fetch(`${this._url}/tasks/${id}/`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+				authorization: `Token ${token}`,
+			},
+			body: JSON.stringify(data),
+		});
+		return TaskApi._checkResult(res);
+	}
 }
 
 const taskApi = new TaskApi({

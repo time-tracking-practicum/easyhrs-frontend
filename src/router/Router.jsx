@@ -71,6 +71,14 @@ export default function Router() {
 			.catch((error) => console.error(error));
 	}, []);
 
+	const updateTimeInProgress = (id, data) => {
+		taskApi
+			.updateTimeInProgress(id, data)
+			.then(() => setCurrentUserTasks())
+			.catch((err) => console.error(err));
+	};
+
+
 	useEffect(() => {
 		setCurrentUserTasks();
 	}, []);
@@ -100,6 +108,7 @@ export default function Router() {
 									handleEditTask={editTaskAndUpdate}
 									handleDeleteTask={deleteTaskAndUpdate}
 									tasks={tasks}
+									hadleUpdateTimeInProgress={updateTimeInProgress}
 								/>
 							</ProtectedRoute>
 						}
