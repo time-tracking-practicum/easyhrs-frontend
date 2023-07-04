@@ -1,0 +1,50 @@
+.projectstatus {
+	list-style-type: none;
+}
+
+.projectstatus__info {
+	display: flex;
+	justify-content: space-between;
+}
+
+.projectstatus__info-wrapper {
+	display: flex;
+	gap: 2px;
+	align-items: center;
+}
+
+.projectstatus__info-name {
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.33;
+	letter-spacing: 0.25px;
+	margin: 0;
+}
+
+.projectstatus__info-btn {
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.projectstatus__info-time {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.43;
+}
+
+.projectstatus__bar {
+	height: 16px;
+	border-radius: 20px;
+	display: flex;
+	background-color: #ffe4cc;
+}
+
+.projectstatus__progress {
+	width: 20%;
+	border-radius: 20px;
+	background-color: #ff6b00;
+}

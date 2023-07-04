@@ -8,16 +8,22 @@ import StartPage from '../pages/StartPage';
 import NavTab from '../components/NavTab';
 import MainPage from '../pages/MainPage';
 import MatrixPage from '../pages/MatrixPage';
+import StatisticsPage from '../pages/StatisticsPage';
 import TaskCardPage from '../pages/TaskCardPage';
 import ProfilePage from '../pages/ProfilePage';
 import { UserContext } from '../contexts/UserContext';
 import ProtectedRoute from '../components/ProtectedRoute';
 import SettingsPage from '../pages/SettingsPage';
 import taskApi from '../utils/TaskApi';
+import projectApi from '../utils/ProjectApi';
 
 export default function Router() {
 	const [currentUser, setCurrentuser] = useState({});
 	const [tasks, setTasks] = useState([]); // стейт задач
+	const [projects, setProjects] = useState({
+		selected: null,
+		all: [],
+	}); // стейт проектов
 	const localToken = localStorage.getItem('token');
 	const sessionToken = sessionStorage.getItem('token');
 	const nav = useNavigate();
@@ -54,6 +60,16 @@ export default function Router() {
 			})
 			.catch((err) => console.error(err));
 	};
+
+	// функция загрузки проектов юзера
+	useEffect(() => {
+		projectApi
+			.getMyProjects()
+			.then((data) => {
+				setProjects((prevState) => ({ ...prevState, all: data }));
+			})
+			.catch((error) => console.error(error));
+	}, []);
 
 	const updateTimeInProgress = (id, data) => {
 		taskApi
@@ -129,6 +145,14 @@ export default function Router() {
 						element={
 							<ProtectedRoute>
 								<SettingsPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/statistics"
+						element={
+							<ProtectedRoute>
+								<StatisticsPage projects={projects.all} />
 							</ProtectedRoute>
 						}
 					/>
