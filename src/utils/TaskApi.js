@@ -84,16 +84,14 @@ class TaskApi {
 	async updateTimeInProgress(id, data) {
 		const token =
 			localStorage.getItem('token') || sessionStorage.getItem('token');
-		// console.log(data);
+		console.log(data);
 		const res = await fetch(`${this._url}/tasks/${id}/`, {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
 				authorization: `Token ${token}`,
 			},
-			body: JSON.stringify({
-				time_in_progress: data,
-			}),
+			body: JSON.stringify(data),
 		});
 		return TaskApi._checkResult(res);
 	}

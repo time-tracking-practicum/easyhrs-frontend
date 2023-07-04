@@ -17,8 +17,9 @@ export default function MainPage({
 	tasks,
 }) {
 	
-	const [playTimer, setPlayTimer] = useState(false);
+	const [openTimer, setOpenTimer] = useState(false);
 	const [dropTimer, setDropTimer] = useState(false);
+	const [play, setPlay] = useState(false);
 	const [pause, setPause] = useState(false);
 	const [actualTask, setActualTask] = useState({});
 	const [tasksList, setTasksList] = useState(tasks);
@@ -92,27 +93,30 @@ export default function MainPage({
 								urgent={task.is_urgent}
 								important={task.is_important}
 								task={task}
-								playTimer={playTimer}
-								setPlayTimer={setPlayTimer}
+								openTimer={openTimer}
+								setOpenTimer={setOpenTimer}
 								setPause={setPause}
 								timeInProgress={task.time_in_progress}
 								setActualTask={setActualTask}
 								actualTask={actualTask}
-								
+								play={play}
+								setPlay={setPlay}
+								pause={pause}
  							/>
 						))}
 					</ul>
-					{playTimer && (
+					{openTimer && (
 						<Timer
-							playTimer={playTimer}
-							setPlayTimer={setPlayTimer}
+							openTimer={openTimer}
+							setOpenTimer={setOpenTimer}
 							dropTimer={dropTimer}
 							setDropTimer={setDropTimer}
 							pause={pause}
 							setPause={setPause}
 							actualTask={actualTask}
 							hadleUpdateTimeInProgress={hadleUpdateTimeInProgress}
-
+							play={play}
+							setPlay={setPlay}
 						/>
 					)}
 				</div>

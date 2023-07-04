@@ -6,35 +6,40 @@ import iconComplete from '../../images/icon-complete.svg';
 import './Timer.css';
 
 function Timer({
-	playTimer,
-	setPlayTimer,
+	openTimer,
+	setOpenTimer,
 	dropTimer,
 	setDropTimer,
 	pause,
 	setPause,
 	actualTask,
 	hadleUpdateTimeInProgress,
-
+	play,
+	setPlay,
 }) {
-	const [timerTime, setTimerTime] = useState(actualTask.time_in_progress ||{h: 0, m: 0, s: 0 });
+	const [timerTime, setTimerTime] = useState({h: 0, m: 0, s: 0 });
 	const [interv, setInterv] = useState();
 	const [startTimer, setStartTimer] = useState();
 	const [timeOfPause, setTimeOfPause] = useState();
 
-	// let updatedS = timerTime.s; let updatedM = timerTime.m; let updatedH = timerTime.h;
+	let timer = {
+		h: actualTask.time_in_progress.h,
+		m: actualTask.time_in_progress.m,
+		s: actualTask.time_in_progress.s,
+	}
 
 	const run = () => {
-		if (timerTime.m === 60) {
-			timerTime.h++;
-			timerTime.m = 0;
+		if (timer.m === 59) {
+			timer.h++;
+			timer.m = 0;
 		}
-		if (timerTime.s === 60) {
-			timerTime.m++;
-			timerTime.s = 0;
+		if (timer.s === 59) {
+			timer.m++;
+			timer.s = 0;
 		}
 
-		timerTime.s++;
-		return setTimerTime({ h: timerTime.h, m: timerTime.m, s: timerTime.s});
+		timer.s++;
+		return setTimerTime({ h: timer.h, m: timer.m, s: timer.s});
 	};
 
 	const stop = () => {
@@ -44,18 +49,20 @@ function Timer({
 		const newTimeInProgress = {
 			time_in_progress: timerTime,
 		};
-		console.log(newTimeInProgress);
 		hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
+		setPlay(false);
 	};
 
 	const reset = () => {
 		clearInterval(interv);
 		setTimerTime({h: 0, m: 0, s: 0 });
-		setPlayTimer(false);
+		setOpenTimer(false);
 		setDropTimer(false);
+		setPlay(false);
 	};
 
 	const start = () => {
+		setPlay(true);
 		setStartTimer(Date.now());
 		setInterv(setInterval(run, 1000));
 		if (timeOfPause) {
@@ -66,21 +73,17 @@ function Timer({
 		if (pause) {
 			console.log('остановка');
 		}
-	}, [pause]);
+	}, [play, pause]);
 
 	useEffect(() => {
-		if (playTimer && !pause) {
+		if (openTimer && !pause) {
 			start();
 		}		
-
-	}, [playTimer, pause]);
-
-
+	}, [openTimer, pause]);
 
 	useEffect(() => {
 		setTimerTime({ h: actualTask.time_in_progress.h, m: actualTask.time_in_progress.m,  s: actualTask.time_in_progress.s });
-
-	}, [playTimer, actualTask]);
+	}, [openTimer, actualTask]);
 
 	const classSpan = dropTimer ? 'timer__span-drop' : 'timer__span';
 

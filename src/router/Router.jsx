@@ -55,10 +55,10 @@ export default function Router() {
 			.catch((err) => console.error(err));
 	};
 
-	const updateTimeInProgress = (task) => {
+	const updateTimeInProgress = (id, data) => {
 		taskApi
-			.updateTimeInProgress(task)
-			// .then(() => setCurrentUserTasks())
+			.updateTimeInProgress(id, data)
+			.then(() => setCurrentUserTasks())
 			.catch((err) => console.error(err));
 	};
 

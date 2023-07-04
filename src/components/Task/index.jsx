@@ -12,14 +12,15 @@ export default function Task({
 	urgent,
 	important,
 	task,
-	playTimer,
-	setPlayTimer,
+	openTimer,
+	setOpenTimer,
 	setPause,
 	handleOpenEditTaskForm,
 	timeInProgress,
 	setActualTask,
-	// actualTask,
-	// setTimerTime,
+	play,
+	setPlay,
+	pause,
 }) {
 	// функция форматирования входящей строки в дату формата dd.mm.yyyy
 	function formateDate(data) {
@@ -29,14 +30,15 @@ export default function Task({
 
 	function handleStart() {
 		console.log('пуск');
-		if (playTimer) {
+		if (play && openTimer && !pause) {
 			setPause(true);
+			setPlay(false);
 			console.log('второй параллельно');
 			
 		};
+		setPlay(true);
 		setActualTask(task);
-		// setTimerTime(actualTask);
-		setPlayTimer(true);
+		setOpenTimer(true);
 		setPause(false);
 		console.log(timeInProgress);
 	}
