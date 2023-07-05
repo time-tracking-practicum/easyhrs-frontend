@@ -16,8 +16,9 @@ function Timer({
 	hadleUpdateTimeInProgress,
 	play,
 	setPlay,
+	timerTime,
+	setTimerTime,
 }) {
-	const [timerTime, setTimerTime] = useState({h: 0, m: 0, s: 0 });
 	const [interv, setInterv] = useState();
 	const [startTimer, setStartTimer] = useState();
 	const [timeOfPause, setTimeOfPause] = useState();
@@ -54,13 +55,18 @@ function Timer({
 	};
 
 	const reset = () => {
+		if (play && !pause && openTimer) {
+			const newTimeInProgress = {
+				time_in_progress: timerTime,
+			};
+			hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
+		}
 		clearInterval(interv);
 		setTimerTime({h: 0, m: 0, s: 0 });
 		setOpenTimer(false);
 		setDropTimer(false);
 		setPlay(false);
 	};
-
 	const start = () => {
 		setPlay(true);
 		setStartTimer(Date.now());
@@ -76,10 +82,18 @@ function Timer({
 	}, [play, pause]);
 
 	useEffect(() => {
-		if (openTimer && !pause) {
+		if (play && !pause) {
 			start();
-		}		
-	}, [openTimer, pause]);
+		}
+		if (play && pause) {
+			reset();
+			start();
+			setOpenTimer(true);
+			console.log('double-play');
+			
+		}	
+
+	}, [openTimer, pause, play]);
 
 	useEffect(() => {
 		setTimerTime({ h: actualTask.time_in_progress.h, m: actualTask.time_in_progress.m,  s: actualTask.time_in_progress.s });
@@ -88,7 +102,9 @@ function Timer({
 	const classSpan = dropTimer ? 'timer__span-drop' : 'timer__span';
 
 	return (
-		<div className="timer">
+		<div className={`timer ${
+			dropTimer ? 'timer_drop' : ''
+		}`}>
 			{!dropTimer && <Header timer setDropTimer={setDropTimer} />}
 			<div
 				className={`timer__container ${
@@ -112,7 +128,7 @@ function Timer({
 					</p>
 				</div>
 				<div className="timer__buttons-container">
-					<button onClick={stop} type="button" className="timer__button">
+					<button onClick={stop} type="button" className="timer__button" >
 						<img className="timer__icon" src={iconPause} alt="Икона паузы" />
 						Пауза
 					</button>

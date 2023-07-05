@@ -30,6 +30,7 @@ export default function MainPage({
 		all: [],
 	});
 	const [currentTask, setCurrentTask] = useState(null);
+	const [timerTime, setTimerTime] = useState({h: 0, m: 0, s: 0 });
 	const handleOpenCreateTaskForm = () => {
 		setIsCreateTaskFormOpen(true);
 	};
@@ -65,7 +66,7 @@ export default function MainPage({
 			.then((data) => {
 				setProjects((prevState) => ({ ...prevState, all: data }));
 			})
-			.catch((error) => console.error(error));
+			.catch((error) => console.log(error));
 	}, [tasks]);
 
 	return (
@@ -102,6 +103,9 @@ export default function MainPage({
 								play={play}
 								setPlay={setPlay}
 								pause={pause}
+								setTimerTime={setTimerTime}
+								timerTime={timerTime}
+								hadleUpdateTimeInProgress={hadleUpdateTimeInProgress}
  							/>
 						))}
 					</ul>
@@ -117,6 +121,8 @@ export default function MainPage({
 							hadleUpdateTimeInProgress={hadleUpdateTimeInProgress}
 							play={play}
 							setPlay={setPlay}
+							timerTime={timerTime}
+							setTimerTime={setTimerTime}
 						/>
 					)}
 				</div>

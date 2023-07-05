@@ -84,7 +84,6 @@ class TaskApi {
 	async updateTimeInProgress(id, data) {
 		const token =
 			localStorage.getItem('token') || sessionStorage.getItem('token');
-		console.log(data);
 		const res = await fetch(`${this._url}/tasks/${id}/`, {
 			method: 'PATCH',
 			headers: {

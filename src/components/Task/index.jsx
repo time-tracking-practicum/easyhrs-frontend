@@ -7,7 +7,7 @@ export default function Task({
 	name,
 	project,
 	deadline,
-	status,
+	// status,
 	emoji,
 	urgent,
 	important,
@@ -21,6 +21,9 @@ export default function Task({
 	play,
 	setPlay,
 	pause,
+	actualTask,
+	timerTime,
+	hadleUpdateTimeInProgress,
 }) {
 	// функция форматирования входящей строки в дату формата dd.mm.yyyy
 	function formateDate(data) {
@@ -29,18 +32,32 @@ export default function Task({
 	}
 
 	function handleStart() {
-		console.log('пуск');
-		if (play && openTimer && !pause) {
+		if (play && !pause) {
 			setPause(true);
-			setPlay(false);
-			console.log('второй параллельно');
+			const newTimeInProgress = {
+				time_in_progress: timerTime,
+			};
+			hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
+			setActualTask(task);
+			console.log('second play');
 			
 		};
-		setPlay(true);
-		setActualTask(task);
-		setOpenTimer(true);
-		setPause(false);
-		console.log(timeInProgress);
+		if (play && pause && openTimer) {
+			console.log('third play');
+			setPause(true);
+			const newTimeInProgress = {
+				time_in_progress: timerTime,
+			};
+			hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
+			setActualTask(task);
+		}
+		if (!play) {
+			console.log('ne dubl');
+			setPlay(true);
+			setActualTask(task);
+			setOpenTimer(true);
+			setPause(false);
+		}
 	}
 
 	return (
@@ -70,13 +87,34 @@ export default function Task({
 				<p className="task__deadline">{formateDate(deadline)}</p>
 				<ul className="task__timer-wrapper">
 					<li className="task__timer-status">
-						{status === 'in_progress' ? 'В работе' : 'Пауза'}
+						{(actualTask.name === name && play) ? 'В работе' : 'Пауза'}
 					</li>
-					<li className="task__timer-time">{timeInProgress.h}:{timeInProgress.m}:{timeInProgress.s}</li>
+					{
+					actualTask.name === name && play ?
+					<li className="task__timer-time">
+					{timerTime.h >= 10 ? timerTime.h : `0${timerTime.h}`}
+					:
+					{timerTime.m >= 10 ? timerTime.m : `0${timerTime.m}`}
+					:
+					{timerTime.s >= 10 ? timerTime.s : `0${timerTime.s}`}
+					</li>
+					:
+					<li className="task__timer-time">
+						{timeInProgress.h >= 10 ? timeInProgress.h : `0${timeInProgress.h}`}
+						:
+						{timeInProgress.m >= 10 ? timeInProgress.m : `0${timeInProgress.m}`}
+						:
+						{timeInProgress.s >= 10 ? timeInProgress.s : `0${timeInProgress.s}`}
+					</li>
+					}
 				</ul>
 			</div>
 			<div className="task__btn-wrapper">
-				<button onClick={handleStart} className="task__btn">
+				<button 
+				onClick={handleStart}
+				className={`task__btn ${
+					play && 'task__btn_disabled'}`}
+				disabled={play}>
 					<svg
 						width="40"
 						height="40"
