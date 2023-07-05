@@ -8,7 +8,7 @@ class AuthApi {
 		if (res.ok) {
 			return res.json();
 		}
-		return Promise.reject(new Error(`Ошибка: ${res.status}`));
+		return Promise.reject(res.json());
 	};
 
 	async register(data) {
