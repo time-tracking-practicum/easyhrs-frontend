@@ -45,5 +45,5 @@ jobs:
           script: |
             docker-compose stop
             docker-compose rm -f frontend
-            docker image rm ${{ secrets.DOCKER_USERNAME }}/easyhours-frontend
+            docker image rm ${{ secrets.DOCKERHUB_USERNAME }}/easyhours-frontend
             docker-compose up -d
