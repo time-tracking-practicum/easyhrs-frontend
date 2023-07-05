@@ -25,8 +25,8 @@ export default function AuthForm({
 	cancelBtnText,
 	onCancelButton,
 	onError,
-	login,
 	isValid,
+	backendErr,
 }) {
 	return (
 		<div className={`authForm ${isVisible ? 'authForm_visible' : ''}`}>
@@ -44,11 +44,7 @@ export default function AuthForm({
 					</button>
 				)}
 			</p>
-			{onError && login && (
-				<span className="authForm-error">
-					Не верный e-mail или пароль. Проверьте правильность введенных данных.
-				</span>
-			)}
+			{onError && <span className="authForm-error">{backendErr}</span>}
 			<form
 				className="authForm__form"
 				action="#"

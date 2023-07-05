@@ -20,6 +20,7 @@ export default function Login({
 		password: '',
 	});
 	const [isCheckboxChecked, setisCheckboxChecked] = useState(true);
+	const [backendErr, setBackendErr] = useState('');
 
 	const toggleCheckBox = () => {
 		setisCheckboxChecked(!isCheckboxChecked);
@@ -28,6 +29,7 @@ export default function Login({
 	async function login() {
 		if (isValid) {
 			try {
+				setBackendErr('');
 				const loginData = await authApi.login({
 					email: values.email,
 					password: values.password,
@@ -58,7 +60,10 @@ export default function Login({
 				});
 				nav('/main');
 			} catch (error) {
-				console.log(error);
+				const err = await error;
+				if (err.non_field_errors) {
+					setBackendErr(err.non_field_errors[0]);
+				}
 			}
 		}
 	}
@@ -84,8 +89,8 @@ export default function Login({
 			showCheckBox
 			isCheckboxChecked={isCheckboxChecked}
 			toggleCheckBox={toggleCheckBox}
-			onError={errors.email || errors.password}
-			login
+			onError={errors.email || errors.password || backendErr}
+			backendErr={backendErr}
 		>
 			<AuthInput
 				email

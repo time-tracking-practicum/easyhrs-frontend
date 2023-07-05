@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthForm from '../AuthForm';
 import AuthInput from '../AuthInput';
@@ -13,18 +14,23 @@ export default function RemindPassForm({
 	const { handleChange, errors, values, resetForm, isValid, setIsValid } =
 		useFormAndValidation({ email: '' });
 	const nav = useNavigate();
+	const [backendErr, setBackendErr] = useState('');
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		try {
+			setBackendErr('');
 			setIsValid(false);
 			const result = await userApi.remindUserPassword(values.email);
 			if (result.status === 204) {
 				nav('/');
 				resetForm();
 			}
-		} catch (err) {
-			console.log(err);
+		} catch (error) {
+			if (error.email) {
+				const err = await error;
+				setBackendErr(err.email[0]);
+			}
 		}
 	};
 
@@ -40,6 +46,7 @@ export default function RemindPassForm({
 			cancelBtnText={text.passFormCancelBtnText}
 			onCancelButton={onCancelButton}
 			isValid={isValid}
+			backendErr={backendErr}
 		>
 			<AuthInput
 				email
