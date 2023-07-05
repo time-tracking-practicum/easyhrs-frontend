@@ -78,7 +78,6 @@ export default function Router() {
 			.catch((err) => console.error(err));
 	};
 
-
 	useEffect(() => {
 		setCurrentUserTasks();
 	}, []);

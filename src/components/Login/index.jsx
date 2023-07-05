@@ -20,6 +20,7 @@ export default function Login({
 		password: '',
 	});
 	const [isCheckboxChecked, setisCheckboxChecked] = useState(true);
+	const [backendErr, setBackendErr] = useState('');
 
 	const toggleCheckBox = () => {
 		setisCheckboxChecked(!isCheckboxChecked);
@@ -28,6 +29,7 @@ export default function Login({
 	async function login() {
 		if (isValid) {
 			try {
+				setBackendErr('');
 				const loginData = await authApi.login({
 					email: values.email,
 					password: values.password,
@@ -58,7 +60,12 @@ export default function Login({
 				});
 				nav('/main');
 			} catch (error) {
-				console.log(error);
+				const err = await error;
+				if (err.non_field_errors) {
+					setBackendErr(
+						'Не верный e-mail или пароль. Проверьте правильность введенных данных.'
+					);
+				}
 			}
 		}
 	}
@@ -84,8 +91,8 @@ export default function Login({
 			showCheckBox
 			isCheckboxChecked={isCheckboxChecked}
 			toggleCheckBox={toggleCheckBox}
-			onError={errors.email || errors.password}
-			login
+			onError={backendErr}
+			backendErr={backendErr}
 		>
 			<AuthInput
 				email
@@ -94,7 +101,10 @@ export default function Login({
 				autoComplete="email"
 				onChange={handleChange}
 				min={1}
+				max={254}
 				required
+				onError={errors.email}
+				errText={errors.email}
 			/>
 			<AuthInput
 				password
@@ -105,6 +115,8 @@ export default function Login({
 				onChange={handleChange}
 				min={6}
 				required
+				onError={errors.password}
+				errText={errors.password}
 			/>
 		</AuthForm>
 	);

@@ -123,6 +123,7 @@ export default function MainPage({
 							setPlay={setPlay}
 							timerTime={timerTime}
 							setTimerTime={setTimerTime}
+							setActualTask={setActualTask}
 						/>
 					)}
 				</div>

@@ -27,7 +27,7 @@ function Timer({
 		h: actualTask.time_in_progress.h,
 		m: actualTask.time_in_progress.m,
 		s: actualTask.time_in_progress.s,
-	}
+	};
 
 	const run = () => {
 		if (timer.m === 59) {
@@ -40,7 +40,7 @@ function Timer({
 		}
 
 		timer.s++;
-		return setTimerTime({ h: timer.h, m: timer.m, s: timer.s});
+		return setTimerTime({ h: timer.h, m: timer.m, s: timer.s });
 	};
 
 	const stop = () => {
@@ -62,7 +62,7 @@ function Timer({
 			hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
 		}
 		clearInterval(interv);
-		setTimerTime({h: 0, m: 0, s: 0 });
+		setTimerTime({ h: 0, m: 0, s: 0 });
 		setOpenTimer(false);
 		setDropTimer(false);
 		setPlay(false);
@@ -96,7 +96,11 @@ function Timer({
 	}, [openTimer, pause, play]);
 
 	useEffect(() => {
-		setTimerTime({ h: actualTask.time_in_progress.h, m: actualTask.time_in_progress.m,  s: actualTask.time_in_progress.s });
+		setTimerTime({
+			h: actualTask.time_in_progress.h,
+			m: actualTask.time_in_progress.m,
+			s: actualTask.time_in_progress.s,
+		});
 	}, [openTimer, actualTask]);
 
 	const classSpan = dropTimer ? 'timer__span-drop' : 'timer__span';

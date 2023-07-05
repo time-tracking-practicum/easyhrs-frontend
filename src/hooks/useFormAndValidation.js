@@ -17,12 +17,15 @@ export function useFormAndValidation(inputValues) {
 		if (e.target.name === 'email') {
 			setErrors({
 				...errors,
-				[name]: !isEmail(value)
+				[name]: !isEmail(value, { ignore_max_length: true })
 					? e.target.validationMessage || 'Некорректный Email'
 					: '',
 			});
-			setValidEmail(isEmail(value));
-			setIsValid(isEmail(value) && e.target.closest('form').checkValidity());
+			setValidEmail(isEmail(value, { ignore_max_length: true }));
+			setIsValid(
+				isEmail(value, { ignore_max_length: true }) &&
+					e.target.closest('form').checkValidity()
+			);
 		}
 
 		if (e.target.name === 'confimPassword') {

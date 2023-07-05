@@ -19,6 +19,7 @@ export default function Registration({
 		confimPassword: '',
 	});
 	const [isCheckboxChecked, setisCheckboxChecked] = useState(true);
+	const [backendErr, setBackendErr] = useState('');
 
 	const toggleCheckBox = () => {
 		setisCheckboxChecked(!isCheckboxChecked);
@@ -27,6 +28,7 @@ export default function Registration({
 	async function registration() {
 		if (isValid) {
 			try {
+				setBackendErr('');
 				await authApi.register({
 					email: values.email,
 					password: values.password,
@@ -61,7 +63,10 @@ export default function Registration({
 				});
 				nav('/main');
 			} catch (error) {
-				console.log(error);
+				const err = await error;
+				if (err.email) {
+					setBackendErr('E-mail уже зарегистрирован.');
+				}
 			}
 		}
 	}
@@ -69,7 +74,6 @@ export default function Registration({
 	const onSubmit = (e) => {
 		e.preventDefault();
 		if (values.password !== values.confimPassword) {
-			console.log('Пароли не совпадают!');
 			return;
 		}
 		registration();
@@ -88,7 +92,8 @@ export default function Registration({
 			showCheckBox
 			isCheckboxChecked={isCheckboxChecked}
 			toggleCheckBox={toggleCheckBox}
-			onError={errors.email || errors.password || errors.confimPassword}
+			onError={backendErr}
+			backendErr={backendErr}
 		>
 			<AuthInput
 				email
@@ -99,6 +104,7 @@ export default function Registration({
 				onChange={handleChange}
 				onError={errors.email}
 				min={1}
+				max={254}
 				required
 			/>
 			<AuthInput
