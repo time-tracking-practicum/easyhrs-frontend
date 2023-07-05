@@ -9,7 +9,14 @@ import './Header.css';
 // newtask: булевое значение на добавление кнопки,
 // branch='name': Название ветки с возвратом назад
 
-function Header({ sectionName, newtask, branch, timer, onButtonClick, setDropTimer }) {
+function Header({
+	sectionName,
+	newtask,
+	branch,
+	timer,
+	onButtonClick,
+	setDropTimer,
+}) {
 	const navigate = useNavigate();
 	const handleDrop = () => {
 		setDropTimer(true);

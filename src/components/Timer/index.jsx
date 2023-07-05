@@ -17,7 +17,7 @@ function Timer({
 	play,
 	setPlay,
 }) {
-	const [timerTime, setTimerTime] = useState({h: 0, m: 0, s: 0 });
+	const [timerTime, setTimerTime] = useState({ h: 0, m: 0, s: 0 });
 	const [interv, setInterv] = useState();
 	const [startTimer, setStartTimer] = useState();
 	const [timeOfPause, setTimeOfPause] = useState();
@@ -26,7 +26,7 @@ function Timer({
 		h: actualTask.time_in_progress.h,
 		m: actualTask.time_in_progress.m,
 		s: actualTask.time_in_progress.s,
-	}
+	};
 
 	const run = () => {
 		if (timer.m === 59) {
@@ -39,7 +39,7 @@ function Timer({
 		}
 
 		timer.s++;
-		return setTimerTime({ h: timer.h, m: timer.m, s: timer.s});
+		return setTimerTime({ h: timer.h, m: timer.m, s: timer.s });
 	};
 
 	const stop = () => {
@@ -55,7 +55,7 @@ function Timer({
 
 	const reset = () => {
 		clearInterval(interv);
-		setTimerTime({h: 0, m: 0, s: 0 });
+		setTimerTime({ h: 0, m: 0, s: 0 });
 		setOpenTimer(false);
 		setDropTimer(false);
 		setPlay(false);
@@ -78,11 +78,15 @@ function Timer({
 	useEffect(() => {
 		if (openTimer && !pause) {
 			start();
-		}		
+		}
 	}, [openTimer, pause]);
 
 	useEffect(() => {
-		setTimerTime({ h: actualTask.time_in_progress.h, m: actualTask.time_in_progress.m,  s: actualTask.time_in_progress.s });
+		setTimerTime({
+			h: actualTask.time_in_progress.h,
+			m: actualTask.time_in_progress.m,
+			s: actualTask.time_in_progress.s,
+		});
 	}, [openTimer, actualTask]);
 
 	const classSpan = dropTimer ? 'timer__span-drop' : 'timer__span';

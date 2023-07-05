@@ -16,7 +16,6 @@ export default function MainPage({
 	hadleUpdateTimeInProgress,
 	tasks,
 }) {
-	
 	const [openTimer, setOpenTimer] = useState(false);
 	const [dropTimer, setDropTimer] = useState(false);
 	const [play, setPlay] = useState(false);
@@ -102,7 +101,7 @@ export default function MainPage({
 								play={play}
 								setPlay={setPlay}
 								pause={pause}
- 							/>
+							/>
 						))}
 					</ul>
 					{openTimer && (

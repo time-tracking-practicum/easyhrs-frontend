@@ -34,8 +34,7 @@ export default function Task({
 			setPause(true);
 			setPlay(false);
 			console.log('второй параллельно');
-			
-		};
+		}
 		setPlay(true);
 		setActualTask(task);
 		setOpenTimer(true);
@@ -72,7 +71,9 @@ export default function Task({
 					<li className="task__timer-status">
 						{status === 'in_progress' ? 'В работе' : 'Пауза'}
 					</li>
-					<li className="task__timer-time">{timeInProgress.h}:{timeInProgress.m}:{timeInProgress.s}</li>
+					<li className="task__timer-time">
+						{timeInProgress.h}:{timeInProgress.m}:{timeInProgress.s}
+					</li>
 				</ul>
 			</div>
 			<div className="task__btn-wrapper">
