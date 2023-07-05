@@ -27,9 +27,9 @@ export default function RemindPassForm({
 				resetForm();
 			}
 		} catch (error) {
-			if (error.email) {
-				const err = await error;
-				setBackendErr(err.email[0]);
+			const err = await error;
+			if (err.email) {
+				setBackendErr('Указанный E-mail не зарегистрирован.');
 			}
 		}
 	};

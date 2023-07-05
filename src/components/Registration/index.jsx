@@ -65,7 +65,7 @@ export default function Registration({
 			} catch (error) {
 				const err = await error;
 				if (err.email) {
-					setBackendErr(err.email[0]);
+					setBackendErr('E-mail уже зарегистрирован.');
 				}
 			}
 		}

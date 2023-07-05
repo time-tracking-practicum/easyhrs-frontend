@@ -62,7 +62,9 @@ export default function Login({
 			} catch (error) {
 				const err = await error;
 				if (err.non_field_errors) {
-					setBackendErr(err.non_field_errors[0]);
+					setBackendErr(
+						'Не верный e-mail или пароль. Проверьте правильность введенных данных.'
+					);
 				}
 			}
 		}
