@@ -94,6 +94,7 @@ export default function Login({
 				autoComplete="email"
 				onChange={handleChange}
 				min={1}
+				max={254}
 				required
 			/>
 			<AuthInput

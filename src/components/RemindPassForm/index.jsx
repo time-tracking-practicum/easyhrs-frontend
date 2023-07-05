@@ -50,6 +50,7 @@ export default function RemindPassForm({
 				onChange={handleChange}
 				onError={errors.email}
 				min={1}
+				max={254}
 				required
 			/>
 		</AuthForm>
