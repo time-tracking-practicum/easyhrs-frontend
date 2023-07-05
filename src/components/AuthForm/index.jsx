@@ -24,7 +24,6 @@ export default function AuthForm({
 	showCancelButton,
 	cancelBtnText,
 	onCancelButton,
-	onError,
 	isValid,
 	backendErr,
 }) {
@@ -44,7 +43,7 @@ export default function AuthForm({
 					</button>
 				)}
 			</p>
-			{onError && <span className="authForm-error">{backendErr}</span>}
+			{backendErr && <span className="authForm-error">{backendErr}</span>}
 			<form
 				className="authForm__form"
 				action="#"

@@ -92,9 +92,7 @@ export default function Registration({
 			showCheckBox
 			isCheckboxChecked={isCheckboxChecked}
 			toggleCheckBox={toggleCheckBox}
-			onError={
-				errors.email || errors.password || errors.confimPassword || backendErr
-			}
+			onError={backendErr}
 			backendErr={backendErr}
 		>
 			<AuthInput

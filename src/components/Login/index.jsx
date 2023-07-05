@@ -91,7 +91,7 @@ export default function Login({
 			showCheckBox
 			isCheckboxChecked={isCheckboxChecked}
 			toggleCheckBox={toggleCheckBox}
-			onError={errors.email || errors.password || backendErr}
+			onError={backendErr}
 			backendErr={backendErr}
 		>
 			<AuthInput
@@ -103,6 +103,8 @@ export default function Login({
 				min={1}
 				max={254}
 				required
+				onError={errors.email}
+				errText={errors.email}
 			/>
 			<AuthInput
 				password
@@ -113,6 +115,8 @@ export default function Login({
 				onChange={handleChange}
 				min={6}
 				required
+				onError={errors.password}
+				errText={errors.password}
 			/>
 		</AuthForm>
 	);
