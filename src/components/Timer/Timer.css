@@ -1,17 +1,29 @@
+.timer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+
+	background: white;
+    height: 100%;
+}
+
+.timer_drop {
+	height: 128px;
+}
+
 .timer__container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-top: 198px;
-	position: absolute;
 	width: 100%;
 }
 
 .timer__container_drop {
 	padding: 16px 40px;
+	margin-top: 0;
 	justify-content: space-between;
 	flex-direction: row;
-	bottom: 0;
 	background: rgba(169, 156, 203, 1);
 }
 

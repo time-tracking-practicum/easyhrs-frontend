@@ -98,6 +98,7 @@
 	display: flex;
 	gap: 9px;
 	padding: 0;
+	justify-content: space-between;
 }
 
 .task__timer-status {
@@ -125,4 +126,8 @@
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+}
+
+.task__btn_disabled {
+	opacity: 0.3;
 }
