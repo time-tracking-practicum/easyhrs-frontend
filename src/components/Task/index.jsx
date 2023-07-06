@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-nested-ternary */
 import './Task.css';
+import { formateDate } from '../../utils/formateDate';
 
 export default function Task({
 	name,
@@ -25,12 +26,6 @@ export default function Task({
 	timerTime,
 	hadleUpdateTimeInProgress,
 }) {
-	// функция форматирования входящей строки в дату формата dd.mm.yyyy
-	function formateDate(data) {
-		const date = new Date(data);
-		return date.toLocaleDateString();
-	}
-
 	function handleStart() {
 		if (play && !pause) {
 			setPause(true);

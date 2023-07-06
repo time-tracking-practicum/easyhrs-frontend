@@ -11,6 +11,7 @@ import MatrixPage from '../pages/MatrixPage';
 import StatisticsPage from '../pages/StatisticsPage';
 import TaskCardPage from '../pages/TaskCardPage';
 import ProfilePage from '../pages/ProfilePage';
+import ProjectStatisticPage from '../pages/ProjectStatisticPage';
 import { UserContext } from '../contexts/UserContext';
 import ProtectedRoute from '../components/ProtectedRoute';
 import SettingsPage from '../pages/SettingsPage';
@@ -163,6 +164,22 @@ export default function Router() {
 						element={
 							<ProtectedRoute>
 								<StatisticsPage projects={projects.all} tasks={tasks} />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/statistics/:projectId"
+						element={
+							<ProtectedRoute>
+								<ProjectStatisticPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/statistics/:projectId"
+						element={
+							<ProtectedRoute>
+								<ProjectStatisticPage />
 							</ProtectedRoute>
 						}
 					/>

@@ -1,0 +1,16 @@
+.projStatisticTask {
+	width: 100%;
+}
+
+.projStatisticTask__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+}
+
+.projStatisticTask__name-container {
+	flex: 1 0 auto;
+	gap: 5px;
+	justify-content: flex-start;
+}

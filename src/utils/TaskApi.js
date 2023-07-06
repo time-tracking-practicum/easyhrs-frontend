@@ -30,6 +30,17 @@ class TaskApi {
 		return TaskApi._checkResult(res);
 	}
 
+	async getTasks() {
+		const res = await fetch(`${this._url}/tasks/`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				// authorization: `Token ${token}`,
+			},
+		});
+		return TaskApi._checkResult(res);
+	}
+
 	async getTaskById(id) {
 		const res = await fetch(`${this._url}/tasks/${id}`, {
 			method: 'GET',

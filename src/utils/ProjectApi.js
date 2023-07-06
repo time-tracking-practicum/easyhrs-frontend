@@ -39,6 +39,19 @@ class ProjectApi {
 		});
 		return ProjectApi._checkResult(res);
 	}
+
+	async getMyOneProjects(id) {
+		const token =
+			localStorage.getItem('token') || sessionStorage.getItem('token');
+		const res = await fetch(`${this._url}/projects/${id}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				authorization: `Token ${token}`,
+			},
+		});
+		return ProjectApi._checkResult(res);
+	}
 }
 
 const projectApi = new ProjectApi({

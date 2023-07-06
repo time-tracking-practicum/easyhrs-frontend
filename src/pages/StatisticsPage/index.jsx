@@ -31,6 +31,7 @@ export default function StatisticsPage({ projects, tasks }) {
 			<div className="statpage__container">
 				<h3 className="statpage__title">Проекты</h3>
 				<ul className="statpage__projects">
+		
 					{projects.map((project) => (
 						<ProjectStatusBar
 							key={project.id}
