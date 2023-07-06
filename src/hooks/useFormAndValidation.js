@@ -7,7 +7,7 @@ export function useFormAndValidation(inputValues) {
 	const [errors, setErrors] = useState({});
 	const [isValid, setIsValid] = useState(true);
 	const [validEmail, setValidEmail] = useState(false);
-	const regexPass = /[\s]+/;
+	const regexPass = /[а-яА-ЯёЁ\s]+/;
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -59,7 +59,7 @@ export function useFormAndValidation(inputValues) {
 			if (regexPass.test(value)) {
 				setErrors({
 					...errors,
-					[name]: 'Пароль не должен содержать пробел',
+					[name]: 'Пароль не должен содержать пробел или кириллицу',
 				});
 				setIsValid(false);
 			}

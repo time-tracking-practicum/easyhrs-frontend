@@ -11,7 +11,6 @@ export default function AuthInput({
 	autoComplete,
 	errText,
 	onChange,
-	pattern,
 	min,
 	max,
 	required,
@@ -38,7 +37,6 @@ export default function AuthInput({
 					}
 					name={name}
 					id={name}
-					pattern={pattern}
 					className={`authForm__input ${
 						!isValid && onError && 'authForm__input_error'
 					}`}
