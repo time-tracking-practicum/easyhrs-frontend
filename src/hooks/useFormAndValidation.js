@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { isEmail } from 'validator';
+import { isEmail as emailValidator } from 'validator';
 
 export function useFormAndValidation(inputValues) {
 	const [values, setValues] = useState(inputValues);
@@ -10,6 +10,11 @@ export function useFormAndValidation(inputValues) {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
+		const isEmail = emailValidator(value, {
+			ignore_max_length: true,
+			blacklisted_chars: '! # $ % & ) ( | / _ - = + < ` ~ > ? ^ *',
+			domain_specific_validation: true,
+		});
 
 		setValues({ ...values, [name]: value });
 		setErrors({ ...errors, [name]: e.target.validationMessage });
@@ -17,15 +22,12 @@ export function useFormAndValidation(inputValues) {
 		if (e.target.name === 'email') {
 			setErrors({
 				...errors,
-				[name]: !isEmail(value, { ignore_max_length: true })
+				[name]: !isEmail
 					? e.target.validationMessage || 'Некорректный Email'
 					: '',
 			});
-			setValidEmail(isEmail(value, { ignore_max_length: true }));
-			setIsValid(
-				isEmail(value, { ignore_max_length: true }) &&
-					e.target.closest('form').checkValidity()
-			);
+			setValidEmail(isEmail);
+			setIsValid(isEmail && e.target.closest('form').checkValidity());
 		}
 
 		if (e.target.name === 'confimPassword') {

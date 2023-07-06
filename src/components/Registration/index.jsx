@@ -7,6 +7,8 @@ import { useFormAndValidation } from '../../hooks/useFormAndValidation';
 import authApi from '../../utils/AuthApi';
 import userApi from '../../utils/UserApi';
 
+const PASS_REGEXP = '^[a-zA-Z0-9]*$';
+
 export default function Registration({
 	onFormChange,
 	isVisible,
@@ -112,7 +114,8 @@ export default function Registration({
 				name="password"
 				placeholder={text.passPlaceholder}
 				hidden
-				autoComplete="current-password"
+				pattern={PASS_REGEXP}
+				autoComplete="new-password"
 				text={text.passInputHint}
 				errText={errors.password}
 				onChange={handleChange}
@@ -126,7 +129,8 @@ export default function Registration({
 				name="confimPassword"
 				placeholder={text.repeatPassPlaceholder}
 				hidden
-				autoComplete="off"
+				pattern={PASS_REGEXP}
+				autoComplete="new-password"
 				errText={errors.confimPassword}
 				onChange={handleChange}
 				onError={errors.confimPassword}
