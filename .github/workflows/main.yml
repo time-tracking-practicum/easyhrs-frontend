@@ -40,7 +40,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             docker-compose stop
-            docker-compose rm -f nginx
             docker-compose rm -f frontend
+            docker volume rm -f frontend_data
             docker image rm ${{ secrets.DOCKERHUB_USERNAME }}/easyhours-frontend
             docker-compose up -d
