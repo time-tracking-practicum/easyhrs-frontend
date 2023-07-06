@@ -19,6 +19,7 @@ function Timer({
 	timerTime,
 	setTimerTime,
 }) {
+	const [timerTime, setTimerTime] = useState({ h: 0, m: 0, s: 0 });
 	const [interv, setInterv] = useState();
 	const [startTimer, setStartTimer] = useState();
 	const [timeOfPause, setTimeOfPause] = useState();
