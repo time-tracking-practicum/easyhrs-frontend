@@ -6,9 +6,11 @@
 .profile__avatar-image {
 	margin-right: auto;
 	display: block;
-	max-height: 72px;
-	max-width: 100%;
+	height: 72px;
+	width: 72px;
 	border-radius: 50%;
+	background-position: center;
+	object-fit: cover;
 }
 
 .profile__avatar-button {

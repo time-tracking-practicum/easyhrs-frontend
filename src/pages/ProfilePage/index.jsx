@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import Header from '../../components/Header';
 import ProfileAvatarSection from '../../components/ProfileAvatarSection';
@@ -26,11 +26,11 @@ export default function ProfilePage({ onSetCurrentUser }) {
 	const [isPasswordFormOpen, setIsPasswordFormOpen] = useState(false);
 	const nav = useNavigate();
 	const { values, handleChange, errors } = useFormAndValidation({
-		firstName: `${firstName}`,
-		lastName: `${lastName}`,
-		username: `${username}`,
-		email: `${email}`,
-		photo: `${photo}`,
+		firstName,
+		lastName,
+		username,
+		email,
+		photo,
 	});
 
 	const handleEnableInputs = (input) => {
@@ -140,6 +140,15 @@ export default function ProfilePage({ onSetCurrentUser }) {
 			console.log(error);
 		}
 	};
+
+	useEffect(() => {
+		const getUserData = async () => {
+			const userData = await userApi.getCurrentUser();
+			console.log(userData);
+			setCurrentUserData(userData);
+		};
+		getUserData();
+	}, [photo]);
 
 	return (
 		<section className="profile">
