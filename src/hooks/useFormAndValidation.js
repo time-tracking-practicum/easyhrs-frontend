@@ -7,6 +7,7 @@ export function useFormAndValidation(inputValues) {
 	const [errors, setErrors] = useState({});
 	const [isValid, setIsValid] = useState(true);
 	const [validEmail, setValidEmail] = useState(false);
+	const regexPass = /[\s]+/;
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -50,6 +51,15 @@ export function useFormAndValidation(inputValues) {
 						values.confimPassword !== e.target.value
 							? e.target.validationMessage || 'Введенные пароли не совпадают'
 							: '',
+				});
+				setIsValid(false);
+			}
+		}
+		if (e.target.name === 'password' || 'confimPassword') {
+			if (regexPass.test(value)) {
+				setErrors({
+					...errors,
+					[name]: 'Пароль не должен содержать пробел',
 				});
 				setIsValid(false);
 			}
