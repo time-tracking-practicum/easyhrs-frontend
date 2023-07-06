@@ -13451,7 +13451,7 @@ input.p-dropdown-label  {
 	margin: 0 0 0 auto;
 	width: 80%;
 	max-width: 1120px;
-	height: calc(100vh - 40px);
+	min-height: calc(100vh - 40px);
 	background-color: #ffffff;
 	border-radius: 40px;
 	overflow: auto;
@@ -13460,6 +13460,7 @@ input.p-dropdown-label  {
 
 .main__animation_active {
 	animation: emergence 2s ease-in-out;
+	padding-bottom: 128px;
 }
 
 .main__animation_active {
@@ -13654,6 +13655,7 @@ input.p-dropdown-label  {
 	display: flex;
 	gap: 9px;
 	padding: 0;
+	justify-content: space-between;
 }
 
 .task__timer-status {
@@ -13681,6 +13683,10 @@ input.p-dropdown-label  {
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+}
+
+.task__btn_disabled {
+	opacity: 0.3;
 }
 
 /*!**********************************************************************************************!*\
@@ -13721,20 +13727,32 @@ input.p-dropdown-label  {
 /*!**********************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Timer/Timer.css ***!
   \**********************************************************************************/
+.timer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+
+	background: white;
+    height: 100%;
+}
+
+.timer_drop {
+	height: 128px;
+}
+
 .timer__container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-top: 198px;
-	position: absolute;
 	width: 100%;
 }
 
 .timer__container_drop {
 	padding: 16px 40px;
+	margin-top: 0;
 	justify-content: space-between;
 	flex-direction: row;
-	bottom: 0;
 	background: rgba(169, 156, 203, 1);
 }
 
@@ -14521,6 +14539,92 @@ input.p-dropdown-label  {
 	font-size: 16px;
 	line-height: 1.5;
 	margin: 0;
+}
+
+/*!********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/ProjectStatusBar/ProjectStatusBar.css ***!
+  \********************************************************************************************************/
+.projectstatus {
+	list-style-type: none;
+}
+
+.projectstatus__info {
+	display: flex;
+	justify-content: space-between;
+}
+
+.projectstatus__info-wrapper {
+	display: flex;
+	gap: 2px;
+	align-items: center;
+}
+
+.projectstatus__info-name {
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.33;
+	letter-spacing: 0.25px;
+	margin: 0;
+}
+
+.projectstatus__info-btn {
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.projectstatus__info-time {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.43;
+}
+
+.projectstatus__bar {
+	height: 16px;
+	border-radius: 20px;
+	display: flex;
+	background-color: #ffe4cc;
+}
+
+.projectstatus__progress {
+	width: 20%;
+	border-radius: 20px;
+	background-color: #ff6b00;
+}
+
+/*!***********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/StatisticsPage/StatisticsPage.css ***!
+  \***********************************************************************************************/
+.statpage {
+	margin: 0 0 0 auto;
+	width: 80%;
+	max-width: 1120px;
+	height: calc(100vh - 40px);
+	background-color: #ffffff;
+	border-radius: 40px;
+	overflow: auto;
+	position: relative;
+}
+
+.statpage__container {
+	margin: 0 40px;
+}
+
+.statpage__title {
+	margin: 48px auto 28px;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.4px;
+}
+
+.statpage__projects {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding: 0;
 }
 
 /*!*******************************************************************************************!*\
@@ -15325,4 +15429,4 @@ input.p-dropdown-label  {
   \************************************************************************************************************/
 
 
-/*# sourceMappingURL=main.8ffcf93cce5e70c3135e.css.map*/
+/*# sourceMappingURL=main.52a3e4e3d107fb4d9d0d.css.map*/
