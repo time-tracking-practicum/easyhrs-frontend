@@ -2,7 +2,7 @@ import Header from '../../components/Header';
 import ProjectStatusBar from '../../components/ProjectStatusBar';
 import './StatisticsPage.css';
 
-export default function StatisticsPage({ projects }) {
+export default function StatisticsPage({ projects, tasks }) {
 	return (
 		<section className="statpage">
 			<Header sectionName="Статистика" />
@@ -10,7 +10,11 @@ export default function StatisticsPage({ projects }) {
 				<h3 className="statpage__title">Проекты</h3>
 				<ul className="statpage__projects">
 					{projects.map((project) => (
-						<ProjectStatusBar title={project.title} />
+						<ProjectStatusBar
+							key={project.id}
+							project={project}
+							tasks={tasks}
+						/>
 					))}
 				</ul>
 			</div>
