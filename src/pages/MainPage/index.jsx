@@ -6,17 +6,17 @@ import TasksHeader from '../../components/TasksHeader';
 import Timer from '../../components/Timer';
 import Sidebar from '../../components/Sidebar';
 import CreateTaskForm from '../../components/CreateTaskForm';
-import projectApi from '../../utils/ProjectApi';
 import EditTaskForm from '../../components/EditTaskForm';
 
 export default function MainPage({
 	handleCreateTask,
 	handleEditTask,
+	projects,
+	setProjects,
 	handleDeleteTask,
 	hadleUpdateTimeInProgress,
 	tasks,
 }) {
-	
 	const [openTimer, setOpenTimer] = useState(false);
 	const [dropTimer, setDropTimer] = useState(false);
 	const [play, setPlay] = useState(false);
@@ -25,12 +25,8 @@ export default function MainPage({
 	const [tasksList, setTasksList] = useState(tasks);
 	const [isCreateTaskFormOpen, setIsCreateTaskFormOpen] = useState(false);
 	const [isEditFormOpen, setIsEditTaskFormOpen] = useState(false);
-	const [projests, setProjects] = useState({
-		selected: null,
-		all: [],
-	});
 	const [currentTask, setCurrentTask] = useState(null);
-	const [timerTime, setTimerTime] = useState({h: 0, m: 0, s: 0 });
+	const [timerTime, setTimerTime] = useState({ h: 0, m: 0, s: 0 });
 	const handleOpenCreateTaskForm = () => {
 		setIsCreateTaskFormOpen(true);
 	};
@@ -61,12 +57,6 @@ export default function MainPage({
 
 	useEffect(() => {
 		setTasksList(tasks);
-		projectApi
-			.getMyProjects()
-			.then((data) => {
-				setProjects((prevState) => ({ ...prevState, all: data }));
-			})
-			.catch((error) => console.log(error));
 	}, [tasks]);
 
 	return (
@@ -85,7 +75,7 @@ export default function MainPage({
 								key={task.id}
 								name={task.name}
 								project={
-									projests.all.find((item) => item.id === task.project)?.title
+									projects.all.find((item) => item.id === task.project)?.title
 								}
 								deadline={task.deadline}
 								handleOpenEditTaskForm={handleOpenEditTaskForm}
@@ -106,7 +96,7 @@ export default function MainPage({
 								setTimerTime={setTimerTime}
 								timerTime={timerTime}
 								hadleUpdateTimeInProgress={hadleUpdateTimeInProgress}
- 							/>
+							/>
 						))}
 					</ul>
 					{openTimer && (
@@ -133,7 +123,7 @@ export default function MainPage({
 				handleClose={handleCloseCreateTaskForm}
 			>
 				<CreateTaskForm
-					projectList={projests}
+					projectList={projects}
 					setProjectList={setProjects}
 					handleCreateTask={handleCreateTask}
 					setIsCreateTaskFormOpen={setIsCreateTaskFormOpen}
@@ -142,7 +132,7 @@ export default function MainPage({
 			<Sidebar isOpen={isEditFormOpen} handleClose={handleCloseEditTaskForm}>
 				<EditTaskForm
 					task={currentTask}
-					projectList={projests}
+					projectList={projects}
 					setProjectList={setProjects}
 					handleDeleteTask={handleDeleteTask}
 					handleEditTask={handleEditTask}

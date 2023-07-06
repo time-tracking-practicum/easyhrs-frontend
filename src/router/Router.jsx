@@ -38,6 +38,16 @@ export default function Router() {
 		}
 	}
 
+	// функция загрузки проектов текущего пользователя с сервера
+	async function setCurrentUserProjects() {
+		try {
+			const currentUserProjects = await projectApi.getUserProjects();
+			setProjects((prevState) => ({ ...prevState, all: currentUserProjects }));
+		} catch (e) {
+			console.log(`Ошибка при загрузке проектов текущего пользователя: ${e}`);
+		}
+	}
+
 	const createTaskAndUpdate = (task) => {
 		taskApi
 			.createTask(task)
@@ -61,14 +71,10 @@ export default function Router() {
 			.catch((err) => console.error(err));
 	};
 
-	// функция загрузки проектов юзера
+	// функция загрузки проектов и задач юзера
 	useEffect(() => {
-		projectApi
-			.getMyProjects()
-			.then((data) => {
-				setProjects((prevState) => ({ ...prevState, all: data }));
-			})
-			.catch((error) => console.error(error));
+		setCurrentUserProjects();
+		setCurrentUserTasks();
 	}, []);
 
 	const updateTimeInProgress = (id, data) => {
@@ -77,10 +83,6 @@ export default function Router() {
 			.then(() => setCurrentUserTasks())
 			.catch((err) => console.error(err));
 	};
-
-	useEffect(() => {
-		setCurrentUserTasks();
-	}, []);
 
 	// функция проверки токена в памяти браузера
 	useEffect(() => {
@@ -107,6 +109,8 @@ export default function Router() {
 									handleEditTask={editTaskAndUpdate}
 									handleDeleteTask={deleteTaskAndUpdate}
 									tasks={tasks}
+									projects={projects}
+									setProjects={setProjects}
 									hadleUpdateTimeInProgress={updateTimeInProgress}
 								/>
 							</ProtectedRoute>
@@ -119,6 +123,8 @@ export default function Router() {
 								<MatrixPage
 									handleCreateTask={createTaskAndUpdate}
 									tasks={tasks}
+									projects={projects}
+									setProjects={setProjects}
 								/>
 							</ProtectedRoute>
 						}

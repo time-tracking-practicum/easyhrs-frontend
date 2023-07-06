@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react';
 import Matrix from '../../components/Matrix';
 import Sidebar from '../../components/Sidebar';
 import CreateTaskForm from '../../components/CreateTaskForm';
-import projectApi from '../../utils/ProjectApi';
 
-export default function MatrixPage({ tasks, handleCreateTask }) {
+export default function MatrixPage({
+	tasks,
+	projects,
+	setProjects,
+	handleCreateTask,
+}) {
 	const [urgimp, setUrgimp] = useState([]); // стейт задач Важное, срочное
 	const [urg, setUrg] = useState([]); // стейт задач Срочное, неважное
 	const [imp, setImp] = useState([]); // стейт задач Важное, несрочное
@@ -15,18 +19,7 @@ export default function MatrixPage({ tasks, handleCreateTask }) {
 	const [isTaskImportant, setIsTaskImportant] = useState(false);
 	const [isTaskUrgent, setIsTaskUrgent] = useState(false);
 
-	const [projests, setProjects] = useState({
-		selected: null,
-		all: [],
-	});
-
 	const handleOpenCreateTaskForm = ({ isImportant, isUrgent }) => {
-		projectApi
-			.getMyProjects()
-			.then((data) => {
-				setProjects((prevState) => ({ ...prevState, all: data }));
-			})
-			.catch((error) => console.error(error));
 		setIsCreateTaskFormOpen(true);
 		if (isImportant) {
 			setIsTaskImportant(true);
@@ -111,7 +104,7 @@ export default function MatrixPage({ tasks, handleCreateTask }) {
 				handleClose={handleCloseCreateTaskForm}
 			>
 				<CreateTaskForm
-					projectList={projests}
+					projectList={projects}
 					setProjectList={setProjects}
 					handleCreateTask={handleCreateTask}
 					setIsCreateTaskFormOpen={setIsCreateTaskFormOpen}

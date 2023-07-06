@@ -27,7 +27,7 @@ class ProjectApi {
 		return ProjectApi._checkResult(res);
 	}
 
-	async getMyProjects() {
+	async getUserProjects() {
 		const token =
 			localStorage.getItem('token') || sessionStorage.getItem('token');
 		const res = await fetch(`${this._url}/projects/list_projects/`, {
