@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './Router.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css'; // theme
 import 'primereact/resources/primereact.css';
@@ -27,6 +27,7 @@ export default function Router() {
 	const localToken = localStorage.getItem('token');
 	const sessionToken = sessionStorage.getItem('token');
 	const nav = useNavigate();
+	const location = useLocation();
 
 	// функция загрузки задач текущего пользователя с сервера
 	async function setCurrentUserTasks() {
@@ -73,9 +74,13 @@ export default function Router() {
 
 	// функция загрузки проектов и задач юзера
 	useEffect(() => {
-		setCurrentUserProjects();
-		setCurrentUserTasks();
-	}, []);
+		if ((localToken || sessionToken) && currentUser) {
+			setCurrentUserProjects();
+			if (projects) {
+				setCurrentUserTasks();
+			}
+		}
+	}, [currentUser]);
 
 	const updateTimeInProgress = (id, data) => {
 		taskApi
@@ -86,7 +91,7 @@ export default function Router() {
 
 	// функция проверки токена в памяти браузера
 	useEffect(() => {
-		if (localToken || sessionToken) {
+		if ((localToken || sessionToken) && location.pathname === '/') {
 			nav('/main');
 		}
 	}, []);
