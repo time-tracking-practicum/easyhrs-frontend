@@ -44,7 +44,7 @@
 }
 
 .projectstatus__progress {
-	width: 20%;
+	/* width: 20%; */
 	border-radius: 20px;
 	background-color: #ff6b00;
 }
