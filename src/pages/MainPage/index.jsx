@@ -66,7 +66,11 @@ export default function MainPage({
 	return (
 		<>
 			<section className="main">
-				<div className={`main__animation ${!tasksList && 'main__animation_active'}`}>
+				<div
+					className={`main__animation ${
+						!tasksList && 'main__animation_active'
+					}`}
+				>
 					<Header
 						sectionName="Мои задачи"
 						newtask
