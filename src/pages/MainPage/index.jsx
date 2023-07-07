@@ -28,6 +28,10 @@ export default function MainPage({
 	const [currentTask, setCurrentTask] = useState(null);
 	const [timerTime, setTimerTime] = useState({ h: 0, m: 0, s: 0 });
 	const handleOpenCreateTaskForm = () => {
+		setProjects((prevState) => ({
+			...prevState,
+			selected: null,
+		}));
 		setIsCreateTaskFormOpen(true);
 	};
 

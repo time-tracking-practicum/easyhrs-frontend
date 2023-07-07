@@ -55,7 +55,7 @@ export function useFormAndValidation(inputValues) {
 				setIsValid(false);
 			}
 		}
-		if (e.target.name === 'password' || 'confimPassword') {
+		if (e.target.name === 'password' || e.target.name === 'confimPassword') {
 			if (regexPass.test(value)) {
 				setErrors({
 					...errors,
