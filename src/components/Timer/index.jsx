@@ -19,7 +19,6 @@ function Timer({
 	timerTime,
 	setTimerTime,
 }) {
-	const [timerTime, setTimerTime] = useState({ h: 0, m: 0, s: 0 });
 	const [interv, setInterv] = useState();
 	const [startTimer, setStartTimer] = useState();
 	const [timeOfPause, setTimeOfPause] = useState();
@@ -91,9 +90,7 @@ function Timer({
 			start();
 			setOpenTimer(true);
 			console.log('double-play');
-			
-		}	
-
+		}
 	}, [openTimer, pause, play]);
 
 	useEffect(() => {
@@ -107,9 +104,7 @@ function Timer({
 	const classSpan = dropTimer ? 'timer__span-drop' : 'timer__span';
 
 	return (
-		<div className={`timer ${
-			dropTimer ? 'timer_drop' : ''
-		}`}>
+		<div className={`timer ${dropTimer ? 'timer_drop' : ''}`}>
 			{!dropTimer && <Header timer setDropTimer={setDropTimer} />}
 			<div
 				className={`timer__container ${
@@ -133,7 +128,7 @@ function Timer({
 					</p>
 				</div>
 				<div className="timer__buttons-container">
-					<button onClick={stop} type="button" className="timer__button" >
+					<button onClick={stop} type="button" className="timer__button">
 						<img className="timer__icon" src={iconPause} alt="Икона паузы" />
 						Пауза
 					</button>

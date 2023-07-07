@@ -10,7 +10,7 @@ export default function ProjectStatisticPage() {
 		if (!projectId) return;
 		projectApi
 			.getMyOneProjects(projectId)
-			.then((proj) => setProjects(proj))
+			.then((res) => setProjects(res))
 			.catch((e) => console.log(e));
 	}, [projectId]);
 	return (

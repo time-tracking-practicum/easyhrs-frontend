@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-curly-brace-presence */
+
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import iconBell from '../../images/icon-bell.svg';
@@ -40,7 +42,11 @@ function Header({
 							height={14}
 							alt="Иконка назад"
 						/>
-						<NavLink className="header__navlink" to={navigate(-1)}>
+						<NavLink
+							className="header__navlink"
+							to={'#'}
+							onClick={() => navigate(-1)}
+						>
 							{branch}
 						</NavLink>
 					</div>
