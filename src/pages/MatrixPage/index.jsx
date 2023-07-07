@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import './MatrixPage.css';
 import React, { useEffect, useState } from 'react';
 import Matrix from '../../components/Matrix';
@@ -10,10 +11,10 @@ export default function MatrixPage({
 	setProjects,
 	handleCreateTask,
 }) {
-	const [urgimp, setUrgimp] = useState([]); // стейт задач Важное, срочное
+	const [urgimp, setUrgImp] = useState([]); // стейт задач Важное, срочное
 	const [urg, setUrg] = useState([]); // стейт задач Срочное, неважное
 	const [imp, setImp] = useState([]); // стейт задач Важное, несрочное
-	const [notUrgimp, setNotUrgimp] = useState([]); // стейт задач Несрочное, неважное
+	const [notUrgimp, setNotUrgImp] = useState([]); // стейт задач Несрочное, неважное
 
 	const [isCreateTaskFormOpen, setIsCreateTaskFormOpen] = useState(false);
 	const [isTaskImportant, setIsTaskImportant] = useState(false);
@@ -38,19 +39,26 @@ export default function MatrixPage({
 	};
 
 	useEffect(() => {
-		// eslint-disable-next-line no-plusplus
-		for (let i = 0; i < tasks.length; i++) {
-			if (tasks[i].is_urgent && tasks[i].is_important) {
-				setUrgimp((prev) => [...prev, tasks[i]]);
-			} else if (tasks[i].is_urgent && !tasks[i].is_important) {
-				setUrg((prev) => [...prev, tasks[i]]);
-			} else if (!tasks[i].is_urgent && tasks[i].is_important) {
-				setImp((prev) => [...prev, tasks[i]]);
-			} else if (!tasks[i].is_urgent && !tasks[i].is_important) {
-				setNotUrgimp((prev) => [...prev, tasks[i]]);
+		let urgAndImpArr = [];
+		let urgArr = [];
+		let impArr = [];
+		let notUrgAndNotImpArr = [];
+		tasks.forEach((task) => {
+			if (task.is_urgent && task.is_important) {
+				urgAndImpArr.push(task);
+			} else if (task.is_urgent && !task.is_important) {
+				urgArr.push(task);
+			} else if (!task.is_urgent && task.is_important) {
+				impArr.push(task);
+			} else if (!task.is_urgent && !task.is_important) {
+				notUrgAndNotImpArr.push(task);
 			}
-		}
-	}, [MatrixPage]);
+		});
+		setUrgImp([...urgAndImpArr]);
+		setUrg([...urgArr]);
+		setImp([...impArr]);
+		setNotUrgImp([...notUrgAndNotImpArr]);
+	}, [tasks]);
 
 	return (
 		<>
