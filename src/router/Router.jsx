@@ -157,7 +157,7 @@ export default function Router() {
 						path="/statistics"
 						element={
 							<ProtectedRoute>
-								<StatisticsPage projects={projects.all} />
+								<StatisticsPage projects={projects.all} tasks={tasks} />
 							</ProtectedRoute>
 						}
 					/>
