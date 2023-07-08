@@ -15,6 +15,7 @@ import ProjectStatisticPage from '../pages/ProjectStatisticPage';
 import { UserContext } from '../contexts/UserContext';
 import ProtectedRoute from '../components/ProtectedRoute';
 import SettingsPage from '../pages/SettingsPage';
+import HelpPage from '../pages/HelpPage';
 import taskApi from '../utils/TaskApi';
 import projectApi from '../utils/ProjectApi';
 
@@ -180,6 +181,14 @@ export default function Router() {
 						element={
 							<ProtectedRoute>
 								<ProjectStatisticPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/help"
+						element={
+							<ProtectedRoute>
+								<HelpPage />
 							</ProtectedRoute>
 						}
 					/>
