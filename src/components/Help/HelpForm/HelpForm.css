@@ -79,4 +79,5 @@
 .help__button-submit_active {
 	opacity: 1;
 	cursor: pointer;
+	pointer-events: all;
 }

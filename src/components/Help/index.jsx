@@ -3,11 +3,11 @@ import './Help.css';
 import HelpList from './HelpList';
 import HelpForm from './HelpForm';
 
-function Help() {
+function Help({ handleFeedback }) {
 	return (
 		<div className="help__container">
 			<HelpList />
-			<HelpForm />
+			<HelpForm handleFeedback={handleFeedback} />
 		</div>
 	);
 }
