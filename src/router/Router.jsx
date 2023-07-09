@@ -18,6 +18,7 @@ import SettingsPage from '../pages/SettingsPage';
 import HelpPage from '../pages/HelpPage';
 import taskApi from '../utils/TaskApi';
 import projectApi from '../utils/ProjectApi';
+import userApi from '../utils/UserApi';
 
 export default function Router() {
 	const [currentUser, setCurrentuser] = useState({});
@@ -95,6 +96,22 @@ export default function Router() {
 	useEffect(() => {
 		if ((localToken || sessionToken) && location.pathname === '/') {
 			nav('/main');
+		}
+	}, []);
+
+	useEffect(() => {
+		if (localToken || sessionToken) {
+			(async () => {
+				const userData = await userApi.getCurrentUser();
+				setCurrentuser({
+					email: userData.email,
+					username: userData.username,
+					firstName: userData.first_name,
+					lastName: userData.last_name,
+					id: userData.id,
+					photo: userData.photo,
+				});
+			})();
 		}
 	}, []);
 
