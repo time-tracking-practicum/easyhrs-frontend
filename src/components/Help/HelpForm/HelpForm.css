@@ -1,0 +1,82 @@
+.help__form {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 32px;
+	margin-top: 80px;
+	padding-bottom: 20px;
+}
+
+.help__form-question {
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 28px;
+	margin: 0;
+}
+
+.help__input-container {
+	position: relative;
+	display: flex;
+}
+
+.help__input {
+	color: #000;
+	height: 56px;
+	width: 520px;
+	border: 1px solid #49454f;
+	border-radius: 40px;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px;
+	letter-spacing: 0.25px;
+	padding: 16px 0 16px 16px;
+	outline: none;
+}
+
+.help__feedback {
+	position: absolute;
+	color: #49454f;
+	opacity: 0.9;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px;
+	bottom: -25px;
+	left: 16px;
+}
+
+.help__textarea {
+	display: flex;
+	height: 136px;
+	border-radius: 40px;
+	display: flex;
+	flex-direction: row;
+	width: 520px;
+	resize: none;
+	padding: 16px;
+	overflow: hidden;
+	outline: none;
+}
+
+.help__button-submit {
+	width: 140px;
+	height: 52px;
+	border: none;
+	border-radius: 100px;
+	color: #1d1b20;
+	background: #e2dce4;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 20px;
+	letter-spacing: 0.1px;
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+.help__button-submit_active {
+	opacity: 1;
+	cursor: pointer;
+}
