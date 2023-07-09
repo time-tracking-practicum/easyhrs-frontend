@@ -9,8 +9,10 @@ function HelpPage() {
 	const handlePostFeedback = async (user, email, message) => {
 		try {
 			await feedbackApi.postFeedback(user, email, message);
+			alert('Ваша проблема отправлена, ожидайте.');
 		} catch (error) {
 			console.log(`Ошибка: ${error.message}`);
+			alert('Произошла проблема при отправке.');
 		}
 	};
 
