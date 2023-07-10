@@ -41,7 +41,7 @@ jobs:
           script: |
             docker-compose stop
             docker-compose rm -f frontend
-            docekr-compose rm -f nginx
+            docker-compose rm -f nginx
             docker volume rm -f ${{ secrets.USER }}_frontend_data
             docker image rm ${{ secrets.DOCKERHUB_USERNAME }}/easyhours-frontend
             docker-compose up -d
