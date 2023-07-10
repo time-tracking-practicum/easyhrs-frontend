@@ -14,9 +14,9 @@ export default function StatisticsPage({ projects, tasks }) {
 			<div className="statpage__container">
 				<h3 className="statpage__title">Проекты</h3>
 				<ul className="statpage__projects">
-					{projects.results &&
-						projects.results.map((project) => (
-							<Link to={`/statistics/${project.id}`}>
+					{projects &&
+						projects.map((project) => (
+							<Link key={project.id} to={`/statistics/${project.id}`}>
 								<ProjectStatusBar
 									key={project.id}
 									project={project}
