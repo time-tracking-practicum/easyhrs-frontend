@@ -73,7 +73,7 @@ export default function NavTab() {
 				</svg>
 				<p className="navtab__text">Статистика</p>
 			</Link>
-			<Link
+			{/* <Link
 				to="/settings"
 				className="navtab__item"
 				style={location === '/settings' ? { opacity: 1 } : null}
@@ -93,7 +93,7 @@ export default function NavTab() {
 					/>
 				</svg>
 				<p className="navtab__text">Настройки</p>
-			</Link>
+			</Link> */}
 			<Link
 				to="/help"
 				className="navtab__item"

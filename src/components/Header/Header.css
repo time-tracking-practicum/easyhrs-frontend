@@ -57,8 +57,10 @@
 	gap: 26px;
 }
 
-.header__icon {
-	cursor: pointer;
+.header__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .header__navlink-timer {
