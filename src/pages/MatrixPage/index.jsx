@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Matrix from '../../components/Matrix';
 import Sidebar from '../../components/Sidebar';
 import CreateTaskForm from '../../components/CreateTaskForm';
+import Header from '../../components/Header';
 
 export default function MatrixPage({
 	tasks,
@@ -63,7 +64,7 @@ export default function MatrixPage({
 	return (
 		<>
 			<section className="matrixpage">
-				<h2 className="matrixpage__title">Матрица задач</h2>
+				<Header sectionName="Матрица задач" />
 				<div className="matrixpage__container">
 					<Matrix
 						title="Важное, срочное"

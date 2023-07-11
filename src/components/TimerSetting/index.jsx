@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './TimerSetting.css';
 import { InputSwitch } from 'primereact/inputswitch';
 
-export default function TimerSetting({notifications}) {
+export default function TimerSetting({ notifications }) {
 	const [timerReminder, setTimerReminder] = useState(false);
 	const [timerTime, setTimerTime] = useState({ hours: 12, minutes: 0 });
 	const [editing, setEditing] = useState(false);
@@ -70,9 +70,7 @@ export default function TimerSetting({notifications}) {
 	);
 
 	return (
-		<section className={`timer-setting ${
-			!notifications && 'hover'
-		}`}>
+		<section className={`timer-setting ${!notifications && 'hover'}`}>
 			<div className="timer-setting__option-container">
 				<div className="timer-setting__option-switch-wrapper">
 					<InputSwitch
