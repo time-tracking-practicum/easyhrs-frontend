@@ -1,5 +1,5 @@
 .profile {
-	min-height: 984px;
+	min-height: 100vh;
 	margin-left: auto;
 	width: 80%;
 	max-width: 1120px;
@@ -10,6 +10,7 @@
 
 .profile__container {
 	margin: 40px;
+	min-height: 984px;
 }
 
 .profile__subtitle {
