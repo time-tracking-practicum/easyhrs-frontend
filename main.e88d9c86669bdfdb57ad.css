@@ -14627,6 +14627,11 @@ input.p-dropdown-label  {
 	padding: 0;
 }
 
+.statpage__link {
+	text-decoration: none;
+	color: black;
+}
+
 /*!*******************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/TaskCardPage/TaskCardPage.css ***!
   \*******************************************************************************************/
@@ -15156,76 +15161,6 @@ input.p-dropdown-label  {
 	max-width: 1120px;
 }
 
-/*!**********************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/TimeFormatSetting/TimeFormatSetting.css ***!
-  \**********************************************************************************************************/
-.time-format-setting {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	height: 80px;
-	width: 339px;
-	margin: 28px auto 67px 40px;
-	color: black;
-}
-
-.time-format-setting__title {
-	display: flex;
-	margin: 0;
-	padding: 0;
-	font-weight: 600;
-	font-size: 20px;
-	line-height: 28px;
-}
-
-.time-format-setting__container {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	height: 28px;
-	width: 100%;
-	margin: 0;
-	font-weight: 400;
-	font-size: 20px;
-	line-height: 28px;
-}
-
-.time-format-setting__label {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	height: 28px;
-	width: 142px;
-	margin: 0;
-	padding: 0;
-}
-
-.time-format-setting__radio-icon {
-	width: 24px;
-	height: 24px;
-	margin-right: 12px;
-}
-
-/*!******************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/SettingRadioBtn/SettingRadioBtn.css ***!
-  \******************************************************************************************************/
-.setting-radio-btn {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 142px;
-	cursor: pointer;
-}
-
-.setting-radio-btn__input {
-	display: none;
-}
-
-.setting-radio-btn__image {
-	width: 24px;
-	height: 24px;
-}
-
 /*!********************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/RemindersSetting/RemindersSetting.css ***!
   \********************************************************************************************************/
@@ -15233,7 +15168,11 @@ input.p-dropdown-label  {
 	display: flex;
 	flex-direction: column;
 	width: calc(100% - 80px);
-	margin: 0 auto;
+	margin: 28px auto 0;
+}
+
+.hover {
+	opacity: 0.5;
 }
 
 .reminders-setting__title {
@@ -15249,18 +15188,33 @@ input.p-dropdown-label  {
 .reminders-setting__container {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	height: 56px;
-	background-color: #d8effe;
-	margin: 24px auto 8px;
-	padding: 0 8px 0;
+	margin: 24px auto 5px;
+	border-radius: 40px;
+}
+
+.reminders-setting__container-days {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	height: 48px;
+	margin: 20px auto 16px;
 	border-radius: 40px;
 }
 
 .reminders-setting__label-text {
-	margin: 0;
+	margin-left: 10px;
+	padding: 0;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 20px;
+	letter-spacing: 0.25px;
+}
+
+.reminders-setting__label-title {
 	padding: 0;
 	font-weight: 800;
 	font-size: 15px;
@@ -15271,6 +15225,12 @@ input.p-dropdown-label  {
 	margin: 0;
 	height: 32px;
 	width: 55px;
+	border: 2px solid #79747E;
+    border-radius: 100px;
+}
+
+.p-inputswitch.p-inputswitch-checked {
+	border: none;
 }
 
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
@@ -15285,6 +15245,7 @@ input.p-dropdown-label  {
 	margin-top: -12px;
 	width: 24px;
 	height: 24px;
+	background: rgba(121, 116, 126, 1);
 }
 
 .reminders-setting__work-days {
@@ -15293,17 +15254,16 @@ input.p-dropdown-label  {
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	min-height: 48px;
 	margin: 0 auto;
-	padding: 0 10px;
 }
 
 .reminders-setting__subtitle {
-	margin: 0;
+	margin-bottom: 16px;
 	padding: 0;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 20px;
+	letter-spacing: 0.25px;
 }
 
 .reminders-setting__toggle-button {
@@ -15341,10 +15301,7 @@ input.p-dropdown-label  {
 
 .reminders-setting__day-list-container {
 	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	max-height: 198px; /* Задайте желаемую максимальную высоту блока */
-	overflow-y: auto; /* Включает вертикальную прокрутку, когда контент превышает максимальную высоту */
+	flex-direction: row;
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
@@ -15361,11 +15318,12 @@ input.p-dropdown-label  {
 
 .reminders-setting__day-list {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: flex-start;
-	width: 164px;
+	column-gap: 16px;
 	margin: 0;
 	padding: 0;
+	overflow: scroll;
 }
 
 .reminders-setting__day-item {
@@ -15380,8 +15338,7 @@ input.p-dropdown-label  {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	width: 158px;
-	height: 48px;
+	width: 72px;
 	margin: 0;
 	padding: 0;
 	cursor: pointer;
@@ -15392,7 +15349,7 @@ input.p-dropdown-label  {
 }
 
 .reminders-setting__day-text {
-	margin: auto 0 auto 12px;
+	margin-left: 8px;
 	padding: 0;
 }
 
@@ -15401,26 +15358,41 @@ input.p-dropdown-label  {
   \************************************************************************************************/
 .timer-setting {
 	display: flex;
-	flex-direction: column;
 	width: calc(100% - 80px);
 	margin: 0 auto;
+	margin-bottom: 5px;
+	align-items: center;
+}
+
+.hover {
+	opacity: 0.5;
 }
 
 .timer-setting__option-container {
+	margin-right: 33px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
-	height: 48px;
-	margin: 0 auto;
-	padding: 0 8px 0;
+	width: 231px;
+	height: 56px;
+}
+
+.timer-setting__option-switch-wrapper {
+	display: flex;
+	align-items: center;
 }
 
 .timer-setting__option-switch {
 	margin: 0;
 	height: 32px;
 	width: 55px;
+	border: 2px solid #79747E;
+	border-radius: 100px;
+}
+
+.p-inputswitch.p-inputswitch-checked {
+	border: none;
 }
 
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
@@ -15439,52 +15411,67 @@ input.p-dropdown-label  {
 
 .timer-setting__option-text {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	width: 100%;
-	margin: 0;
-	padding-right: 24px;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 20px;
+	letter-spacing: 0.25px;
 }
 
 .timer-setting__time-picker {
 	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 216px;
+	align-items: center;
+	border-radius: 100px;
+	border: 1px solid var(--m-3-sys-light-outline, #79747E);
+	width: 160px;
+    padding: 15px;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.5px;
+	justify-content: space-between;
+	height: 56px;
+	position: relative;
+}
+
+.timer-setting__picker-text {
+	padding: 0 8px;
+    position: absolute;
+    left: 12px;
+    top: -9px;
+    height: 16px;
+    background: white;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: normal;
 }
 
 .timer-setting__time-picker-options {
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	margin: auto;
-	padding: 0;
 }
 
 .timer-setting__time-picker-select {
+	cursor: pointer;
 	border: none; /* Удалить границу */
 	outline: none; /* Удалить обводку при фокусе */
+	appearance: none;
 }
 
-.timer-setting__time-picker-save {
-	display: block;
-	width: 100%;
-	height: 44px;
-	border: none;
-	outline: none;
-	background: none;
-	cursor: pointer;
-	background-color: #6750a4;
-	margin: 14px auto 0;
-	padding: 0;
-	border-radius: 40px;
-	color: white;
-	font-weight: 800;
-	font-size: 15px;
-	line-height: 24px;
+.timer-setting__time-picker-close {
+	background-color: initial;
+    background-image: url(assets/d0e1cfb8c36b47d73a71.svg);
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    height: 24px;
+    padding: 0;
+    transition: .3s ease-in-out;
+    width: 24px;
+}
+
+.timer-setting__time-picker-close:hover {
+	opacity: 0.6;
 }
 
 /*!************************************************************************************************************!*\
@@ -15649,4 +15636,4 @@ input.p-dropdown-label  {
 }
 
 
-/*# sourceMappingURL=main.ac61b4fc3b421267b936.css.map*/
+/*# sourceMappingURL=main.e88d9c86669bdfdb57ad.css.map*/

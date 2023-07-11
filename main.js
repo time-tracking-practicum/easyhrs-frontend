@@ -6080,13 +6080,13 @@ function ProjectStatusBar(_ref) {
     var hours = 0;
     var mins = 0;
     var secs = 0;
-    for (var i = 0; i < tasks.length; i + 1) {
+    for (var i = 0; i < tasks.length; i += 1) {
       hours += tasks[i].time_in_progress.h;
       mins += tasks[i].time_in_progress.m;
       secs += tasks[i].time_in_progress.s;
     }
     setTimeOfProject(hours * 3600 + mins * 60 + secs);
-  }, []);
+  }, [project]);
 
   // Форматирует секунды проекта в формат n час m мин
   function formateTimeOfProject() {
@@ -6105,7 +6105,7 @@ function ProjectStatusBar(_ref) {
     if (timeOfProject && timeOfProject !== 0) {
       setProgressWidth("".concat(timeOfProject / timeSum * 100, "%"));
     }
-  }, [timeOfProject]);
+  }, [tasks]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (project.id % 4 === 0) {
       setBarColor('#FFF5CC');
@@ -6544,12 +6544,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _RemindersSetting_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RemindersSetting.css */ "./src/components/RemindersSetting/RemindersSetting.css");
-/* harmony import */ var primereact_inputswitch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primereact/inputswitch */ "./node_modules/primereact/inputswitch/inputswitch.esm.js");
-/* harmony import */ var _images_icon_down_arrow_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../images/icon-down_arrow.svg */ "./src/images/icon-down_arrow.svg");
-/* harmony import */ var _images_icon_up_arrow_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../images/icon-up_arrow.svg */ "./src/images/icon-up_arrow.svg");
-/* harmony import */ var _images_icon_radio_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../images/icon-radio.svg */ "./src/images/icon-radio.svg");
-/* harmony import */ var _images_icon_not_radio_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../images/icon-not_radio.svg */ "./src/images/icon-not_radio.svg");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var primereact_inputswitch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primereact/inputswitch */ "./node_modules/primereact/inputswitch/inputswitch.esm.js");
+/* harmony import */ var _images_icon_radio_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../images/icon-radio.svg */ "./src/images/icon-radio.svg");
+/* harmony import */ var _images_icon_not_radio_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../images/icon-not_radio.svg */ "./src/images/icon-not_radio.svg");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -6564,6 +6562,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+// import downArrow from '../../images/icon-down_arrow.svg';
+// import upArrow from '../../images/icon-up_arrow.svg';
 
 
 
@@ -6571,20 +6571,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 // Компонент для настроек напоминаний
 
 
-function RemindersSetting() {
+function RemindersSetting(_ref) {
+  var notifications = _ref.notifications,
+    setNotifications = _ref.setNotifications;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     sendReminder = _useState2[0],
-    setSendReminder = _useState2[1]; // стейт значения "Отправлять напоминание"
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    setSendReminder = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState4 = _slicedToArray(_useState3, 2),
-    showDays = _useState4[0],
-    setShowDays = _useState4[1]; // стейт значения определяющая отображение дней недели
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState6 = _slicedToArray(_useState5, 2),
-    workDays = _useState6[0],
-    setWorkDays = _useState6[1];
+    workDays = _useState4[0],
+    setWorkDays = _useState4[1];
   var handleWorkDayChange = function handleWorkDayChange(day, isChecked) {
     if (isChecked) {
       setWorkDays([].concat(_toConsumableArray(workDays), [day]));
@@ -6594,67 +6591,55 @@ function RemindersSetting() {
       }));
     }
   };
-  var toggleShowDays = function toggleShowDays() {
-    setShowDays(!showDays);
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (sendReminder) {
+      setNotifications(true);
+    } else setNotifications(false);
+  }, [sendReminder]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "reminders-setting",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
       className: "reminders-setting__title",
       children: "\u041D\u0430\u043F\u043E\u043C\u0438\u043D\u0430\u043D\u0438\u044F"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "reminders-setting__container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-        className: "reminders-setting__label-text",
-        children: "\u041E\u0442\u043F\u0440\u0430\u0432\u043B\u044F\u0442\u044C \u043D\u0430\u043F\u043E\u043C\u0438\u043D\u0430\u043D\u0438\u0435"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_inputswitch__WEBPACK_IMPORTED_MODULE_7__.InputSwitch, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(primereact_inputswitch__WEBPACK_IMPORTED_MODULE_5__.InputSwitch, {
         id: "sendReminder",
         className: "reminders-setting__checkbox",
         checked: sendReminder,
         onChange: function onChange(e) {
           return setSendReminder(e.value);
         }
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+        className: "reminders-setting__label-text",
+        children: "\u041E\u0442\u043F\u0440\u0430\u0432\u043B\u044F\u0442\u044C \u043D\u0430\u043F\u043E\u043C\u0438\u043D\u0430\u043D\u0438\u0435"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-      className: "reminders-setting__work-days",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "reminders-setting__work-days ".concat(!notifications && 'hover'),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
         className: "reminders-setting__subtitle",
         children: "\u041C\u043E\u0438 \u0440\u0430\u0431\u043E\u0447\u0438\u0435 \u0434\u043D\u0438"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
-        className: "reminders-setting__toggle-button",
-        onClick: toggleShowDays,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-          className: "reminders-setting__text-button",
-          children: "\u041F\u043D-\u041F\u0442"
-        }), showDays ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-          className: "reminders-setting__image-arrow",
-          src: _images_icon_up_arrow_svg__WEBPACK_IMPORTED_MODULE_3__,
-          alt: "\u0421\u0442\u0440\u0435\u043B\u043A\u0430 \u0432\u0432\u0435\u0440\u0445"
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-          className: "reminders-setting__image-arrow",
-          src: _images_icon_down_arrow_svg__WEBPACK_IMPORTED_MODULE_2__,
-          alt: "\u0421\u0442\u0440\u0435\u043B\u043A\u0430 \u0432\u043D\u0438\u0437"
-        })]
-      })]
-    }), showDays && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "reminders-setting__day-list-container",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
         className: "reminders-setting__day-list",
-        children: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'].map(function (day) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
-            className: "reminders-setting__day-item",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("label", {
+        children: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'].map(function (day) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+            className: "reminders-setting__day-item ".concat(!notifications && 'hover'),
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
               htmlFor: day,
               className: "reminders-setting__day-label",
-              children: [workDays.includes(day) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-                src: _images_icon_radio_svg__WEBPACK_IMPORTED_MODULE_4__,
+              children: [workDays.includes(day) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                src: _images_icon_radio_svg__WEBPACK_IMPORTED_MODULE_2__,
                 alt: "Checked",
                 className: "reminders-setting__checkbox-icon"
-              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-                src: _images_icon_not_radio_svg__WEBPACK_IMPORTED_MODULE_5__,
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                src: _images_icon_not_radio_svg__WEBPACK_IMPORTED_MODULE_3__,
                 alt: "Unchecked",
                 className: "reminders-setting__checkbox-icon"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                disabled: !notifications,
                 id: day,
                 type: "checkbox",
                 className: "reminders-setting__day-checkbox",
@@ -6662,7 +6647,7 @@ function RemindersSetting() {
                 onChange: function onChange(event) {
                   return handleWorkDayChange(day, event.target.checked);
                 }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
                 className: "reminders-setting__day-text",
                 children: day
               })]
@@ -6670,12 +6655,12 @@ function RemindersSetting() {
           }, day);
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-      className: "reminders-setting__reminder-options",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-        className: "reminders-setting__container",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
-          className: "reminders-setting__label-text",
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "reminders-setting__reminder-options ".concat(!notifications && 'hover'),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "reminders-setting__container-days",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+          className: "reminders-setting__label-title",
           children: "\u0412 \u0440\u0430\u0431\u043E\u0447\u0438\u0435 \u0434\u043D\u0438 \u043D\u0430\u043F\u043E\u043C\u0438\u043D\u0430\u0442\u044C, \u0435\u0441\u043B\u0438..."
         })
       })
@@ -7236,59 +7221,6 @@ function ResetPasswordForm(_ref) {
       isValid: isValid,
       values: values,
       handleSidebarClose: handleSidebarClose
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./src/components/SettingRadioBtn/index.jsx":
-/*!**************************************************!*\
-  !*** ./src/components/SettingRadioBtn/index.jsx ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ SettingRadioBtn)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _SettingRadioBtn_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SettingRadioBtn.css */ "./src/components/SettingRadioBtn/SettingRadioBtn.css");
-/* harmony import */ var _images_icon_radio_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../images/icon-radio.svg */ "./src/images/icon-radio.svg");
-/* harmony import */ var _images_icon_not_radio_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../images/icon-not_radio.svg */ "./src/images/icon-not_radio.svg");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function SettingRadioBtn(_ref) {
-  var label = _ref.label,
-    value = _ref.value,
-    checked = _ref.checked,
-    onChange = _ref.onChange;
-  var inputId = label.replace(/\s+/g, '-').toLowerCase(); // Генерация уникального id из текста метки
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-    className: "setting-radio-btn",
-    htmlFor: inputId,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-      type: "radio",
-      id: inputId,
-      value: value,
-      checked: checked,
-      onChange: onChange,
-      className: "setting-radio-btn__input"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-      src: checked ? _images_icon_radio_svg__WEBPACK_IMPORTED_MODULE_2__ : _images_icon_not_radio_svg__WEBPACK_IMPORTED_MODULE_3__,
-      alt: "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435",
-      className: "setting-radio-btn__image"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-      className: "setting-radio-btn__label",
-      children: label
     })]
   });
 }
@@ -8014,71 +7946,6 @@ var TasksHeader = function TasksHeader(_ref) {
 
 /***/ }),
 
-/***/ "./src/components/TimeFormatSetting/index.jsx":
-/*!****************************************************!*\
-  !*** ./src/components/TimeFormatSetting/index.jsx ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ TimeFormatSetting)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _TimeFormatSetting_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TimeFormatSetting.css */ "./src/components/TimeFormatSetting/TimeFormatSetting.css");
-/* harmony import */ var _SettingRadioBtn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SettingRadioBtn */ "./src/components/SettingRadioBtn/index.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-// Компонент для выбора времени в формате 12 или 24 часа
-
-
-function TimeFormatSetting() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('12'),
-    _useState2 = _slicedToArray(_useState, 2),
-    timeFormat = _useState2[0],
-    setTimeFormat = _useState2[1]; // значение по умолчанию - 12 часов
-
-  var handleTimeFormatChange = function handleTimeFormatChange(event) {
-    setTimeFormat(event.target.value);
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "time-format-setting",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
-      className: "time-format-setting__title",
-      children: "\u0424\u043E\u0440\u043C\u0430\u0442 \u0432\u0440\u0435\u043C\u0435\u043D\u0438"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "time-format-setting__container",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "time-format-setting__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SettingRadioBtn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          label: "12 \u0447\u0430\u0441\u043E\u0432\u043E\u0439",
-          value: "12",
-          checked: timeFormat === '12',
-          onChange: handleTimeFormatChange
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SettingRadioBtn__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          label: "24 \u0447\u0430\u0441\u043E\u0432\u043E\u0439",
-          value: "24",
-          checked: timeFormat === '24',
-          onChange: handleTimeFormatChange
-        })]
-      })
-    })]
-  });
-}
-
-/***/ }),
-
 /***/ "./src/components/TimerSettingOption/index.jsx":
 /*!*****************************************************!*\
   !*** ./src/components/TimerSettingOption/index.jsx ***!
@@ -8095,6 +7962,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TimerSettingOption_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TimerSettingOption.css */ "./src/components/TimerSettingOption/TimerSettingOption.css");
 /* harmony import */ var primereact_inputswitch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/inputswitch */ "./node_modules/primereact/inputswitch/inputswitch.esm.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -8106,39 +7979,104 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function TimerSettingOption() {
+function TimerSettingOption(_ref) {
+  var notifications = _ref.notifications;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     timerReminder = _useState2[0],
     setTimerReminder = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      hours: 12,
+      minutes: 0
+    }),
+    _useState4 = _slicedToArray(_useState3, 2),
+    timerTime = _useState4[0],
+    setTimerTime = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    editing = _useState6[0],
+    setEditing = _useState6[1];
   var handleSwitchChange = function handleSwitchChange() {
     setTimerReminder(function (prevState) {
       return !prevState;
     });
+    setEditing(function (prevState) {
+      return !prevState;
+    });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("section", {
-    className: "timer-setting",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "timer-setting__option-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "timer-setting__option-text",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "timer-setting__timer-label",
-          children: "\u042F \u043D\u0435 \u0437\u0430\u0441\u0435\u043A\u0430\u044E \u0432\u0440\u0435\u043C\u044F"
+  var handleTimerTimeChange = function handleTimerTimeChange(event) {
+    var _event$target = event.target,
+      name = _event$target.name,
+      value = _event$target.value;
+    setTimerTime(function (prevState) {
+      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
+    });
+  };
+  var handleCloseClick = function handleCloseClick() {
+    setEditing(false);
+    setTimerReminder(false);
+  };
+  var renderTimeOptions = function renderTimeOptions(maxValue) {
+    var options = [];
+    for (var i = 0; i < maxValue; i += 1) {
+      var value = i.toString().padStart(2, '0');
+      options.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+        value: value,
+        children: value
+      }, value));
+    }
+    return options;
+  };
+  var renderTimePicker = function renderTimePicker() {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "timer-setting__time-picker",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+        className: "timer-setting__picker-text",
+        children: "\u0412\u0440\u0435\u043C\u044F"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "timer-setting__time-picker-options",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
+          name: "hours",
+          value: timerTime.hours,
+          className: "timer-setting__time-picker-select",
+          onChange: handleTimerTimeChange,
+          children: renderTimeOptions(24)
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-          className: "timer-setting__time-placeholder",
-          children: "\u0412\u0440\u0435\u043C\u044F"
+          children: ":"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
+          name: "minutes",
+          value: timerTime.minutes,
+          className: "timer-setting__time-picker-select",
+          onChange: handleTimerTimeChange,
+          children: renderTimeOptions(60)
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "timer-setting__time-picker-close",
+        onClick: handleCloseClick
+      })]
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("section", {
+    className: "timer-setting ".concat(!notifications && 'hover'),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "timer-setting__option-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "timer-setting__option-switch-wrapper",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_inputswitch__WEBPACK_IMPORTED_MODULE_3__.InputSwitch, {
+          disabled: !notifications,
           id: "timerReminder",
           className: "timer-setting__option-switch",
           checked: timerReminder,
           onChange: handleSwitchChange
         })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "timer-setting__option-text",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "timer-setting__timer-label",
+          children: "\u042F \u043D\u0435 \u0437\u0430\u0441\u0435\u043A\u0430\u044E \u0432\u0440\u0435\u043C\u044F"
+        })
       })]
-    })
+    }), editing && renderTimePicker()]
   });
 }
 
@@ -8177,7 +8115,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function TimerSetting() {
+function TimerSetting(_ref) {
+  var notifications = _ref.notifications;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     timerReminder = _useState2[0],
@@ -8206,10 +8145,10 @@ function TimerSetting() {
       name = _event$target.name,
       value = _event$target.value;
     setTimerTime(function (prevState) {
-      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, parseInt(value, 10)));
+      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
     });
   };
-  var handleSaveClick = function handleSaveClick() {
+  var handleCloseClick = function handleCloseClick() {
     setEditing(false);
     setTimerReminder(false);
   };
@@ -8227,51 +8166,50 @@ function TimerSetting() {
   var renderTimePicker = function renderTimePicker() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "timer-setting__time-picker",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+        className: "timer-setting__picker-text",
+        children: "\u0412\u0440\u0435\u043C\u044F"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "timer-setting__time-picker-options",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
           name: "hours",
           value: timerTime.hours,
           className: "timer-setting__time-picker-select",
           onChange: handleTimerTimeChange,
-          children: renderTimeOptions(60)
+          children: renderTimeOptions(24)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+          children: ":"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("select", {
           name: "minutes",
           value: timerTime.minutes,
           className: "timer-setting__time-picker-select",
           onChange: handleTimerTimeChange,
-          children: renderTimeOptions(24)
+          children: renderTimeOptions(60)
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-        className: "timer-setting__time-picker-save",
-        onClick: handleSaveClick,
-        children: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C"
+        className: "timer-setting__time-picker-close",
+        onClick: handleCloseClick
       })]
     });
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("section", {
-    className: "timer-setting",
+    className: "timer-setting ".concat(!notifications && 'hover'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "timer-setting__option-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "timer-setting__option-text",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "timer-setting__timer-label",
-          children: ["\u042F \u043D\u0435 \u0437\u0430\u043F\u0443\u0449\u0443 \u0442\u0430\u0439\u043C\u0435\u0440 \u0434\u043E", ' ']
-        }), editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-          className: "timer-setting__time-placeholder",
-          children: "\u0412\u0440\u0435\u043C\u044F"
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-          className: "timer-setting__current-time",
-          children: "".concat(timerTime.hours.toString().padStart(2, '0'), ":").concat(timerTime.minutes.toString().padStart(2, '0'))
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "timer-setting__option-switch-wrapper",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_inputswitch__WEBPACK_IMPORTED_MODULE_3__.InputSwitch, {
+          disabled: !notifications,
           id: "timerReminder",
           className: "timer-setting__option-switch",
           checked: timerReminder,
           onChange: handleTimerReminderChange
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "timer-setting__option-text",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "timer-setting__timer-label",
+          children: ["\u042F \u043D\u0435 \u0437\u0430\u043F\u0443\u0449\u0443 \u0442\u0430\u0439\u043C\u0435\u0440 \u0434\u043E", ' ']
         })
       })]
     }), editing && renderTimePicker()]
@@ -8739,7 +8677,7 @@ var useTime = function useTime(tasks) {
     var hours = 0;
     var mins = 0;
     var secs = 0;
-    for (var i = 0; i < state.length; i + 1) {
+    for (var i = 0; i < state.length; i += 1) {
       hours += state[i].time_in_progress.h;
       mins += state[i].time_in_progress.m;
       secs += state[i].time_in_progress.s;
@@ -9636,13 +9574,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SettingsPage)
 /* harmony export */ });
-/* harmony import */ var _SettingsPage_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SettingsPage.css */ "./src/pages/SettingsPage/SettingsPage.css");
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Header */ "./src/components/Header/index.jsx");
-/* harmony import */ var _components_TimeFormatSetting__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/TimeFormatSetting */ "./src/components/TimeFormatSetting/index.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SettingsPage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SettingsPage.css */ "./src/pages/SettingsPage/SettingsPage.css");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Header */ "./src/components/Header/index.jsx");
 /* harmony import */ var _components_RemindersSetting__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/RemindersSetting */ "./src/components/RemindersSetting/index.jsx");
 /* harmony import */ var _components_TimerSetting__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/TimerSetting */ "./src/components/TimerSetting/index.jsx");
 /* harmony import */ var _components_TimerSettingOption__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/TimerSettingOption */ "./src/components/TimerSettingOption/index.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -9652,11 +9597,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function SettingsPage() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    notifications = _useState2[0],
+    setNotifications = _useState2[1];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("section", {
     className: "settings",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
       sectionName: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_TimeFormatSetting__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_RemindersSetting__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_TimerSetting__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_TimerSettingOption__WEBPACK_IMPORTED_MODULE_5__["default"], {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_RemindersSetting__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      notifications: notifications,
+      setNotifications: setNotifications
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_TimerSetting__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      notifications: notifications
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_TimerSettingOption__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      notifications: notifications
+    })]
   });
 }
 
@@ -9808,15 +9764,16 @@ function StatisticsPage(_ref) {
         children: "\u041F\u0440\u043E\u0435\u043A\u0442\u044B"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
         className: "statpage__projects",
-        children: projects.results && projects.results.map(function (project) {
+        children: projects && projects.map(function (project) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
             to: "/statistics/".concat(project.id),
+            className: "statpage__link",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_ProjectStatusBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
               project: project,
               tasks: (0,_utils_filterTasks__WEBPACK_IMPORTED_MODULE_2__.filterTasks)(project.id, tasks),
               timeSum: timeSum
             }, project.id)
-          });
+          }, project.id);
         })
       })]
     })]
@@ -14918,19 +14875,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/components/SettingRadioBtn/SettingRadioBtn.css":
-/*!************************************************************!*\
-  !*** ./src/components/SettingRadioBtn/SettingRadioBtn.css ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./src/components/SidebarButton/SidebarButton.css":
 /*!********************************************************!*\
   !*** ./src/components/SidebarButton/SidebarButton.css ***!
@@ -15039,19 +14983,6 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./src/components/TasksHeader/TasksHeader.css ***!
   \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./src/components/TimeFormatSetting/TimeFormatSetting.css":
-/*!****************************************************************!*\
-  !*** ./src/components/TimeFormatSetting/TimeFormatSetting.css ***!
-  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -75228,17 +75159,6 @@ module.exports = __webpack_require__.p + "assets/94e1e65512d0f60d19e4.svg";
 
 /***/ }),
 
-/***/ "./src/images/icon-down_arrow.svg":
-/*!****************************************!*\
-  !*** ./src/images/icon-down_arrow.svg ***!
-  \****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "assets/de68552e37f32ae4fdfe.svg";
-
-/***/ }),
-
 /***/ "./src/images/icon-inputPencil.svg":
 /*!*****************************************!*\
   !*** ./src/images/icon-inputPencil.svg ***!
@@ -75346,17 +75266,6 @@ module.exports = __webpack_require__.p + "assets/a43de055b082c0ba0fa4.svg";
 
 "use strict";
 module.exports = __webpack_require__.p + "assets/9f8ea8b2dde4ae7004b5.svg";
-
-/***/ }),
-
-/***/ "./src/images/icon-up_arrow.svg":
-/*!**************************************!*\
-  !*** ./src/images/icon-up_arrow.svg ***!
-  \**************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "assets/db0a92f852215d396b57.svg";
 
 /***/ }),
 
