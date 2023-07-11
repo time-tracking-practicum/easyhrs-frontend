@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './ProfileAvatarSection.css';
 import defaultImg from '../../images/avatar.svg';
 import buttonImg from '../../images/icon-pencil_violet.svg';
 import { UserContext } from '../../contexts/UserContext';
 import userApi from '../../utils/UserApi';
 
-export default function ProfileAvatarSection({ onSetCurrentUser }) {
-	const { photo, id, email } = useContext(UserContext);
+export default function ProfileAvatarSection({ image, getCurrentUser }) {
+	const { id, email } = useContext(UserContext);
+	const [avatar, setAvatar] = useState(image || defaultImg);
 	const filePicker = useRef(null);
 
 	const handlePick = () => {
@@ -31,23 +32,28 @@ export default function ProfileAvatarSection({ onSetCurrentUser }) {
 	const handleChange = async (e) => {
 		try {
 			const result = await encryptPhoto(e.target.files[0]);
-			const newUserData = userApi.changeUserData(
+			const newUserData = await userApi.changeUserData(
 				{
 					email: `${email}`,
 					photo: result.replace(`data:image/jpeg;base64,`, ``),
 				},
 				id
 			);
-			onSetCurrentUser(newUserData);
+			setAvatar(newUserData.photo);
+			getCurrentUser();
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
+	useEffect(() => {
+		setAvatar(image);
+	}, [image]);
+
 	return (
 		<div className="profile__avatar-container">
 			<img
-				src={photo === null ? defaultImg : photo}
+				src={avatar}
 				alt="Аватар пользователя"
 				className="profile__avatar-image"
 			/>
