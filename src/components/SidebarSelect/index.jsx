@@ -43,6 +43,7 @@ const SidebarSelect = ({
 				onChange={handleSelect}
 				disabled={isEditable ? isDisabled : disabled}
 				placeholder={selected?.title || placeholder}
+				emptyMessage="Здесь пока пусто"
 				options={all?.map((item) => (
 					<div className="sidebar-select__options-element" id={item.id}>
 						<SidebarCheckbox
