@@ -7885,7 +7885,7 @@ function Task(_ref) {
         className: "task__timer-wrapper",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
           className: "task__timer-status",
-          children: timeInProgress.h === 0 && timeInProgress.m === 0 && timeInProgress.s === 0 ? 'Не начато' : actualTask.name === name && play ? 'В работе' : 'Пауза'
+          children: actualTask.name === name && play ? 'В работе' : 'Пауза'
         }), actualTask.name === name && play ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
           className: "task__timer-time",
           children: [timerTime.h >= 10 ? timerTime.h : "0".concat(timerTime.h), ":", timerTime.m >= 10 ? timerTime.m : "0".concat(timerTime.m), ":", timerTime.s >= 10 ? timerTime.s : "0".concat(timerTime.s)]
