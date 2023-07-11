@@ -4208,6 +4208,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_useCheckboxes__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../hooks/useCheckboxes */ "./src/hooks/useCheckboxes.js");
 /* harmony import */ var _utils_ProjectApi__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/ProjectApi */ "./src/utils/ProjectApi.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -4230,9 +4234,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var CreateTaskForm = function CreateTaskForm(_ref) {
+  var _projectList$selected;
   var projectList = _ref.projectList,
     setProjectList = _ref.setProjectList,
     handleCreateTask = _ref.handleCreateTask,
+    setCurrentUserProjects = _ref.setCurrentUserProjects,
     setIsCreateTaskFormOpen = _ref.setIsCreateTaskFormOpen,
     isImportant = _ref.isImportant,
     isUrgent = _ref.isUrgent;
@@ -4267,6 +4273,9 @@ var CreateTaskForm = function CreateTaskForm(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     inputRef.current.focus();
   }, []);
+  var isProjectInputRequired = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return !(inputValues.projectName || projectList.selected);
+  }, [inputValues.projectName, projectList.selected]);
   function handleClickEmoji(e) {
     e.preventDefault();
     setIsOpenEmoji(!isOpenEmoji);
@@ -4284,24 +4293,92 @@ var CreateTaskForm = function CreateTaskForm(_ref) {
     setEmoji(em["native"]);
     setIsOpenEmoji(false);
   }
-  var handleSubmitForm = function handleSubmitForm(e) {
-    var _projectList$selected;
-    e.preventDefault();
-    var newTask = {
-      name: inputValues === null || inputValues === void 0 ? void 0 : inputValues.taskName,
-      project: projectList === null || projectList === void 0 ? void 0 : (_projectList$selected = projectList.selected) === null || _projectList$selected === void 0 ? void 0 : _projectList$selected.id,
-      status: 'appointed',
-      is_urgent: checkboxesValue === null || checkboxesValue === void 0 ? void 0 : checkboxesValue.isUrgent,
-      is_important: checkboxesValue === null || checkboxesValue === void 0 ? void 0 : checkboxesValue.isImportant,
-      emoji: emoji,
-      deadline: new Date(dateValues === null || dateValues === void 0 ? void 0 : dateValues.deadline).toISOString(),
-      start_time: new Date(dateValues === null || dateValues === void 0 ? void 0 : dateValues.startTime).toISOString()
+  var handleSubmitForm = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
+      var selectedProject, newProject, newTask;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            e.preventDefault();
+            if (!(
+            // Если инпут заполнен и такого же существующего проекта ещё нет
+            inputValues.projectName && !projectList.all.find(function (project) {
+              return project.title === inputValues.projectName;
+            }))) {
+              _context.next = 16;
+              break;
+            }
+            _context.prev = 2;
+            _context.next = 5;
+            return _utils_ProjectApi__WEBPACK_IMPORTED_MODULE_12__["default"].createProject({
+              title: inputValues === null || inputValues === void 0 ? void 0 : inputValues.projectName
+            });
+          case 5:
+            newProject = _context.sent;
+            _context.next = 8;
+            return setCurrentUserProjects();
+          case 8:
+            // Присваиваем новый проект задаче
+            selectedProject = newProject.id;
+            _context.next = 14;
+            break;
+          case 11:
+            _context.prev = 11;
+            _context.t0 = _context["catch"](2);
+            console.error(_context.t0);
+          case 14:
+            _context.next = 17;
+            break;
+          case 16:
+            if (
+            // Если такой проект уже существует
+            projectList.all.find(function (project) {
+              return project.title === inputValues.projectName;
+            })) {
+              // Присваиваем уже существующий проект задаче
+              selectedProject = projectList.all.find(function (project) {
+                return project.title === inputValues.projectName;
+              }).id;
+            } else {
+              // в обратном случае присваиваем проект, выбранный в селекте
+              selectedProject = projectList.selected.id;
+            }
+          case 17:
+            newTask = {
+              name: inputValues === null || inputValues === void 0 ? void 0 : inputValues.taskName,
+              project: selectedProject,
+              status: 'appointed',
+              is_urgent: checkboxesValue === null || checkboxesValue === void 0 ? void 0 : checkboxesValue.isUrgent,
+              is_important: checkboxesValue === null || checkboxesValue === void 0 ? void 0 : checkboxesValue.isImportant,
+              emoji: emoji,
+              deadline: new Date(dateValues === null || dateValues === void 0 ? void 0 : dateValues.deadline).toISOString(),
+              start_time: new Date(dateValues === null || dateValues === void 0 ? void 0 : dateValues.startTime).toISOString()
+            };
+            console.log(projectList);
+            _context.prev = 19;
+            _context.next = 22;
+            return handleCreateTask(newTask);
+          case 22:
+            _context.next = 27;
+            break;
+          case 24:
+            _context.prev = 24;
+            _context.t1 = _context["catch"](19);
+            console.error(_context.t1);
+          case 27:
+            setIsCreateTaskFormOpen(false);
+            unsetCheckboxes();
+            clearInputs();
+          case 30:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[2, 11], [19, 24]]);
+    }));
+    return function handleSubmitForm(_x2) {
+      return _ref2.apply(this, arguments);
     };
-    handleCreateTask(newTask);
-    setIsCreateTaskFormOpen(false);
-    unsetCheckboxes();
-    clearInputs();
-  };
+  }();
   var isDateCorrect = new Date(dateValues.deadline).getTime() >= new Date(dateValues.startTime).getTime();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
     className: "createTaskForm",
@@ -4319,6 +4396,7 @@ var CreateTaskForm = function CreateTaskForm(_ref) {
           value: inputValues.taskName,
           inputRef: inputRef,
           type: "text",
+          max: 255,
           name: "taskName",
           autoComplete: "off",
           errText: inputErrors.taskName,
@@ -4330,8 +4408,25 @@ var CreateTaskForm = function CreateTaskForm(_ref) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_SidebarSelect__WEBPACK_IMPORTED_MODULE_5__["default"], {
           items: projectList,
           setItems: setProjectList,
-          required: true,
           placeholder: _utils_constants__WEBPACK_IMPORTED_MODULE_3__.CREATE_TASK_FORM_TEXT.PROJECT_PLACEHOLDER
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_SidebarInput__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          value: inputValues.projectName,
+          className: "createTaskForm__project-input",
+          type: "text",
+          max: 255,
+          name: "projectName",
+          required: isProjectInputRequired,
+          autoComplete: "off",
+          errText: inputErrors.projectName,
+          onChange: handleChangeInput,
+          error: inputErrors.projectName,
+          isValid: isInputValid,
+          placeholder: projectList.selected ? projectList === null || projectList === void 0 ? void 0 : (_projectList$selected = projectList.selected) === null || _projectList$selected === void 0 ? void 0 : _projectList$selected.title : _utils_constants__WEBPACK_IMPORTED_MODULE_3__.CREATE_TASK_FORM_TEXT.NEW_TASK_PROJECTNAME_PLACEHOLDER
+        }), !inputErrors.projectName && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("p", {
+          className: "createTaskForm__select-description",
+          children: inputValues.projectName ? "\u0411\u0443\u0434\u0435\u0442 ".concat(projectList.all.find(function (project) {
+            return project.title === inputValues.projectName;
+          }) ? 'выбран' : 'создан новый', " \u043F\u0440\u043E\u0435\u043A\u0442 \u0441 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u043C \u201C").concat(inputValues.projectName, "\u201D") : 'Выберите проект или введите название нового проекта'
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_SidebarDatePicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
           value: dateValues.startTime,
           minDate: new Date(),
@@ -4380,32 +4475,12 @@ var CreateTaskForm = function CreateTaskForm(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("div", {
         className: "createTaskForm__btnContainer createTaskForm__btnContainer_justify-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_SidebarButton__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          disabled: !isDateCorrect || !projectList.selected || !inputValues.taskName,
+          disabled: !isDateCorrect || !inputValues.taskName || isProjectInputRequired,
           size: "primary",
           type: "submit",
           text: _utils_constants__WEBPACK_IMPORTED_MODULE_3__.CREATE_TASK_FORM_TEXT.CONTINUE_BUTTON
         })
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("div", {
-      style: {
-        margin: '0 0 20px',
-        position: 'absolute',
-        bottom: 0
-      },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_SidebarButton__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        onClick: function onClick() {
-          var projectName = "\u041F\u0440\u043E\u0435\u043A\u0442 \u2116".concat(Math.ceil(Math.random() * 1000));
-          _utils_ProjectApi__WEBPACK_IMPORTED_MODULE_12__["default"].createProject({
-            title: projectName
-          }).then(function (data) {
-            return alert("\u0421\u043E\u0437\u0434\u0430\u043D ".concat(data.title, ". \u041E\u0442\u043A\u0440\u043E\u0439 \u0441\u0430\u0439\u0434\u0431\u0430\u0440 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E :)"));
-          })["catch"](function (err) {
-            return console.error(err);
-          });
-        },
-        size: "secondary",
-        text: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
-      })
     })]
   });
 };
@@ -4855,7 +4930,7 @@ function HelpForm(_ref) {
     onSubmit: handleSubmit,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
       className: "help__form-question",
-      children: "\u041E\u0441\u0442\u0430\u043B\u0438\u0441\u044C \u0432\u043E\u043F\u0440\u043E\u0441\u044B ?"
+      children: "\u041E\u0441\u0442\u0430\u043B\u0438\u0441\u044C \u0432\u043E\u043F\u0440\u043E\u0441\u044B?"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "help__input-container",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
@@ -4972,7 +5047,7 @@ function HelpList() {
     priorityTask: 'Как добавить приоритет для задачи?'
   };
   var text = {
-    addTask: "\n\t\t\t\u0417\u0430\u0434\u0430\u0442\u044C \u0434\u0435\u0434\u043B\u0430\u0439\u043D \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u0447\u0438 \u043C\u043E\u0436\u043D\u043E \u043D\u0435\u043F\u043E\u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0435\u043D\u043D\u043E \u043F\u0440\u0438\n\t\t\t\u0435\u0435 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u0438 \u0432\u044B\u0431\u0440\u0430\u0432 \u043D\u0443\u0436\u043D\u0443\u044E \u0434\u0430\u0442\u0443 \u0432 \u043F\u043E\u043B\u0435 \u201C\u0414\u0435\u0434\u043B\u0430\u0439\u043D\u201D.\n\t\t\t\u0415\u0441\u043B\u0438 \u0437\u0430\u0434\u0430\u0447\u0430 \u0443\u0436\u0435 \u0441\u043E\u0437\u0434\u0430\u043D\u0430, \u0442\u043E \u0434\u043B\u044F \u0442\u043E\u0433\u043E, \u0447\u0442\u043E\u0431\u044B\n\t\t\t\u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0441\u0440\u043E\u043A \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u043D\u0443\u0436\u043D\u043E \u0437\u0430\u0439\u0442\u0438 \u0432 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u0437\u0430\u0434\u0430\u0447\u0438\n\t\t\t\u0438 \u0432\u0432\u0435\u0441\u0442\u0438 \u043D\u0443\u0436\u043D\u0443\u044E \u0434\u0430\u0442\u0443 \u0432 \u043F\u043E\u043B\u0435 \u201C\u0414\u0435\u0434\u043B\u0430\u0439\u043D\u201D.\n\t\t",
+    addTask: "\n\t\t\t\u0417\u0430\u0434\u0430\u0442\u044C \u0434\u0435\u0434\u043B\u0430\u0439\u043D \u0434\u043B\u044F \u0437\u0430\u0434\u0430\u0447\u0438 \u043C\u043E\u0436\u043D\u043E \u043D\u0435\u043F\u043E\u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0435\u043D\u043D\u043E \u043F\u0440\u0438\n\t\t\t\u0435\u0435 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u0438, \u0432\u044B\u0431\u0440\u0430\u0432 \u043D\u0443\u0436\u043D\u0443\u044E \u0434\u0430\u0442\u0443 \u0432 \u043F\u043E\u043B\u0435 \u201C\u0414\u0435\u0434\u043B\u0430\u0439\u043D\u201D.\n\t\t\t\u0415\u0441\u043B\u0438 \u0437\u0430\u0434\u0430\u0447\u0430 \u0443\u0436\u0435 \u0441\u043E\u0437\u0434\u0430\u043D\u0430, \u0442\u043E \u0434\u043B\u044F \u0442\u043E\u0433\u043E, \u0447\u0442\u043E\u0431\u044B\n\t\t\t\u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0441\u0440\u043E\u043A \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043D\u0443\u0436\u043D\u043E \u0437\u0430\u0439\u0442\u0438 \u0432 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u0437\u0430\u0434\u0430\u0447\u0438\n\t\t\t\u0438 \u0432\u0432\u0435\u0441\u0442\u0438 \u043D\u0443\u0436\u043D\u0443\u044E \u0434\u0430\u0442\u0443 \u0432 \u043F\u043E\u043B\u0435 \u201C\u0414\u0435\u0434\u043B\u0430\u0439\u043D\u201D.\n\t\t",
     nothing: 'Никак',
     plug: 'Может ты подумаешь сам?'
   };
@@ -5504,6 +5579,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 /* eslint-disable no-console */
 
 
@@ -5514,11 +5595,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 function ProfileAvatarSection(_ref) {
-  var onSetCurrentUser = _ref.onSetCurrentUser;
+  var image = _ref.image,
+    getCurrentUser = _ref.getCurrentUser;
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_contexts_UserContext__WEBPACK_IMPORTED_MODULE_4__.UserContext),
-    photo = _useContext.photo,
     id = _useContext.id,
     email = _useContext.email;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(image || _images_avatar_svg__WEBPACK_IMPORTED_MODULE_2__),
+    _useState2 = _slicedToArray(_useState, 2),
+    avatar = _useState2[0],
+    setAvatar = _useState2[1];
   var filePicker = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var handlePick = function handlePick() {
     filePicker.current.click();
@@ -5547,31 +5632,38 @@ function ProfileAvatarSection(_ref) {
             return encryptPhoto(e.target.files[0]);
           case 3:
             result = _context.sent;
-            newUserData = _utils_UserApi__WEBPACK_IMPORTED_MODULE_5__["default"].changeUserData({
+            _context.next = 6;
+            return _utils_UserApi__WEBPACK_IMPORTED_MODULE_5__["default"].changeUserData({
               email: "".concat(email),
               photo: result.replace("data:image/jpeg;base64,", "")
             }, id);
-            onSetCurrentUser(newUserData);
-            _context.next = 11;
+          case 6:
+            newUserData = _context.sent;
+            setAvatar(newUserData.photo);
+            getCurrentUser();
+            _context.next = 14;
             break;
-          case 8:
-            _context.prev = 8;
+          case 11:
+            _context.prev = 11;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0);
-          case 11:
+          case 14:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[0, 8]]);
+      }, _callee, null, [[0, 11]]);
     }));
-    return function handleChange(_x) {
+    return function handleChange(_x2) {
       return _ref2.apply(this, arguments);
     };
   }();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setAvatar(image);
+  }, [image]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "profile__avatar-container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-      src: photo === null ? _images_avatar_svg__WEBPACK_IMPORTED_MODULE_2__ : photo,
+      src: avatar,
       alt: "\u0410\u0432\u0430\u0442\u0430\u0440 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
       className: "profile__avatar-image"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
@@ -6729,7 +6821,7 @@ var FormSwitcher = function FormSwitcher(_ref) {
             });
           case 4:
             response = _context.sent;
-            if (response.status === 204) {
+            if (response.status === 201) {
               setCurrentForm(_utils_constants__WEBPACK_IMPORTED_MODULE_0__.FORM_STEP.RESET.THIRD);
               resetValues();
             }
@@ -7428,8 +7520,10 @@ var SidebarInput = function SidebarInput(_ref) {
     onChange = _ref.onChange,
     label = _ref.label,
     inputRef = _ref.inputRef,
+    style = _ref.style,
     min = _ref.min,
     disabled = _ref.disabled,
+    className = _ref.className,
     isEditable = _ref.isEditable,
     max = _ref.max,
     required = _ref.required,
@@ -7451,7 +7545,8 @@ var SidebarInput = function SidebarInput(_ref) {
     setIsPassShown(!isPassShown);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "sidebar__input-border ".concat(isError && 'sidebar__input-border_red'),
+    style: style,
+    className: "sidebar__input-border ".concat(isError && 'sidebar__input-border_red', ", ").concat(className),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
       type: isPassShown ? 'text' : type,
       name: name,
@@ -7564,6 +7659,7 @@ var SidebarSelect = function SidebarSelect(_ref) {
   var items = _ref.items,
     setItems = _ref.setItems,
     placeholder = _ref.placeholder,
+    style = _ref.style,
     disabled = _ref.disabled,
     label = _ref.label,
     isEditable = _ref.isEditable;
@@ -7588,11 +7684,13 @@ var SidebarSelect = function SidebarSelect(_ref) {
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "sidebar-select__wrapper",
+    style: style,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(primereact_dropdown__WEBPACK_IMPORTED_MODULE_6__.Dropdown, {
       className: "sidebar-select",
       onChange: handleSelect,
       disabled: isEditable ? isDisabled : disabled,
       placeholder: (selected === null || selected === void 0 ? void 0 : selected.title) || placeholder,
+      emptyMessage: "\u0417\u0434\u0435\u0441\u044C \u043F\u043E\u043A\u0430 \u043F\u0443\u0441\u0442\u043E",
       options: all === null || all === void 0 ? void 0 : all.map(function (item) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "sidebar-select__options-element",
@@ -7787,7 +7885,7 @@ function Task(_ref) {
         className: "task__timer-wrapper",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
           className: "task__timer-status",
-          children: actualTask.name === name && play ? 'В работе' : 'Пауза'
+          children: timeInProgress.h === 0 && timeInProgress.m === 0 && timeInProgress.s === 0 ? 'Не начато' : actualTask.name === name && play ? 'В работе' : 'Пауза'
         }), actualTask.name === name && play ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
           className: "task__timer-time",
           children: [timerTime.h >= 10 ? timerTime.h : "0".concat(timerTime.h), ":", timerTime.m >= 10 ? timerTime.m : "0".concat(timerTime.m), ":", timerTime.s >= 10 ? timerTime.s : "0".concat(timerTime.s)]
@@ -8815,6 +8913,7 @@ function MainPage(_ref) {
     handleEditTask = _ref.handleEditTask,
     projects = _ref.projects,
     setProjects = _ref.setProjects,
+    setCurrentUserProjects = _ref.setCurrentUserProjects,
     handleDeleteTask = _ref.handleDeleteTask,
     hadleUpdateTimeInProgress = _ref.hadleUpdateTimeInProgress,
     tasks = _ref.tasks;
@@ -8958,6 +9057,7 @@ function MainPage(_ref) {
       handleClose: handleCloseCreateTaskForm,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_CreateTaskForm__WEBPACK_IMPORTED_MODULE_7__["default"], {
         projectList: projects,
+        setCurrentUserProjects: setCurrentUserProjects,
         setProjectList: setProjects,
         handleCreateTask: handleCreateTask,
         setIsCreateTaskFormOpen: setIsCreateTaskFormOpen
@@ -9109,7 +9209,7 @@ function MatrixPage(_ref) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
           title: "\u0412\u0430\u0436\u043D\u043E\u0435, \u043D\u0435\u0441\u0440\u043E\u0447\u043D\u043E\u0435",
           blockColor: "#C1F199",
-          subtitle: "\u0420\u0435\u0448\u0438\u0442\u0435 , \u043A\u043E\u0433\u0434\u0430 \u044D\u0442\u043E \u0441\u0434\u0435\u043B\u0430\u0442\u044C",
+          subtitle: "\u0420\u0435\u0448\u0438\u0442\u0435, \u043A\u043E\u0433\u0434\u0430 \u044D\u0442\u043E \u0441\u0434\u0435\u043B\u0430\u0442\u044C",
           subtitleColor: "#337300",
           tasks: urg,
           handleButtonClick: function handleButtonClick() {
@@ -9133,7 +9233,7 @@ function MatrixPage(_ref) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
           title: "\u041D\u0435\u0441\u0440\u043E\u0447\u043D\u043E\u0435, \u043D\u0435\u0432\u0430\u0436\u043D\u043E\u0435",
           blockColor: "#BDEBFF",
-          subtitle: "\u0421\u0434\u0435\u043B\u0430\u0439 \u044D\u0442\u043E, \u043A\u043E\u0433\u0434\u0430 \u0431\u0443\u0434\u0435\u0442 \u043D\u0435 \u0447\u0435\u0433\u043E \u0434\u0435\u043B\u0430\u0442\u044C",
+          subtitle: "\u0421\u0434\u0435\u043B\u0430\u0439 \u044D\u0442\u043E, \u043A\u043E\u0433\u0434\u0430 \u0431\u0443\u0434\u0435\u0442 \u043D\u0435\u0447\u0435\u0433\u043E \u0434\u0435\u043B\u0430\u0442\u044C",
           subtitleColor: "#0050C7",
           tasks: notUrgimp,
           handleButtonClick: function handleButtonClick() {
@@ -9175,6 +9275,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_spinners__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-spinners */ "./node_modules/react-spinners/esm/FadeLoader.js");
 /* harmony import */ var _contexts_UserContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../contexts/UserContext */ "./src/contexts/UserContext.js");
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Header */ "./src/components/Header/index.jsx");
 /* harmony import */ var _components_ProfileAvatarSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ProfileAvatarSection */ "./src/components/ProfileAvatarSection/index.jsx");
@@ -9221,15 +9322,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function ProfilePage(_ref) {
-  var onSetCurrentUser = _ref.onSetCurrentUser;
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_contexts_UserContext__WEBPACK_IMPORTED_MODULE_1__.UserContext),
-    email = _useContext.email,
-    username = _useContext.username,
-    firstName = _useContext.firstName,
-    lastName = _useContext.lastName,
-    id = _useContext.id,
-    photo = _useContext.photo;
+  var loading = _ref.loading,
+    getCurrentUser = _ref.getCurrentUser;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState2 = _slicedToArray(_useState, 2),
     disabledNameInputs = _useState2[0],
@@ -9247,16 +9344,29 @@ function ProfilePage(_ref) {
     isPasswordFormOpen = _useState8[0],
     setIsPasswordFormOpen = _useState8[1];
   var nav = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_17__.useNavigate)();
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_contexts_UserContext__WEBPACK_IMPORTED_MODULE_1__.UserContext),
+    email = _useContext.email,
+    username = _useContext.username,
+    firstName = _useContext.firstName,
+    lastName = _useContext.lastName,
+    id = _useContext.id,
+    photo = _useContext.photo;
   var _useFormAndValidation = (0,_hooks_useFormAndValidation__WEBPACK_IMPORTED_MODULE_13__.useFormAndValidation)({
-      firstName: firstName,
-      lastName: lastName,
-      username: username,
-      email: email,
-      photo: photo
+      firstName: '',
+      lastName: '',
+      username: '',
+      email: '',
+      photo: ''
     }),
     values = _useFormAndValidation.values,
     handleChange = _useFormAndValidation.handleChange,
-    errors = _useFormAndValidation.errors;
+    errors = _useFormAndValidation.errors,
+    setValues = _useFormAndValidation.setValues;
+  var override = {
+    display: 'block',
+    margin: 'auto',
+    borderColor: 'red'
+  };
   var handleEnableInputs = function handleEnableInputs(input) {
     switch (input) {
       case 'name':
@@ -9286,26 +9396,15 @@ function ProfilePage(_ref) {
   var handleClosePasswordForm = function handleClosePasswordForm() {
     setIsPasswordFormOpen(false);
   };
-  var setCurrentUserData = function setCurrentUserData(newData) {
-    onSetCurrentUser({
-      email: newData.email,
-      username: newData.username,
-      firstName: newData.first_name,
-      lastName: newData.last_name,
-      id: newData.id,
-      photo: newData.photo
-    });
-  };
   var handlePatchUserName = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-      var newData;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
             e.preventDefault();
             if (!(values.firstName !== firstName || values.lastName !== lastName)) {
-              _context.next = 9;
+              _context.next = 8;
               break;
             }
             _context.next = 5;
@@ -9315,23 +9414,22 @@ function ProfilePage(_ref) {
               last_name: values.lastName
             }, id);
           case 5:
-            newData = _context.sent;
-            setCurrentUserData(newData);
+            getCurrentUser();
             handleEnableInputs('name');
             return _context.abrupt("return");
-          case 9:
+          case 8:
             handleEnableInputs('name');
-            _context.next = 15;
+            _context.next = 14;
             break;
-          case 12:
-            _context.prev = 12;
+          case 11:
+            _context.prev = 11;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0);
-          case 15:
+          case 14:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[0, 12]]);
+      }, _callee, null, [[0, 11]]);
     }));
     return function handlePatchUserName(_x2) {
       return _ref2.apply(this, arguments);
@@ -9339,14 +9437,13 @@ function ProfilePage(_ref) {
   }();
   var handlePatchUserNickname = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
-      var newData;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             _context2.prev = 0;
             e.preventDefault();
             if (!(values.username !== username)) {
-              _context2.next = 9;
+              _context2.next = 8;
               break;
             }
             _context2.next = 5;
@@ -9355,23 +9452,22 @@ function ProfilePage(_ref) {
               username: values.username
             }, id);
           case 5:
-            newData = _context2.sent;
-            setCurrentUserData(newData);
+            getCurrentUser();
             handleEnableInputs('nickname');
             return _context2.abrupt("return");
-          case 9:
+          case 8:
             handleEnableInputs('nickname');
-            _context2.next = 15;
+            _context2.next = 14;
             break;
-          case 12:
-            _context2.prev = 12;
+          case 11:
+            _context2.prev = 11;
             _context2.t0 = _context2["catch"](0);
             console.log(_context2.t0);
-          case 15:
+          case 14:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[0, 12]]);
+      }, _callee2, null, [[0, 11]]);
     }));
     return function handlePatchUserNickname(_x3) {
       return _ref3.apply(this, arguments);
@@ -9379,14 +9475,13 @@ function ProfilePage(_ref) {
   }();
   var handlePatchUserEmail = /*#__PURE__*/function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
-      var newData;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
             _context3.prev = 0;
             e.preventDefault();
             if (!(!errors.email && values.email !== email)) {
-              _context3.next = 11;
+              _context3.next = 10;
               break;
             }
             console.log(errors);
@@ -9396,115 +9491,132 @@ function ProfilePage(_ref) {
               email: values.email
             }, id);
           case 7:
-            newData = _context3.sent;
-            setCurrentUserData(newData);
+            getCurrentUser();
             handleEnableInputs('email');
             return _context3.abrupt("return");
-          case 11:
+          case 10:
             if (values.email === email) handleEnableInputs('email');
-            _context3.next = 17;
+            _context3.next = 16;
             break;
-          case 14:
-            _context3.prev = 14;
+          case 13:
+            _context3.prev = 13;
             _context3.t0 = _context3["catch"](0);
             console.log(_context3.t0);
-          case 17:
+          case 16:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[0, 14]]);
+      }, _callee3, null, [[0, 13]]);
     }));
     return function handlePatchUserEmail(_x4) {
       return _ref4.apply(this, arguments);
     };
   }();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setValues({
+      email: email,
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      photo: photo
+    });
+  }, [email, username, firstName, lastName, photo]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("section", {
     className: "profile",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
       sectionName: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileSectionName
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
-      className: "profile__container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h2", {
-        className: "profile__subtitle",
-        children: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileUserDataSubtitle
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileAvatarSection__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        image: values.photo,
-        onchange: handleChange,
-        onSetCurrentUser: setCurrentUserData
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        formName: "nameForm",
-        text: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileNameFormText,
-        showInputs: firstName || lastName,
-        showSubmitButton: !disabledNameInputs,
-        onSubmit: handlePatchUserName,
-        buttonIcon: _images_icon_profileAddButton_svg__WEBPACK_IMPORTED_MODULE_15__,
-        children: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.nameInputs.map(function (input) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            type: input.type,
-            name: input.name,
-            label: input.label,
-            value: values[input.name],
-            disabled: disabledNameInputs,
-            onEnable: function onEnable() {
-              return handleEnableInputs('name');
-            },
-            onChange: handleChange
-          }, input.name);
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        formName: "nicknameForm",
-        text: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileNicknameFormText,
-        showInputs: username,
-        showSubmitButton: !disabledNicknameInputs,
-        onSubmit: handlePatchUserNickname,
-        buttonIcon: _images_icon_profileAddButton_svg__WEBPACK_IMPORTED_MODULE_15__,
-        children: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.nickInput.map(function (input) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            type: input.type,
-            name: input.name,
-            label: input.label,
-            value: values[input.name],
-            disabled: disabledNicknameInputs,
-            onEnable: function onEnable() {
-              return handleEnableInputs('nickname');
-            },
-            onChange: handleChange
-          }, input.name);
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h2", {
-        className: "profile__subtitle",
-        children: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileLoginInfoSubtitle
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        showInputs: true,
-        showSubmitButton: !disabledEmailInputs,
-        onSubmit: handlePatchUserEmail,
-        buttonIcon: _images_icon_profileAddButton_svg__WEBPACK_IMPORTED_MODULE_15__,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          type: "email",
-          name: "email",
-          label: "E-mail",
-          disabled: disabledEmailInputs,
-          onEnable: function onEnable() {
-            return handleEnableInputs('email');
-          },
-          value: values.email,
-          onChange: handleChange,
-          required: true
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileFormButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        buttonImg: _images_icon_roundArrow_svg__WEBPACK_IMPORTED_MODULE_9__,
-        text: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileResetPassText,
-        onclick: handleOpenPasswordForm
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileFormExitButton__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        text: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileExitBtnText,
-        onclick: handleExit
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Sidebar__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      isOpen: isPasswordFormOpen,
-      handleClose: handleClosePasswordForm,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        handleSidebarClose: handleClosePasswordForm
+    }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("div", {
+      className: "profile__spinner-container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_spinners__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        loading: true,
+        cssOverride: override,
+        color: "#6750a2"
       })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("div", {
+        className: "profile__container",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h2", {
+          className: "profile__subtitle",
+          children: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileUserDataSubtitle
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileAvatarSection__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          image: values.photo,
+          onchange: handleChange,
+          getCurrentUser: getCurrentUser
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          formName: "nameForm",
+          text: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileNameFormText,
+          showInputs: firstName || lastName,
+          showSubmitButton: !disabledNameInputs,
+          onSubmit: handlePatchUserName,
+          buttonIcon: _images_icon_profileAddButton_svg__WEBPACK_IMPORTED_MODULE_15__,
+          children: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.nameInputs.map(function (input) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              type: input.type,
+              name: input.name,
+              label: input.label,
+              value: values[input.name],
+              disabled: disabledNameInputs,
+              onEnable: function onEnable() {
+                return handleEnableInputs('name');
+              },
+              onChange: handleChange
+            }, input.name);
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          formName: "nicknameForm",
+          text: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileNicknameFormText,
+          showInputs: username,
+          showSubmitButton: !disabledNicknameInputs,
+          onSubmit: handlePatchUserNickname,
+          buttonIcon: _images_icon_profileAddButton_svg__WEBPACK_IMPORTED_MODULE_15__,
+          children: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.nickInput.map(function (input) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              type: input.type,
+              name: input.name,
+              label: input.label,
+              value: values[input.name],
+              disabled: disabledNicknameInputs,
+              onEnable: function onEnable() {
+                return handleEnableInputs('nickname');
+              },
+              onChange: handleChange
+            }, input.name);
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("h2", {
+          className: "profile__subtitle",
+          children: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileLoginInfoSubtitle
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          showInputs: true,
+          showSubmitButton: !disabledEmailInputs,
+          onSubmit: handlePatchUserEmail,
+          buttonIcon: _images_icon_profileAddButton_svg__WEBPACK_IMPORTED_MODULE_15__,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            type: "email",
+            name: "email",
+            label: "E-mail",
+            disabled: disabledEmailInputs,
+            onEnable: function onEnable() {
+              return handleEnableInputs('email');
+            },
+            value: values.email,
+            onChange: handleChange,
+            required: true
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileFormButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          buttonImg: _images_icon_roundArrow_svg__WEBPACK_IMPORTED_MODULE_9__,
+          text: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileResetPassText,
+          onclick: handleOpenPasswordForm
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ProfileFormExitButton__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          text: _utils_constants__WEBPACK_IMPORTED_MODULE_7__.profileExitBtnText,
+          onclick: handleExit
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_Sidebar__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        isOpen: isPasswordFormOpen,
+        handleClose: handleClosePasswordForm,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_ResetPasswordForm__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          handleSidebarClose: handleClosePasswordForm
+        })
+      })]
     })]
   });
 }
@@ -10080,7 +10192,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Router() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      email: '',
+      username: '',
+      firstName: '',
+      lastName: '',
+      id: '',
+      photo: ''
+    }),
     _useState2 = _slicedToArray(_useState, 2),
     currentUser = _useState2[0],
     setCurrentuser = _useState2[1];
@@ -10095,6 +10214,10 @@ function Router() {
     _useState6 = _slicedToArray(_useState5, 2),
     projects = _useState6[0],
     setProjects = _useState6[1]; // стейт проектов
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    isLoading = _useState8[0],
+    setIsLoading = _useState8[1];
   var localToken = localStorage.getItem('token');
   var sessionToken = sessionStorage.getItem('token');
   var nav = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_20__.useNavigate)();
@@ -10208,31 +10331,57 @@ function Router() {
       nav('/main');
     }
   }, []);
+
+  // получение данных юзера и загрузка их в контекст
+  var getCurrentUser = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var userData, filterUserData;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            setIsLoading(true);
+            _context.next = 4;
+            return _utils_UserApi__WEBPACK_IMPORTED_MODULE_18__["default"].getCurrentUser();
+          case 4:
+            userData = _context.sent;
+            console.log(userData);
+            filterUserData = function filterUserData(data) {
+              return data || '';
+            };
+            setCurrentuser({
+              email: filterUserData(userData.email),
+              username: filterUserData(userData.username),
+              firstName: filterUserData(userData.first_name),
+              lastName: filterUserData(userData.last_name),
+              id: userData.id,
+              photo: filterUserData(userData.photo)
+            });
+            _context.next = 13;
+            break;
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
+          case 13:
+            _context.prev = 13;
+            setTimeout(function () {
+              setIsLoading(false);
+            }, 1000);
+            return _context.finish(13);
+          case 16:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee, null, [[0, 10, 13, 16]]);
+    }));
+    return function getCurrentUser() {
+      return _ref.apply(this, arguments);
+    };
+  }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (localToken || sessionToken) {
-      _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var userData;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return _utils_UserApi__WEBPACK_IMPORTED_MODULE_18__["default"].getCurrentUser();
-            case 2:
-              userData = _context.sent;
-              setCurrentuser({
-                email: userData.email,
-                username: userData.username,
-                firstName: userData.first_name,
-                lastName: userData.last_name,
-                id: userData.id,
-                photo: userData.photo
-              });
-            case 4:
-            case "end":
-              return _context.stop();
-          }
-        }, _callee);
-      }))();
+      getCurrentUser();
     }
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_contexts_UserContext__WEBPACK_IMPORTED_MODULE_12__.UserContext.Provider, {
@@ -10253,6 +10402,7 @@ function Router() {
               handleEditTask: editTaskAndUpdate,
               handleDeleteTask: deleteTaskAndUpdate,
               tasks: tasks,
+              setCurrentUserProjects: setCurrentUserProjects,
               projects: projects,
               setProjects: setProjects,
               hadleUpdateTimeInProgress: updateTimeInProgress
@@ -10277,7 +10427,8 @@ function Router() {
           path: "/profile",
           element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_components_ProtectedRoute__WEBPACK_IMPORTED_MODULE_13__["default"], {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_pages_ProfilePage__WEBPACK_IMPORTED_MODULE_10__["default"], {
-              onSetCurrentUser: setCurrentuser
+              loading: isLoading,
+              getCurrentUser: getCurrentUser
             })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_20__.Route, {
@@ -11247,6 +11398,7 @@ var INITIAL_FORM_STATE = {
 var CREATE_TASK_FORM_TEXT = {
   HEADING: 'Новая задача',
   NEW_TASK_NAME_PLACEHOLDER: 'Название задачи',
+  NEW_TASK_PROJECTNAME_PLACEHOLDER: 'Проект',
   PROJECT_PLACEHOLDER: 'Проект',
   START_TIME_PLACEHOLDER: 'Старт задачи',
   DEADLINE_PLACEHOLDER: 'Дедлайн',
@@ -11266,6 +11418,7 @@ var EDIT_TASK_FORM_TEXT = {
 };
 var INITIAL_CREATE_TASK_INPUTS_STATE = {
   taskName: '',
+  projectName: '',
   startTime: '',
   deadline: ''
 };
@@ -60991,6 +61144,201 @@ function createMemoryRouter(routes, opts) {
 
 
 //# sourceMappingURL=index.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/react-spinners/esm/FadeLoader.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-spinners/esm/FadeLoader.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers_unitConverter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers/unitConverter */ "./node_modules/react-spinners/esm/helpers/unitConverter.js");
+/* harmony import */ var _helpers_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/animation */ "./node_modules/react-spinners/esm/helpers/animation.js");
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+
+
+
+var fade = (0,_helpers_animation__WEBPACK_IMPORTED_MODULE_1__.createAnimation)("FadeLoader", "50% {opacity: 0.3} 100% {opacity: 1}", "fade");
+function FadeLoader(_a) {
+    var _b = _a.loading, loading = _b === void 0 ? true : _b, _c = _a.color, color = _c === void 0 ? "#000000" : _c, _d = _a.speedMultiplier, speedMultiplier = _d === void 0 ? 1 : _d, _e = _a.cssOverride, cssOverride = _e === void 0 ? {} : _e, _f = _a.height, height = _f === void 0 ? 15 : _f, _g = _a.width, width = _g === void 0 ? 5 : _g, _h = _a.radius, radius = _h === void 0 ? 2 : _h, _j = _a.margin, margin = _j === void 0 ? 2 : _j, additionalprops = __rest(_a, ["loading", "color", "speedMultiplier", "cssOverride", "height", "width", "radius", "margin"]);
+    var value = (0,_helpers_unitConverter__WEBPACK_IMPORTED_MODULE_2__.parseLengthAndUnit)(margin).value;
+    var radiusValue = value + 18;
+    var quarter = radiusValue / 2 + radiusValue / 5.5;
+    var wrapper = __assign({ display: "inherit", position: "relative", fontSize: "0", top: radiusValue, left: radiusValue, width: "".concat(radiusValue * 3, "px"), height: "".concat(radiusValue * 3, "px") }, cssOverride);
+    var style = function (i) {
+        return {
+            position: "absolute",
+            width: (0,_helpers_unitConverter__WEBPACK_IMPORTED_MODULE_2__.cssValue)(width),
+            height: (0,_helpers_unitConverter__WEBPACK_IMPORTED_MODULE_2__.cssValue)(height),
+            margin: (0,_helpers_unitConverter__WEBPACK_IMPORTED_MODULE_2__.cssValue)(margin),
+            backgroundColor: color,
+            borderRadius: (0,_helpers_unitConverter__WEBPACK_IMPORTED_MODULE_2__.cssValue)(radius),
+            transition: "2s",
+            animationFillMode: "both",
+            animation: "".concat(fade, " ").concat(1.2 / speedMultiplier, "s ").concat(i * 0.12, "s infinite ease-in-out"),
+        };
+    };
+    var a = __assign(__assign({}, style(1)), { top: "".concat(radiusValue, "px"), left: "0" });
+    var b = __assign(__assign({}, style(2)), { top: "".concat(quarter, "px"), left: "".concat(quarter, "px"), transform: "rotate(-45deg)" });
+    var c = __assign(__assign({}, style(3)), { top: "0", left: "".concat(radiusValue, "px"), transform: "rotate(90deg)" });
+    var d = __assign(__assign({}, style(4)), { top: "".concat(-1 * quarter, "px"), left: "".concat(quarter, "px"), transform: "rotate(45deg)" });
+    var e = __assign(__assign({}, style(5)), { top: "".concat(-1 * radiusValue, "px"), left: "0" });
+    var f = __assign(__assign({}, style(6)), { top: "".concat(-1 * quarter, "px"), left: "".concat(-1 * quarter, "px"), transform: "rotate(-45deg)" });
+    var g = __assign(__assign({}, style(7)), { top: "0", left: "".concat(-1 * radiusValue, "px"), transform: "rotate(90deg)" });
+    var h = __assign(__assign({}, style(8)), { top: "".concat(quarter, "px"), left: "".concat(-1 * quarter, "px"), transform: "rotate(45deg)" });
+    if (!loading) {
+        return null;
+    }
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", __assign({ style: wrapper }, additionalprops),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: a }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: b }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: c }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: d }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: e }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: f }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: g }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: h })));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FadeLoader);
+
+
+/***/ }),
+
+/***/ "./node_modules/react-spinners/esm/helpers/animation.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-spinners/esm/helpers/animation.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createAnimation: () => (/* binding */ createAnimation)
+/* harmony export */ });
+var createAnimation = function (loaderName, frames, suffix) {
+    var animationName = "react-spinners-".concat(loaderName, "-").concat(suffix);
+    if (typeof window == "undefined" || !window.document) {
+        return animationName;
+    }
+    var styleEl = document.createElement("style");
+    document.head.appendChild(styleEl);
+    var styleSheet = styleEl.sheet;
+    var keyFrames = "\n    @keyframes ".concat(animationName, " {\n      ").concat(frames, "\n    }\n  ");
+    if (styleSheet) {
+        styleSheet.insertRule(keyFrames, 0);
+    }
+    return animationName;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/react-spinners/esm/helpers/unitConverter.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/react-spinners/esm/helpers/unitConverter.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   cssValue: () => (/* binding */ cssValue),
+/* harmony export */   parseLengthAndUnit: () => (/* binding */ parseLengthAndUnit)
+/* harmony export */ });
+var cssUnit = {
+    cm: true,
+    mm: true,
+    in: true,
+    px: true,
+    pt: true,
+    pc: true,
+    em: true,
+    ex: true,
+    ch: true,
+    rem: true,
+    vw: true,
+    vh: true,
+    vmin: true,
+    vmax: true,
+    "%": true,
+};
+/**
+ * If size is a number, append px to the value as default unit.
+ * If size is a string, validate against list of valid units.
+ * If unit is valid, return size as is.
+ * If unit is invalid, console warn issue, replace with px as the unit.
+ *
+ * @param {(number | string)} size
+ * @return {LengthObject} LengthObject
+ */
+function parseLengthAndUnit(size) {
+    if (typeof size === "number") {
+        return {
+            value: size,
+            unit: "px",
+        };
+    }
+    var value;
+    var valueString = (size.match(/^[0-9.]*/) || "").toString();
+    if (valueString.includes(".")) {
+        value = parseFloat(valueString);
+    }
+    else {
+        value = parseInt(valueString, 10);
+    }
+    var unit = (size.match(/[^0-9]*$/) || "").toString();
+    if (cssUnit[unit]) {
+        return {
+            value: value,
+            unit: unit,
+        };
+    }
+    console.warn("React Spinners: ".concat(size, " is not a valid css value. Defaulting to ").concat(value, "px."));
+    return {
+        value: value,
+        unit: "px",
+    };
+}
+/**
+ * Take value as an input and return valid css value
+ *
+ * @param {(number | string)} value
+ * @return {string} valid css value
+ */
+function cssValue(value) {
+    var lengthWithunit = parseLengthAndUnit(value);
+    return "".concat(lengthWithunit.value).concat(lengthWithunit.unit);
+}
 
 
 /***/ }),

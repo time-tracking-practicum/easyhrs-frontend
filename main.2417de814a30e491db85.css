@@ -14047,8 +14047,8 @@ input.p-dropdown-label  {
 
 .createTaskForm__title {
 	font-size: 32px;
-	font-weight: 700;
 	letter-spacing: -0.96px;
+	font-weight: 700;
 	padding: 10px 0;
 	margin: 0;
 	max-width: 390px;
@@ -14112,6 +14112,30 @@ input.p-dropdown-label  {
 	font-size: 24px;
 	margin: 0 12px 0 0;
 	display: inline-block;
+}
+
+.createTaskForm__select-description {
+	width: 388px;
+	height: 16px;
+	position: absolute;
+	top: 135px;
+	color: var(--light-text-color);
+	font-size: 12px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 4px 0;
+	align-self: center;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+}
+
+.createTaskForm__project-input {
+	position: absolute;
+	width: 384px;
+	top: 80px;
+	border: none;
 }
 
 /*!**************************************************************************************************!*\
@@ -14294,6 +14318,14 @@ input.p-dropdown-label  {
 	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
 }
 
+.p-datepicker table td > span {
+	color: black;
+}
+
+.p-datepicker .p-disabled {
+	opacity: 0.4;
+}
+
 .p-datepicker table td > span:focus {
 	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
 	background: inherit;
@@ -14302,6 +14334,10 @@ input.p-dropdown-label  {
 .p-datepicker table td > span.p-highlight {
 	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
 	background: inherit !important;
+}
+
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+	color: var(--primary-background-color);
 }
 
 /*!************************************************************************************************!*\
@@ -14449,6 +14485,12 @@ input.p-dropdown-label  {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
+}
+
+.profile__spinner-container {
+	display: block;
+	margin-top: calc(100% / 3);
+	height: 100%;
 }
 
 /*!************************************************************************************!*\
@@ -15640,4 +15682,4 @@ input.p-dropdown-label  {
 }
 
 
-/*# sourceMappingURL=main.894562b7b87a07268657.css.map*/
+/*# sourceMappingURL=main.2417de814a30e491db85.css.map*/
