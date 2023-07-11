@@ -2,12 +2,10 @@ import Header from '../Header';
 import ProjectStatusBar from '../ProjectStatusBar';
 import ProjectStatisticTask from '../ProjectStatisticTask';
 import ProjectStatisticTaskHeader from '../ProjectStatisticTaskHeader';
-import useTime from '../../hooks/useTime';
 import './ProjectStatistic.css';
 
-const ProjectStatistic = ({ project }) => {
-	const { title, tasks } = project;
-	const { timeSum } = useTime(tasks);
+const ProjectStatistic = ({ project, tasks, timeSum }) => {
+	const { title } = project;
 	return (
 		<div>
 			<Header branch={title} />
