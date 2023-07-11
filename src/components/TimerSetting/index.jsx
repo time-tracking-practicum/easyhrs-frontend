@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './TimerSetting.css';
 import { InputSwitch } from 'primereact/inputswitch';
 
-export default function TimerSetting() {
+export default function TimerSetting({notifications}) {
 	const [timerReminder, setTimerReminder] = useState(false);
 	const [timerTime, setTimerTime] = useState({ hours: 12, minutes: 0 });
 	const [editing, setEditing] = useState(false);
@@ -16,11 +16,11 @@ export default function TimerSetting() {
 		const { name, value } = event.target;
 		setTimerTime((prevState) => ({
 			...prevState,
-			[name]: parseInt(value, 10),
+			[name]: value,
 		}));
 	};
 
-	const handleSaveClick = () => {
+	const handleCloseClick = () => {
 		setEditing(false);
 		setTimerReminder(false);
 	};
@@ -40,6 +40,7 @@ export default function TimerSetting() {
 
 	const renderTimePicker = () => (
 		<div className="timer-setting__time-picker">
+			<span className="timer-setting__picker-text">Время</span>
 			<div className="timer-setting__time-picker-options">
 				<select
 					name="hours"
@@ -47,52 +48,45 @@ export default function TimerSetting() {
 					className="timer-setting__time-picker-select"
 					onChange={handleTimerTimeChange}
 				>
-					{renderTimeOptions(60)}
+					{renderTimeOptions(24)}
 				</select>
+				<span>:</span>
 				<select
 					name="minutes"
 					value={timerTime.minutes}
 					className="timer-setting__time-picker-select"
 					onChange={handleTimerTimeChange}
 				>
-					{renderTimeOptions(24)}
+					{renderTimeOptions(60)}
 				</select>
 			</div>
 			<button
-				className="timer-setting__time-picker-save"
-				onClick={handleSaveClick}
+				className="timer-setting__time-picker-close"
+				onClick={handleCloseClick}
 			>
-				Установить
+				{}
 			</button>
 		</div>
 	);
 
 	return (
-		<section className="timer-setting">
+		<section className={`timer-setting ${
+			!notifications && 'hover'
+		}`}>
 			<div className="timer-setting__option-container">
-				<div className="timer-setting__option-text">
-					<div className="timer-setting__timer-label">
-						Я не запущу таймер до{' '}
-					</div>
-					{editing ? (
-						<span className="timer-setting__time-placeholder">Время</span>
-					) : (
-						<span className="timer-setting__current-time">
-							{`${timerTime.hours
-								.toString()
-								.padStart(2, '0')}:${timerTime.minutes
-								.toString()
-								.padStart(2, '0')}`}
-						</span>
-					)}
-				</div>
 				<div className="timer-setting__option-switch-wrapper">
 					<InputSwitch
+						disabled={!notifications}
 						id="timerReminder"
 						className="timer-setting__option-switch"
 						checked={timerReminder}
 						onChange={handleTimerReminderChange}
 					/>
+				</div>
+				<div className="timer-setting__option-text">
+					<div className="timer-setting__timer-label">
+						Я не запущу таймер до{' '}
+					</div>
 				</div>
 			</div>
 			{editing && renderTimePicker()}
