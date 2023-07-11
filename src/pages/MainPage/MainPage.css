@@ -23,4 +23,5 @@
 	gap: 12px;
 	flex-direction: column;
 	padding: 0;
+	padding-bottom: 128px;
 }

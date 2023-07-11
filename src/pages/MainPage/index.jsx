@@ -147,6 +147,9 @@ export default function MainPage({
 					handleDeleteTask={handleDeleteTask}
 					handleEditTask={handleEditTask}
 					setIsEditTaskFormOpen={setIsEditTaskFormOpen}
+					timerTime={timerTime}
+					play={play}
+					actualTask={actualTask}
 				/>
 			</Sidebar>
 		</>
