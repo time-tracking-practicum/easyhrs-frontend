@@ -10,9 +10,12 @@ export default function SettingsPage() {
 	return (
 		<section className="settings">
 			<Header sectionName="Настройки" />
-			<RemindersSetting notifications={notifications} setNotifications={setNotifications}/>
-			<TimerSetting notifications={notifications}/>
-			<TimerSettingOption notifications={notifications}/>
+			<RemindersSetting
+				notifications={notifications}
+				setNotifications={setNotifications}
+			/>
+			<TimerSetting notifications={notifications} />
+			<TimerSettingOption notifications={notifications} />
 		</section>
 	);
 }

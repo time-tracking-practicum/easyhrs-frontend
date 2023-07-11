@@ -1,5 +1,4 @@
 .matrixpage {
-	min-height: 984px;
 	height: calc(100vh - 40px);
 	width: 80%;
 	max-width: 1120px;
@@ -20,7 +19,7 @@
 
 .matrixpage__container {
 	width: calc(100% - 40px - 40px);
-	margin: 28px auto 0;
+	margin: 28px 0;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
