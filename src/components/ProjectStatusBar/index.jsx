@@ -37,7 +37,7 @@ export default function ProjectStatusBar({ project, tasks, timeSum }) {
 		if (timeOfProject && timeOfProject !== 0) {
 			setProgressWidth(`${(timeOfProject / timeSum) * 100}%`);
 		}
-	}, [timeOfProject]);
+	}, [tasks]);
 
 	useEffect(() => {
 		if (project.id % 4 === 0) {
