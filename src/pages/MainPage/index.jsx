@@ -22,6 +22,7 @@ export default function MainPage({
 	const [dropTimer, setDropTimer] = useState(false);
 	const [play, setPlay] = useState(false);
 	const [pause, setPause] = useState(false);
+	const [reset, setReset] = useState(false);
 	const [actualTask, setActualTask] = useState({});
 	const [tasksList, setTasksList] = useState(tasks);
 	const [isCreateTaskFormOpen, setIsCreateTaskFormOpen] = useState(false);
@@ -102,6 +103,7 @@ export default function MainPage({
 								play={play}
 								setPlay={setPlay}
 								pause={pause}
+								reset={reset}
 								setTimerTime={setTimerTime}
 								timerTime={timerTime}
 								hadleUpdateTimeInProgress={hadleUpdateTimeInProgress}
@@ -120,6 +122,7 @@ export default function MainPage({
 							hadleUpdateTimeInProgress={hadleUpdateTimeInProgress}
 							play={play}
 							setPlay={setPlay}
+							setReset={setReset}
 							timerTime={timerTime}
 							setTimerTime={setTimerTime}
 							setActualTask={setActualTask}

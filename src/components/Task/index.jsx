@@ -22,6 +22,7 @@ export default function Task({
 	play,
 	setPlay,
 	pause,
+	reset,
 	actualTask,
 	timerTime,
 	hadleUpdateTimeInProgress,
@@ -86,6 +87,8 @@ export default function Task({
 						timeInProgress.s === 0 &&
 						!play
 							? 'Не начато'
+							: reset
+							? 'Завершено'
 							: actualTask.name === name && play
 							? 'В работе'
 							: 'Пауза'}
