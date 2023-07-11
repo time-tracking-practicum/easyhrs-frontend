@@ -28,7 +28,7 @@ const FormSwitcher = ({
 				new_password: values.newPassword,
 				current_password: values.password,
 			});
-			if (response.status === 204) {
+			if (response.status === 201) {
 				setCurrentForm(STEP.RESET.THIRD);
 				resetValues();
 			}

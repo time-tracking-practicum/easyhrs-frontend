@@ -24,3 +24,9 @@
 	flex-wrap: wrap;
 	gap: 16px;
 }
+
+.profile__spinner-container {
+	display: block;
+	margin-top: calc(100% / 3);
+	height: 100%;
+}

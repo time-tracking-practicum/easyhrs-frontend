@@ -21,12 +21,20 @@ import projectApi from '../utils/ProjectApi';
 import userApi from '../utils/UserApi';
 
 export default function Router() {
-	const [currentUser, setCurrentuser] = useState({});
+	const [currentUser, setCurrentuser] = useState({
+		email: '',
+		username: '',
+		firstName: '',
+		lastName: '',
+		id: '',
+		photo: '',
+	});
 	const [tasks, setTasks] = useState([]); // стейт задач
 	const [projects, setProjects] = useState({
 		selected: null,
 		all: [],
 	}); // стейт проектов
+	const [isLoading, setIsLoading] = useState(false);
 	const localToken = localStorage.getItem('token');
 	const sessionToken = sessionStorage.getItem('token');
 	const nav = useNavigate();
@@ -99,19 +107,33 @@ export default function Router() {
 		}
 	}, []);
 
+	// получение данных юзера и загрузка их в контекст
+	const getCurrentUser = async () => {
+		try {
+			setIsLoading(true);
+			const userData = await userApi.getCurrentUser();
+			console.log(userData);
+			const filterUserData = (data) => data || '';
+			setCurrentuser({
+				email: filterUserData(userData.email),
+				username: filterUserData(userData.username),
+				firstName: filterUserData(userData.first_name),
+				lastName: filterUserData(userData.last_name),
+				id: userData.id,
+				photo: filterUserData(userData.photo),
+			});
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setTimeout(() => {
+				setIsLoading(false);
+			}, 1000);
+		}
+	};
+
 	useEffect(() => {
 		if (localToken || sessionToken) {
-			(async () => {
-				const userData = await userApi.getCurrentUser();
-				setCurrentuser({
-					email: userData.email,
-					username: userData.username,
-					firstName: userData.first_name,
-					lastName: userData.last_name,
-					id: userData.id,
-					photo: userData.photo,
-				});
-			})();
+			getCurrentUser();
 		}
 	}, []);
 
@@ -165,7 +187,10 @@ export default function Router() {
 						path="/profile"
 						element={
 							<ProtectedRoute>
-								<ProfilePage onSetCurrentUser={setCurrentuser} />
+								<ProfilePage
+									loading={isLoading}
+									getCurrentUser={getCurrentUser}
+								/>
 							</ProtectedRoute>
 						}
 					/>
