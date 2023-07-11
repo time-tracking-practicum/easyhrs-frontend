@@ -89,3 +89,17 @@
 	height: 14px;
 	margin-right: 9.5px;
 }
+
+.timer__button-unwarp {
+	width: 100%;
+	border: none;
+	background-color: transparent;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: 0.1px;
+	cursor: pointer;
+	text-align: right;
+	margin-bottom: 22px;
+}

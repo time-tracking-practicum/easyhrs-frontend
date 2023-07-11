@@ -22,7 +22,7 @@ function Timer({
 	const [interv, setInterv] = useState();
 	const [startTimer, setStartTimer] = useState();
 	const [timeOfPause, setTimeOfPause] = useState();
-	
+
 	let timer = {
 		h: actualTask.time_in_progress.h,
 		m: actualTask.time_in_progress.m,
@@ -132,22 +132,48 @@ function Timer({
 						{actualTask.name}
 					</p>
 				</div>
-				<div className="timer__buttons-container">
-					{play ? 
-					<button onClick={stop} type="button" className="timer__button">
-						<img className="timer__icon" src={iconPause} alt="Икона паузы" />
-						Пауза
-					</button> 
-					:
-					<button onClick={handleStart} type="button" className="timer__button">
-						<img className="timer__icon" src={iconPause} alt="Икона паузы" />
-						Продолжить
-					</button> 
-					}
-					<button onClick={reset} type="button" className="timer__button">
-						<img className="timer__icon" src={iconComplete} alt="Икона паузы" />
-						Завершить
-					</button>
+				<div>
+					{dropTimer && (
+						<button
+							onClick={() => setDropTimer(false)}
+							className="timer__button-unwarp"
+						>
+							Развернуть
+						</button>
+					)}
+					<div className="timer__buttons-container">
+						{play ? (
+							<button onClick={stop} type="button" className="timer__button">
+								<img
+									className="timer__icon"
+									src={iconPause}
+									alt="Икона паузы"
+								/>
+								Пауза
+							</button>
+						) : (
+							<button
+								onClick={handleStart}
+								type="button"
+								className="timer__button"
+							>
+								<img
+									className="timer__icon"
+									src={iconPause}
+									alt="Икона паузы"
+								/>
+								Продолжить
+							</button>
+						)}
+						<button onClick={reset} type="button" className="timer__button">
+							<img
+								className="timer__icon"
+								src={iconComplete}
+								alt="Икона паузы"
+							/>
+							Завершить
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
