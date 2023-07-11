@@ -6,6 +6,7 @@
 	margin: 0 0 0 auto;
 	background-color: #ffffff;
 	border-radius: 38px;
+	overflow: auto;
 }
 
 .matrixpage__title {
