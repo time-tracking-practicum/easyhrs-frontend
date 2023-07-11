@@ -1,25 +1,40 @@
 .timer-setting {
 	display: flex;
-	flex-direction: column;
 	width: calc(100% - 80px);
 	margin: 0 auto;
+	margin-bottom: 5px;
+	align-items: center;
+}
+
+.hover {
+	opacity: 0.5;
 }
 
 .timer-setting__option-container {
+	margin-right: 33px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
-	height: 48px;
-	margin: 0 auto;
-	padding: 0 8px 0;
+	width: 231px;
+	height: 56px;
+}
+
+.timer-setting__option-switch-wrapper {
+	display: flex;
+	align-items: center;
 }
 
 .timer-setting__option-switch {
 	margin: 0;
 	height: 32px;
 	width: 55px;
+	border: 2px solid #79747E;
+	border-radius: 100px;
+}
+
+.p-inputswitch.p-inputswitch-checked {
+	border: none;
 }
 
 .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
@@ -38,50 +53,65 @@
 
 .timer-setting__option-text {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	width: 100%;
-	margin: 0;
-	padding-right: 24px;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 20px;
+	letter-spacing: 0.25px;
 }
 
 .timer-setting__time-picker {
 	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 216px;
+	align-items: center;
+	border-radius: 100px;
+	border: 1px solid var(--m-3-sys-light-outline, #79747E);
+	width: 160px;
+    padding: 15px;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: 0.5px;
+	justify-content: space-between;
+	height: 56px;
+	position: relative;
+}
+
+.timer-setting__picker-text {
+	padding: 0 8px;
+    position: absolute;
+    left: 12px;
+    top: -9px;
+    height: 16px;
+    background: white;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: normal;
 }
 
 .timer-setting__time-picker-options {
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	margin: auto;
-	padding: 0;
 }
 
 .timer-setting__time-picker-select {
+	cursor: pointer;
 	border: none; /* Удалить границу */
 	outline: none; /* Удалить обводку при фокусе */
+	appearance: none;
 }
 
-.timer-setting__time-picker-save {
-	display: block;
-	width: 100%;
-	height: 44px;
-	border: none;
-	outline: none;
-	background: none;
-	cursor: pointer;
-	background-color: #6750a4;
-	margin: 14px auto 0;
-	padding: 0;
-	border-radius: 40px;
-	color: white;
-	font-weight: 800;
-	font-size: 15px;
-	line-height: 24px;
+.timer-setting__time-picker-close {
+	background-color: initial;
+    background-image: url(../../images/state-layer.svg);
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    height: 24px;
+    padding: 0;
+    transition: .3s ease-in-out;
+    width: 24px;
+}
+
+.timer-setting__time-picker-close:hover {
+	opacity: 0.6;
 }
