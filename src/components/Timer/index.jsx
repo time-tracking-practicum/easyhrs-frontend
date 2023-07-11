@@ -16,6 +16,7 @@ function Timer({
 	hadleUpdateTimeInProgress,
 	play,
 	setPlay,
+	setReset,
 	timerTime,
 	setTimerTime,
 }) {
@@ -66,6 +67,7 @@ function Timer({
 		setOpenTimer(false);
 		setDropTimer(false);
 		setPlay(false);
+		setReset(true);
 	};
 	const start = () => {
 		setPlay(true);
