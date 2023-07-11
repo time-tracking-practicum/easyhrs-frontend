@@ -6,7 +6,7 @@ import imageRadioChecked from '../../images/icon-radio.svg';
 import imageRadioUnchecked from '../../images/icon-not_radio.svg';
 
 // Компонент для настроек напоминаний
-export default function RemindersSetting( {notifications, setNotifications} ) {
+export default function RemindersSetting({ notifications, setNotifications }) {
 	const [sendReminder, setSendReminder] = useState(false);
 	const [workDays, setWorkDays] = useState([]);
 
@@ -20,8 +20,8 @@ export default function RemindersSetting( {notifications, setNotifications} ) {
 	useEffect(() => {
 		if (sendReminder) {
 			setNotifications(true);
-		} else setNotifications(false)
-	}, [sendReminder])
+		} else setNotifications(false);
+	}, [sendReminder]);
 
 	return (
 		<div className="reminders-setting">
@@ -37,24 +37,17 @@ export default function RemindersSetting( {notifications, setNotifications} ) {
 					Отправлять напоминание
 				</span>
 			</div>
-			<div className={`reminders-setting__work-days ${
-					!notifications && 'hover'
-				}`}>
-			
+			<div
+				className={`reminders-setting__work-days ${!notifications && 'hover'}`}
+			>
 				<h3 className="reminders-setting__subtitle">Мои рабочие дни</h3>
 			</div>
-				<div className="reminders-setting__day-list-container">
-					<ul className="reminders-setting__day-list">
-						{[
-							'ПН',
-							'ВТ',
-							'СР',
-							'ЧТ',
-							'ПТ',
-							'СБ',
-							'ВС',
-						].map((day) => (
-							<li key={day} className={`reminders-setting__day-item ${
+			<div className="reminders-setting__day-list-container">
+				<ul className="reminders-setting__day-list">
+					{['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'].map((day) => (
+						<li
+							key={day}
+							className={`reminders-setting__day-item ${
 								!notifications && 'hover'
 							}`}>
 								<label htmlFor={day} className="reminders-setting__day-label" >
@@ -89,7 +82,8 @@ export default function RemindersSetting( {notifications, setNotifications} ) {
 				</div>
 			<div className={`reminders-setting__reminder-options ${
 					!notifications && 'hover'
-				}`}>
+				}`}
+			>
 				<div className="reminders-setting__container-days">
 					<h3 className="reminders-setting__label-title">
 						В рабочие дни напоминать, если...

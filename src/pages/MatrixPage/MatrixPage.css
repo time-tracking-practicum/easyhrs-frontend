@@ -1,11 +1,11 @@
 .matrixpage {
-	min-height: 984px;
 	height: calc(100vh - 40px);
 	width: 80%;
 	max-width: 1120px;
 	margin: 0 0 0 auto;
 	background-color: #ffffff;
 	border-radius: 38px;
+	overflow: auto;
 }
 
 .matrixpage__title {
@@ -19,8 +19,14 @@
 
 .matrixpage__container {
 	width: calc(100% - 40px - 40px);
-	margin: 28px auto 0;
+	margin: 28px auto;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
+}
+
+.profile__spinner-container {
+	display: block;
+	margin-top: calc(100% / 3);
+	height: 100%;
 }

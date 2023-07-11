@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import SidebarInput from '../SidebarInput';
 import SidebarButton from '../SidebarButton';
 import {
@@ -19,6 +19,7 @@ const CreateTaskForm = ({
 	projectList,
 	setProjectList,
 	handleCreateTask,
+	setCurrentUserProjects,
 	setIsCreateTaskFormOpen,
 	isImportant,
 	isUrgent,
@@ -46,6 +47,11 @@ const CreateTaskForm = ({
 		inputRef.current.focus();
 	}, []);
 
+	const isProjectInputRequired = useMemo(
+		() => !(inputValues.projectName || projectList.selected),
+		[inputValues.projectName, projectList.selected]
+	);
+
 	function handleClickEmoji(e) {
 		e.preventDefault();
 		setIsOpenEmoji(!isOpenEmoji);
@@ -64,11 +70,46 @@ const CreateTaskForm = ({
 		setIsOpenEmoji(false);
 	}
 
-	const handleSubmitForm = (e) => {
+	const handleSubmitForm = async (e) => {
 		e.preventDefault();
+		let selectedProject;
+
+		if (
+			// Если инпут заполнен и такого же существующего проекта ещё нет
+			inputValues.projectName &&
+			!projectList.all.find(
+				(project) => project.title === inputValues.projectName
+			)
+		) {
+			// Создаём новый проект
+			try {
+				const newProject = await projectApi.createProject({
+					title: inputValues?.projectName,
+				});
+				await setCurrentUserProjects();
+				// Присваиваем новый проект задаче
+				selectedProject = newProject.id;
+			} catch (err) {
+				console.error(err);
+			}
+		} else if (
+			// Если такой проект уже существует
+			projectList.all.find(
+				(project) => project.title === inputValues.projectName
+			)
+		) {
+			// Присваиваем уже существующий проект задаче
+			selectedProject = projectList.all.find(
+				(project) => project.title === inputValues.projectName
+			).id;
+		} else {
+			// в обратном случае присваиваем проект, выбранный в селекте
+			selectedProject = projectList.selected.id;
+		}
+
 		const newTask = {
 			name: inputValues?.taskName,
-			project: projectList?.selected?.id,
+			project: selectedProject,
 			status: 'appointed',
 			is_urgent: checkboxesValue?.isUrgent,
 			is_important: checkboxesValue?.isImportant,
@@ -76,8 +117,14 @@ const CreateTaskForm = ({
 			deadline: new Date(dateValues?.deadline).toISOString(),
 			start_time: new Date(dateValues?.startTime).toISOString(),
 		};
+		console.log(projectList);
 
-		handleCreateTask(newTask);
+		try {
+			await handleCreateTask(newTask);
+		} catch (err) {
+			console.error(err);
+		}
+
 		setIsCreateTaskFormOpen(false);
 		unsetCheckboxes();
 		clearInputs();
@@ -101,6 +148,7 @@ const CreateTaskForm = ({
 						value={inputValues.taskName}
 						inputRef={inputRef}
 						type="text"
+						max={255}
 						name="taskName"
 						autoComplete="off"
 						errText={inputErrors.taskName}
@@ -113,9 +161,39 @@ const CreateTaskForm = ({
 					<SidebarSelect
 						items={projectList}
 						setItems={setProjectList}
-						required
 						placeholder={TEXT.PROJECT_PLACEHOLDER}
 					/>
+					<SidebarInput
+						value={inputValues.projectName}
+						className="createTaskForm__project-input"
+						type="text"
+						max={255}
+						name="projectName"
+						required={isProjectInputRequired}
+						autoComplete="off"
+						errText={inputErrors.projectName}
+						onChange={handleChangeInput}
+						error={inputErrors.projectName}
+						isValid={isInputValid}
+						placeholder={
+							projectList.selected
+								? projectList?.selected?.title
+								: TEXT.NEW_TASK_PROJECTNAME_PLACEHOLDER
+						}
+					/>
+					{!inputErrors.projectName && (
+						<p className="createTaskForm__select-description">
+							{inputValues.projectName
+								? `Будет ${
+										projectList.all.find(
+											(project) => project.title === inputValues.projectName
+										)
+											? 'выбран'
+											: 'создан новый'
+								  } проект с названием “${inputValues.projectName}”`
+								: 'Выберите проект или введите название нового проекта'}
+						</p>
+					)}
 					<SidebarDatePicker
 						value={dateValues.startTime}
 						minDate={new Date()}
@@ -166,7 +244,7 @@ const CreateTaskForm = ({
 				<div className="createTaskForm__btnContainer createTaskForm__btnContainer_justify-center">
 					<SidebarButton
 						disabled={
-							!isDateCorrect || !projectList.selected || !inputValues.taskName
+							!isDateCorrect || !inputValues.taskName || isProjectInputRequired
 						}
 						size="primary"
 						type="submit"
@@ -174,22 +252,6 @@ const CreateTaskForm = ({
 					/>
 				</div>
 			</form>
-
-			<div style={{ margin: '0 0 20px', position: 'absolute', bottom: 0 }}>
-				<SidebarButton
-					onClick={() => {
-						const projectName = `Проект №${Math.ceil(Math.random() * 1000)}`;
-						projectApi
-							.createProject({ title: projectName })
-							.then((data) =>
-								alert(`Создан ${data.title}. Открой сайдбар повторно :)`)
-							)
-							.catch((err) => console.error(err));
-					}}
-					size="secondary"
-					text="Создать проект"
-				/>
-			</div>
 		</div>
 	);
 };

@@ -17,6 +17,7 @@ const SidebarSelect = ({
 	items,
 	setItems,
 	placeholder,
+	style,
 	disabled,
 	label,
 	isEditable,
@@ -37,12 +38,13 @@ const SidebarSelect = ({
 	};
 
 	return (
-		<div className="sidebar-select__wrapper">
+		<div className="sidebar-select__wrapper" style={style}>
 			<Dropdown
 				className="sidebar-select"
 				onChange={handleSelect}
 				disabled={isEditable ? isDisabled : disabled}
 				placeholder={selected?.title || placeholder}
+				emptyMessage="Здесь пока пусто"
 				options={all?.map((item) => (
 					<div className="sidebar-select__options-element" id={item.id}>
 						<SidebarCheckbox

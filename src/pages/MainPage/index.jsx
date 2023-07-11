@@ -13,6 +13,7 @@ export default function MainPage({
 	handleEditTask,
 	projects,
 	setProjects,
+	setCurrentUserProjects,
 	handleDeleteTask,
 	hadleUpdateTimeInProgress,
 	tasks,
@@ -132,6 +133,7 @@ export default function MainPage({
 			>
 				<CreateTaskForm
 					projectList={projects}
+					setCurrentUserProjects={setCurrentUserProjects}
 					setProjectList={setProjects}
 					handleCreateTask={handleCreateTask}
 					setIsCreateTaskFormOpen={setIsCreateTaskFormOpen}

@@ -59,8 +59,8 @@
 	margin: 0;
 	height: 32px;
 	width: 55px;
-	border: 2px solid #79747E;
-    border-radius: 100px;
+	border: 2px solid #79747e;
+	border-radius: 100px;
 }
 
 .p-inputswitch.p-inputswitch-checked {

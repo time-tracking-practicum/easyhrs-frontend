@@ -42,6 +42,14 @@
 	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
 }
 
+.p-datepicker table td > span {
+	color: black;
+}
+
+.p-datepicker .p-disabled {
+	opacity: 0.4;
+}
+
 .p-datepicker table td > span:focus {
 	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
 	background: inherit;
@@ -50,4 +58,8 @@
 .p-datepicker table td > span.p-highlight {
 	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
 	background: inherit !important;
+}
+
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+	color: var(--primary-background-color);
 }
