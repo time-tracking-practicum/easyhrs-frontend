@@ -81,7 +81,14 @@ export default function Task({
 				<p className="task__deadline">{formateDate(deadline)}</p>
 				<ul className="task__timer-wrapper">
 					<li className="task__timer-status">
-						{actualTask.name === name && play ? 'В работе' : 'Пауза'}
+						{timeInProgress.h === 0 &&
+						timeInProgress.m === 0 &&
+						timeInProgress.s === 0 &&
+						!play
+							? 'Не начато'
+							: actualTask.name === name && play
+							? 'В работе'
+							: 'Пауза'}
 					</li>
 					{actualTask.name === name && play ? (
 						<li className="task__timer-time">

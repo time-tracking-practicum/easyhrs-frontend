@@ -30,6 +30,7 @@
 .timer__block {
 	margin-bottom: 32px;
 	text-align: center;
+	width: 50%;
 }
 
 .timer__block_drop {
@@ -55,6 +56,9 @@
 	line-height: 28px;
 	margin: 24px 0 0;
 	letter-spacing: 0.25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .timer__name_drop {
