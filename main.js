@@ -8996,7 +8996,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Matrix__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Matrix */ "./src/components/Matrix/index.jsx");
 /* harmony import */ var _components_Sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Sidebar */ "./src/components/Sidebar/index.jsx");
 /* harmony import */ var _components_CreateTaskForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/CreateTaskForm */ "./src/components/CreateTaskForm/index.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Header */ "./src/components/Header/index.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -9004,6 +9005,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 /* eslint-disable react/destructuring-assignment */
+
 
 
 
@@ -9085,15 +9087,14 @@ function MatrixPage(_ref) {
     setImp([].concat(impArr));
     setNotUrgImp([].concat(notUrgAndNotImpArr));
   }, [tasks]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("section", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("section", {
       className: "matrixpage",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
-        className: "matrixpage__title",
-        children: "\u041C\u0430\u0442\u0440\u0438\u0446\u0430 \u0437\u0430\u0434\u0430\u0447"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        sectionName: "\u041C\u0430\u0442\u0440\u0438\u0446\u0430 \u0437\u0430\u0434\u0430\u0447"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "matrixpage__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
           title: "\u0412\u0430\u0436\u043D\u043E\u0435, \u0441\u0440\u043E\u0447\u043D\u043E\u0435",
           blockColor: "#FFDEDE",
           subtitle: "\u0421\u0434\u0435\u043B\u0430\u0439 \u044D\u0442\u043E \u0441\u0435\u0439\u0447\u0430\u0441",
@@ -9105,7 +9106,7 @@ function MatrixPage(_ref) {
               isUrgent: true
             });
           }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
           title: "\u0412\u0430\u0436\u043D\u043E\u0435, \u043D\u0435\u0441\u0440\u043E\u0447\u043D\u043E\u0435",
           blockColor: "#C1F199",
           subtitle: "\u0420\u0435\u0448\u0438\u0442\u0435 , \u043A\u043E\u0433\u0434\u0430 \u044D\u0442\u043E \u0441\u0434\u0435\u043B\u0430\u0442\u044C",
@@ -9117,7 +9118,7 @@ function MatrixPage(_ref) {
               isUrgent: false
             });
           }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
           title: "\u0421\u0440\u043E\u0447\u043D\u043E\u0435, \u043D\u0435\u0432\u0430\u0436\u043D\u043E\u0435",
           blockColor: "#FFEA9F",
           subtitle: "\u0414\u0435\u043B\u0435\u0433\u0438\u0440\u0443\u0439",
@@ -9129,7 +9130,7 @@ function MatrixPage(_ref) {
               isUrgent: true
             });
           }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Matrix__WEBPACK_IMPORTED_MODULE_2__["default"], {
           title: "\u041D\u0435\u0441\u0440\u043E\u0447\u043D\u043E\u0435, \u043D\u0435\u0432\u0430\u0436\u043D\u043E\u0435",
           blockColor: "#BDEBFF",
           subtitle: "\u0421\u0434\u0435\u043B\u0430\u0439 \u044D\u0442\u043E, \u043A\u043E\u0433\u0434\u0430 \u0431\u0443\u0434\u0435\u0442 \u043D\u0435 \u0447\u0435\u0433\u043E \u0434\u0435\u043B\u0430\u0442\u044C",
@@ -9143,10 +9144,10 @@ function MatrixPage(_ref) {
           }
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {
       isOpen: isCreateTaskFormOpen,
       handleClose: handleCloseCreateTaskForm,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_CreateTaskForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_CreateTaskForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
         projectList: projects,
         setProjectList: setProjects,
         handleCreateTask: handleCreateTask,

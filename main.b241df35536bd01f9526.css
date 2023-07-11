@@ -13574,7 +13574,7 @@ input.p-dropdown-label  {
 	cursor: pointer;
 	height: 74px;
 	display: flex;
-	width: 95%;
+	width: 92%;
 	align-items: center;
 	justify-content: space-between;
 	margin: 0 auto;
@@ -14425,13 +14425,13 @@ input.p-dropdown-label  {
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/MatrixPage/MatrixPage.css ***!
   \***************************************************************************************/
 .matrixpage {
-	min-height: 984px;
 	height: calc(100vh - 40px);
 	width: 80%;
 	max-width: 1120px;
 	margin: 0 0 0 auto;
 	background-color: #ffffff;
 	border-radius: 38px;
+	overflow: auto;
 }
 
 .matrixpage__title {
@@ -14445,7 +14445,7 @@ input.p-dropdown-label  {
 
 .matrixpage__container {
 	width: calc(100% - 40px - 40px);
-	margin: 28px auto 0;
+	margin: 28px 0;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
@@ -14524,6 +14524,7 @@ input.p-dropdown-label  {
 	list-style: none;
 	display: flex;
 	gap: 12px;
+	overflow: hidden;
 }
 
 .matrix__task-emoji {
@@ -14539,6 +14540,9 @@ input.p-dropdown-label  {
 	font-size: 16px;
 	line-height: 1.5;
 	margin: 0;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 /*!********************************************************************************************************!*\
@@ -15225,8 +15229,8 @@ input.p-dropdown-label  {
 	margin: 0;
 	height: 32px;
 	width: 55px;
-	border: 2px solid #79747E;
-    border-radius: 100px;
+	border: 2px solid #79747e;
+	border-radius: 100px;
 }
 
 .p-inputswitch.p-inputswitch-checked {
@@ -15387,7 +15391,7 @@ input.p-dropdown-label  {
 	margin: 0;
 	height: 32px;
 	width: 55px;
-	border: 2px solid #79747E;
+	border: 2px solid #79747e;
 	border-radius: 100px;
 }
 
@@ -15422,9 +15426,9 @@ input.p-dropdown-label  {
 	display: flex;
 	align-items: center;
 	border-radius: 100px;
-	border: 1px solid var(--m-3-sys-light-outline, #79747E);
+	border: 1px solid var(--m-3-sys-light-outline, #79747e);
 	width: 160px;
-    padding: 15px;
+	padding: 15px;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 24px;
@@ -15436,15 +15440,15 @@ input.p-dropdown-label  {
 
 .timer-setting__picker-text {
 	padding: 0 8px;
-    position: absolute;
-    left: 12px;
-    top: -9px;
-    height: 16px;
-    background: white;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: normal;
+	position: absolute;
+	left: 12px;
+	top: -9px;
+	height: 16px;
+	background: white;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 16px;
+	letter-spacing: normal;
 }
 
 .timer-setting__time-picker-options {
@@ -15460,14 +15464,14 @@ input.p-dropdown-label  {
 
 .timer-setting__time-picker-close {
 	background-color: initial;
-    background-image: url(assets/d0e1cfb8c36b47d73a71.svg);
-    background-size: cover;
-    border: none;
-    cursor: pointer;
-    height: 24px;
-    padding: 0;
-    transition: .3s ease-in-out;
-    width: 24px;
+	background-image: url(assets/d0e1cfb8c36b47d73a71.svg);
+	background-size: cover;
+	border: none;
+	cursor: pointer;
+	height: 24px;
+	padding: 0;
+	transition: 0.3s ease-in-out;
+	width: 24px;
 }
 
 .timer-setting__time-picker-close:hover {
@@ -15636,4 +15640,4 @@ input.p-dropdown-label  {
 }
 
 
-/*# sourceMappingURL=main.e88d9c86669bdfdb57ad.css.map*/
+/*# sourceMappingURL=main.b241df35536bd01f9526.css.map*/
