@@ -17,6 +17,7 @@ const SidebarSelect = ({
 	items,
 	setItems,
 	placeholder,
+	style,
 	disabled,
 	label,
 	isEditable,
@@ -37,7 +38,7 @@ const SidebarSelect = ({
 	};
 
 	return (
-		<div className="sidebar-select__wrapper">
+		<div className="sidebar-select__wrapper" style={style}>
 			<Dropdown
 				className="sidebar-select"
 				onChange={handleSelect}

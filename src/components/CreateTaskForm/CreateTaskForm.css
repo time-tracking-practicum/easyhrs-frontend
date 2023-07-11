@@ -77,9 +77,12 @@
 	width: 388px;
 	height: 16px;
 	position: absolute;
-	top: 136px;
+	top: 135px;
 	color: var(--light-text-color);
 	font-size: 12px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 	margin: 4px 0;
 	align-self: center;
 	font-style: normal;
