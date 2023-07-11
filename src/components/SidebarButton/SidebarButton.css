@@ -5,8 +5,8 @@
 
 .sidebar__button:disabled {
 	cursor: default;
-	background-color: rgba(29, 27, 32, 0.12);
-	color: var(--light-outline-color);
+	background-color: rgba(226, 220, 228, 1);
+	color: rgba(29, 27, 32, 0.379);
 }
 
 .sidebar__button_primary {

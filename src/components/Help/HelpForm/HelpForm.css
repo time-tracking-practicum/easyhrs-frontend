@@ -65,19 +65,19 @@
 	height: 52px;
 	border: none;
 	border-radius: 100px;
-	color: #1d1b20;
-	background: #e2dce4;
+	background-color: rgba(226, 220, 228, 1);
+	color: rgba(29, 27, 32, 0.379);
 	font-size: 18px;
 	font-style: normal;
 	font-weight: 700;
 	line-height: 20px;
 	letter-spacing: 0.1px;
-	opacity: 0.4;
 	pointer-events: none;
 }
 
 .help__button-submit_active {
-	opacity: 1;
+	color: #fff;
+	background-color: #6750a4;
 	cursor: pointer;
 	pointer-events: all;
 }

@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 import iconBell from '../../images/icon-bell.svg';
 import iconProfile from '../../images/icon-profile.svg';
+import iconSettings from '../../images/icon-settings.svg';
 import iconBack from '../../images/icon-back.svg';
 import './Header.css';
 
@@ -62,21 +63,19 @@ function Header({
 				)}
 			</div>
 			<div className="header__icons-container">
-				<img
-					className="header__icon"
-					src={iconBell}
-					width={20}
-					height={22}
-					alt="Иконка уведомлений"
-				/>
-				<NavLink to="/profile">
+				<NavLink className="header__link" to="/settings">
 					<img
-						className="header__icon"
-						src={iconProfile}
-						width={40}
-						height={40}
-						alt="Иконка профиля"
+						src={iconSettings}
+						width={24}
+						height={24}
+						alt="Иконка настройки"
 					/>
+				</NavLink>
+				<NavLink className="header__link">
+					<img src={iconBell} width={20} height={22} alt="Иконка уведомлений" />
+				</NavLink>
+				<NavLink className="header__link" to="/profile">
+					<img src={iconProfile} width={40} height={40} alt="Иконка профиля" />
 				</NavLink>
 			</div>
 		</div>
