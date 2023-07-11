@@ -13,8 +13,10 @@ const SidebarInput = ({
 	onChange,
 	label,
 	inputRef,
+	style,
 	min,
 	disabled,
+	className,
 	isEditable,
 	max,
 	required,
@@ -35,9 +37,10 @@ const SidebarInput = ({
 
 	return (
 		<div
+			style={style}
 			className={`sidebar__input-border ${
 				isError && 'sidebar__input-border_red'
-			}`}
+			}, ${className}`}
 		>
 			<input
 				type={isPassShown ? 'text' : type}

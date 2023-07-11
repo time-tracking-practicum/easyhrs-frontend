@@ -114,6 +114,7 @@ export const INITIAL_FORM_STATE = {
 export const CREATE_TASK_FORM_TEXT = {
 	HEADING: 'Новая задача',
 	NEW_TASK_NAME_PLACEHOLDER: 'Название задачи',
+	NEW_TASK_PROJECTNAME_PLACEHOLDER: 'Проект',
 	PROJECT_PLACEHOLDER: 'Проект',
 	START_TIME_PLACEHOLDER: 'Старт задачи',
 	DEADLINE_PLACEHOLDER: 'Дедлайн',
@@ -135,6 +136,7 @@ export const EDIT_TASK_FORM_TEXT = {
 
 export const INITIAL_CREATE_TASK_INPUTS_STATE = {
 	taskName: '',
+	projectName: '',
 	startTime: '',
 	deadline: '',
 };

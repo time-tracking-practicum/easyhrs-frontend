@@ -155,6 +155,7 @@ export default function Router() {
 									handleEditTask={editTaskAndUpdate}
 									handleDeleteTask={deleteTaskAndUpdate}
 									tasks={tasks}
+									setCurrentUserProjects={setCurrentUserProjects}
 									projects={projects}
 									setProjects={setProjects}
 									hadleUpdateTimeInProgress={updateTimeInProgress}
