@@ -79,7 +79,7 @@ export default function MatrixPage({
 					<Matrix
 						title="Важное, несрочное"
 						blockColor="#C1F199"
-						subtitle="Решите , когда это сделать"
+						subtitle="Решите, когда это сделать"
 						subtitleColor="#337300"
 						tasks={urg}
 						handleButtonClick={() => {
@@ -99,7 +99,7 @@ export default function MatrixPage({
 					<Matrix
 						title="Несрочное, неважное"
 						blockColor="#BDEBFF"
-						subtitle="Сделай это, когда будет не чего делать"
+						subtitle="Сделай это, когда будет нечего делать"
 						subtitleColor="#0050C7"
 						tasks={notUrgimp}
 						handleButtonClick={() => {

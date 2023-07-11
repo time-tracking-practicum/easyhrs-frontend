@@ -34,7 +34,7 @@ function HelpForm({ handleFeedback }) {
 
 	return (
 		<form className="help__form" onSubmit={handleSubmit}>
-			<h3 className="help__form-question">Остались вопросы ?</h3>
+			<h3 className="help__form-question">Остались вопросы?</h3>
 			<div className="help__input-container">
 				<input
 					className="help__input"
