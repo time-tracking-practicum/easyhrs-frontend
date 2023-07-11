@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './RemindersSetting.css';
 import { InputSwitch } from 'primereact/inputswitch';
 
-// import downArrow from '../../images/icon-down_arrow.svg';
-// import upArrow from '../../images/icon-up_arrow.svg';
-
 import imageRadioChecked from '../../images/icon-radio.svg';
 import imageRadioUnchecked from '../../images/icon-not_radio.svg';
 
@@ -90,7 +87,6 @@ export default function RemindersSetting( {notifications, setNotifications} ) {
 						))}
 					</ul>
 				</div>
-			{/* )} */}
 			<div className={`reminders-setting__reminder-options ${
 					!notifications && 'hover'
 				}`}>

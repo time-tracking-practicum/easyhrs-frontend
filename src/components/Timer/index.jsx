@@ -22,7 +22,7 @@ function Timer({
 	const [interv, setInterv] = useState();
 	const [startTimer, setStartTimer] = useState();
 	const [timeOfPause, setTimeOfPause] = useState();
-
+	
 	let timer = {
 		h: actualTask.time_in_progress.h,
 		m: actualTask.time_in_progress.m,
@@ -77,7 +77,7 @@ function Timer({
 	};
 	useEffect(() => {
 		if (pause) {
-			console.log('остановка');
+			stop();
 		}
 	}, [play, pause]);
 
@@ -102,6 +102,11 @@ function Timer({
 	}, [openTimer, actualTask]);
 
 	const classSpan = dropTimer ? 'timer__span-drop' : 'timer__span';
+
+	function handleStart() {
+		setPlay(true);
+		setPause(false);
+	}
 
 	return (
 		<div className={`timer ${dropTimer ? 'timer_drop' : ''}`}>
@@ -128,10 +133,17 @@ function Timer({
 					</p>
 				</div>
 				<div className="timer__buttons-container">
+					{play ? 
 					<button onClick={stop} type="button" className="timer__button">
 						<img className="timer__icon" src={iconPause} alt="Икона паузы" />
 						Пауза
-					</button>
+					</button> 
+					:
+					<button onClick={handleStart} type="button" className="timer__button">
+						<img className="timer__icon" src={iconPause} alt="Икона паузы" />
+						Продолжить
+					</button> 
+					}
 					<button onClick={reset} type="button" className="timer__button">
 						<img className="timer__icon" src={iconComplete} alt="Икона паузы" />
 						Завершить

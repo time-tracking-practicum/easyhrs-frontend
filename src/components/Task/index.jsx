@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-nested-ternary */
+// import { useEffect } from 'react';
 import './Task.css';
 import { formateDate } from '../../utils/formateDate';
 
@@ -53,6 +54,13 @@ export default function Task({
 			setPause(false);
 		}
 	}
+
+	function handlePause() {
+		setPlay(false);
+		setPause(true);
+	}
+
+	let taskButton = !play ? handleStart : handlePause;
 
 	return (
 		<div className="task">
@@ -108,10 +116,19 @@ export default function Task({
 			</div>
 			<div className="task__btn-wrapper">
 				<button
-					onClick={handleStart}
-					className={`task__btn ${play && 'task__btn_disabled'}`}
-					disabled={play}
+					onClick={taskButton}
+					className={`task__btn ${play && actualTask.name !== name && 'task__btn_disabled'}`}
+					disabled={play && actualTask.name !== name}
 				>
+					{play && actualTask.name === name ? 
+					<svg width="40" height="40" viewBox="0 0 19 18" fill="#1da750" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8 11.25V6.75M11 11.25V6.75M17 9C17 13.1421 13.6421 16.5 9.5 16.5C5.35786 16.5 2 13.1421 2 9C2 4.85786 5.35786 1.5 9.5 1.5C13.6421 1.5 17 4.85786 17 9Z" 
+					stroke="white" 
+					strokeWidth="2" 
+					strokeLinecap="round" 
+					strokeLinejoin="round"/>
+					</svg>
+					:
 					<svg
 						width="40"
 						height="40"
@@ -142,6 +159,7 @@ export default function Task({
 							</clipPath>
 						</defs>
 					</svg>
+					}
 				</button>
 			</div>
 		</div>

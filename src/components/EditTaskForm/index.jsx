@@ -20,6 +20,9 @@ const EditTaskForm = ({
 	handleEditTask,
 	handleDeleteTask,
 	setIsEditTaskFormOpen,
+	timerTime,
+	play,
+	actualTask,
 }) => {
 	const [isOpenEmoji, setIsOpenEmoji] = useState(false);
 	const [emoji, setEmoji] = useState(task.emoji);
@@ -77,10 +80,25 @@ const EditTaskForm = ({
 		new Date(dateValues.deadline).getTime() >=
 		new Date(dateValues.startTime).getTime();
 
+	let timeInProgress = task.time_in_progress;
 	return (
 		<div className="editTaskForm">
 			<h1 className="editTaskForm__title">{task.name}</h1>
-			<span className="editTaskForm__status">{`В работе ${'НЕ ЗАДАНО'}`}</span>
+			{( actualTask.name === task.name ) && play ? (
+				<span className="editTaskForm__status">
+					В работе&nbsp; 
+					{timerTime.h >= 10 ? timerTime.h : `0${timerTime.h}`}:
+					{timerTime.m >= 10 ? timerTime.m : `0${timerTime.m}`}:
+					{timerTime.s >= 10 ? timerTime.s : `0${timerTime.s}`}	
+				</span>
+			) : (
+				<span className="editTaskForm__status">
+					Пауза&nbsp; 
+					{timeInProgress.h >= 10 ? timeInProgress.h : `0${timeInProgress.h}`}:
+					{timeInProgress.m >= 10 ? timeInProgress.m : `0${timeInProgress.m}`}:
+					{timeInProgress.s >= 10 ? timeInProgress.s : `0${timeInProgress.s}`}	
+				</span>
+			)}
 			<form
 				className="editTaskForm__form"
 				action="#"
