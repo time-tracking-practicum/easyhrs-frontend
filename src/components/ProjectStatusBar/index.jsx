@@ -12,13 +12,13 @@ export default function ProjectStatusBar({ project, tasks, timeSum }) {
 		let hours = 0;
 		let mins = 0;
 		let secs = 0;
-		for (let i = 0; i < tasks.length; i + 1) {
+		for (let i = 0; i < tasks.length; i += 1) {
 			hours += tasks[i].time_in_progress.h;
 			mins += tasks[i].time_in_progress.m;
 			secs += tasks[i].time_in_progress.s;
 		}
 		setTimeOfProject(hours * 3600 + mins * 60 + secs);
-	}, []);
+	}, [project]);
 
 	// Форматирует секунды проекта в формат n час m мин
 	function formateTimeOfProject() {
@@ -37,7 +37,7 @@ export default function ProjectStatusBar({ project, tasks, timeSum }) {
 		if (timeOfProject && timeOfProject !== 0) {
 			setProgressWidth(`${(timeOfProject / timeSum) * 100}%`);
 		}
-	}, [timeOfProject]);
+	}, [tasks]);
 
 	useEffect(() => {
 		if (project.id % 4 === 0) {
