@@ -81,7 +81,7 @@ export default function MatrixPage({
 						blockColor="#C1F199"
 						subtitle="Решите, когда это сделать"
 						subtitleColor="#337300"
-						tasks={urg}
+						tasks={imp}
 						handleButtonClick={() => {
 							handleOpenCreateTaskForm({ isImportant: true, isUrgent: false });
 						}}
@@ -91,7 +91,7 @@ export default function MatrixPage({
 						blockColor="#FFEA9F"
 						subtitle="Делегируй"
 						subtitleColor="#EE7200"
-						tasks={imp}
+						tasks={urg}
 						handleButtonClick={() => {
 							handleOpenCreateTaskForm({ isImportant: false, isUrgent: true });
 						}}
