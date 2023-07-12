@@ -31,16 +31,16 @@ function Timer({
 	};
 
 	const run = () => {
-		if (timer.m === 59) {
+		timer.s++;
+		if (timer.m === 60) {
 			timer.h++;
 			timer.m = 0;
 		}
-		if (timer.s === 59) {
+		if (timer.s === 60) {
 			timer.m++;
 			timer.s = 0;
 		}
 
-		timer.s++;
 		return setTimerTime({ h: timer.h, m: timer.m, s: timer.s });
 	};
 
@@ -57,8 +57,10 @@ function Timer({
 
 	const reset = () => {
 		if (play && !pause && openTimer) {
+			let now = new Date();			
 			const newTimeInProgress = {
 				time_in_progress: timerTime,
+				end_time: now.toISOString(),
 			};
 			hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
 		}
@@ -75,6 +77,12 @@ function Timer({
 		setInterv(setInterval(run, 1000));
 		if (timeOfPause) {
 			console.log((timeOfPause - startTimer) / 1000);
+		}
+		if (actualTask.end_time) {
+			const newTimeInProgress = {
+				end_time: null,
+			};
+			hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
 		}
 	};
 	useEffect(() => {
@@ -109,6 +117,8 @@ function Timer({
 		setPlay(true);
 		setPause(false);
 	}
+
+
 
 	return (
 		<div className={`timer ${dropTimer ? 'timer_drop' : ''}`}>
