@@ -1,0 +1,147 @@
+/* Появление start */
+@keyframes emergence {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+/* Исчезновение start__title & start_image */
+@keyframes disappearance {
+	0% {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	100% {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+/* Сдвиг влево start */
+@keyframes left-shift {
+	0% {
+		width: 100%;
+	}
+
+	100% {
+		width: 542px;
+	}
+}
+
+/* Появление start__title */
+/* @keyframes emergence-title {
+	0% {
+		opacity: 0;
+		color: #ffffff;
+	}
+	100% {
+		visibility: visible;
+		opacity: 1;
+		color: #ffffff;
+	}
+} */
+
+/* Появление градиента */
+@keyframes gradient {
+	0% {
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	100% {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+/* Появление формы  */
+@keyframes visible-form {
+	100% {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+.start__block {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 984px;
+	background-color: #ffffff;
+	border-radius: 40px;
+	animation: emergence 1s ease-in-out, left-shift 1s ease-in-out forwards 1s;
+}
+
+.start__container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	animation: disappearance 1s ease-in-out forwards 1s;
+}
+
+.start__title {
+	font-style: normal;
+	font-weight: 700;
+	font-size: 96px;
+	line-height: 113px;
+	color: #6750a4;
+	margin: 0;
+	animation: disappearance 1s ease-in-out forwards 1s,
+		emergence-title 1s ease-in-out forwards 1s;
+}
+
+.start__image {
+	width: 167px;
+	height: 167px;
+	animation: disappearance 1s ease-in-out forwards 1s;
+}
+
+.start__container-gradient {
+	visibility: hidden;
+	opacity: 0;
+	animation: gradient 1s ease-in-out forwards 2s;
+}
+
+.start__gradien-top {
+	position: absolute;
+	left: -131px;
+	top: -247px;
+	width: 78.33%;
+	height: 66.89%;
+	background: radial-gradient(#3f2eaa 80%, #5fc1ec 100%);
+	filter: blur(150px);
+}
+
+.start__gradient-right {
+	position: absolute;
+	width: 67.85%;
+	height: 94.14%;
+	top: -318px;
+	right: -440px;
+	background: radial-gradient(#da54b7 0%, #9e75df 45.24%, #9243dd 60.42%);
+	filter: blur(150px);
+}
+
+.start__gradient-bottom {
+	position: absolute;
+	width: 36.04%;
+	height: 45.8%;
+	left: 384px;
+	bottom: -190px;
+	background: radial-gradient(#4e2bad 20.83%, #7720c8 30.37%, #d352b8 100%);
+	filter: blur(150px);
+}
+
+.start__block > .authForm {
+	opacity: 0;
+	visibility: hidden;
+	animation: visible-form 1s ease-in-out forwards;
+}

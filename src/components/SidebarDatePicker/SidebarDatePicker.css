@@ -1,0 +1,65 @@
+.sidebar-date-picker__wrapper {
+	position: relative;
+	width: 100%;
+}
+
+.sidebar-date-picker {
+	border: 1px solid #79747e;
+	border-radius: 100px;
+	width: 100%;
+	padding: 8px 16px;
+	height: 56px;
+}
+
+.p-inputtext {
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	box-shadow: none !important;
+}
+
+.p-calendar .p-inputtext:disabled {
+	opacity: 100;
+}
+
+.p-inputtext::placeholder {
+	color: var(--light-text-color);
+}
+
+.p-datepicker table td.p-datepicker-today > span {
+	background: var(--primary-background-color) !important;
+	color: var(--secondary-background-color);
+}
+
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+	color: var(--secondary-background-color);
+}
+
+.p-datepicker:not(.p-disabled)
+	table
+	td
+	span:not(.p-highlight):not(.p-disabled):focus {
+	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
+}
+
+.p-datepicker table td > span {
+	color: black;
+}
+
+.p-datepicker .p-disabled {
+	opacity: 0.4;
+}
+
+.p-datepicker table td > span:focus {
+	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
+	background: inherit;
+}
+
+.p-datepicker table td > span.p-highlight {
+	box-shadow: 0 0 0 0.2rem var(--primary-background-color) !important;
+	background: inherit !important;
+}
+
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+	color: var(--primary-background-color);
+}

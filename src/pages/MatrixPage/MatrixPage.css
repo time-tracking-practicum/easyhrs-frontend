@@ -1,0 +1,32 @@
+.matrixpage {
+	height: calc(100vh - 40px);
+	width: 80%;
+	max-width: 1120px;
+	margin: 0 0 0 auto;
+	background-color: #ffffff;
+	border-radius: 40px;
+	overflow: auto;
+}
+
+.matrixpage__title {
+	font-weight: 700;
+	font-size: 54px;
+	line-height: 1.26;
+	margin: 0 auto;
+	padding-top: 32px;
+	width: calc(100% - 40px - 40px);
+}
+
+.matrixpage__container {
+	width: calc(100% - 40px - 40px);
+	margin: 28px auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.profile__spinner-container {
+	display: block;
+	margin-top: calc(100% / 3);
+	height: 100%;
+}

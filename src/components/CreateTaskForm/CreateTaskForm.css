@@ -1,0 +1,98 @@
+.createTaskForm {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.createTaskForm__title {
+	font-size: 32px;
+	letter-spacing: -0.96px;
+	font-weight: 700;
+	padding: 10px 0;
+	margin: 0;
+	max-width: 390px;
+}
+
+.createTaskForm__fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	margin: 36px 0;
+	position: relative;
+	min-height: 108px;
+	padding: 0;
+	border: none;
+}
+
+.createTaskForm__btnContainer {
+	display: flex;
+	justify-content: space-between;
+	margin: 24px 0 0;
+}
+
+.createTaskForm__checkbox-container {
+	display: flex;
+	padding: 12px;
+	gap: 48px;
+}
+
+.createTaskForm__btnContainer_justify-center {
+	justify-content: center;
+}
+
+.createTaskForm__emoji-container {
+	position: relative;
+}
+
+.createTaskForm__emoji-picker {
+	position: absolute;
+	bottom: 20px;
+	right: 70px;
+}
+
+.createTaskForm__emoji-button {
+	height: 24px;
+	width: 76px;
+	padding: 0;
+	display: flex;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 16px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	align-items: center;
+}
+
+.createTaskForm__emoji {
+	width: 24px;
+	height: 24px;
+	line-height: 26px;
+	font-size: 24px;
+	margin: 0 12px 0 0;
+	display: inline-block;
+}
+
+.createTaskForm__select-description {
+	width: 388px;
+	height: 16px;
+	position: absolute;
+	top: 135px;
+	color: var(--light-text-color);
+	font-size: 12px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 4px 0;
+	align-self: center;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+}
+
+.createTaskForm__project-input {
+	position: absolute;
+	width: 384px;
+	top: 80px;
+	border: none;
+}

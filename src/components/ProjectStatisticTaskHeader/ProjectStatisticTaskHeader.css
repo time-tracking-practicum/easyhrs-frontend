@@ -1,0 +1,19 @@
+.projStatisticTaskHeader {
+	padding-bottom: 0;
+}
+
+.projStatisticTaskHeader__name-container {
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
+}
+
+.projStatisticTaskHeader__name {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.projStatisticTaskHeader___cell {
+	padding-left: 10px;
+}

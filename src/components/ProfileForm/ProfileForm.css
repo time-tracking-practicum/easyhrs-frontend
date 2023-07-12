@@ -1,0 +1,23 @@
+.profile__form {
+	display: flex;
+	margin-top: 20px;
+}
+
+.profile__form-button-img {
+	width: 18px;
+	height: 18px;
+	margin: 0 8px;
+	background-position: center;
+	object-fit: cover;
+}
+
+.profile__submit-btn {
+	width: 71px;
+	height: 52px;
+	padding: 0;
+	background-color: #6750a4;
+	color: #fff;
+	border: none;
+	border-radius: 100px;
+	cursor: pointer;
+}

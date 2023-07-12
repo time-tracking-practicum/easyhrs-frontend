@@ -1,0 +1,23 @@
+@import './vendor/normalize.css';
+@import './vendor/fonts/roboto.css';
+
+:root {
+	/* Параметры шрифта для всего приложения */
+	font-family: 'Roboto', sans-serif, Arial;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	color: #000000;
+
+	/* Переменные стилей */
+	--primary-background-color: #6750a4;
+	--secondary-background-color: #fff;
+	--light-outline-color: #79747e;
+	--scrollbar-color: #938f99;
+	--scrollbar-background-color: transparent;
+	--light-text-color: #49454f;
+	--link-color: #4743e0;
+	--error-color: #bc0000;
+}

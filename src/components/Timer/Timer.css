@@ -1,0 +1,109 @@
+.timer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+
+	background: white;
+	height: 100%;
+}
+
+.timer_drop {
+	height: 128px;
+}
+
+.timer__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 198px;
+	width: 100%;
+}
+
+.timer__container_drop {
+	padding: 16px 40px;
+	margin-top: 0;
+	justify-content: space-between;
+	flex-direction: row;
+	background: rgba(169, 156, 203, 1);
+}
+
+.timer__block {
+	margin-bottom: 32px;
+	text-align: center;
+	width: 50%;
+}
+
+.timer__block_drop {
+	margin: 0;
+	text-align: start;
+}
+
+.timer__span {
+	font-weight: 500;
+	font-size: 96px;
+	line-height: 68px;
+}
+
+.timer__span-drop {
+	font-weight: 700;
+	font-size: 54px;
+	line-height: 68px;
+}
+
+.timer__name {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 28px;
+	margin: 24px 0 0;
+	letter-spacing: 0.25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.timer__name_drop {
+	margin: 0;
+}
+
+.timer__buttons-container {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+	/* margin-top: 32px; */
+}
+
+.timer__button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #6750a4;
+	color: #ffffff;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 20px;
+	border: none;
+	border-radius: 100px;
+	width: 160px;
+	height: 52px;
+	cursor: pointer;
+}
+
+.timer__icon {
+	width: 14px;
+	height: 14px;
+	margin-right: 9.5px;
+}
+
+.timer__button-unwarp {
+	width: 100%;
+	border: none;
+	background-color: transparent;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: 0.1px;
+	cursor: pointer;
+	text-align: right;
+	margin-bottom: 22px;
+}

@@ -1,0 +1,43 @@
+.profile__input-container {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	position: relative;
+	height: 56px;
+	width: 248px;
+	border: 1px solid #79747e;
+	border-radius: 100px;
+	padding: 0 16px;
+}
+
+.profile__input-container:not(:last-child) {
+	margin: 0 16px 0 0;
+}
+
+.profile__input-label {
+	position: absolute;
+	padding: 0 8px;
+	background-color: #fff;
+	top: -8px;
+	left: 12px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	color: #49454f;
+}
+
+.profile__input {
+	padding: 0;
+	max-height: 100%;
+	max-width: 100%;
+	width: 100%;
+	border: none;
+	background-color: transparent;
+	outline: none;
+}
+
+.profile__input-icon {
+	height: 24px;
+	width: 24px;
+	cursor: pointer;
+}

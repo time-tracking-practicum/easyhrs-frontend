@@ -1,0 +1,50 @@
+.profile__avatar-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.profile__avatar-image {
+	margin-right: auto;
+	display: block;
+	height: 72px;
+	width: 72px;
+	border-radius: 50%;
+	background-position: center;
+	object-fit: cover;
+}
+
+.profile__avatar-button {
+	width: 150px;
+	height: 36px;
+	margin-top: 8px;
+	padding: 0;
+	color: #6750a4;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent;
+	border: none;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: 0.1px;
+	cursor: pointer;
+}
+
+.profile__avatar-button-img {
+	width: 18px;
+	height: 18px;
+	margin-right: 8px;
+	background-position: center;
+	object-fit: cover;
+}
+
+.profile__avatar-input_hidden {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	line-height: 0;
+	padding: 0;
+	margin: 0;
+}
