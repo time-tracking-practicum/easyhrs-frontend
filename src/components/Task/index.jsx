@@ -39,15 +39,17 @@ export default function Task({
 		) {
 			if (!play) {
 				setStatus('Не начато');
+			} else if (actualTask.name === name && play) {
+				setStatus('В работе');
 			}
-		} else if (reset && actualTask.name === name) {
+		} else if (task.end_time) {
 			setStatus('Завершено');
 		} else if (actualTask.name === name && play) {
 			setStatus('В работе');
 		} else {
 			setStatus('Пауза');
 		}
-	}, [play, pause, reset]);
+	}, [play, pause, reset, task, timerTime]);
 
 	function handleStart() {
 		if (play && !pause) {
@@ -69,7 +71,6 @@ export default function Task({
 			setActualTask(task);
 		}
 		if (!play) {
-			console.log('ne dubl');
 			setPlay(true);
 			setActualTask(task);
 			setOpenTimer(true);
