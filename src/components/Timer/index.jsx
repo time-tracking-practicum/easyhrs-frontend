@@ -56,14 +56,14 @@ function Timer({
 	};
 
 	const reset = () => {
-		if (play && !pause && openTimer) {
+		// if (play && !pause && openTimer) {
 			let now = new Date();			
 			const newTimeInProgress = {
 				time_in_progress: timerTime,
 				end_time: now.toISOString(),
 			};
 			hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
-		}
+		// }
 		clearInterval(interv);
 		setTimerTime({ h: 0, m: 0, s: 0 });
 		setOpenTimer(false);
