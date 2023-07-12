@@ -39,6 +39,8 @@ export default function Task({
 		) {
 			if (!play) {
 				setStatus('Не начато');
+			} else {
+				setStatus('В работе');
 			}
 		} else if (reset && actualTask.name === name) {
 			setStatus('Завершено');
@@ -137,49 +139,59 @@ export default function Task({
 			<div className="task__btn-wrapper">
 				<button
 					onClick={taskButton}
-					className={`task__btn ${play && actualTask.name !== name && 'task__btn_disabled'}`}
+					className={`task__btn ${
+						play && actualTask.name !== name && 'task__btn_disabled'
+					}`}
 					disabled={play && actualTask.name !== name}
 				>
-					{play && actualTask.name === name ? 
-					<svg width="40" height="40" viewBox="0 0 19 18" fill="#1da750" xmlns="http://www.w3.org/2000/svg">
-					<path d="M8 11.25V6.75M11 11.25V6.75M17 9C17 13.1421 13.6421 16.5 9.5 16.5C5.35786 16.5 2 13.1421 2 9C2 4.85786 5.35786 1.5 9.5 1.5C13.6421 1.5 17 4.85786 17 9Z" 
-					stroke="white" 
-					strokeWidth="2" 
-					strokeLinecap="round" 
-					strokeLinejoin="round"/>
-					</svg>
-					:
-					<svg
-						width="40"
-						height="40"
-						viewBox="0 0 40 40"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<g clipPath="url(#clip0_1138_1005)">
-							<rect width="40" height="40" rx="20" fill="#6750A4" />
+					{play && actualTask.name === name ? (
+						<svg
+							width="40"
+							height="40"
+							viewBox="0 0 19 18"
+							fill="#1da750"
+							xmlns="http://www.w3.org/2000/svg"
+						>
 							<path
-								d="M20 30C25.5228 30 30 25.5228 30 20C30 14.4772 25.5228 10 20 10C14.4772 10 10 14.4772 10 20C10 25.5228 14.4772 30 20 30Z"
+								d="M8 11.25V6.75M11 11.25V6.75M17 9C17 13.1421 13.6421 16.5 9.5 16.5C5.35786 16.5 2 13.1421 2 9C2 4.85786 5.35786 1.5 9.5 1.5C13.6421 1.5 17 4.85786 17 9Z"
 								stroke="white"
 								strokeWidth="2"
 								strokeLinecap="round"
 								strokeLinejoin="round"
 							/>
-							<path
-								d="M18 16L24 20L18 24V16Z"
-								stroke="white"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							/>
-						</g>
-						<defs>
-							<clipPath id="clip0_1138_1005">
-								<rect width="40" height="40" rx="20" fill="white" />
-							</clipPath>
-						</defs>
-					</svg>
-					}
+						</svg>
+					) : (
+						<svg
+							width="40"
+							height="40"
+							viewBox="0 0 40 40"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<g clipPath="url(#clip0_1138_1005)">
+								<rect width="40" height="40" rx="20" fill="#6750A4" />
+								<path
+									d="M20 30C25.5228 30 30 25.5228 30 20C30 14.4772 25.5228 10 20 10C14.4772 10 10 14.4772 10 20C10 25.5228 14.4772 30 20 30Z"
+									stroke="white"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+								<path
+									d="M18 16L24 20L18 24V16Z"
+									stroke="white"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</g>
+							<defs>
+								<clipPath id="clip0_1138_1005">
+									<rect width="40" height="40" rx="20" fill="white" />
+								</clipPath>
+							</defs>
+						</svg>
+					)}
 				</button>
 			</div>
 		</div>

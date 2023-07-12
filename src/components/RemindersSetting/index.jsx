@@ -49,38 +49,40 @@ export default function RemindersSetting({ notifications, setNotifications }) {
 							key={day}
 							className={`reminders-setting__day-item ${
 								!notifications && 'hover'
-							}`}>
-								<label htmlFor={day} className="reminders-setting__day-label" >
-									{workDays.includes(day) ? (
-										<img
-											src={imageRadioChecked}
-											alt="Checked"
-											className="reminders-setting__checkbox-icon"
-										/>
-									) : (
-										<img
-											src={imageRadioUnchecked}
-											alt="Unchecked"
-											className="reminders-setting__checkbox-icon"
-										/>
-									)}
-									<input
-										disabled={!notifications}
-										id={day}
-										type="checkbox"
-										className="reminders-setting__day-checkbox"
-										checked={workDays.includes(day)}
-										onChange={(event) =>
-											handleWorkDayChange(day, event.target.checked)
-										}
+							}`}
+						>
+							<label htmlFor={day} className="reminders-setting__day-label">
+								{workDays.includes(day) ? (
+									<img
+										src={imageRadioChecked}
+										alt="Checked"
+										className="reminders-setting__checkbox-icon"
 									/>
-									<span className="reminders-setting__day-text">{day}</span>
-								</label>
-							</li>
-						))}
-					</ul>
-				</div>
-			<div className={`reminders-setting__reminder-options ${
+								) : (
+									<img
+										src={imageRadioUnchecked}
+										alt="Unchecked"
+										className="reminders-setting__checkbox-icon"
+									/>
+								)}
+								<input
+									disabled={!notifications}
+									id={day}
+									type="checkbox"
+									className="reminders-setting__day-checkbox"
+									checked={workDays.includes(day)}
+									onChange={(event) =>
+										handleWorkDayChange(day, event.target.checked)
+									}
+								/>
+								<span className="reminders-setting__day-text">{day}</span>
+							</label>
+						</li>
+					))}
+				</ul>
+			</div>
+			<div
+				className={`reminders-setting__reminder-options ${
 					!notifications && 'hover'
 				}`}
 			>
