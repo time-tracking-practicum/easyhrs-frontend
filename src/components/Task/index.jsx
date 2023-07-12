@@ -3,6 +3,7 @@
 /* eslint-disable no-nested-ternary */
 // import { useEffect } from 'react';
 import './Task.css';
+import { useEffect, useState } from 'react';
 import { formateDate } from '../../utils/formateDate';
 
 export default function Task({
@@ -28,6 +29,26 @@ export default function Task({
 	timerTime,
 	hadleUpdateTimeInProgress,
 }) {
+	const [status, setStatus] = useState('');
+
+	useEffect(() => {
+		if (
+			timeInProgress.h === 0 &&
+			timeInProgress.m === 0 &&
+			timeInProgress.s === 0
+		) {
+			if (!play) {
+				setStatus('Не начато');
+			}
+		} else if (reset && actualTask.name === name) {
+			setStatus('Завершено');
+		} else if (actualTask.name === name && play) {
+			setStatus('В работе');
+		} else {
+			setStatus('Пауза');
+		}
+	}, [play, pause, reset]);
+
 	function handleStart() {
 		if (play && !pause) {
 			setPause(true);
@@ -89,18 +110,7 @@ export default function Task({
 				</ul>
 				<p className="task__deadline">{formateDate(deadline)}</p>
 				<ul className="task__timer-wrapper">
-					<li className="task__timer-status">
-						{timeInProgress.h === 0 &&
-						timeInProgress.m === 0 &&
-						timeInProgress.s === 0 &&
-						!play
-							? 'Не начато'
-							: reset
-							? 'Завершено'
-							: actualTask.name === name && play
-							? 'В работе'
-							: 'Пауза'}
-					</li>
+					<li className="task__timer-status">{status}</li>
 					{actualTask.name === name && play ? (
 						<li className="task__timer-time">
 							{timerTime.h >= 10 ? timerTime.h : `0${timerTime.h}`}:
