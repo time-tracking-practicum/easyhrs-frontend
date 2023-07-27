@@ -78,6 +78,12 @@ export default function Task({
 		}
 	}
 
+	useEffect(() => {
+		if(actualTask.name === name && play) {
+		handleStart();
+		}
+	}, [play]);
+
 	function handlePause() {
 		setPlay(false);
 		setPause(true);

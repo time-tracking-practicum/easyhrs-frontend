@@ -65,7 +65,7 @@ function Timer({
 			hadleUpdateTimeInProgress(actualTask.id, newTimeInProgress);
 		// }
 		clearInterval(interv);
-		setTimerTime({ h: 0, m: 0, s: 0 });
+		setTimerTime({ h: (actualTask.time_in_progress.h || 0), m: (actualTask.time_in_progress.m || 0), s: (actualTask.time_in_progress.s || 0) });
 		setOpenTimer(false);
 		setDropTimer(false);
 		setPlay(false);
